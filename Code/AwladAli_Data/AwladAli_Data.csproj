@@ -47,7 +47,9 @@
   <ItemGroup>
     <Compile Include="clsCategoryData.cs" />
     <Compile Include="clsDataAccessSettings.cs" />
+    <Compile Include="clsExtraData.cs" />
     <Compile Include="clsProductData.cs" />
+    <Compile Include="clsProductSizeData.cs" />
     <Compile Include="clsUserData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
