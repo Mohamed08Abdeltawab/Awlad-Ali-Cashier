@@ -110,5 +110,10 @@ namespace AwladAli_Buisness
         {
             return clsCategoryData.IsCategoryLinkedToProducts(CategoryID);
         }
+
+        public static DataTable GetProductsByCategory(int CategoryID)
+        {
+            return clsProductData.GetProductsByCategoryWithPrices(CategoryID);
+        }
     }
 }

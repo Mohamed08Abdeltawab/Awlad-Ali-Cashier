@@ -153,5 +153,53 @@ namespace AwladAli_Data
 
             return dt;
         }
+
+
+
+        public static DataTable GetProductsByCategoryWithPrices(int CategoryID)
+        {
+            DataTable dt = new DataTable();
+
+            try
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    // Query Pivot لجلب الأكلة وأسعارها في سطر واحد
+                    string query = @"
+                        SELECT 
+                            p.ProductID,
+                            p.ProductName,
+                            MAX(CASE WHEN ps.SizeName = 'S'  THEN ps.Price END) AS Price_S,
+                            MAX(CASE WHEN ps.SizeName = 'M'  THEN ps.Price END) AS Price_M,
+                            MAX(CASE WHEN ps.SizeName = 'L'  THEN ps.Price END) AS Price_L,
+                            MAX(CASE WHEN ps.SizeName = 'XL' THEN ps.Price END) AS Price_XL
+                        FROM Products p
+                        LEFT JOIN ProductSizes ps ON p.ProductID = ps.ProductID
+                        WHERE p.CategoryID = @CategoryID
+                        GROUP BY p.ProductID, p.ProductName";
+
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@CategoryID", CategoryID);
+                        connection.Open();
+
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                dt.Load(reader);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // يمكنك هنا تسجيل الخطأ في EventLog كما فعلنا سابقاً
+                Console.WriteLine("Error: " + ex.Message);
+            }
+
+            return dt;
+        }
     }
 }
