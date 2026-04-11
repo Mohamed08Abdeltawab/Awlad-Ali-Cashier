@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="clsCategory.cs" />
     <Compile Include="clsExtra.cs" />
+    <Compile Include="clsOrder.cs" />
     <Compile Include="clsProduct.cs" />
     <Compile Include="clsProductSize.cs" />
     <Compile Include="clsUser.cs" />

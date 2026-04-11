@@ -1,0 +1,92 @@
+﻿using System;
+using System.Data;
+using System.Data.SQLite;
+
+namespace AwladAli_Data
+{
+    public class clsOrderData
+    {
+        // 1. Add New Order Header
+        public static int AddNewOrder(int UserID, double TotalAmount)
+        {
+            int OrderID = -1;
+            try
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    // OrderDate uses DEFAULT CURRENT_TIMESTAMP from DB design
+                    string query = @"INSERT INTO Orders (UserID, TotalAmount) 
+                                     VALUES (@UserID, @TotalAmount);
+                                     SELECT last_insert_rowid();";
+
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@UserID", UserID);
+                        command.Parameters.AddWithValue("@TotalAmount", TotalAmount);
+
+                        connection.Open();
+                        object result = command.ExecuteScalar();
+                        if (result != null && int.TryParse(result.ToString(), out int insertedID))
+                            OrderID = insertedID;
+                    }
+                }
+            }
+            catch (Exception) { }
+            return OrderID;
+        }
+
+        // 2. Add Order Item (Detail)
+        public static bool AddOrderDetail(int OrderID, int ProductID, int SizeID, int Quantity, double UnitPrice)
+        {
+            int rowsAffected = 0;
+            try
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = @"INSERT INTO OrderDetails (OrderID, ProductID, SizeID, Quantity, UnitPrice) 
+                                     VALUES (@OrderID, @ProductID, @SizeID, @Quantity, @UnitPrice)";
+
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@OrderID", OrderID);
+                        command.Parameters.AddWithValue("@ProductID", ProductID);
+                        command.Parameters.AddWithValue("@SizeID", SizeID);
+                        command.Parameters.AddWithValue("@Quantity", Quantity);
+                        command.Parameters.AddWithValue("@UnitPrice", UnitPrice);
+
+                        connection.Open();
+                        rowsAffected = command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception) { }
+            return (rowsAffected > 0);
+        }
+
+        // 3. Get All Orders for Reports
+        public static DataTable GetAllOrders()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = @"SELECT Orders.OrderID, Users.UserName as Cashier, 
+                                     Orders.OrderDate, Orders.TotalAmount 
+                                     FROM Orders";
+
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        connection.Open();
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows) dt.Load(reader);
+                        }
+                    }
+                }
+            }
+            catch (Exception) { }
+            return dt;
+        }
+    }
+}
