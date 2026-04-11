@@ -55,6 +55,24 @@ namespace AwladAli_Buisness
             }
         }
 
+        // Static method to find a user for Login purposes
+        public static clsUser FindByUsernameAndPassword(string UserName, string Password)
+        {
+            int UserID = -1;
+            int Role = -1;
+
+            // We pass UserName and Password (the Hashed one) to Data Layer
+            if (clsUserData.GetUserByUsernameAndPassword(UserName, Password, ref UserID, ref Role))
+            {
+                // If found, we return a full user object using our existing constructor
+                return new clsUser(UserID, UserName, Password, Role);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         // 2. Add New User (Internal helper)
         private bool _AddNewUser()
         {

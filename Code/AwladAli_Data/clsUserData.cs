@@ -44,6 +44,46 @@ namespace AwladAli_Data
             return isFound;
         }
 
+        // Find User by Username and Password (Used for Login)
+        public static bool GetUserByUsernameAndPassword(string UserName, string Password,
+            ref int UserID, ref int Role)
+        {
+            bool isFound = false;
+
+            try
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    // Query to find a matching active user
+                    string query = "SELECT UserID, Role FROM Users WHERE UserName = @UserName AND Password = @Password";
+
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@UserName", UserName);
+                        command.Parameters.AddWithValue("@Password", Password);
+
+                        connection.Open();
+
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                isFound = true;
+                                UserID = Convert.ToInt32(reader["UserID"]);
+                                Role = Convert.ToInt32(reader["Role"]);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                isFound = false;
+            }
+
+            return isFound;
+        }
+
         // 2. Add New User
         public static int AddNewUser(string UserName, string Password, int Role)
         {
