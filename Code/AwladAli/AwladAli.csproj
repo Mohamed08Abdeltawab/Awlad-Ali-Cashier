@@ -108,10 +108,31 @@
     <Compile Include="Login\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Category\ctrlCategoryCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Category\ctrlCategoryCard.Designer.cs">
+      <DependentUpon>ctrlCategoryCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Category\ctrlProductRow.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Category\ctrlProductRow.Designer.cs">
+      <DependentUpon>ctrlProductRow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Category\ctrlCategoryCard.resx">
+      <DependentUpon>ctrlCategoryCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Category\ctrlProductRow.resx">
+      <DependentUpon>ctrlProductRow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -163,6 +184,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\closeBlack32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AwladAliPhoto 6_19 2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
