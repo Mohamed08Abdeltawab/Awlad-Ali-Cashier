@@ -22,9 +22,9 @@
             // lblProductName
             // 
             this.lblProductName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProductName.Location = new System.Drawing.Point(664, 6);
+            this.lblProductName.Location = new System.Drawing.Point(650, 6);
             this.lblProductName.Name = "lblProductName";
-            this.lblProductName.Size = new System.Drawing.Size(130, 25);
+            this.lblProductName.Size = new System.Drawing.Size(127, 25);
             this.lblProductName.TabIndex = 6;
             this.lblProductName.Text = "منتج تجريبي";
             this.lblProductName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -118,7 +118,7 @@
             this.Controls.Add(this.chkSelectPriceS);
             this.Controls.Add(this.lblProductName);
             this.Name = "ctrlProductRow";
-            this.Size = new System.Drawing.Size(795, 40);
+            this.Size = new System.Drawing.Size(792, 40);
             ((System.ComponentModel.ISupportInitialize)(this.numQuantityS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numQuantityM)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numQuantityL)).EndInit();

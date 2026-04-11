@@ -166,17 +166,17 @@ namespace AwladAli_Data
                 {
                     // Query Pivot لجلب الأكلة وأسعارها في سطر واحد
                     string query = @"
-                        SELECT 
-                            p.ProductID,
-                            p.ProductName,
-                            MAX(CASE WHEN ps.SizeName = 'S'  THEN ps.Price END) AS Price_S,
-                            MAX(CASE WHEN ps.SizeName = 'M'  THEN ps.Price END) AS Price_M,
-                            MAX(CASE WHEN ps.SizeName = 'L'  THEN ps.Price END) AS Price_L,
-                            MAX(CASE WHEN ps.SizeName = 'XL' THEN ps.Price END) AS Price_XL
-                        FROM Products p
-                        LEFT JOIN ProductSizes ps ON p.ProductID = ps.ProductID
-                        WHERE p.CategoryID = @CategoryID
-                        GROUP BY p.ProductID, p.ProductName";
+                                    SELECT 
+                                        p.ProductID, 
+                                        p.ProductName,
+                                        MAX(CASE WHEN ps.SizeName LIKE '%S%'  THEN ps.Price END) AS Price_S,
+                                        MAX(CASE WHEN ps.SizeName LIKE '%M%'  THEN ps.Price END) AS Price_M,
+                                        MAX(CASE WHEN ps.SizeName LIKE '%L%'  THEN ps.Price END) AS Price_L,
+                                        MAX(CASE WHEN ps.SizeName LIKE '%XL%' THEN ps.Price END) AS Price_XL
+                                    FROM Products p
+                                    LEFT JOIN ProductSizes ps ON p.ProductID = ps.ProductID
+                                    WHERE p.CategoryID = @CategoryID
+                                    GROUP BY p.ProductID, p.ProductName";
 
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {

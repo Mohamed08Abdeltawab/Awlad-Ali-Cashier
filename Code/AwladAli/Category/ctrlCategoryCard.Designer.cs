@@ -98,7 +98,7 @@
             this.ctrlProductRow1.BackColor = System.Drawing.Color.White;
             this.ctrlProductRow1.Location = new System.Drawing.Point(3, 3);
             this.ctrlProductRow1.Name = "ctrlProductRow1";
-            this.ctrlProductRow1.Size = new System.Drawing.Size(794, 40);
+            this.ctrlProductRow1.Size = new System.Drawing.Size(792, 40);
             this.ctrlProductRow1.TabIndex = 0;
             // 
             // ctrlCategoryCard

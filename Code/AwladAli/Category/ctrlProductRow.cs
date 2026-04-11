@@ -62,26 +62,58 @@ namespace AwladAli.Product
         // أحداث تغيير حالة الـ Checkbox لفتح/غلق الكمية
         private void chkSelectPriceS_CheckedChanged(object sender, EventArgs e)
         {
-            numQuantityS.Enabled = chkSelectPriceS.Checked;
-            numQuantityS.Value = 1; // تعيين القيمة الافتراضية إلى 1 عند التمكين
+            if (chkSelectPriceS.Checked)
+            {
+                numQuantityS.Enabled = true;
+                numQuantityS.Value = 1; // تعيين القيمة الافتراضية إلى 1 عند التمكين
+            }
+            else
+            {
+                numQuantityS.Enabled = false;
+                numQuantityS.Value = 0; // إعادة تعيين القيمة إلى 0 عند التعطيل 
+            }
         }
 
         private void chkSelectPriceM_CheckedChanged(object sender, EventArgs e)
         {
-            numQuantityM.Enabled = chkSelectPriceM.Checked;
-            numQuantityM.Value = 1; // تعيين القيمة الافتراضية إلى 1 عند التمكين
+            if (chkSelectPriceM.Checked)
+            {
+                numQuantityM.Enabled = true;
+                numQuantityM.Value = 1; // تعيين القيمة الافتراضية إلى 1 عند التمكين
+            }
+            else
+            {
+                numQuantityM.Enabled = false;
+                numQuantityM.Value = 0; // إعادة تعيين القيمة إلى 0 عند التعطيل 
+            }
         }
 
         private void chkSelectPriceL_CheckedChanged(object sender, EventArgs e)
         {
-            numQuantityL.Enabled = chkSelectPriceL.Checked;
-            numQuantityL.Value = 1; // تعيين القيمة الافتراضية إلى 1 عند التمكين
+            if (chkSelectPriceL.Checked)
+            {
+                numQuantityL.Enabled = true;
+                numQuantityL.Value = 1; // تعيين القيمة الافتراضية إلى 1 عند التمكين
+            }
+            else
+            {
+                numQuantityL.Enabled = false;
+                numQuantityL.Value = 0; // إعادة تعيين القيمة إلى 0 عند التعطيل 
+            }
         }
 
         private void chkSelectPriceXL_CheckedChanged(object sender, EventArgs e)
         {
-            numQuantityXl.Enabled = chkSelectPriceXL.Checked;
-            numQuantityXl.Value = 1; // تعيين القيمة الافتراضية إلى 1 عند التمكين
+            if (chkSelectPriceXL.Checked)
+            {
+                numQuantityXl.Enabled = true;
+                numQuantityXl.Value = 1; // تعيين القيمة الافتراضية إلى 1 عند التمكين
+            }
+            else
+            {
+                numQuantityXl.Enabled = false;
+                numQuantityXl.Value = 0; // إعادة تعيين القيمة إلى 0 عند التعطيل 
+            }
         }
     }
 }
