@@ -45,8 +45,10 @@
             this.numQuantityS.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numQuantityS.Location = new System.Drawing.Point(539, 8);
             this.numQuantityS.Name = "numQuantityS";
+            this.numQuantityS.ReadOnly = true;
             this.numQuantityS.Size = new System.Drawing.Size(50, 26);
             this.numQuantityS.TabIndex = 0;
+            this.numQuantityS.ValueChanged += new System.EventHandler(this.numQuantity_ValueChanged);
             // 
             // numQuantityM
             // 
@@ -54,8 +56,10 @@
             this.numQuantityM.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numQuantityM.Location = new System.Drawing.Point(362, 8);
             this.numQuantityM.Name = "numQuantityM";
+            this.numQuantityM.ReadOnly = true;
             this.numQuantityM.Size = new System.Drawing.Size(50, 26);
             this.numQuantityM.TabIndex = 7;
+            this.numQuantityM.ValueChanged += new System.EventHandler(this.numQuantity_ValueChanged);
             // 
             // chkSelectPriceM
             // 
@@ -73,8 +77,10 @@
             this.numQuantityL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numQuantityL.Location = new System.Drawing.Point(185, 8);
             this.numQuantityL.Name = "numQuantityL";
+            this.numQuantityL.ReadOnly = true;
             this.numQuantityL.Size = new System.Drawing.Size(50, 26);
             this.numQuantityL.TabIndex = 10;
+            this.numQuantityL.ValueChanged += new System.EventHandler(this.numQuantity_ValueChanged);
             // 
             // chkSelectPriceL
             // 
@@ -92,8 +98,10 @@
             this.numQuantityXl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numQuantityXl.Location = new System.Drawing.Point(4, 8);
             this.numQuantityXl.Name = "numQuantityXl";
+            this.numQuantityXl.ReadOnly = true;
             this.numQuantityXl.Size = new System.Drawing.Size(50, 26);
             this.numQuantityXl.TabIndex = 13;
+            this.numQuantityXl.ValueChanged += new System.EventHandler(this.numQuantity_ValueChanged);
             // 
             // chkSelectPriceXL
             // 

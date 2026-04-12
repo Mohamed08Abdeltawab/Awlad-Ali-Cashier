@@ -5,6 +5,11 @@ namespace AwladAli.Product
 {
     public partial class ctrlProductRow : UserControl
     {
+
+        // عرف الـ Event فوق في الكلاس
+        public event Action OnPriceChanged;
+
+
         public ctrlProductRow()
         {
             InitializeComponent();
@@ -72,6 +77,7 @@ namespace AwladAli.Product
                 numQuantityS.Enabled = false;
                 numQuantityS.Value = 0; // إعادة تعيين القيمة إلى 0 عند التعطيل 
             }
+            OnPriceChanged?.Invoke();
         }
 
         private void chkSelectPriceM_CheckedChanged(object sender, EventArgs e)
@@ -86,6 +92,7 @@ namespace AwladAli.Product
                 numQuantityM.Enabled = false;
                 numQuantityM.Value = 0; // إعادة تعيين القيمة إلى 0 عند التعطيل 
             }
+            OnPriceChanged?.Invoke();
         }
 
         private void chkSelectPriceL_CheckedChanged(object sender, EventArgs e)
@@ -100,6 +107,7 @@ namespace AwladAli.Product
                 numQuantityL.Enabled = false;
                 numQuantityL.Value = 0; // إعادة تعيين القيمة إلى 0 عند التعطيل 
             }
+            OnPriceChanged?.Invoke();
         }
 
         private void chkSelectPriceXL_CheckedChanged(object sender, EventArgs e)
@@ -114,6 +122,33 @@ namespace AwladAli.Product
                 numQuantityXl.Enabled = false;
                 numQuantityXl.Value = 0; // إعادة تعيين القيمة إلى 0 عند التعطيل 
             }
+            OnPriceChanged?.Invoke();
+        }
+
+        public decimal GetRowTotal()
+        {
+            decimal total = 0;
+            if (chkSelectPriceS.Checked) total += Convert.ToDecimal(chkSelectPriceS.Text) * numQuantityS.Value;
+            if (chkSelectPriceM.Checked) total += Convert.ToDecimal(chkSelectPriceM.Text) * numQuantityM.Value;
+            if (chkSelectPriceL.Checked) total += Convert.ToDecimal(chkSelectPriceL.Text) * numQuantityL.Value;
+            if (chkSelectPriceXL.Checked) total += Convert.ToDecimal(chkSelectPriceXL.Text) * numQuantityXl.Value;
+            return total;
+        }
+
+        private void numQuantity_ValueChanged(object sender, EventArgs e)
+        {
+            NumericUpDown num = (NumericUpDown)sender;
+
+            // لو الرقم وصل لـ 0، بنشيل الـ Check بتاع الحجم المرتبط بيه
+            if (num.Value == 0)
+            {
+                if (num == numQuantityS) chkSelectPriceS.Checked = false;
+                if (num == numQuantityM) chkSelectPriceM.Checked = false;
+                if (num == numQuantityL) chkSelectPriceL.Checked = false;
+                if (num == numQuantityXl) chkSelectPriceXL.Checked = false;
+            }
+            // أي تغيير في الكمية يطلق إشارة تحديث الحسابات
+            OnPriceChanged?.Invoke();
         }
     }
 }

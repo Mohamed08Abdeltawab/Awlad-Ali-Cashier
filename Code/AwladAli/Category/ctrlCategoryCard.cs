@@ -7,6 +7,8 @@ namespace AwladAli.Product
 {
     public partial class ctrlCategoryCard : UserControl
     {
+
+        public event Action OnOrderChanged;
         public ctrlCategoryCard()
         {
             InitializeComponent();
@@ -44,10 +46,21 @@ namespace AwladAli.Product
                         row["Price_XL"]
                     );
 
-
+                    rowControl.OnPriceChanged += () => OnOrderChanged?.Invoke();
                     flpItemsContainer.Controls.Add(rowControl);
                 }
             }
+        }
+
+        public decimal GetCategoryTotal()
+        {
+            decimal total = 0;
+            foreach (Control ctrl in flpItemsContainer.Controls)
+            {
+                if (ctrl is ctrlProductRow row)
+                    total += row.GetRowTotal();
+            }
+            return total;
         }
     }
 }

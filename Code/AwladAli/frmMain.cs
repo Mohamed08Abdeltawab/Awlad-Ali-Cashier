@@ -50,10 +50,23 @@ namespace AwladAli
                 categoryCard.LoadCategoryData(categoryID);
 
                 flpProductCards.Controls.Add(categoryCard);
+                categoryCard.OnOrderChanged += UpdateGrandTotal;
+
             }
 
             // استئناف التحديث البصري
             flpProductCards.ResumeLayout();
+        }
+
+        private void UpdateGrandTotal()
+        {
+            decimal grandTotal = 0;
+            foreach (Control ctrl in flpProductCards.Controls)
+            {
+                if (ctrl is ctrlCategoryCard card)
+                    grandTotal += card.GetCategoryTotal();
+            }
+            lblTotalPrice.Text = grandTotal.ToString("0.00");
         }
     }
 }
