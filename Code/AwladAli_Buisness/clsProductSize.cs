@@ -109,5 +109,15 @@ namespace AwladAli_Buisness
         {
             return clsProductSizeData.GetProductSizes(ProductID);
         }
+
+        public static DataTable GetPricesByProductID(int ProductID)
+        {
+            return clsProductSizeData.GetPricesByProductID(ProductID);
+        }
+
+        public static bool UpdateProductPrices(int ProductID, string S, string M, string L, string XL)
+        {
+            return clsProductSizeData.UpdateProductPrices(ProductID, S, M, L, XL);
+        }
     }
 }
