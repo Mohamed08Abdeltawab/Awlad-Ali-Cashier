@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace AwladAli.Category
@@ -13,8 +14,8 @@ namespace AwladAli.Category
         public enum enMode { AddNew = 0, Update = 1 };
         private enMode _Mode;
 
-        private int _ProductID;
-        private int _CategoryID;
+        private int _ProductID = -1;
+        private int _CategoryID = -1;
         private clsProduct _Product;
 
         // Constructor للإضافة (محتاجين رقم القسم اللي هنضيف فيه)
@@ -25,13 +26,18 @@ namespace AwladAli.Category
             _Mode = enMode.AddNew;
         }
 
-        // Constructor للتعديل (محتاجين رقم المنتج)
-        public frmAddUpdateProduct(int ProductID, bool isUpdate)
+        public frmAddUpdateProduct(int CategoryID,int ProductID)
         {
             InitializeComponent();
-            _ProductID = ProductID;
             _Mode = enMode.Update;
+            _CategoryID = CategoryID;
+            _ProductID = ProductID;
+
+            _Product = clsProduct.Find(_ProductID);
         }
+
+        // Constructor للتعديل (محتاجين رقم المنتج)
+        
 
         private void _ResetDefaultValues()
         {
@@ -39,19 +45,21 @@ namespace AwladAli.Category
             {
                 lblTitle.Text = "اضافة أكلة جديدة";
                 _Product = new clsProduct();
+                _Product.CategoryID = _CategoryID;
                 label7.Text = _CategoryID.ToString();
+                
             }
             else
             {
                 lblTitle.Text = "تعديل بيانات الأكلة";
             }
-
             txtFoodName.Text = "";
-            txtSmallSize.Text = "";
-            txtMeduimSize.Text = "";
-            txtLargeSize.Text = "";
-            txtXlargeSize.Text = "";
-            btnSave.Enabled = true;
+                txtSmallSize.Text = null;
+                txtMeduimSize.Text = null;
+                txtLargeSize.Text = null;
+                txtXlargeSize.Text = null;
+                btnSave.Enabled = true;
+            
         }
 
         private void _LoadData()
