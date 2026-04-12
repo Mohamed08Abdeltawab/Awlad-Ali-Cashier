@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AwladAli.User
+namespace AwladAli.Category
 {
-    public partial class frmtestcontrols : Form
+    public partial class frmAddUpdateProduct : Form
     {
-        public frmtestcontrols()
+        public frmAddUpdateProduct()
         {
             InitializeComponent();
         }

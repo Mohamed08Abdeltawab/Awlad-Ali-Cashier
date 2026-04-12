@@ -1,6 +1,6 @@
-﻿namespace AwladAli.User
+﻿namespace AwladAli.Category
 {
-    partial class frmtestcontrols
+    partial class frmAddUpdateCategory
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,13 @@
         {
             this.SuspendLayout();
             // 
-            // frmtestcontrols
+            // frmAddUpdateCategory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "frmtestcontrols";
-            this.Text = "frmtestcontrols";
+            this.ClientSize = new System.Drawing.Size(848, 556);
+            this.Name = "frmAddUpdateCategory";
+            this.Text = "frmAddUpdateCategory";
             this.ResumeLayout(false);
 
         }

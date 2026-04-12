@@ -133,6 +133,16 @@ namespace AwladAli.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap food_32 {
+            get {
+                object obj = ResourceManager.GetObject("food 32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ID_32 {
             get {
                 object obj = ResourceManager.GetObject("ID 32", resourceCulture);
@@ -146,6 +156,26 @@ namespace AwladAli.Properties {
         internal static System.Drawing.Bitmap ID_321 {
             get {
                 object obj = ResourceManager.GetObject("ID 321", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Large_32 {
+            get {
+                object obj = ResourceManager.GetObject("Large 32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap meduim_32 {
+            get {
+                object obj = ResourceManager.GetObject("meduim 32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -216,6 +246,26 @@ namespace AwladAli.Properties {
         internal static System.Drawing.Bitmap sing_in_32 {
             get {
                 object obj = ResourceManager.GetObject("sing in 32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap small_32 {
+            get {
+                object obj = ResourceManager.GetObject("small 32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap X_Large_32 {
+            get {
+                object obj = ResourceManager.GetObject("X Large 32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -95,6 +95,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Category\frmAddUpdateCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Category\frmAddUpdateCategory.Designer.cs">
+      <DependentUpon>frmAddUpdateCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Category\Product\frmAddUpdateProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Category\Product\frmAddUpdateProduct.Designer.cs">
+      <DependentUpon>frmAddUpdateProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Category\frmTestControls.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,10 +133,10 @@
     <Compile Include="Category\ctrlCategoryCard.Designer.cs">
       <DependentUpon>ctrlCategoryCard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Category\ctrlProductRow.cs">
+    <Compile Include="Category\Product\ctrlProductRow.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Category\ctrlProductRow.Designer.cs">
+    <Compile Include="Category\Product\ctrlProductRow.Designer.cs">
       <DependentUpon>ctrlProductRow.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -133,6 +145,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="User\frmSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\frmSettings.Designer.cs">
+      <DependentUpon>frmSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="User\ctrlUserCard.cs">
       <SubType>UserControl</SubType>
@@ -146,12 +164,12 @@
     <Compile Include="User\frmAddUpdateUser.Designer.cs">
       <DependentUpon>frmAddUpdateUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="User\frmtestcontrols.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="User\frmtestcontrols.Designer.cs">
-      <DependentUpon>frmtestcontrols.cs</DependentUpon>
-    </Compile>
+    <EmbeddedResource Include="Category\frmAddUpdateCategory.resx">
+      <DependentUpon>frmAddUpdateCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Category\Product\frmAddUpdateProduct.resx">
+      <DependentUpon>frmAddUpdateProduct.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Category\frmTestControls.resx">
       <DependentUpon>frmTestControls.cs</DependentUpon>
     </EmbeddedResource>
@@ -164,7 +182,7 @@
     <EmbeddedResource Include="Category\ctrlCategoryCard.resx">
       <DependentUpon>ctrlCategoryCard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Category\ctrlProductRow.resx">
+    <EmbeddedResource Include="Category\Product\ctrlProductRow.resx">
       <DependentUpon>ctrlProductRow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -178,8 +196,8 @@
     <EmbeddedResource Include="User\frmAddUpdateUser.resx">
       <DependentUpon>frmAddUpdateUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User\frmtestcontrols.resx">
-      <DependentUpon>frmtestcontrols.cs</DependentUpon>
+    <EmbeddedResource Include="User\frmSettings.resx">
+      <DependentUpon>frmSettings.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -245,6 +263,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Save 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\food 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Large 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\meduim 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\small 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\X Large 32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
