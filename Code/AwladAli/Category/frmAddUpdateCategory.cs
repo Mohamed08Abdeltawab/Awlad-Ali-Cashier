@@ -32,6 +32,7 @@ namespace AwladAli.Category
 
         private void _ResetDefaultValues()
         {
+            _FillCategoriesComboBox();
             if (_Mode == enMode.AddNew)
             {
                 lblTitle.Text = "Add New Category";
@@ -48,8 +49,10 @@ namespace AwladAli.Category
             btnSave.Enabled = true;
         }
 
+
         private void _LoadData()
         {
+
             _Category = clsCategory.Find(_CategoryID);
 
             if (_Category == null)
@@ -99,6 +102,27 @@ namespace AwladAli.Category
 
             if (_Mode == enMode.Update)
                 _LoadData();
+        }
+
+        private void _FillCategoriesComboBox()
+        {
+            // 1. Get all categories from database
+            DataTable dtCategories = clsCategory.GetAllCategories();
+
+            // 2. Clear existing items just in case
+            cbShowAllCategoryName.Items.Clear();
+
+            // 3. Fill the ComboBox with Category Names
+            foreach (DataRow row in dtCategories.Rows)
+            {
+                cbShowAllCategoryName.Items.Add(row["CategoryName"].ToString());
+            }
+
+            // 4. If we are in Update mode, set the selected item to the current category name
+            if (_Mode == enMode.Update)
+            {
+                cbShowAllCategoryName.Text = _Category.CategoryName;
+            }
         }
 
         private void btnAddNewProduct_Click(object sender, EventArgs e)
@@ -181,5 +205,6 @@ namespace AwladAli.Category
                 }
             }
         }
+
     }
 }

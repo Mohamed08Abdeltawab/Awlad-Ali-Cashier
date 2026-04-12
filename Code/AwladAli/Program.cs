@@ -19,7 +19,7 @@ namespace AwladAli
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmAddUpdateCategory(77));
+            Application.Run(new frmAddUpdateCategory());
         }
     }
 }

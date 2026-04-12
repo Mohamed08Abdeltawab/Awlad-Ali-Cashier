@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblCategoryID = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.txtCategoryName = new System.Windows.Forms.TextBox();
@@ -45,6 +45,8 @@
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.cbShowAllCategoryName = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).BeginInit();
             this.cmsProduct.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
@@ -120,14 +122,14 @@
             this.dgvProduct.MultiSelect = false;
             this.dgvProduct.Name = "dgvProduct";
             this.dgvProduct.ReadOnly = true;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProduct.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProduct.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvProduct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProduct.Size = new System.Drawing.Size(827, 258);
             this.dgvProduct.TabIndex = 254;
@@ -139,14 +141,14 @@
             this.EditMedicinetoolStripMenuItem,
             this.removeMedicineToolStripMenuItem});
             this.cmsProduct.Name = "contextMenuStrip1";
-            this.cmsProduct.Size = new System.Drawing.Size(197, 102);
+            this.cmsProduct.Size = new System.Drawing.Size(186, 80);
             // 
             // EditMedicinetoolStripMenuItem
             // 
             this.EditMedicinetoolStripMenuItem.Image = global::AwladAli.Properties.Resources.edit2_32;
             this.EditMedicinetoolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.EditMedicinetoolStripMenuItem.Name = "EditMedicinetoolStripMenuItem";
-            this.EditMedicinetoolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.EditMedicinetoolStripMenuItem.Size = new System.Drawing.Size(185, 38);
             this.EditMedicinetoolStripMenuItem.Text = "Edit Medicine";
             this.EditMedicinetoolStripMenuItem.Click += new System.EventHandler(this.EditMedicinetoolStripMenuItem_Click_1);
             // 
@@ -155,7 +157,7 @@
             this.removeMedicineToolStripMenuItem.Image = global::AwladAli.Properties.Resources.remove_32;
             this.removeMedicineToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.removeMedicineToolStripMenuItem.Name = "removeMedicineToolStripMenuItem";
-            this.removeMedicineToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.removeMedicineToolStripMenuItem.Size = new System.Drawing.Size(185, 38);
             this.removeMedicineToolStripMenuItem.Text = "Remove Medicine";
             this.removeMedicineToolStripMenuItem.Click += new System.EventHandler(this.removeMedicineToolStripMenuItem_Click_1);
             // 
@@ -230,12 +232,36 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // cbShowAllCategoryName
+            // 
+            this.cbShowAllCategoryName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbShowAllCategoryName.FormattingEnabled = true;
+            this.cbShowAllCategoryName.Location = new System.Drawing.Point(618, 186);
+            this.cbShowAllCategoryName.Name = "cbShowAllCategoryName";
+            this.cbShowAllCategoryName.Size = new System.Drawing.Size(217, 28);
+            this.cbShowAllCategoryName.TabIndex = 257;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.Control;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label1.Location = new System.Drawing.Point(715, 163);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(125, 20);
+            this.label1.TabIndex = 258;
+            this.label1.Text = "عرض كل الاصناف";
+            // 
             // frmAddUpdateCategory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(851, 573);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cbShowAllCategoryName);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.dgvProduct);
@@ -279,5 +305,7 @@
         private System.Windows.Forms.ToolStripMenuItem EditMedicinetoolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeMedicineToolStripMenuItem;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cbShowAllCategoryName;
     }
 }
