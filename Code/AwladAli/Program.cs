@@ -18,7 +18,7 @@ namespace AwladAli
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmTestControls());
+            Application.Run(new frmLogin());
         }
     }
 }

@@ -209,6 +209,18 @@
   <ItemGroup>
     <None Include="Resources\role2 32.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Background01.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Background02.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Background03.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Background04.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
