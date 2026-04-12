@@ -35,13 +35,13 @@ namespace AwladAli.Category
             _FillCategoriesComboBox();
             if (_Mode == enMode.AddNew)
             {
-                lblTitle.Text = "Add New Category";
+                lblTitle.Text = "اضافة صنف جديد";
                 _Category = new clsCategory();
                 btnAddNewProduct.Enabled = false; // Cannot add products to unsaved category
             }
             else
             {
-                lblTitle.Text = "Update Category";
+                lblTitle.Text = "تعديل صنف";
                 btnAddNewProduct.Enabled = true;
             }
 
@@ -152,7 +152,7 @@ namespace AwladAli.Category
 
                 // Switch mode to Update after first save
                 _Mode = enMode.Update;
-                lblTitle.Text = "Update Category";
+                lblTitle.Text = "تعديل صنف";
                 btnAddNewProduct.Enabled = true;
 
                 MessageBox.Show("Category Saved Successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);

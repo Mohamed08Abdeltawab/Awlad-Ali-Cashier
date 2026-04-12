@@ -107,12 +107,6 @@
     <Compile Include="Category\Product\frmAddUpdateProduct.Designer.cs">
       <DependentUpon>frmAddUpdateProduct.cs</DependentUpon>
     </Compile>
-    <Compile Include="Category\frmTestControls.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Category\frmTestControls.Designer.cs">
-      <DependentUpon>frmTestControls.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,9 +163,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Category\Product\frmAddUpdateProduct.resx">
       <DependentUpon>frmAddUpdateProduct.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Category\frmTestControls.resx">
-      <DependentUpon>frmTestControls.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
