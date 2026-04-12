@@ -115,5 +115,11 @@ namespace AwladAli_Buisness
         {
             return clsProductData.GetProductsByCategoryWithPrices(CategoryID);
         }
+
+        public static DataTable GetAllProductsByCategory(int CategoryID)
+        {
+            // Calling the Data Access method
+            return clsProductData.GetAllProductsByCategory(CategoryID);
+        }
     }
 }

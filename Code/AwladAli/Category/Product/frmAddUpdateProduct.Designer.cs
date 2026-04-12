@@ -114,7 +114,6 @@
             this.txtSmallSize.Size = new System.Drawing.Size(169, 31);
             this.txtSmallSize.TabIndex = 228;
             this.txtSmallSize.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrice_KeyPress);
-            this.txtSmallSize.MouseLeave += new System.EventHandler(this.txtPrice_Leave);
             // 
             // txtMeduimSize
             // 
@@ -125,7 +124,6 @@
             this.txtMeduimSize.Size = new System.Drawing.Size(169, 31);
             this.txtMeduimSize.TabIndex = 231;
             this.txtMeduimSize.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrice_KeyPress);
-            this.txtMeduimSize.MouseLeave += new System.EventHandler(this.txtPrice_Leave);
             // 
             // label2
             // 
@@ -147,7 +145,6 @@
             this.txtLargeSize.Size = new System.Drawing.Size(169, 31);
             this.txtLargeSize.TabIndex = 234;
             this.txtLargeSize.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrice_KeyPress);
-            this.txtLargeSize.MouseLeave += new System.EventHandler(this.txtPrice_Leave);
             // 
             // label3
             // 
@@ -169,7 +166,6 @@
             this.txtXlargeSize.Size = new System.Drawing.Size(168, 31);
             this.txtXlargeSize.TabIndex = 237;
             this.txtXlargeSize.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrice_KeyPress);
-            this.txtXlargeSize.MouseLeave += new System.EventHandler(this.txtPrice_Leave);
             // 
             // label4
             // 
@@ -252,7 +248,7 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSave.Image = global::AwladAli.Properties.Resources.Save_32;
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(210, 489);
+            this.btnSave.Location = new System.Drawing.Point(76, 489);
             this.btnSave.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(126, 37);
@@ -263,11 +259,12 @@
             // 
             // btnClose
             // 
+            this.btnClose.CausesValidation = false;
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnClose.Image = global::AwladAli.Properties.Resources.Close_32;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(76, 489);
+            this.btnClose.Location = new System.Drawing.Point(210, 489);
             this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(126, 37);
@@ -343,6 +340,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(798, 540);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label7);

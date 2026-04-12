@@ -201,5 +201,52 @@ namespace AwladAli_Data
 
             return dt;
         }
+
+
+        public static DataTable GetAllProductsByCategory(int CategoryID)
+        {
+            DataTable dt = new DataTable();
+
+            try
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    // Query to select products linked to a specific CategoryID
+                    string query = @"
+                                    SELECT 
+                                        P.ProductID, 
+                                        P.ProductName,
+                                        IFNULL(S.Price, 0) AS Small,
+                                        IFNULL(M.Price, 0) AS Medium,
+                                        IFNULL(L.Price, 0) AS Large,
+                                        IFNULL(XL.Price, 0) AS XLarge
+                                    FROM Products P
+                                    LEFT JOIN ProductSizes S ON P.ProductID = S.ProductID AND S.SizeName = 'S'
+                                    LEFT JOIN ProductSizes M ON P.ProductID = M.ProductID AND M.SizeName = 'M'
+                                    LEFT JOIN ProductSizes L ON P.ProductID = L.ProductID AND L.SizeName = 'L'
+                                    LEFT JOIN ProductSizes XL ON P.ProductID = XL.ProductID AND XL.SizeName = 'XL'
+                                    WHERE P.CategoryID = @CategoryID";
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@CategoryID", CategoryID);
+                        connection.Open();
+
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                dt.Load(reader);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Optional: Log the error somewhere
+            }
+
+            return dt;
+        }
     }
 }

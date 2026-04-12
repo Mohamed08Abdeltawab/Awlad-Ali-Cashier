@@ -191,14 +191,5 @@ namespace AwladAli.Category
             }
         }
 
-        private void txtPrice_Leave(object sender, EventArgs e)
-        {
-            TextBox txt = (TextBox)sender;
-            if (decimal.TryParse(txt.Text, out decimal price))
-            {
-                txt.Text = price.ToString("0.00");
-            }
-        }
-
     }
 }
