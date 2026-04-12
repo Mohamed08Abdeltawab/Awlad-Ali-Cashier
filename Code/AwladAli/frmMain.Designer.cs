@@ -18,10 +18,10 @@
         private void InitializeComponent()
         {
             this.pnlHeader = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.lblCurrentUser = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
             this.pnlMainContainer = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.pnlSidebar = new System.Windows.Forms.Panel();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnUsers = new System.Windows.Forms.Button();
@@ -43,6 +43,18 @@
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.Size = new System.Drawing.Size(1664, 80);
             this.pnlHeader.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(1507, 28);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(44, 30);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "؟؟؟";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblCurrentUser
             // 
@@ -75,18 +87,6 @@
             this.pnlMainContainer.Name = "pnlMainContainer";
             this.pnlMainContainer.Size = new System.Drawing.Size(1664, 981);
             this.pnlMainContainer.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(1507, 28);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 30);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "؟؟؟";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // pnlSidebar
             // 
@@ -166,6 +166,7 @@
             this.Name = "frmMain";
             this.Text = "Awlad Ali POS System";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
             this.pnlSidebar.ResumeLayout(false);

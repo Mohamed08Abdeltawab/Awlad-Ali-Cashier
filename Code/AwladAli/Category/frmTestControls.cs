@@ -19,7 +19,7 @@ namespace AwladAli.Category
 
         private void frmTestControls_Load(object sender, EventArgs e)
         {
-            ctrlCategoryCard1.LoadCategoryData(1);
+            ctrlCategoryCard1.LoadCategoryData(3);
         }
     }
 }

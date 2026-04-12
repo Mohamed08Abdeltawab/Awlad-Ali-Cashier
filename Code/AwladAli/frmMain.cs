@@ -19,5 +19,10 @@ namespace AwladAli
             InitializeComponent();
             this._frmLogin = frm;
         }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

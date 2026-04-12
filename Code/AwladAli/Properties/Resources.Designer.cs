@@ -123,6 +123,16 @@ namespace AwladAli.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap role2_32 {
+            get {
+                object obj = ResourceManager.GetObject("role2 32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap sign_out_32 {
             get {
                 object obj = ResourceManager.GetObject("sign out 32", resourceCulture);
