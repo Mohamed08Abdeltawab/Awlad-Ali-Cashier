@@ -20,8 +20,7 @@ namespace AwladAli
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            lblCurrentUser.Text = "User: " + clsGlobal.CurrentUser.UserName;
-
+            lblUsername.Text = clsGlobal.CurrentUser.UserName;
             _LoadRestaurantMenu();
         }
 
