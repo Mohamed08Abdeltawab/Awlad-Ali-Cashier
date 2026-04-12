@@ -1,5 +1,6 @@
 ﻿using AwladAli.Category;
 using AwladAli.Login;
+using AwladAli.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace AwladAli
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmLogin());
+            Application.Run(new frmAddUpdateUser(2));
         }
     }
 }

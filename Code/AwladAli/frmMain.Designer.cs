@@ -32,19 +32,19 @@ namespace AwladAli
         private void InitializeComponent()
         {
             this.pnlHeader = new System.Windows.Forms.Panel();
+            this.lblUsername = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
             this.pnlMainContainer = new System.Windows.Forms.Panel();
-            this.flpProductCards = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlFooter = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.pnlLine = new System.Windows.Forms.Panel();
             this.btnCheckout = new System.Windows.Forms.Button();
             this.lblTotalPrice = new System.Windows.Forms.Label();
             this.lblTotalText = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lblUsername = new System.Windows.Forms.Label();
+            this.flpProductCards = new System.Windows.Forms.FlowLayoutPanel();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.btnClose = new System.Windows.Forms.Button();
             this.pnlHeader.SuspendLayout();
             this.pnlMainContainer.SuspendLayout();
             this.pnlFooter.SuspendLayout();
@@ -65,6 +65,28 @@ namespace AwladAli
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.Size = new System.Drawing.Size(1924, 80);
             this.pnlHeader.TabIndex = 1;
+            // 
+            // lblUsername
+            // 
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsername.ForeColor = System.Drawing.Color.White;
+            this.lblUsername.Location = new System.Drawing.Point(1629, 27);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(62, 30);
+            this.lblUsername.TabIndex = 123;
+            this.lblUsername.Text = "[؟؟؟]";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(1768, 27);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(144, 30);
+            this.label2.TabIndex = 122;
+            this.label2.Text = ":اسم المستخدم";
             // 
             // lblTitle
             // 
@@ -87,19 +109,6 @@ namespace AwladAli
             this.pnlMainContainer.Size = new System.Drawing.Size(1924, 981);
             this.pnlMainContainer.TabIndex = 2;
             // 
-            // flpProductCards
-            // 
-            this.flpProductCards.AutoScroll = true;
-            this.flpProductCards.BackColor = System.Drawing.Color.Gainsboro;
-            this.flpProductCards.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.flpProductCards.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.flpProductCards.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flpProductCards.Location = new System.Drawing.Point(0, 0);
-            this.flpProductCards.Name = "flpProductCards";
-            this.flpProductCards.Padding = new System.Windows.Forms.Padding(15);
-            this.flpProductCards.Size = new System.Drawing.Size(1924, 867);
-            this.flpProductCards.TabIndex = 0;
-            // 
             // pnlFooter
             // 
             this.pnlFooter.AutoSize = true;
@@ -115,6 +124,18 @@ namespace AwladAli
             this.pnlFooter.Name = "pnlFooter";
             this.pnlFooter.Size = new System.Drawing.Size(1924, 114);
             this.pnlFooter.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.label1.Location = new System.Drawing.Point(1452, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(97, 60);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "جُنية";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // pnlLine
             // 
@@ -161,17 +182,29 @@ namespace AwladAli
             this.lblTotalText.Text = ":أجمالي السعر";
             this.lblTotalText.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label1
+            // flpProductCards
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
-            this.label1.Location = new System.Drawing.Point(1452, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 60);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "جُنية";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.flpProductCards.AutoScroll = true;
+            this.flpProductCards.BackColor = System.Drawing.Color.Gainsboro;
+            this.flpProductCards.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.flpProductCards.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.flpProductCards.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpProductCards.Location = new System.Drawing.Point(0, 0);
+            this.flpProductCards.Name = "flpProductCards";
+            this.flpProductCards.Padding = new System.Windows.Forms.Padding(15);
+            this.flpProductCards.Size = new System.Drawing.Size(1924, 867);
+            this.flpProductCards.TabIndex = 0;
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.BackColor = System.Drawing.Color.White;
+            this.pictureBox8.Image = global::AwladAli.Properties.Resources.Person_32;
+            this.pictureBox8.Location = new System.Drawing.Point(1731, 31);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(31, 26);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox8.TabIndex = 129;
+            this.pictureBox8.TabStop = false;
             // 
             // btnClose
             // 
@@ -192,39 +225,6 @@ namespace AwladAli
             this.btnClose.Text = "ادارة النظام";
             this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnClose.UseVisualStyleBackColor = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(1768, 27);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(144, 30);
-            this.label2.TabIndex = 122;
-            this.label2.Text = ":اسم المستخدم";
-            // 
-            // lblUsername
-            // 
-            this.lblUsername.AutoSize = true;
-            this.lblUsername.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsername.ForeColor = System.Drawing.Color.White;
-            this.lblUsername.Location = new System.Drawing.Point(1629, 27);
-            this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(62, 30);
-            this.lblUsername.TabIndex = 123;
-            this.lblUsername.Text = "[؟؟؟]";
-            // 
-            // pictureBox8
-            // 
-            this.pictureBox8.BackColor = System.Drawing.Color.White;
-            this.pictureBox8.Image = global::AwladAli.Properties.Resources.Person_32;
-            this.pictureBox8.Location = new System.Drawing.Point(1731, 31);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(31, 26);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox8.TabIndex = 129;
-            this.pictureBox8.TabStop = false;
             // 
             // frmMain
             // 

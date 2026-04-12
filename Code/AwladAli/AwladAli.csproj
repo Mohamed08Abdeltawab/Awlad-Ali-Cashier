@@ -107,6 +107,7 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="GlobalClasses\clsCryptography.cs" />
     <Compile Include="GlobalClasses\clsGlobal.cs" />
     <Compile Include="Login\frmLogin.cs">
       <SubType>Form</SubType>
@@ -128,11 +129,28 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="User\ctrlUserCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="User\ctrlUserCard.Designer.cs">
       <DependentUpon>ctrlUserCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\frmAddUpdateUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\frmAddUpdateUser.Designer.cs">
+      <DependentUpon>frmAddUpdateUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\frmtestcontrols.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\frmtestcontrols.Designer.cs">
+      <DependentUpon>frmtestcontrols.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Category\frmTestControls.resx">
       <DependentUpon>frmTestControls.cs</DependentUpon>
@@ -151,16 +169,17 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="User\ctrlUserCard.resx">
       <DependentUpon>ctrlUserCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\frmAddUpdateUser.resx">
+      <DependentUpon>frmAddUpdateUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\frmtestcontrols.resx">
+      <DependentUpon>frmtestcontrols.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -204,16 +223,10 @@
     <None Include="Resources\closeBlack32.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\AwladAliPhoto 6_19 2.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\role2 32.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Background01.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Background02.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Background03.png" />
@@ -223,6 +236,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\setting 64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ID 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Close 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save 32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

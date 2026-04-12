@@ -16,14 +16,6 @@ namespace AwladAli.GlobalClasses
         private static string _RegistryPath = @"HKEY_CURRENT_USER\Software\AwladAli_Cashier";
 
         // 1. Hashing Password
-        public static string hashingPassword(string password)
-        {
-            using (SHA256 sha256 = SHA256.Create())
-            {
-                byte[] hashByte = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
-                return BitConverter.ToString(hashByte).Replace("-", "").ToLower();
-            }
-        }
 
         // 2. Remember Credentials in Registry + Log to Event Log
         public static bool RememberUsernameAndPassword(string Username, string Password)
@@ -107,4 +99,5 @@ namespace AwladAli.GlobalClasses
             MessageBox.Show(message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
+
 }

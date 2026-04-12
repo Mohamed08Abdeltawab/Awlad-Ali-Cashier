@@ -120,5 +120,10 @@ namespace AwladAli_Buisness
         {
             return clsUserData.GetAllUsers();
         }
+
+        public static bool IsUserExist(string UserName)
+        {
+            return clsUserData.IsUserExist(UserName);
+        }
     }
 }

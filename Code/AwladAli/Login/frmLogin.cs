@@ -35,10 +35,10 @@ namespace AwladAli.Login
             }
 
             // 2. Hashing and Searching
-            string hashPassword = clsGlobal.hashingPassword(txtPassword.Text.Trim());
+            string encryptedPassword = clsCryptography.Encrypt(txtPassword.Text.Trim());
 
             // Note: Make sure the method name in clsUser matches "FindByUsernameAndPassword"
-            clsUser user = clsUser.FindByUsernameAndPassword(txtUserName.Text.Trim(), hashPassword);
+            clsUser user = clsUser.FindByUsernameAndPassword(txtUserName.Text.Trim(), encryptedPassword);
 
             if (user != null)
             {

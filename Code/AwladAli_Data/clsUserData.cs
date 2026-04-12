@@ -214,5 +214,40 @@ namespace AwladAli_Data
 
             return dt;
         }
+
+        public static bool IsUserExist(string UserName)
+        {
+            bool isFound = false;
+
+            try
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    // نستخدم COUNT عشان نعرف فيه كام يوزر بالاسم ده
+                    string query = "SELECT COUNT(*) FROM Users WHERE UserName = @UserName";
+
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@UserName", UserName);
+                        connection.Open();
+
+                        // ExecuteScalar بترجع أول قيمة في أول صف (اللي هي هنا نتيجة الـ Count)
+                        long count = (long)command.ExecuteScalar();
+
+                        if (count > 0)
+                        {
+                            isFound = true;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // تسجيل الخطأ لو حصل مشكلة في الاتصال
+                isFound = false;
+            }
+
+            return isFound;
+        }
     }
 }
