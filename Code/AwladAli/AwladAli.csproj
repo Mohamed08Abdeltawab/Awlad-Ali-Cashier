@@ -95,6 +95,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Category\Extra\ctrlExtraRow.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Category\Extra\ctrlExtraRow.Designer.cs">
+      <DependentUpon>ctrlExtraRow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Category\frmAddUpdateCategory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,6 +164,9 @@
     <Compile Include="User\frmAddUpdateUser.Designer.cs">
       <DependentUpon>frmAddUpdateUser.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Category\Extra\ctrlExtraRow.resx">
+      <DependentUpon>ctrlExtraRow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Category\frmAddUpdateCategory.resx">
       <DependentUpon>frmAddUpdateCategory.cs</DependentUpon>
     </EmbeddedResource>
