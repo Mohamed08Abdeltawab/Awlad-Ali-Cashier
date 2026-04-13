@@ -7,7 +7,7 @@ namespace AwladAli_Data
     public class clsExtraData
     {
         // 1. Get Extra Info by ID
-        public static bool GetExtraByID(int ExtraID, ref string ExtraName, ref double Price)
+        public static bool GetExtraByID(int ExtraID, ref string ExtraName, ref decimal Price)
         {
             bool isFound = false;
             try
@@ -25,7 +25,7 @@ namespace AwladAli_Data
                             {
                                 isFound = true;
                                 ExtraName = (string)reader["ExtraName"];
-                                Price = Convert.ToDouble(reader["Price"]);
+                                Price = Convert.ToDecimal(reader["Price"]);
                             }
                         }
                     }
@@ -36,7 +36,7 @@ namespace AwladAli_Data
         }
 
         // 2. Add New Extra
-        public static int AddNewExtra(string ExtraName, double Price)
+        public static int AddNewExtra(string ExtraName, decimal Price)
         {
             int ExtraID = -1;
             try
@@ -60,7 +60,7 @@ namespace AwladAli_Data
         }
 
         // 3. Update Extra
-        public static bool UpdateExtra(int ExtraID, string ExtraName, double Price)
+        public static bool UpdateExtra(int ExtraID, string ExtraName, decimal Price)
         {
             int rowsAffected = 0;
             try

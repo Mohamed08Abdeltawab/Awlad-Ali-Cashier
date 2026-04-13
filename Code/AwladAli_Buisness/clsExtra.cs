@@ -11,17 +11,17 @@ namespace AwladAli_Buisness
 
         public int ExtraID { get; set; }
         public string ExtraName { get; set; }
-        public double Price { get; set; }
+        public decimal Price { get; set; }
 
         public clsExtra()
         {
             this.ExtraID = -1;
             this.ExtraName = "";
-            this.Price = 0.0;
+            this.Price = 0;
             Mode = enMode.AddNew;
         }
 
-        private clsExtra(int ExtraID, string ExtraName, double Price)
+        private clsExtra(int ExtraID, string ExtraName, decimal Price)
         {
             this.ExtraID = ExtraID;
             this.ExtraName = ExtraName;
@@ -31,7 +31,7 @@ namespace AwladAli_Buisness
 
         public static clsExtra Find(int ExtraID)
         {
-            string Name = ""; double Price = 0.0;
+            string Name = ""; decimal Price = 0;
             if (clsExtraData.GetExtraByID(ExtraID, ref Name, ref Price))
                 return new clsExtra(ExtraID, Name, Price);
             return null;

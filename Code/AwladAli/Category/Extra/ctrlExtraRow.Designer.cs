@@ -28,24 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.numQuantityS = new System.Windows.Forms.NumericUpDown();
+            this.numQuantity = new System.Windows.Forms.NumericUpDown();
             this.chkSelectPrice = new System.Windows.Forms.CheckBox();
             this.lblProductName = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.numQuantityS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numQuantity)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // numQuantityS
+            // numQuantity
             // 
-            this.numQuantityS.BackColor = System.Drawing.SystemColors.Window;
-            this.numQuantityS.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numQuantityS.Location = new System.Drawing.Point(3, 3);
-            this.numQuantityS.Name = "numQuantityS";
-            this.numQuantityS.ReadOnly = true;
-            this.numQuantityS.Size = new System.Drawing.Size(50, 26);
-            this.numQuantityS.TabIndex = 7;
-            this.numQuantityS.ValueChanged += new System.EventHandler(this.numQuantity_ValueChanged);
+            this.numQuantity.BackColor = System.Drawing.SystemColors.Window;
+            this.numQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numQuantity.Location = new System.Drawing.Point(3, 3);
+            this.numQuantity.Name = "numQuantity";
+            this.numQuantity.ReadOnly = true;
+            this.numQuantity.Size = new System.Drawing.Size(50, 26);
+            this.numQuantity.TabIndex = 7;
+            this.numQuantity.ValueChanged += new System.EventHandler(this.numQuantity_ValueChanged);
             // 
             // chkSelectPrice
             // 
@@ -70,7 +70,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.lblProductName);
-            this.panel1.Controls.Add(this.numQuantityS);
+            this.panel1.Controls.Add(this.numQuantity);
             this.panel1.Controls.Add(this.chkSelectPrice);
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
@@ -87,7 +87,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "ctrlExtraRow";
             this.Size = new System.Drawing.Size(250, 38);
-            ((System.ComponentModel.ISupportInitialize)(this.numQuantityS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numQuantity)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -95,7 +95,7 @@
 
         #endregion
 
-        private System.Windows.Forms.NumericUpDown numQuantityS;
+        private System.Windows.Forms.NumericUpDown numQuantity;
         private System.Windows.Forms.CheckBox chkSelectPrice;
         private System.Windows.Forms.Label lblProductName;
         private System.Windows.Forms.Panel panel1;

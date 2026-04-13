@@ -10,7 +10,7 @@ namespace AwladAli.Category.Extra
         public event Action<decimal> OnExtraAmountChanged;
 
         private int _ExtraID = -1;
-        private decimal _Price = 0;
+        private clsExtra _Extra;
 
         public ctrlExtraRow()
         {
@@ -26,39 +26,40 @@ namespace AwladAli.Category.Extra
             set => lblProductName.Text = value;
         }
 
-        public decimal Price
-        {
-            get => _Price;
-            set
-            {
-                _Price = value;
-                chkSelectPrice.Text = _Price.ToString("0.00");
-            }
-        }
+        public short Quantity => (short)numQuantity.Value;
 
-        public short Quantity => (short)numQuantityS.Value;
+        public decimal Price => _Extra != null ? _Extra.Price : 0;
 
         public bool IsSelected => chkSelectPrice.Checked;
 
         // Total price for this specific row (Price * Quantity)
-        public decimal TotalRowPrice => IsSelected ? (_Price * (decimal)numQuantityS.Value) : 0;
-
-        public void LoadData(int ExtraID, string Name, decimal Price)
+        public decimal TotalRowPrice => (IsSelected && _Extra != null) ? (_Extra.Price * (decimal)numQuantity.Value) : 0;
+        public void LoadData(int ExtraID)
         {
             _ExtraID = ExtraID;
-            this.ExtraName = Name;
-            this.Price = Price;
+            _Extra = clsExtra.Find(ExtraID);
+
+            if (_Extra != null)
+            {
+                lblProductName.Text = _Extra.ExtraName;
+                chkSelectPrice.Text = _Extra.Price.ToString("0.00");
+                numQuantity.Value = 1; // Default quantity when loading is 1
+            }
         }
 
         private void chkSelectPrice_CheckedChanged(object sender, EventArgs e)
         {
-            // Enable or disable quantity based on selection
-            numQuantityS.Enabled = chkSelectPrice.Checked;
+            numQuantity.Enabled = chkSelectPrice.Checked;
 
-            if (!chkSelectPrice.Checked)
-                numQuantityS.Value = 1; // Reset quantity if unchecked
+            if (chkSelectPrice.Checked)
+            {
+                if (numQuantity.Value == 0) numQuantity.Value = 1;
+            }
+            else
+            {
+                numQuantity.Value = 0; // Or keep it 1 but disabled
+            }
 
-            // Trigger the event to update total bill
             OnExtraAmountChanged?.Invoke(TotalRowPrice);
         }
 
@@ -75,8 +76,8 @@ namespace AwladAli.Category.Extra
         public void Reset()
         {
             chkSelectPrice.Checked = false;
-            numQuantityS.Value = 1;
-            numQuantityS.Enabled = false;
+            numQuantity.Value = 0;
+            numQuantity.Enabled = false;
         }
     }
 }
