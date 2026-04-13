@@ -1,7 +1,8 @@
 ﻿using AwladAli.Category.Extra;
 using AwladAli.GlobalClasses;
 using AwladAli.Login;
-using AwladAli.Product; 
+using AwladAli.Product;
+using AwladAli.User;
 using AwladAli_Buisness; 
 using System;
 using System.Data;
@@ -101,6 +102,18 @@ namespace AwladAli
 
                 flpAddonsContainer.Controls.Add(rowControl);
             }
+        }
+
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            frmSettings frm = new frmSettings();
+            frm.ShowDialog();
+            frmMain_Load(null, null); // إعادة تحميل البيانات بعد إغلاق الإعدادات
         }
     }
 }

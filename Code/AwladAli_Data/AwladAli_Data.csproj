@@ -92,7 +92,7 @@
     <Compile Include="clsDataAccessSettings.cs" />
     <Compile Include="clsExtraData.cs" />
     <Compile Include="clsOrderData.cs" />
-    <Compile Include="clsOrderDetailExtraData.cs" />
+    <Compile Include="clsOrderDetailData.cs" />
     <Compile Include="clsProductData.cs" />
     <Compile Include="clsProductSizeData.cs" />
     <Compile Include="clsUserData.cs" />

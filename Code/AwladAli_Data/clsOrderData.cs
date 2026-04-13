@@ -6,15 +6,17 @@ namespace AwladAli_Data
 {
     public class clsOrderData
     {
-        // 1. Add New Order Header
         public static int AddNewOrder(int UserID, decimal TotalAmount)
         {
             int OrderID = -1;
+
             try
             {
                 using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
                 {
-                    // OrderDate uses DEFAULT CURRENT_TIMESTAMP from DB design
+                    connection.Open();
+                    // Insert the main order record
+                    // OrderDate is handled by the DEFAULT CURRENT_TIMESTAMP in SQLite
                     string query = @"INSERT INTO Orders (UserID, TotalAmount) 
                                      VALUES (@UserID, @TotalAmount);
                                      SELECT last_insert_rowid();";
@@ -24,46 +26,46 @@ namespace AwladAli_Data
                         command.Parameters.AddWithValue("@UserID", UserID);
                         command.Parameters.AddWithValue("@TotalAmount", TotalAmount);
 
-                        connection.Open();
                         object result = command.ExecuteScalar();
                         if (result != null && int.TryParse(result.ToString(), out int insertedID))
+                        {
                             OrderID = insertedID;
+                        }
                     }
                 }
             }
-            catch (Exception) { }
+            catch (Exception ex)
+            {
+                // Error handling logic
+            }
+
             return OrderID;
         }
 
-        // 2. Add Order Item (Detail)
-        public static bool AddOrderDetail(int OrderID, int ProductID, int SizeID, int Quantity, decimal UnitPrice)
+        public static DataRow GetOrderInfoByID(int OrderID)
         {
-            int rowsAffected = 0;
+            DataTable dt = new DataTable();
             try
             {
                 using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
                 {
-                    string query = @"INSERT INTO OrderDetails (OrderID, ProductID, SizeID, Quantity, UnitPrice) 
-                                     VALUES (@OrderID, @ProductID, @SizeID, @Quantity, @UnitPrice)";
-
+                    connection.Open();
+                    string query = "SELECT * FROM Orders WHERE OrderID = @OrderID";
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@OrderID", OrderID);
-                        command.Parameters.AddWithValue("@ProductID", ProductID);
-                        command.Parameters.AddWithValue("@SizeID", SizeID);
-                        command.Parameters.AddWithValue("@Quantity", Quantity);
-                        command.Parameters.AddWithValue("@UnitPrice", UnitPrice);
-
-                        connection.Open();
-                        rowsAffected = command.ExecuteNonQuery();
+                        using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(command))
+                        {
+                            adapter.Fill(dt);
+                        }
                     }
                 }
             }
-            catch (Exception) { }
-            return (rowsAffected > 0);
+            catch (Exception ex) { }
+
+            return (dt.Rows.Count > 0) ? dt.Rows[0] : null;
         }
 
-        // 3. Get All Orders for Reports
         public static DataTable GetAllOrders()
         {
             DataTable dt = new DataTable();
@@ -71,65 +73,20 @@ namespace AwladAli_Data
             {
                 using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
                 {
-                    string query = @"SELECT Orders.OrderID, Users.UserName as Cashier, 
-                                     Orders.OrderDate, Orders.TotalAmount 
-                                     FROM Orders";
-
+                    connection.Open();
+                    string query = "SELECT * FROM Orders ORDER BY OrderDate DESC";
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {
-                        connection.Open();
-                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(command))
                         {
-                            if (reader.HasRows) dt.Load(reader);
+                            adapter.Fill(dt);
                         }
                     }
                 }
             }
-            catch (Exception) { }
+            catch (Exception ex) { }
+
             return dt;
-        }
-
-
-        // This method inserts an item into OrderDetails and returns its ID
-        public static int AddOrderDetailAndGetID(int OrderID, int ProductID, int SizeID, int Quantity, decimal UnitPrice)
-        {
-            int DetailID = -1;
-
-            try
-            {
-                using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
-                {
-                    // We use SELECT last_insert_rowid() to get the ID generated by AUTOINCREMENT
-                    string query = @"INSERT INTO OrderDetails (OrderID, ProductID, SizeID, Quantity, UnitPrice) 
-                             VALUES (@OrderID, @ProductID, @SizeID, @Quantity, @UnitPrice);
-                             SELECT last_insert_rowid();";
-
-                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
-                    {
-                        command.Parameters.AddWithValue("@OrderID", OrderID);
-                        command.Parameters.AddWithValue("@ProductID", ProductID);
-                        command.Parameters.AddWithValue("@SizeID", SizeID);
-                        command.Parameters.AddWithValue("@Quantity", Quantity);
-                        command.Parameters.AddWithValue("@UnitPrice", UnitPrice);
-
-                        connection.Open();
-
-                        object result = command.ExecuteScalar();
-
-                        if (result != null && int.TryParse(result.ToString(), out int insertedID))
-                        {
-                            DetailID = insertedID;
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                // Log error if needed
-                DetailID = -1;
-            }
-
-            return DetailID;
         }
     }
 }

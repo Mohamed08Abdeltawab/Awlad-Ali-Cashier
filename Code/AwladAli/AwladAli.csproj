@@ -95,6 +95,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bill\ctrlOrderLine.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Bill\ctrlOrderLine.Designer.cs">
+      <DependentUpon>ctrlOrderLine.cs</DependentUpon>
+    </Compile>
     <Compile Include="Category\Extra\ctrlExtraRow.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -170,6 +176,9 @@
     <Compile Include="User\frmAddUpdateUser.Designer.cs">
       <DependentUpon>frmAddUpdateUser.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Bill\ctrlOrderLine.resx">
+      <DependentUpon>ctrlOrderLine.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Category\Extra\ctrlExtraRow.resx">
       <DependentUpon>ctrlExtraRow.cs</DependentUpon>
     </EmbeddedResource>
