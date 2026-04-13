@@ -87,7 +87,6 @@ namespace AwladAli
         // 2. تعديل دالة تحميل الإضافات عشان تستخدم الدالة الموحدة
         private void _LoadExtraAddons()
         {
-            flpAddonsContainer.Controls.Clear();
             DataTable dtAllExtras = clsExtra.GetAllExtras();
 
             foreach (DataRow row in dtAllExtras.Rows)

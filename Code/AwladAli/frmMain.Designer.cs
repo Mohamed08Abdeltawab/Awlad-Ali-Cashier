@@ -45,13 +45,15 @@ namespace AwladAli
             this.btnCheckout = new System.Windows.Forms.Button();
             this.lblTotalPrice = new System.Windows.Forms.Label();
             this.lblTotalText = new System.Windows.Forms.Label();
-            this.flpAddonsContainer = new System.Windows.Forms.Panel();
-            this.lblAddonsTitle = new System.Windows.Forms.Label();
+            this.flpAddonsContainer = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.pnlMainContainer.SuspendLayout();
             this.pnlFooter.SuspendLayout();
             this.flpAddonsContainer.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlHeader
@@ -66,7 +68,7 @@ namespace AwladAli
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHeader.Location = new System.Drawing.Point(0, 0);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(1674, 80);
+            this.pnlHeader.Size = new System.Drawing.Size(1924, 80);
             this.pnlHeader.TabIndex = 1;
             // 
             // pictureBox8
@@ -135,25 +137,26 @@ namespace AwladAli
             // 
             // pnlMainContainer
             // 
+            this.pnlMainContainer.Controls.Add(this.flpAddonsContainer);
             this.pnlMainContainer.Controls.Add(this.flpProductCards);
             this.pnlMainContainer.Controls.Add(this.pnlFooter);
             this.pnlMainContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMainContainer.Location = new System.Drawing.Point(0, 80);
             this.pnlMainContainer.Name = "pnlMainContainer";
-            this.pnlMainContainer.Size = new System.Drawing.Size(1674, 981);
+            this.pnlMainContainer.Size = new System.Drawing.Size(1924, 981);
             this.pnlMainContainer.TabIndex = 2;
             // 
             // flpProductCards
             // 
+            this.flpProductCards.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.flpProductCards.AutoScroll = true;
             this.flpProductCards.BackColor = System.Drawing.Color.Gainsboro;
             this.flpProductCards.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.flpProductCards.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.flpProductCards.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpProductCards.Location = new System.Drawing.Point(0, 0);
             this.flpProductCards.Name = "flpProductCards";
             this.flpProductCards.Padding = new System.Windows.Forms.Padding(15);
-            this.flpProductCards.Size = new System.Drawing.Size(1674, 867);
+            this.flpProductCards.Size = new System.Drawing.Size(1657, 867);
             this.flpProductCards.TabIndex = 0;
             // 
             // pnlFooter
@@ -169,7 +172,7 @@ namespace AwladAli
             this.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlFooter.Location = new System.Drawing.Point(0, 867);
             this.pnlFooter.Name = "pnlFooter";
-            this.pnlFooter.Size = new System.Drawing.Size(1674, 114);
+            this.pnlFooter.Size = new System.Drawing.Size(1924, 114);
             this.pnlFooter.TabIndex = 1;
             // 
             // label1
@@ -177,7 +180,7 @@ namespace AwladAli
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
-            this.label1.Location = new System.Drawing.Point(1202, 29);
+            this.label1.Location = new System.Drawing.Point(1452, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(97, 60);
             this.label1.TabIndex = 3;
@@ -190,7 +193,7 @@ namespace AwladAli
             this.pnlLine.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlLine.Location = new System.Drawing.Point(0, 110);
             this.pnlLine.Name = "pnlLine";
-            this.pnlLine.Size = new System.Drawing.Size(1672, 2);
+            this.pnlLine.Size = new System.Drawing.Size(1922, 2);
             this.pnlLine.TabIndex = 0;
             // 
             // btnCheckout
@@ -211,7 +214,7 @@ namespace AwladAli
             this.lblTotalPrice.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
             this.lblTotalPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
             this.lblTotalPrice.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblTotalPrice.Location = new System.Drawing.Point(1305, 29);
+            this.lblTotalPrice.Location = new System.Drawing.Point(1555, 29);
             this.lblTotalPrice.Name = "lblTotalPrice";
             this.lblTotalPrice.Size = new System.Drawing.Size(160, 60);
             this.lblTotalPrice.TabIndex = 1;
@@ -222,7 +225,7 @@ namespace AwladAli
             // 
             this.lblTotalText.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblTotalText.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalText.Location = new System.Drawing.Point(1431, 29);
+            this.lblTotalText.Location = new System.Drawing.Point(1681, 29);
             this.lblTotalText.Name = "lblTotalText";
             this.lblTotalText.Size = new System.Drawing.Size(207, 50);
             this.lblTotalText.TabIndex = 2;
@@ -231,27 +234,35 @@ namespace AwladAli
             // 
             // flpAddonsContainer
             // 
-            this.flpAddonsContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.flpAddonsContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flpAddonsContainer.Controls.Add(this.lblAddonsTitle);
+            this.flpAddonsContainer.AutoScroll = true;
+            this.flpAddonsContainer.Controls.Add(this.panel1);
             this.flpAddonsContainer.Dock = System.Windows.Forms.DockStyle.Right;
-            this.flpAddonsContainer.Location = new System.Drawing.Point(1674, 0);
+            this.flpAddonsContainer.Location = new System.Drawing.Point(1663, 0);
             this.flpAddonsContainer.Name = "flpAddonsContainer";
-            this.flpAddonsContainer.Size = new System.Drawing.Size(250, 1061);
-            this.flpAddonsContainer.TabIndex = 3;
+            this.flpAddonsContainer.Size = new System.Drawing.Size(261, 867);
+            this.flpAddonsContainer.TabIndex = 2;
             // 
-            // lblAddonsTitle
+            // panel1
             // 
-            this.lblAddonsTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblAddonsTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblAddonsTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.lblAddonsTitle.ForeColor = System.Drawing.Color.White;
-            this.lblAddonsTitle.Location = new System.Drawing.Point(0, 0);
-            this.lblAddonsTitle.Name = "lblAddonsTitle";
-            this.lblAddonsTitle.Size = new System.Drawing.Size(248, 79);
-            this.lblAddonsTitle.TabIndex = 1;
-            this.lblAddonsTitle.Text = "الإضافات (Add-ons)";
-            this.lblAddonsTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.panel1.BackColor = System.Drawing.Color.Red;
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(255, 100);
+            this.panel1.TabIndex = 0;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Red;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label3.Location = new System.Drawing.Point(71, 29);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(125, 39);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "الاضافات";
             // 
             // frmMain
             // 
@@ -260,7 +271,6 @@ namespace AwladAli
             this.ClientSize = new System.Drawing.Size(1924, 1061);
             this.Controls.Add(this.pnlMainContainer);
             this.Controls.Add(this.pnlHeader);
-            this.Controls.Add(this.flpAddonsContainer);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmMain";
             this.Text = "Awlad Ali - POS System";
@@ -273,6 +283,8 @@ namespace AwladAli
             this.pnlMainContainer.PerformLayout();
             this.pnlFooter.ResumeLayout(false);
             this.flpAddonsContainer.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -294,7 +306,8 @@ namespace AwladAli
         private Label lblUsername;
         private Label label2;
         private PictureBox pictureBox8;
-        private Panel flpAddonsContainer;
-        private Label lblAddonsTitle;
+        private FlowLayoutPanel flpAddonsContainer;
+        private Panel panel1;
+        private Label label3;
     }
 }

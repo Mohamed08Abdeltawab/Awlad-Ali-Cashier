@@ -109,7 +109,7 @@
             this.Controls.Add(this.pnlColumnsHeader);
             this.Controls.Add(this.pnlHeader);
             this.Name = "ctrlCategoryCard";
-            this.Size = new System.Drawing.Size(800, 582);
+            this.Size = new System.Drawing.Size(790, 582);
             this.pnlHeader.ResumeLayout(false);
             this.pnlColumnsHeader.ResumeLayout(false);
             this.flpItemsContainer.ResumeLayout(false);
