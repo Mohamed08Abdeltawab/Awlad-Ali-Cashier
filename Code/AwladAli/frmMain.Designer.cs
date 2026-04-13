@@ -32,8 +32,10 @@ namespace AwladAli
         private void InitializeComponent()
         {
             this.pnlHeader = new System.Windows.Forms.Panel();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.lblUsername = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnClose = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.pnlMainContainer = new System.Windows.Forms.Panel();
             this.flpProductCards = new System.Windows.Forms.FlowLayoutPanel();
@@ -43,15 +45,13 @@ namespace AwladAli
             this.btnCheckout = new System.Windows.Forms.Button();
             this.lblTotalPrice = new System.Windows.Forms.Label();
             this.lblTotalText = new System.Windows.Forms.Label();
-            this.pnlAddonsMaster = new System.Windows.Forms.Panel();
+            this.flpAddonsContainer = new System.Windows.Forms.Panel();
             this.lblAddonsTitle = new System.Windows.Forms.Label();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.btnClose = new System.Windows.Forms.Button();
             this.pnlHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.pnlMainContainer.SuspendLayout();
             this.pnlFooter.SuspendLayout();
-            this.pnlAddonsMaster.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            this.flpAddonsContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlHeader
@@ -68,6 +68,17 @@ namespace AwladAli
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.Size = new System.Drawing.Size(1674, 80);
             this.pnlHeader.TabIndex = 1;
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.BackColor = System.Drawing.Color.White;
+            this.pictureBox8.Image = global::AwladAli.Properties.Resources.Person_32;
+            this.pictureBox8.Location = new System.Drawing.Point(1449, 31);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(31, 26);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox8.TabIndex = 129;
+            this.pictureBox8.TabStop = false;
             // 
             // lblUsername
             // 
@@ -90,6 +101,26 @@ namespace AwladAli
             this.label2.Size = new System.Drawing.Size(144, 30);
             this.label2.TabIndex = 122;
             this.label2.Text = ":اسم المستخدم";
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.White;
+            this.btnClose.BackgroundImage = global::AwladAli.Properties.Resources.Background01;
+            this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnClose.Image = global::AwladAli.Properties.Resources.setting_64;
+            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClose.Location = new System.Drawing.Point(1, 0);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(247, 80);
+            this.btnClose.TabIndex = 121;
+            this.btnClose.Text = "ادارة النظام";
+            this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnClose.UseVisualStyleBackColor = false;
             // 
             // lblTitle
             // 
@@ -198,16 +229,16 @@ namespace AwladAli
             this.lblTotalText.Text = ":أجمالي السعر";
             this.lblTotalText.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // pnlAddonsMaster
+            // flpAddonsContainer
             // 
-            this.pnlAddonsMaster.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnlAddonsMaster.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlAddonsMaster.Controls.Add(this.lblAddonsTitle);
-            this.pnlAddonsMaster.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlAddonsMaster.Location = new System.Drawing.Point(1674, 0);
-            this.pnlAddonsMaster.Name = "pnlAddonsMaster";
-            this.pnlAddonsMaster.Size = new System.Drawing.Size(250, 1061);
-            this.pnlAddonsMaster.TabIndex = 3;
+            this.flpAddonsContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.flpAddonsContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flpAddonsContainer.Controls.Add(this.lblAddonsTitle);
+            this.flpAddonsContainer.Dock = System.Windows.Forms.DockStyle.Right;
+            this.flpAddonsContainer.Location = new System.Drawing.Point(1674, 0);
+            this.flpAddonsContainer.Name = "flpAddonsContainer";
+            this.flpAddonsContainer.Size = new System.Drawing.Size(250, 1061);
+            this.flpAddonsContainer.TabIndex = 3;
             // 
             // lblAddonsTitle
             // 
@@ -222,38 +253,6 @@ namespace AwladAli
             this.lblAddonsTitle.Text = "الإضافات (Add-ons)";
             this.lblAddonsTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pictureBox8
-            // 
-            this.pictureBox8.BackColor = System.Drawing.Color.White;
-            this.pictureBox8.Image = global::AwladAli.Properties.Resources.Person_32;
-            this.pictureBox8.Location = new System.Drawing.Point(1449, 31);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(31, 26);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox8.TabIndex = 129;
-            this.pictureBox8.TabStop = false;
-            // 
-            // btnClose
-            // 
-            this.btnClose.BackColor = System.Drawing.Color.White;
-            this.btnClose.BackgroundImage = global::AwladAli.Properties.Resources.Background01;
-            this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnClose.Image = global::AwladAli.Properties.Resources.setting_64;
-            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(1, 0);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(247, 80);
-            this.btnClose.TabIndex = 121;
-            this.btnClose.Text = "ادارة النظام";
-            this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnClose.UseVisualStyleBackColor = false;
-            // 
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -261,7 +260,7 @@ namespace AwladAli
             this.ClientSize = new System.Drawing.Size(1924, 1061);
             this.Controls.Add(this.pnlMainContainer);
             this.Controls.Add(this.pnlHeader);
-            this.Controls.Add(this.pnlAddonsMaster);
+            this.Controls.Add(this.flpAddonsContainer);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmMain";
             this.Text = "Awlad Ali - POS System";
@@ -269,11 +268,11 @@ namespace AwladAli
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.pnlMainContainer.ResumeLayout(false);
             this.pnlMainContainer.PerformLayout();
             this.pnlFooter.ResumeLayout(false);
-            this.pnlAddonsMaster.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            this.flpAddonsContainer.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -295,7 +294,7 @@ namespace AwladAli
         private Label lblUsername;
         private Label label2;
         private PictureBox pictureBox8;
-        private Panel pnlAddonsMaster;
+        private Panel flpAddonsContainer;
         private Label lblAddonsTitle;
     }
 }

@@ -1,4 +1,5 @@
-﻿using AwladAli.GlobalClasses;
+﻿using AwladAli.Category.Extra;
+using AwladAli.GlobalClasses;
 using AwladAli.Login;
 using AwladAli.Product; 
 using AwladAli_Buisness; 
@@ -22,6 +23,7 @@ namespace AwladAli
         {
             lblUsername.Text = clsGlobal.CurrentUser.UserName;
             _LoadRestaurantMenu();
+            _LoadExtraAddons();
         }
 
         private void _LoadRestaurantMenu()
@@ -58,15 +60,48 @@ namespace AwladAli
             flpProductCards.ResumeLayout();
         }
 
+        // 1. دي الدالة الموحدة اللي هتجمع كل شيء
         private void UpdateGrandTotal()
         {
-            decimal grandTotal = 0;
+            decimal productsTotal = 0;
+            decimal extrasTotal = 0;
+
+            // جمع إجمالي الأكلات
             foreach (Control ctrl in flpProductCards.Controls)
             {
                 if (ctrl is ctrlCategoryCard card)
-                    grandTotal += card.GetCategoryTotal();
+                    productsTotal += card.GetCategoryTotal();
             }
-            lblTotalPrice.Text = grandTotal.ToString("0.00");
+
+            // جمع إجمالي الإضافات
+            foreach (Control ctrl in flpAddonsContainer.Controls)
+            {
+                if (ctrl is ctrlExtraRow extra)
+                    extrasTotal += extra.TotalRowPrice;
+            }
+
+            // عرض المجموع النهائي في الليبل
+            lblTotalPrice.Text = (productsTotal + extrasTotal).ToString("0.00");
+        }
+
+        // 2. تعديل دالة تحميل الإضافات عشان تستخدم الدالة الموحدة
+        private void _LoadExtraAddons()
+        {
+            flpAddonsContainer.Controls.Clear();
+            DataTable dtAllExtras = clsExtra.GetAllExtras();
+
+            foreach (DataRow row in dtAllExtras.Rows)
+            {
+                ctrlExtraRow rowControl = new ctrlExtraRow();
+                rowControl.LoadData(Convert.ToInt32(row["ExtraID"]));
+
+                // الاشتراك في الحدث: لما أي إضافة تتغير، نادي دالة الجمع الموحدة
+                rowControl.OnExtraAmountChanged += (totalRowAmount) => {
+                    UpdateGrandTotal();
+                };
+
+                flpAddonsContainer.Controls.Add(rowControl);
+            }
         }
     }
 }
