@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AwladAli.Category.Extra
+namespace AwladAli.Bill
 {
     public partial class frmtestControls : Form
     {
@@ -19,7 +19,7 @@ namespace AwladAli.Category.Extra
 
         private void frmtestControls_Load(object sender, EventArgs e)
         {
-            ctrlExtraRow1.LoadData(1); // Load data for ExtraID = 1
+            ctrlOrderLine1.LoadData(1); // Load data for OrderDetailID = 1
         }
     }
 }

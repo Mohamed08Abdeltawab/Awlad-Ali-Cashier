@@ -101,17 +101,17 @@
     <Compile Include="Bill\ctrlOrderLine.Designer.cs">
       <DependentUpon>ctrlOrderLine.cs</DependentUpon>
     </Compile>
+    <Compile Include="Bill\frmtestControls.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bill\frmtestControls.Designer.cs">
+      <DependentUpon>frmtestControls.cs</DependentUpon>
+    </Compile>
     <Compile Include="Category\Extra\ctrlExtraRow.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Category\Extra\ctrlExtraRow.Designer.cs">
       <DependentUpon>ctrlExtraRow.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Category\Extra\frmtestControls.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Category\Extra\frmtestControls.Designer.cs">
-      <DependentUpon>frmtestControls.cs</DependentUpon>
     </Compile>
     <Compile Include="Category\frmAddUpdateCategory.cs">
       <SubType>Form</SubType>
@@ -179,11 +179,11 @@
     <EmbeddedResource Include="Bill\ctrlOrderLine.resx">
       <DependentUpon>ctrlOrderLine.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Bill\frmtestControls.resx">
+      <DependentUpon>frmtestControls.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Category\Extra\ctrlExtraRow.resx">
       <DependentUpon>ctrlExtraRow.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Category\Extra\frmtestControls.resx">
-      <DependentUpon>frmtestControls.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Category\frmAddUpdateCategory.resx">
       <DependentUpon>frmAddUpdateCategory.cs</DependentUpon>

@@ -6,7 +6,11 @@ namespace AwladAli_Data
 {
     public class clsOrderDetailData
     {
-        public static int AddNewOrderDetail(int OrderID, int? ProductID, int? SizeID, int Quantity, decimal UnitPrice)
+        /// <summary>
+        /// Adds a new order detail record to the database.
+        /// Handles ProductID, SizeID, and ExtraID as nullable fields.
+        /// </summary>
+        public static int AddNewOrderDetail(int OrderID, int? ProductID, int? SizeID, int Quantity, decimal UnitPrice, int? ExtraID)
         {
             int DetailID = -1;
 
@@ -15,17 +19,21 @@ namespace AwladAli_Data
                 using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
                 {
                     connection.Open();
-                    // Insert order details and retrieve the last inserted row ID
-                    string query = @"INSERT INTO OrderDetails (OrderID, ProductID, SizeID, Quantity, UnitPrice) 
-                                     VALUES (@OrderID, @ProductID, @SizeID, @Quantity, @UnitPrice);
+
+                    // Query to insert detail and get the last generated ID (last_insert_rowid)
+                    string query = @"INSERT INTO OrderDetails (OrderID, ProductID, SizeID, Quantity, UnitPrice, ExtraID) 
+                                     VALUES (@OrderID, @ProductID, @SizeID, @Quantity, @UnitPrice, @ExtraID);
                                      SELECT last_insert_rowid();";
 
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@OrderID", OrderID);
-                        // Using DBNull if IDs are null (for Extras)
+
+                        // Handling Nullable types for SQLite using DBNull.Value
                         command.Parameters.AddWithValue("@ProductID", (object)ProductID ?? DBNull.Value);
                         command.Parameters.AddWithValue("@SizeID", (object)SizeID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@ExtraID", (object)ExtraID ?? DBNull.Value);
+
                         command.Parameters.AddWithValue("@Quantity", Quantity);
                         command.Parameters.AddWithValue("@UnitPrice", UnitPrice);
 
@@ -39,12 +47,15 @@ namespace AwladAli_Data
             }
             catch (Exception ex)
             {
-                // Log exception if necessary
+                // Exception logging can be implemented here
             }
 
             return DetailID;
         }
 
+        /// <summary>
+        /// Retrieves all detail lines associated with a specific Order ID.
+        /// </summary>
         public static DataTable GetOrderDetailsByOrderID(int OrderID)
         {
             DataTable dt = new DataTable();
@@ -69,6 +80,35 @@ namespace AwladAli_Data
             catch (Exception ex) { }
 
             return dt;
+        }
+
+        /// <summary>
+        /// Retrieves a single record from OrderDetails by its primary key (DetailID).
+        /// </summary>
+        public static DataRow GetOrderDetailByID(int DetailID)
+        {
+            DataTable dt = new DataTable();
+
+            try
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT * FROM OrderDetails WHERE DetailID = @DetailID";
+
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@DetailID", DetailID);
+                        using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(command))
+                        {
+                            adapter.Fill(dt);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex) { }
+
+            return (dt.Rows.Count > 0) ? dt.Rows[0] : null;
         }
     }
 }
