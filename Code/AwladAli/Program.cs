@@ -1,4 +1,5 @@
 ﻿using AwladAli.Category;
+using AwladAli.Category.Extra;
 using AwladAli.Login;
 using AwladAli.User;
 using System;
@@ -19,7 +20,7 @@ namespace AwladAli
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmLogin());
+            Application.Run(new frmtestControls());
         }
     }
 }

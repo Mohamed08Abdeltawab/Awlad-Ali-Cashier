@@ -101,6 +101,12 @@
     <Compile Include="Category\Extra\ctrlExtraRow.Designer.cs">
       <DependentUpon>ctrlExtraRow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Category\Extra\frmtestControls.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Category\Extra\frmtestControls.Designer.cs">
+      <DependentUpon>frmtestControls.cs</DependentUpon>
+    </Compile>
     <Compile Include="Category\frmAddUpdateCategory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,6 +172,9 @@
     </Compile>
     <EmbeddedResource Include="Category\Extra\ctrlExtraRow.resx">
       <DependentUpon>ctrlExtraRow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Category\Extra\frmtestControls.resx">
+      <DependentUpon>frmtestControls.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Category\frmAddUpdateCategory.resx">
       <DependentUpon>frmAddUpdateCategory.cs</DependentUpon>

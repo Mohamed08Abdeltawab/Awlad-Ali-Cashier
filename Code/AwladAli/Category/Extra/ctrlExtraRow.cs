@@ -19,6 +19,7 @@ namespace AwladAli.Category.Extra
 
         // Properties to expose data
         public int ExtraID => _ExtraID;
+        public clsExtra Extra => _Extra;
 
         public string ExtraName
         {
@@ -36,6 +37,7 @@ namespace AwladAli.Category.Extra
         public decimal TotalRowPrice => (IsSelected && _Extra != null) ? (_Extra.Price * (decimal)numQuantity.Value) : 0;
         public void LoadData(int ExtraID)
         {
+            Reset();
             _ExtraID = ExtraID;
             _Extra = clsExtra.Find(ExtraID);
 
@@ -43,7 +45,8 @@ namespace AwladAli.Category.Extra
             {
                 lblProductName.Text = _Extra.ExtraName;
                 chkSelectPrice.Text = _Extra.Price.ToString("0.00");
-                numQuantity.Value = 1; // Default quantity when loading is 1
+                numQuantity.Value = 0; // Default quantity when loading is 0
+                numQuantity.Enabled = false; // Disable quantity until the checkbox is checked
             }
         }
 
@@ -69,6 +72,10 @@ namespace AwladAli.Category.Extra
             {
                 // Trigger the event to update total bill
                 OnExtraAmountChanged?.Invoke(TotalRowPrice);
+                if(numQuantity.Value == 0)
+                {
+                    chkSelectPrice.Checked = false; // Uncheck if quantity is set to 0
+                }
             }
         }
 
