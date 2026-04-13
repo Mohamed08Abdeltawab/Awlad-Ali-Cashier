@@ -47,7 +47,6 @@ namespace AwladAli
             this.lblAddonsTitle = new System.Windows.Forms.Label();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.Button();
-            this.ctrlExtraRow1 = new AwladAli.Category.Extra.ctrlExtraRow();
             this.pnlHeader.SuspendLayout();
             this.pnlMainContainer.SuspendLayout();
             this.pnlFooter.SuspendLayout();
@@ -203,7 +202,6 @@ namespace AwladAli
             // 
             this.pnlAddonsMaster.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.pnlAddonsMaster.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlAddonsMaster.Controls.Add(this.ctrlExtraRow1);
             this.pnlAddonsMaster.Controls.Add(this.lblAddonsTitle);
             this.pnlAddonsMaster.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnlAddonsMaster.Location = new System.Drawing.Point(1674, 0);
@@ -255,15 +253,6 @@ namespace AwladAli
             this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnClose.UseVisualStyleBackColor = false;
             // 
-            // ctrlExtraRow1
-            // 
-            this.ctrlExtraRow1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ctrlExtraRow1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ctrlExtraRow1.Location = new System.Drawing.Point(2, 100);
-            this.ctrlExtraRow1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ctrlExtraRow1.Name = "ctrlExtraRow1";
-            this.ctrlExtraRow1.Size = new System.Drawing.Size(242, 40);
-            this.ctrlExtraRow1.TabIndex = 2;
             // 
             // frmMain
             // 
@@ -308,6 +297,5 @@ namespace AwladAli
         private PictureBox pictureBox8;
         private Panel pnlAddonsMaster;
         private Label lblAddonsTitle;
-        private Category.Extra.ctrlExtraRow ctrlExtraRow1;
     }
 }
