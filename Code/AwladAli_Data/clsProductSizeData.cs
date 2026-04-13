@@ -8,7 +8,7 @@ namespace AwladAli_Data
     public class clsProductSizeData
     {
         // 1. Find Size by ID
-        public static bool GetSizeByID(int SizeID, ref int ProductID, ref string SizeName, ref double Price)
+        public static bool GetSizeByID(int SizeID, ref int ProductID, ref string SizeName, ref decimal Price)
         {
             bool isFound = false;
 
@@ -30,7 +30,7 @@ namespace AwladAli_Data
                                 isFound = true;
                                 ProductID = Convert.ToInt32(reader["ProductID"]);
                                 SizeName = (string)reader["SizeName"];
-                                Price = Convert.ToDouble(reader["Price"]);
+                                Price = Convert.ToDecimal(reader["Price"]);
                             }
                         }
                     }
@@ -42,7 +42,7 @@ namespace AwladAli_Data
         }
 
         // 2. Add New Size/Price
-        public static int AddNewSize(int ProductID, string SizeName, double Price)
+        public static int AddNewSize(int ProductID, string SizeName, decimal Price)
         {
             int SizeID = -1;
 
@@ -75,7 +75,7 @@ namespace AwladAli_Data
         }
 
         // 3. Update Size/Price
-        public static bool UpdateSize(int SizeID, int ProductID, string SizeName, double Price)
+        public static bool UpdateSize(int SizeID, int ProductID, string SizeName, decimal Price)
         {
             int rowsAffected = 0;
 

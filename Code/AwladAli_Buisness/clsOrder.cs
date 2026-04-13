@@ -13,7 +13,7 @@ namespace AwladAli_Buisness
             public int ProductID { get; set; }
             public int SizeID { get; set; }
             public int Quantity { get; set; }
-            public double UnitPrice { get; set; }
+            public decimal UnitPrice { get; set; }
 
             // List of Extra IDs for this specific item
             public List<int> SelectedExtraIDs = new List<int>();
@@ -23,7 +23,7 @@ namespace AwladAli_Buisness
         public int OrderID { get; set; }
         public int UserID { get; set; }
         public DateTime OrderDate { get; set; }
-        public double TotalAmount { get; set; }
+        public decimal TotalAmount { get; set; }
 
         // The "Shopping Cart" list
         public List<clsOrderItem> Items = new List<clsOrderItem>();

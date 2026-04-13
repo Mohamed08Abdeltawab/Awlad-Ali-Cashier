@@ -7,7 +7,7 @@ namespace AwladAli_Data
     public class clsOrderData
     {
         // 1. Add New Order Header
-        public static int AddNewOrder(int UserID, double TotalAmount)
+        public static int AddNewOrder(int UserID, decimal TotalAmount)
         {
             int OrderID = -1;
             try
@@ -36,7 +36,7 @@ namespace AwladAli_Data
         }
 
         // 2. Add Order Item (Detail)
-        public static bool AddOrderDetail(int OrderID, int ProductID, int SizeID, int Quantity, double UnitPrice)
+        public static bool AddOrderDetail(int OrderID, int ProductID, int SizeID, int Quantity, decimal UnitPrice)
         {
             int rowsAffected = 0;
             try
@@ -91,7 +91,7 @@ namespace AwladAli_Data
 
 
         // This method inserts an item into OrderDetails and returns its ID
-        public static int AddOrderDetailAndGetID(int OrderID, int ProductID, int SizeID, int Quantity, double UnitPrice)
+        public static int AddOrderDetailAndGetID(int OrderID, int ProductID, int SizeID, int Quantity, decimal UnitPrice)
         {
             int DetailID = -1;
 

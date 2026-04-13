@@ -14,7 +14,7 @@ namespace AwladAli_Buisness
         public int SizeID { get; set; }
         public int ProductID { get; set; }
         public string SizeName { get; set; }
-        public double Price { get; set; }
+        public decimal Price { get; set; }
 
         // Navigation Property: To get the parent Product details if needed
         public clsProduct ProductInfo;
@@ -25,13 +25,13 @@ namespace AwladAli_Buisness
             this.SizeID = -1;
             this.ProductID = -1;
             this.SizeName = "";
-            this.Price = 0.0;
+            this.Price = 0.0m;
 
             Mode = enMode.AddNew;
         }
 
         // Private constructor for Update mode
-        private clsProductSize(int SizeID, int ProductID, string SizeName, double Price)
+        private clsProductSize(int SizeID, int ProductID, string SizeName, decimal Price)
         {
             this.SizeID = SizeID;
             this.ProductID = ProductID;
@@ -49,7 +49,7 @@ namespace AwladAli_Buisness
         {
             int ProductID = -1;
             string SizeName = "";
-            double Price = 0.0;
+            decimal Price = 0.0m;
 
             if (clsProductSizeData.GetSizeByID(SizeID, ref ProductID, ref SizeName, ref Price))
             {
