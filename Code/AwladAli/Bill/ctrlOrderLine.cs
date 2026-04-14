@@ -43,7 +43,7 @@ namespace AwladAli.Bill
                 {
                     clsProductSize size = clsProductSize.Find((int)_OrderDetail.SizeID);
                     if (size != null)
-                        finalDisplayName += $" ({size.SizeName})";
+                        finalDisplayName = $"({size.SizeName}) " + finalDisplayName;
                 }
             }
             // Case 2: The item is an Extra (Addition)
