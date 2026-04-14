@@ -115,5 +115,20 @@ namespace AwladAli
             frm.ShowDialog();
             frmMain_Load(null, null); // إعادة تحميل البيانات بعد إغلاق الإعدادات
         }
+
+        private void btnShowOrderInfo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSaveOrder_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDeleteOrder_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

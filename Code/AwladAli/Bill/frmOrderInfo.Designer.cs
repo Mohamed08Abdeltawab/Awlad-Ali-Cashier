@@ -19,23 +19,23 @@
         {
             this.pnlBillHeader = new System.Windows.Forms.Panel();
             this.lblBillTitle = new System.Windows.Forms.Label();
-            this.lblOrderDate = new System.Windows.Forms.Label();
-            this.lblOrderID = new System.Windows.Forms.Label();
-            this.flpOrderItems = new System.Windows.Forms.FlowLayoutPanel();
-            this.pnlBillFooter = new System.Windows.Forms.Panel();
-            this.btnSaveAndPrint = new System.Windows.Forms.Button();
-            this.lblTotalAmount = new System.Windows.Forms.Label();
-            this.labelTotalText = new System.Windows.Forms.Label();
             this.pnlOrderItemsHeader = new System.Windows.Forms.Panel();
             this.lblH_Total = new System.Windows.Forms.Label();
             this.lblH_Qty = new System.Windows.Forms.Label();
             this.lblH_Price = new System.Windows.Forms.Label();
             this.lblH_Name = new System.Windows.Forms.Label();
+            this.lblOrderDate = new System.Windows.Forms.Label();
+            this.lblOrderID = new System.Windows.Forms.Label();
+            this.flpOrderItems = new System.Windows.Forms.FlowLayoutPanel();
             this.ctrlOrderLine1 = new AwladAli.Bill.ctrlOrderLine();
+            this.pnlBillFooter = new System.Windows.Forms.Panel();
+            this.btnSaveAndPrint = new System.Windows.Forms.Button();
+            this.lblTotalAmount = new System.Windows.Forms.Label();
+            this.labelTotalText = new System.Windows.Forms.Label();
             this.pnlBillHeader.SuspendLayout();
+            this.pnlOrderItemsHeader.SuspendLayout();
             this.flpOrderItems.SuspendLayout();
             this.pnlBillFooter.SuspendLayout();
-            this.pnlOrderItemsHeader.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlBillHeader
@@ -60,87 +60,6 @@
             this.lblBillTitle.TabIndex = 0;
             this.lblBillTitle.Text = "Awlad Ali - أولاد علي";
             this.lblBillTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblOrderDate
-            // 
-            this.lblOrderDate.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblOrderDate.Location = new System.Drawing.Point(12, 85);
-            this.lblOrderDate.Name = "lblOrderDate";
-            this.lblOrderDate.Size = new System.Drawing.Size(200, 23);
-            this.lblOrderDate.TabIndex = 2;
-            this.lblOrderDate.Text = "التاريخ: 2026-04-14";
-            this.lblOrderDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lblOrderID
-            // 
-            this.lblOrderID.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblOrderID.Location = new System.Drawing.Point(238, 85);
-            this.lblOrderID.Name = "lblOrderID";
-            this.lblOrderID.Size = new System.Drawing.Size(200, 23);
-            this.lblOrderID.TabIndex = 1;
-            this.lblOrderID.Text = "رقم الفاتورة: #000000";
-            this.lblOrderID.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // flpOrderItems
-            // 
-            this.flpOrderItems.AutoScroll = true;
-            this.flpOrderItems.BackColor = System.Drawing.Color.White;
-            this.flpOrderItems.Controls.Add(this.ctrlOrderLine1);
-            this.flpOrderItems.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flpOrderItems.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flpOrderItems.Location = new System.Drawing.Point(0, 159);
-            this.flpOrderItems.Name = "flpOrderItems";
-            this.flpOrderItems.Padding = new System.Windows.Forms.Padding(10);
-            this.flpOrderItems.Size = new System.Drawing.Size(450, 457);
-            this.flpOrderItems.TabIndex = 1;
-            this.flpOrderItems.WrapContents = false;
-            // 
-            // pnlBillFooter
-            // 
-            this.pnlBillFooter.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pnlBillFooter.Controls.Add(this.btnSaveAndPrint);
-            this.pnlBillFooter.Controls.Add(this.lblTotalAmount);
-            this.pnlBillFooter.Controls.Add(this.labelTotalText);
-            this.pnlBillFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlBillFooter.Location = new System.Drawing.Point(0, 616);
-            this.pnlBillFooter.Name = "pnlBillFooter";
-            this.pnlBillFooter.Size = new System.Drawing.Size(450, 130);
-            this.pnlBillFooter.TabIndex = 2;
-            // 
-            // btnSaveAndPrint
-            // 
-            this.btnSaveAndPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
-            this.btnSaveAndPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSaveAndPrint.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.btnSaveAndPrint.ForeColor = System.Drawing.Color.White;
-            this.btnSaveAndPrint.Location = new System.Drawing.Point(117, 70);
-            this.btnSaveAndPrint.Name = "btnSaveAndPrint";
-            this.btnSaveAndPrint.Size = new System.Drawing.Size(200, 45);
-            this.btnSaveAndPrint.TabIndex = 2;
-            this.btnSaveAndPrint.Text = "حفظ وطباعة";
-            this.btnSaveAndPrint.UseVisualStyleBackColor = false;
-            this.btnSaveAndPrint.Click += new System.EventHandler(this.btnSaveAndPrint_Click);
-            // 
-            // lblTotalAmount
-            // 
-            this.lblTotalAmount.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold);
-            this.lblTotalAmount.ForeColor = System.Drawing.Color.Maroon;
-            this.lblTotalAmount.Location = new System.Drawing.Point(12, 15);
-            this.lblTotalAmount.Name = "lblTotalAmount";
-            this.lblTotalAmount.Size = new System.Drawing.Size(150, 37);
-            this.lblTotalAmount.TabIndex = 1;
-            this.lblTotalAmount.Text = "0.00";
-            this.lblTotalAmount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labelTotalText
-            // 
-            this.labelTotalText.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.labelTotalText.Location = new System.Drawing.Point(288, 15);
-            this.labelTotalText.Name = "labelTotalText";
-            this.labelTotalText.Size = new System.Drawing.Size(150, 37);
-            this.labelTotalText.TabIndex = 0;
-            this.labelTotalText.Text = "الإجمالي النهائي:";
-            this.labelTotalText.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // pnlOrderItemsHeader
             // 
@@ -195,6 +114,40 @@
             this.lblH_Name.Text = "اسم المنتج";
             this.lblH_Name.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // lblOrderDate
+            // 
+            this.lblOrderDate.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblOrderDate.Location = new System.Drawing.Point(12, 85);
+            this.lblOrderDate.Name = "lblOrderDate";
+            this.lblOrderDate.Size = new System.Drawing.Size(200, 23);
+            this.lblOrderDate.TabIndex = 2;
+            this.lblOrderDate.Text = "التاريخ: 2026-04-14";
+            this.lblOrderDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblOrderID
+            // 
+            this.lblOrderID.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblOrderID.Location = new System.Drawing.Point(238, 85);
+            this.lblOrderID.Name = "lblOrderID";
+            this.lblOrderID.Size = new System.Drawing.Size(200, 23);
+            this.lblOrderID.TabIndex = 1;
+            this.lblOrderID.Text = "رقم الفاتورة: #000000";
+            this.lblOrderID.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // flpOrderItems
+            // 
+            this.flpOrderItems.AutoScroll = true;
+            this.flpOrderItems.BackColor = System.Drawing.Color.White;
+            this.flpOrderItems.Controls.Add(this.ctrlOrderLine1);
+            this.flpOrderItems.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpOrderItems.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flpOrderItems.Location = new System.Drawing.Point(0, 159);
+            this.flpOrderItems.Name = "flpOrderItems";
+            this.flpOrderItems.Padding = new System.Windows.Forms.Padding(10);
+            this.flpOrderItems.Size = new System.Drawing.Size(450, 457);
+            this.flpOrderItems.TabIndex = 1;
+            this.flpOrderItems.WrapContents = false;
+            // 
             // ctrlOrderLine1
             // 
             this.ctrlOrderLine1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -203,6 +156,53 @@
             this.ctrlOrderLine1.Name = "ctrlOrderLine1";
             this.ctrlOrderLine1.Size = new System.Drawing.Size(424, 39);
             this.ctrlOrderLine1.TabIndex = 0;
+            // 
+            // pnlBillFooter
+            // 
+            this.pnlBillFooter.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlBillFooter.Controls.Add(this.btnSaveAndPrint);
+            this.pnlBillFooter.Controls.Add(this.lblTotalAmount);
+            this.pnlBillFooter.Controls.Add(this.labelTotalText);
+            this.pnlBillFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlBillFooter.Location = new System.Drawing.Point(0, 616);
+            this.pnlBillFooter.Name = "pnlBillFooter";
+            this.pnlBillFooter.Size = new System.Drawing.Size(450, 130);
+            this.pnlBillFooter.TabIndex = 2;
+            // 
+            // btnSaveAndPrint
+            // 
+            this.btnSaveAndPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
+            this.btnSaveAndPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSaveAndPrint.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btnSaveAndPrint.ForeColor = System.Drawing.Color.White;
+            this.btnSaveAndPrint.Location = new System.Drawing.Point(117, 70);
+            this.btnSaveAndPrint.Name = "btnSaveAndPrint";
+            this.btnSaveAndPrint.Size = new System.Drawing.Size(200, 45);
+            this.btnSaveAndPrint.TabIndex = 2;
+            this.btnSaveAndPrint.Text = "حفظ وطباعة";
+            this.btnSaveAndPrint.UseVisualStyleBackColor = false;
+            this.btnSaveAndPrint.Click += new System.EventHandler(this.btnSaveAndPrint_Click);
+            // 
+            // lblTotalAmount
+            // 
+            this.lblTotalAmount.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold);
+            this.lblTotalAmount.ForeColor = System.Drawing.Color.Maroon;
+            this.lblTotalAmount.Location = new System.Drawing.Point(12, 15);
+            this.lblTotalAmount.Name = "lblTotalAmount";
+            this.lblTotalAmount.Size = new System.Drawing.Size(150, 37);
+            this.lblTotalAmount.TabIndex = 1;
+            this.lblTotalAmount.Text = "0.00";
+            this.lblTotalAmount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelTotalText
+            // 
+            this.labelTotalText.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.labelTotalText.Location = new System.Drawing.Point(288, 15);
+            this.labelTotalText.Name = "labelTotalText";
+            this.labelTotalText.Size = new System.Drawing.Size(150, 37);
+            this.labelTotalText.TabIndex = 0;
+            this.labelTotalText.Text = "الإجمالي النهائي:";
+            this.labelTotalText.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // frmOrderInfo
             // 
@@ -220,9 +220,9 @@
             this.Text = "معاينة الفاتورة";
             this.Load += new System.EventHandler(this.frmOrderInfo_Load);
             this.pnlBillHeader.ResumeLayout(false);
+            this.pnlOrderItemsHeader.ResumeLayout(false);
             this.flpOrderItems.ResumeLayout(false);
             this.pnlBillFooter.ResumeLayout(false);
-            this.pnlOrderItemsHeader.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
