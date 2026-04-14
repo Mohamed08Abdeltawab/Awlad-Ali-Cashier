@@ -75,5 +75,6 @@ namespace AwladAli.Bill
                 return (_OrderDetail != null) ? (_OrderDetail.Quantity * _OrderDetail.UnitPrice) : 0;
             }
         }
+
     }
 }
