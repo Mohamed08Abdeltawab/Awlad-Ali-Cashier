@@ -43,17 +43,15 @@ namespace AwladAli
             this.label3 = new System.Windows.Forms.Label();
             this.flpProductCards = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlFooter = new System.Windows.Forms.Panel();
+            this.llReset = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlLine = new System.Windows.Forms.Panel();
-            this.btnShowOrderInfo = new System.Windows.Forms.Button();
+            this.btnSaveandShowOrderInfo = new System.Windows.Forms.Button();
             this.lblTotalPrice = new System.Windows.Forms.Label();
             this.lblTotalText = new System.Windows.Forms.Label();
-            this.btnSaveOrder = new System.Windows.Forms.Button();
-            this.btnDeleteOrder = new System.Windows.Forms.Button();
             this.pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.pnlMainContainer.SuspendLayout();
-            this.flpAddonsContainer.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pnlFooter.SuspendLayout();
             this.SuspendLayout();
@@ -140,6 +138,7 @@ namespace AwladAli
             // 
             // pnlMainContainer
             // 
+            this.pnlMainContainer.Controls.Add(this.panel1);
             this.pnlMainContainer.Controls.Add(this.flpAddonsContainer);
             this.pnlMainContainer.Controls.Add(this.flpProductCards);
             this.pnlMainContainer.Controls.Add(this.pnlFooter);
@@ -151,20 +150,21 @@ namespace AwladAli
             // 
             // flpAddonsContainer
             // 
+            this.flpAddonsContainer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.flpAddonsContainer.AutoScroll = true;
-            this.flpAddonsContainer.Controls.Add(this.panel1);
-            this.flpAddonsContainer.Dock = System.Windows.Forms.DockStyle.Right;
-            this.flpAddonsContainer.Location = new System.Drawing.Point(1663, 0);
+            this.flpAddonsContainer.Location = new System.Drawing.Point(1663, 168);
             this.flpAddonsContainer.Name = "flpAddonsContainer";
-            this.flpAddonsContainer.Size = new System.Drawing.Size(261, 866);
+            this.flpAddonsContainer.Size = new System.Drawing.Size(261, 699);
             this.flpAddonsContainer.TabIndex = 2;
             // 
             // panel1
             // 
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel1.BackColor = System.Drawing.Color.Red;
             this.panel1.Controls.Add(this.label3);
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Location = new System.Drawing.Point(1663, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(255, 100);
             this.panel1.TabIndex = 0;
@@ -199,18 +199,29 @@ namespace AwladAli
             this.pnlFooter.AutoSize = true;
             this.pnlFooter.BackColor = System.Drawing.Color.LightGray;
             this.pnlFooter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlFooter.Controls.Add(this.btnDeleteOrder);
-            this.pnlFooter.Controls.Add(this.btnSaveOrder);
+            this.pnlFooter.Controls.Add(this.llReset);
             this.pnlFooter.Controls.Add(this.label1);
             this.pnlFooter.Controls.Add(this.pnlLine);
-            this.pnlFooter.Controls.Add(this.btnShowOrderInfo);
+            this.pnlFooter.Controls.Add(this.btnSaveandShowOrderInfo);
             this.pnlFooter.Controls.Add(this.lblTotalPrice);
             this.pnlFooter.Controls.Add(this.lblTotalText);
             this.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlFooter.Location = new System.Drawing.Point(0, 866);
+            this.pnlFooter.Location = new System.Drawing.Point(0, 867);
             this.pnlFooter.Name = "pnlFooter";
-            this.pnlFooter.Size = new System.Drawing.Size(1924, 115);
+            this.pnlFooter.Size = new System.Drawing.Size(1924, 114);
             this.pnlFooter.TabIndex = 1;
+            // 
+            // llReset
+            // 
+            this.llReset.AutoSize = true;
+            this.llReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llReset.Location = new System.Drawing.Point(353, 48);
+            this.llReset.Name = "llReset";
+            this.llReset.Size = new System.Drawing.Size(111, 31);
+            this.llReset.TabIndex = 4;
+            this.llReset.TabStop = true;
+            this.llReset.Text = "اعادة تعيين";
+            this.llReset.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llReset_LinkClicked);
             // 
             // label1
             // 
@@ -228,25 +239,23 @@ namespace AwladAli
             // 
             this.pnlLine.BackColor = System.Drawing.Color.DarkGray;
             this.pnlLine.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlLine.Location = new System.Drawing.Point(0, 111);
+            this.pnlLine.Location = new System.Drawing.Point(0, 110);
             this.pnlLine.Name = "pnlLine";
             this.pnlLine.Size = new System.Drawing.Size(1922, 2);
             this.pnlLine.TabIndex = 0;
             // 
-            // btnShowOrderInfo
+            // btnSaveandShowOrderInfo
             // 
-            this.btnShowOrderInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
-            this.btnShowOrderInfo.Enabled = false;
-            this.btnShowOrderInfo.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnShowOrderInfo.ForeColor = System.Drawing.Color.Transparent;
-            this.btnShowOrderInfo.Location = new System.Drawing.Point(30, 5);
-            this.btnShowOrderInfo.Name = "btnShowOrderInfo";
-            this.btnShowOrderInfo.Size = new System.Drawing.Size(267, 104);
-            this.btnShowOrderInfo.TabIndex = 0;
-            this.btnShowOrderInfo.Text = "عرض الطلب";
-            this.btnShowOrderInfo.UseVisualStyleBackColor = false;
-            this.btnShowOrderInfo.Visible = false;
-            this.btnShowOrderInfo.Click += new System.EventHandler(this.btnShowOrderInfo_Click);
+            this.btnSaveandShowOrderInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
+            this.btnSaveandShowOrderInfo.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveandShowOrderInfo.ForeColor = System.Drawing.Color.Black;
+            this.btnSaveandShowOrderInfo.Location = new System.Drawing.Point(30, 5);
+            this.btnSaveandShowOrderInfo.Name = "btnSaveandShowOrderInfo";
+            this.btnSaveandShowOrderInfo.Size = new System.Drawing.Size(267, 104);
+            this.btnSaveandShowOrderInfo.TabIndex = 0;
+            this.btnSaveandShowOrderInfo.Text = "حفظ وعرض الطلب";
+            this.btnSaveandShowOrderInfo.UseVisualStyleBackColor = false;
+            this.btnSaveandShowOrderInfo.Click += new System.EventHandler(this.btnSaveandShowOrderInfo_Click);
             // 
             // lblTotalPrice
             // 
@@ -272,32 +281,6 @@ namespace AwladAli
             this.lblTotalText.Text = ":أجمالي السعر";
             this.lblTotalText.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // btnSaveOrder
-            // 
-            this.btnSaveOrder.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btnSaveOrder.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveOrder.ForeColor = System.Drawing.Color.Transparent;
-            this.btnSaveOrder.Location = new System.Drawing.Point(30, 6);
-            this.btnSaveOrder.Name = "btnSaveOrder";
-            this.btnSaveOrder.Size = new System.Drawing.Size(267, 104);
-            this.btnSaveOrder.TabIndex = 4;
-            this.btnSaveOrder.Text = "حفظ الطلب";
-            this.btnSaveOrder.UseVisualStyleBackColor = false;
-            this.btnSaveOrder.Click += new System.EventHandler(this.btnSaveOrder_Click);
-            // 
-            // btnDeleteOrder
-            // 
-            this.btnDeleteOrder.BackColor = System.Drawing.Color.OrangeRed;
-            this.btnDeleteOrder.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteOrder.ForeColor = System.Drawing.Color.Transparent;
-            this.btnDeleteOrder.Location = new System.Drawing.Point(303, 33);
-            this.btnDeleteOrder.Name = "btnDeleteOrder";
-            this.btnDeleteOrder.Size = new System.Drawing.Size(147, 58);
-            this.btnDeleteOrder.TabIndex = 5;
-            this.btnDeleteOrder.Text = "حذف الطلب";
-            this.btnDeleteOrder.UseVisualStyleBackColor = false;
-            this.btnDeleteOrder.Click += new System.EventHandler(this.btnDeleteOrder_Click);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -316,10 +299,10 @@ namespace AwladAli
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.pnlMainContainer.ResumeLayout(false);
             this.pnlMainContainer.PerformLayout();
-            this.flpAddonsContainer.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.pnlFooter.ResumeLayout(false);
+            this.pnlFooter.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -334,7 +317,7 @@ namespace AwladAli
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label lblTotalText;
         private System.Windows.Forms.Label lblTotalPrice;
-        private System.Windows.Forms.Button btnShowOrderInfo;
+        private System.Windows.Forms.Button btnSaveandShowOrderInfo;
         private Panel pnlLine;
         private Label label1;
         private Button btnSettings;
@@ -344,7 +327,6 @@ namespace AwladAli
         private FlowLayoutPanel flpAddonsContainer;
         private Panel panel1;
         private Label label3;
-        private Button btnDeleteOrder;
-        private Button btnSaveOrder;
+        private LinkLabel llReset;
     }
 }

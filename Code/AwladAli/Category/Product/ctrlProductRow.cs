@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AwladAli_Buisness;
+using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace AwladAli.Product
@@ -9,6 +11,8 @@ namespace AwladAli.Product
         // عرف الـ Event فوق في الكلاس
         public event Action OnPriceChanged;
 
+        public int ProductID { get; private set; }
+        private int _sizeIdS, _sizeIdM, _sizeIdL, _sizeIdXl;
 
         public ctrlProductRow()
         {
@@ -26,22 +30,59 @@ namespace AwladAli.Product
             numQuantityXl.Enabled = false;
         }
 
-        // دالة تعبئة البيانات من قاعدة البيانات
-        public void SetInfo(string productName, object priceS, object priceM, object priceL, object priceXl)
+        // تحديث دالة SetInfo لاستقبال الـ IDs
+        public void SetInfo(int productId, string productName,
+                           int idS, object priceS,
+                           int idM, object priceM,
+                           int idL, object priceL,
+                           int idXl, object priceXl)
         {
+            this.ProductID = productId;
             lblProductName.Text = productName;
 
-            // معالجة السعر والحجم S
+            this._sizeIdS = idS;
+            this._sizeIdM = idM;
+            this._sizeIdL = idL;
+            this._sizeIdXl = idXl;
+
             _UpdateSizeUI(chkSelectPriceS, numQuantityS, priceS);
-
-            // معالجة السعر والحجم M
             _UpdateSizeUI(chkSelectPriceM, numQuantityM, priceM);
-
-            // معالجة السعر والحجم L
             _UpdateSizeUI(chkSelectPriceL, numQuantityL, priceL);
-
-            // معالجة السعر والحجم XL
             _UpdateSizeUI(chkSelectPriceXL, numQuantityXl, priceXl);
+        }
+
+        // دالة جديدة لاستخراج الأصناف المختارة من هذا السطر
+        public List<clsOrderDetail> GetSelectedDetails(int orderId)
+        {
+            List<clsOrderDetail> details = new List<clsOrderDetail>();
+
+            // نتحقق من كل حجم لوحده، لو عليه Check والكمية > 0 بنضيفه كسطر منفصل في الفاتورة
+            if (chkSelectPriceS.Checked && numQuantityS.Value > 0)
+                details.Add(_CreateDetail(orderId, _sizeIdS, Convert.ToDecimal(chkSelectPriceS.Text), (int)numQuantityS.Value));
+
+            if (chkSelectPriceM.Checked && numQuantityM.Value > 0)
+                details.Add(_CreateDetail(orderId, _sizeIdM, Convert.ToDecimal(chkSelectPriceM.Text), (int)numQuantityM.Value));
+
+            if (chkSelectPriceL.Checked && numQuantityL.Value > 0)
+                details.Add(_CreateDetail(orderId, _sizeIdL, Convert.ToDecimal(chkSelectPriceL.Text), (int)numQuantityL.Value));
+
+            if (chkSelectPriceXL.Checked && numQuantityXl.Value > 0)
+                details.Add(_CreateDetail(orderId, _sizeIdXl, Convert.ToDecimal(chkSelectPriceXL.Text), (int)numQuantityXl.Value));
+
+            return details;
+        }
+
+        private clsOrderDetail _CreateDetail(int orderId, int sizeId, decimal price, int qty)
+        {
+            return new clsOrderDetail()
+            {
+                OrderID = orderId,
+                ProductID = this.ProductID,
+                SizeID = sizeId,
+                Quantity = qty,
+                UnitPrice = price,
+                ExtraID = null
+            };
         }
 
         // دالة مساعدة لتحديث الواجهة لكل حجم
@@ -60,7 +101,7 @@ namespace AwladAli.Product
                 chk.Visible = false;
                 num.Visible = false;
                 chk.Checked = false;
-                num.Value = 1;
+                num.Value = 0;
             }
         }
 
@@ -149,6 +190,21 @@ namespace AwladAli.Product
             }
             // أي تغيير في الكمية يطلق إشارة تحديث الحسابات
             OnPriceChanged?.Invoke();
+        }
+
+        public void Reset()
+        {
+            // فك تحديد كل المقاسات
+            chkSelectPriceS.Checked = false;
+            chkSelectPriceM.Checked = false;
+            chkSelectPriceL.Checked = false;
+            chkSelectPriceXL.Checked = false;
+
+            // تصفير الكميات (الدوال اللي كتبناها في الـ CheckedChanged هتعطل الـ NumericUpDown أوتوماتيك)
+            numQuantityS.Value = 0;
+            numQuantityM.Value = 0;
+            numQuantityL.Value = 0;
+            numQuantityXl.Value = 0;
         }
     }
 }
