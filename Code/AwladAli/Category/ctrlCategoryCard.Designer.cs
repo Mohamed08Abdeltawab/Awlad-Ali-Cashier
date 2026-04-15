@@ -18,12 +18,12 @@
         private void InitializeComponent()
         {
             this.pnlHeader = new System.Windows.Forms.Panel();
-            this.lblCategoryName = new System.Windows.Forms.Label();
             this.pnlColumnsHeader = new System.Windows.Forms.Panel();
             this.lblHeaderSizes = new System.Windows.Forms.Label();
             this.lblHeaderProduct = new System.Windows.Forms.Label();
             this.flpItemsContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.ctrlProductRow1 = new AwladAli.Product.ctrlProductRow();
+            this.lblCategoryName = new System.Windows.Forms.Label();
             this.pnlHeader.SuspendLayout();
             this.pnlColumnsHeader.SuspendLayout();
             this.flpItemsContainer.SuspendLayout();
@@ -36,21 +36,8 @@
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHeader.Location = new System.Drawing.Point(0, 0);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(800, 50);
+            this.pnlHeader.Size = new System.Drawing.Size(790, 50);
             this.pnlHeader.TabIndex = 2;
-            // 
-            // lblCategoryName
-            // 
-            this.lblCategoryName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblCategoryName.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.lblCategoryName.ForeColor = System.Drawing.Color.White;
-            this.lblCategoryName.Image = global::AwladAli.Properties.Resources.Background03;
-            this.lblCategoryName.Location = new System.Drawing.Point(0, 0);
-            this.lblCategoryName.Name = "lblCategoryName";
-            this.lblCategoryName.Size = new System.Drawing.Size(800, 50);
-            this.lblCategoryName.TabIndex = 0;
-            this.lblCategoryName.Text = "اسم القسم";
-            this.lblCategoryName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pnlColumnsHeader
             // 
@@ -60,7 +47,7 @@
             this.pnlColumnsHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlColumnsHeader.Location = new System.Drawing.Point(0, 50);
             this.pnlColumnsHeader.Name = "pnlColumnsHeader";
-            this.pnlColumnsHeader.Size = new System.Drawing.Size(800, 40);
+            this.pnlColumnsHeader.Size = new System.Drawing.Size(790, 40);
             this.pnlColumnsHeader.TabIndex = 1;
             // 
             // lblHeaderSizes
@@ -90,7 +77,7 @@
             this.flpItemsContainer.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpItemsContainer.Location = new System.Drawing.Point(0, 90);
             this.flpItemsContainer.Name = "flpItemsContainer";
-            this.flpItemsContainer.Size = new System.Drawing.Size(800, 492);
+            this.flpItemsContainer.Size = new System.Drawing.Size(790, 492);
             this.flpItemsContainer.TabIndex = 0;
             this.flpItemsContainer.WrapContents = false;
             // 
@@ -101,6 +88,19 @@
             this.ctrlProductRow1.Name = "ctrlProductRow1";
             this.ctrlProductRow1.Size = new System.Drawing.Size(782, 40);
             this.ctrlProductRow1.TabIndex = 0;
+            // 
+            // lblCategoryName
+            // 
+            this.lblCategoryName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblCategoryName.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.lblCategoryName.ForeColor = System.Drawing.Color.White;
+            this.lblCategoryName.Image = global::AwladAli.Properties.Resources.CategoryBackground1;
+            this.lblCategoryName.Location = new System.Drawing.Point(0, 0);
+            this.lblCategoryName.Name = "lblCategoryName";
+            this.lblCategoryName.Size = new System.Drawing.Size(790, 50);
+            this.lblCategoryName.TabIndex = 0;
+            this.lblCategoryName.Text = "اسم القسم";
+            this.lblCategoryName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ctrlCategoryCard
             // 

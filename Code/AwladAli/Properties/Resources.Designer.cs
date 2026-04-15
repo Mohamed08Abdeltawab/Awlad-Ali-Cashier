@@ -73,36 +73,6 @@ namespace AwladAli.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Background01 {
-            get {
-                object obj = ResourceManager.GetObject("Background01", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Background03 {
-            get {
-                object obj = ResourceManager.GetObject("Background03", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Background04 {
-            get {
-                object obj = ResourceManager.GetObject("Background04", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Cashier_512 {
             get {
                 object obj = ResourceManager.GetObject("Cashier 512", resourceCulture);
@@ -116,6 +86,26 @@ namespace AwladAli.Properties {
         internal static System.Drawing.Bitmap Category_32 {
             get {
                 object obj = ResourceManager.GetObject("Category 32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap CategoryBackground {
+            get {
+                object obj = ResourceManager.GetObject("CategoryBackground", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap CategoryBackground1 {
+            get {
+                object obj = ResourceManager.GetObject("CategoryBackground1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -166,6 +156,16 @@ namespace AwladAli.Properties {
         internal static System.Drawing.Bitmap food_32 {
             get {
                 object obj = ResourceManager.GetObject("food 32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap header_backgrond {
+            get {
+                object obj = ResourceManager.GetObject("header backgrond", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -276,6 +276,16 @@ namespace AwladAli.Properties {
         internal static System.Drawing.Bitmap setting_64 {
             get {
                 object obj = ResourceManager.GetObject("setting 64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap settingbtn_background {
+            get {
+                object obj = ResourceManager.GetObject("settingbtn background", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
