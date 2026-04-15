@@ -29,6 +29,7 @@
             this.flpOrderItems = new System.Windows.Forms.FlowLayoutPanel();
             this.ctrlOrderLine1 = new AwladAli.Bill.ctrlOrderLine();
             this.pnlBillFooter = new System.Windows.Forms.Panel();
+            this.btnIgnore = new System.Windows.Forms.Button();
             this.btnSaveAndPrint = new System.Windows.Forms.Button();
             this.lblTotalAmount = new System.Windows.Forms.Label();
             this.labelTotalText = new System.Windows.Forms.Label();
@@ -160,6 +161,7 @@
             // pnlBillFooter
             // 
             this.pnlBillFooter.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlBillFooter.Controls.Add(this.btnIgnore);
             this.pnlBillFooter.Controls.Add(this.btnSaveAndPrint);
             this.pnlBillFooter.Controls.Add(this.lblTotalAmount);
             this.pnlBillFooter.Controls.Add(this.labelTotalText);
@@ -169,15 +171,29 @@
             this.pnlBillFooter.Size = new System.Drawing.Size(450, 130);
             this.pnlBillFooter.TabIndex = 2;
             // 
+            // btnIgnore
+            // 
+            this.btnIgnore.BackColor = System.Drawing.Color.Red;
+            this.btnIgnore.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnIgnore.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btnIgnore.ForeColor = System.Drawing.Color.White;
+            this.btnIgnore.Location = new System.Drawing.Point(284, 73);
+            this.btnIgnore.Name = "btnIgnore";
+            this.btnIgnore.Size = new System.Drawing.Size(115, 45);
+            this.btnIgnore.TabIndex = 3;
+            this.btnIgnore.Text = "حذف والغاء";
+            this.btnIgnore.UseVisualStyleBackColor = false;
+            this.btnIgnore.Click += new System.EventHandler(this.btnIgnore_Click);
+            // 
             // btnSaveAndPrint
             // 
             this.btnSaveAndPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
             this.btnSaveAndPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSaveAndPrint.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.btnSaveAndPrint.ForeColor = System.Drawing.Color.White;
-            this.btnSaveAndPrint.Location = new System.Drawing.Point(117, 70);
+            this.btnSaveAndPrint.Location = new System.Drawing.Point(68, 73);
             this.btnSaveAndPrint.Name = "btnSaveAndPrint";
-            this.btnSaveAndPrint.Size = new System.Drawing.Size(200, 45);
+            this.btnSaveAndPrint.Size = new System.Drawing.Size(199, 45);
             this.btnSaveAndPrint.TabIndex = 2;
             this.btnSaveAndPrint.Text = "حفظ وطباعة";
             this.btnSaveAndPrint.UseVisualStyleBackColor = false;
@@ -218,6 +234,7 @@
             this.Name = "frmOrderInfo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "معاينة الفاتورة";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmOrderInfo_FormClosing);
             this.Load += new System.EventHandler(this.frmOrderInfo_Load);
             this.pnlBillHeader.ResumeLayout(false);
             this.pnlOrderItemsHeader.ResumeLayout(false);
@@ -245,5 +262,6 @@
         private System.Windows.Forms.Label lblH_Qty;
         private System.Windows.Forms.Label lblH_Name;
         private ctrlOrderLine ctrlOrderLine1;
+        private System.Windows.Forms.Button btnIgnore;
     }
 }

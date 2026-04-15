@@ -72,5 +72,11 @@ namespace AwladAli_Buisness
         {
             return clsOrderData.GetAllOrders();
         }
+
+        public static bool DeleteOrder(int OrderID)
+        {
+            // نطلب من طبقة البيانات تنفيذ الحذف
+            return clsOrderData.DeleteOrder(OrderID);
+        }
     }
 }

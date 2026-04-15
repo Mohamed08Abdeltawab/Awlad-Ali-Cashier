@@ -82,6 +82,53 @@ namespace AwladAli_Data
             return dt;
         }
 
+
+        public static DataTable GetOrderItemsForPrinting(int OrderID)
+        {
+            DataTable dt = new DataTable();
+
+            try
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    connection.Open();
+
+                    // Query احترافية تجيب كل تفاصيل الطباعة في سطر واحد
+                    string query = @"
+                SELECT 
+                    OD.DetailID,
+                    CASE 
+                        WHEN OD.ProductID IS NOT NULL THEN P.ProductName || ' (' || COALESCE(PS.SizeName, '') || ')'
+                        WHEN OD.ExtraID IS NOT NULL THEN 'إضافة: ' || E.ExtraName
+                        ELSE 'صنف غير معروف'
+                    END AS ItemDescription,
+                    OD.Quantity,
+                    OD.UnitPrice,
+                    (OD.Quantity * OD.UnitPrice) AS TotalLinePrice
+                FROM OrderDetails OD
+                LEFT JOIN Products P ON OD.ProductID = P.ProductID
+                LEFT JOIN ProductSizes PS ON OD.SizeID = PS.SizeID
+                LEFT JOIN Extras E ON OD.ExtraID = E.ExtraID
+                WHERE OD.OrderID = @OrderID";
+
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@OrderID", OrderID);
+                        using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(command))
+                        {
+                            adapter.Fill(dt);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // يُفضل دائماً تسجيل الخطأ هنا للديجاج
+            }
+
+            return dt;
+        }
+
         /// <summary>
         /// Retrieves a single record from OrderDetails by its primary key (DetailID).
         /// </summary>

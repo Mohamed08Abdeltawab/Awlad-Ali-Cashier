@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Data.SqlClient;
 using System.Data.SQLite;
 
 namespace AwladAli_Data
@@ -87,6 +88,39 @@ namespace AwladAli_Data
             catch (Exception ex) { }
 
             return dt;
+        }
+
+
+        public static bool DeleteOrder(int OrderID)
+        {
+            int rowsAffected = 0;
+            // نستخدم الـ Connection والـ Command المعتاد عندك
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            // كود الـ SQL بيمسح من التفاصيل أولاً ثم الأوردر
+            string query = @"DELETE FROM OrderDetails WHERE OrderID = @OrderID;
+                     DELETE FROM Orders WHERE OrderID = @OrderID;";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@OrderID", OrderID);
+
+            try
+            {
+                connection.Open();
+                rowsAffected = command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                // Log your error here
+                return false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            // rowsAffected المفروض تكون > 0 لو المسح تم بنجاح
+            return (rowsAffected > 0);
         }
     }
 }

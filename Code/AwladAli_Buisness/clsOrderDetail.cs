@@ -103,5 +103,10 @@ namespace AwladAli_Buisness
         {
             return clsOrderDetailData.GetOrderDetailsByOrderID(OrderID);
         }
+
+        public static DataTable GetOrderItemsForPrinting(int OrderID)
+        {
+            return clsOrderDetailData.GetOrderItemsForPrinting(OrderID);
+        }
     }
 }
