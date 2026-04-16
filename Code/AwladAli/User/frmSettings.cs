@@ -16,5 +16,25 @@ namespace AwladAli.User
         {
             InitializeComponent();
         }
+
+        private void btnUsersList_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCategoriesList_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnExtraLists_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
