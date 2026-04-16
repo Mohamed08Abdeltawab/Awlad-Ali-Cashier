@@ -118,11 +118,6 @@ namespace AwladAli.Category
                 cbShowAllCategoryName.Items.Add(row["CategoryName"].ToString());
             }
 
-            // 4. If we are in Update mode, set the selected item to the current category name
-            if (_Mode == enMode.Update)
-            {
-                cbShowAllCategoryName.Text = _Category.CategoryName;
-            }
         }
 
         private void btnAddNewProduct_Click(object sender, EventArgs e)

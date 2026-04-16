@@ -110,12 +110,6 @@
     <Compile Include="Bill\frmOrderInfo.Designer.cs">
       <DependentUpon>frmOrderInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Bill\frmtestControls.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Bill\frmtestControls.Designer.cs">
-      <DependentUpon>frmtestControls.cs</DependentUpon>
-    </Compile>
     <Compile Include="Category\Extra\ctrlExtraRow.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -133,6 +127,12 @@
     </Compile>
     <Compile Include="Category\frmAddUpdateCategory.Designer.cs">
       <DependentUpon>frmAddUpdateCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Category\frmListCategories.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Category\frmListCategories.Designer.cs">
+      <DependentUpon>frmListCategories.cs</DependentUpon>
     </Compile>
     <Compile Include="Category\Product\frmAddUpdateProduct.cs">
       <SubType>Form</SubType>
@@ -203,9 +203,6 @@
     <EmbeddedResource Include="Bill\frmOrderInfo.resx">
       <DependentUpon>frmOrderInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Bill\frmtestControls.resx">
-      <DependentUpon>frmtestControls.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Category\Extra\ctrlExtraRow.resx">
       <DependentUpon>ctrlExtraRow.cs</DependentUpon>
     </EmbeddedResource>
@@ -214,6 +211,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Category\frmAddUpdateCategory.resx">
       <DependentUpon>frmAddUpdateCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Category\frmListCategories.resx">
+      <DependentUpon>frmListCategories.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Category\Product\frmAddUpdateProduct.resx">
       <DependentUpon>frmAddUpdateProduct.cs</DependentUpon>
@@ -362,6 +362,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\add 64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\foods 512.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
