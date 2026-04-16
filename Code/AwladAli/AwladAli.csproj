@@ -122,6 +122,12 @@
     <Compile Include="Category\Extra\ctrlExtraRow.Designer.cs">
       <DependentUpon>ctrlExtraRow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Category\Extra\frmAddUpdateExtra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Category\Extra\frmAddUpdateExtra.Designer.cs">
+      <DependentUpon>frmAddUpdateExtra.cs</DependentUpon>
+    </Compile>
     <Compile Include="Category\frmAddUpdateCategory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,6 +202,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Category\Extra\ctrlExtraRow.resx">
       <DependentUpon>ctrlExtraRow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Category\Extra\frmAddUpdateExtra.resx">
+      <DependentUpon>frmAddUpdateExtra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Category\frmAddUpdateCategory.resx">
       <DependentUpon>frmAddUpdateCategory.cs</DependentUpon>
@@ -323,6 +332,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\CategoryBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\money2 32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
