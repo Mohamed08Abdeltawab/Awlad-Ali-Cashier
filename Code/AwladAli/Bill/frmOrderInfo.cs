@@ -78,57 +78,96 @@ namespace AwladAli.Bill
         // 2. الدالة المسؤولة عن "رسم" شكل الفاتورة
         private void PrintOrderPage(object sender, PrintPageEventArgs e)
         {
-            Graphics graphics = e.Graphics;
-            Font fontTitle = new Font("Arial", 14, FontStyle.Bold);
-            Font fontBody = new Font("Arial", 10);
-            Font fontHeader = new Font("Arial", 10, FontStyle.Bold);
+            Graphics g = e.Graphics;
 
-            float startX = 10;
-            float startY = 10;
-            float Offset = 40;
+            Font fontTitle = new Font("Tahoma", 16, FontStyle.Bold);
+            Font fontHeader = new Font("Tahoma", 12, FontStyle.Bold);
+            Font fontBody = new Font("Tahoma", 11);
 
-            // رسم اللوجو أو اسم المطعم
-            graphics.DrawString("Awlad Ali - أولاد علي", fontTitle, Brushes.Black, startX + 50, startY);
-            graphics.DrawString("رقم الفاتورة: " + _OrderID, fontBody, Brushes.Black, startX, startY + Offset);
-            Offset += 20;
-            graphics.DrawString("التاريخ: " + DateTime.Now.ToString("yyyy-MM-dd HH:mm"), fontBody, Brushes.Black, startX, startY + Offset);
-            Offset += 30;
+            float pageWidth = e.PageBounds.Width;
+            float margin = 20;
+            float y = 20;
+            float rowHeight = 30;
 
-            // رسم خط فاصل
-            graphics.DrawString("----------------------------------------------------------", fontBody, Brushes.Black, startX, startY + Offset);
-            Offset += 20;
+            float usableWidth = pageWidth - (margin * 2);
 
-            // رسم العناوين
-            graphics.DrawString("الصنف", fontHeader, Brushes.Black, startX, startY + Offset);
-            graphics.DrawString("الكمية", fontHeader, Brushes.Black, startX + 150, startY + Offset);
-            graphics.DrawString("السعر", fontHeader, Brushes.Black, startX + 220, startY + Offset);
-            Offset += 20;
+            StringFormat right = new StringFormat() { Alignment = StringAlignment.Far };
+            StringFormat center = new StringFormat() { Alignment = StringAlignment.Center };
 
-            // رسم الأصناف (Loop on Order Details)
+            // ===== Header =====
+            g.DrawString("أولاد علي - Awlad Ali", fontTitle, Brushes.Black, pageWidth / 2, y, center);
+            y += rowHeight + 10;
+
+            g.DrawString($"رقم الفاتورة: {_OrderID}", fontBody, Brushes.Black, pageWidth - margin, y, right);
+            y += rowHeight;
+
+            g.DrawString($"التاريخ: {DateTime.Now:yyyy-MM-dd HH:mm}", fontBody, Brushes.Black, pageWidth - margin, y, right);
+            y += rowHeight + 10;
+
+            g.DrawLine(Pens.Black, margin, y, pageWidth - margin, y);
+            y += 10;
+
+            // ===== Column Widths =====
+            float colItemWidth = usableWidth * 0.40f;
+            float colPriceWidth = usableWidth * 0.20f;
+            float colQtyWidth = usableWidth * 0.15f;
+            float colTotalWidth = usableWidth * 0.25f;
+
+            // ===== RTL Positions (ابدأ من اليمين) =====
+            float x = pageWidth - margin;
+
+            float colItemX = x;                    // الصنف (أول عمود يمين)
+            x -= colItemWidth;
+
+            float colPriceX = x;
+            x -= colPriceWidth;
+
+            float colQtyX = x;
+            x -= colQtyWidth;
+
+            float colTotalX = x;                   // آخر عمود شمال
+
+            // ===== Headers =====
+            g.DrawString("الصنف", fontHeader, Brushes.Black, colItemX, y, right);
+            g.DrawString("السعر", fontHeader, Brushes.Black, colPriceX, y, right);
+            g.DrawString("الكمية", fontHeader, Brushes.Black, colQtyX, y, right);
+            g.DrawString("الإجمالي", fontHeader, Brushes.Black, colTotalX, y, right);
+
+            y += rowHeight;
+            g.DrawLine(Pens.Black, margin, y, pageWidth - margin, y);
+            y += 10;
+
+            // ===== Items =====
             DataTable dtItems = clsOrderDetail.GetOrderItemsForPrinting(_OrderID);
+
             foreach (DataRow row in dtItems.Rows)
             {
                 string name = row["ItemDescription"].ToString();
-                string qty = row["Quantity"].ToString();
-                string price = Convert.ToDecimal(row["UnitPrice"]).ToString("0.00");
+                int qty = Convert.ToInt32(row["Quantity"]);
+                decimal price = Convert.ToDecimal(row["UnitPrice"]);
+                decimal total = qty * price;
 
-                graphics.DrawString(name, fontBody, Brushes.Black, startX, startY + Offset);
-                graphics.DrawString(qty, fontBody, Brushes.Black, startX + 150, startY + Offset);
-                graphics.DrawString(price, fontBody, Brushes.Black, startX + 220, startY + Offset);
+                g.DrawString(name, fontBody, Brushes.Black, colItemX, y, right);
+                g.DrawString(price.ToString("0.00"), fontBody, Brushes.Black, colPriceX, y, right);
+                g.DrawString(qty.ToString(), fontBody, Brushes.Black, colQtyX, y, right);
+                g.DrawString(total.ToString("0.00"), fontBody, Brushes.Black, colTotalX, y, right);
 
-                Offset += 20;
+                y += rowHeight;
             }
 
-            Offset += 20;
-            graphics.DrawString("----------------------------------------------------------", fontBody, Brushes.Black, startX, startY + Offset);
-            Offset += 20;
+            y += 10;
+            g.DrawLine(Pens.Black, margin, y, pageWidth - margin, y);
+            y += rowHeight;
 
-            // رسم الإجمالي النهائي
-            graphics.DrawString("الإجمالي النهائي: " + lblTotalAmount.Text, fontTitle, Brushes.Black, startX, startY + Offset);
+            // ===== Total =====
+            g.DrawString($"الإجمالي: {lblTotalAmount.Text} ج.م", fontTitle, Brushes.Black, pageWidth - margin, y, right);
 
-            Offset += 40;
-            graphics.DrawString("شكراً لزيارتكم - أولاد علي", fontBody, Brushes.Black, startX + 60, startY + Offset);
+            y += rowHeight + 10;
+
+            // ===== Footer =====
+            g.DrawString("شكراً لزيارتكم", fontBody, Brushes.Black, pageWidth / 2, y, center);
         }
+
 
 
         private void btnSaveAndPrint_Click(object sender, EventArgs e)

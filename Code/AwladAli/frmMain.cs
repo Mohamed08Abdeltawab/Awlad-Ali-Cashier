@@ -37,8 +37,8 @@ namespace AwladAli
         private void _LoadRestaurantMenu()
         {
             flpProductCards.Controls.Clear();
+            lblTotalPrice.Text = "0.00";
 
-            
             DataTable dtCategories = clsCategory.GetAllCategories();
 
             if (dtCategories == null || dtCategories.Rows.Count == 0)
