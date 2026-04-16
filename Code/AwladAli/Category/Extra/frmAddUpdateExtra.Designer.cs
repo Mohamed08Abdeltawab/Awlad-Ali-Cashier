@@ -28,32 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtSmallSize = new System.Windows.Forms.TextBox();
+            this.components = new System.ComponentModel.Container();
+            this.txtPrice = new System.Windows.Forms.TextBox();
             this.txtFoodName = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblExtraID = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
-            // txtSmallSize
+            // txtPrice
             // 
-            this.txtSmallSize.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSmallSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSmallSize.Location = new System.Drawing.Point(268, 155);
-            this.txtSmallSize.Name = "txtSmallSize";
-            this.txtSmallSize.Size = new System.Drawing.Size(220, 31);
-            this.txtSmallSize.TabIndex = 235;
-            this.txtSmallSize.Validating += new System.ComponentModel.CancelEventHandler(this.txtSmallSize_Validating);
+            this.txtPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPrice.Location = new System.Drawing.Point(268, 155);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.Size = new System.Drawing.Size(220, 31);
+            this.txtPrice.TabIndex = 235;
+            this.txtPrice.Validating += new System.ComponentModel.CancelEventHandler(this.txtSmallSize_Validating);
             // 
             // txtFoodName
             // 
@@ -98,16 +101,16 @@
             this.lblTitle.Text = "اضافة اضافة جديده";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label6
+            // lblExtraID
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(176, 87);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(65, 25);
-            this.label6.TabIndex = 245;
-            this.label6.Text = "[???]";
+            this.lblExtraID.AutoSize = true;
+            this.lblExtraID.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblExtraID.Location = new System.Drawing.Point(176, 87);
+            this.lblExtraID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblExtraID.Name = "lblExtraID";
+            this.lblExtraID.Size = new System.Drawing.Size(65, 25);
+            this.lblExtraID.TabIndex = 245;
+            this.lblExtraID.Text = "[???]";
             // 
             // label5
             // 
@@ -152,7 +155,6 @@
             // 
             // btnSave
             // 
-            this.btnSave.Enabled = false;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSave.Image = global::AwladAli.Properties.Resources.Save_32;
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -163,6 +165,7 @@
             this.btnSave.TabIndex = 246;
             this.btnSave.Text = "حفظ";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnClose
             // 
@@ -178,6 +181,11 @@
             this.btnClose.TabIndex = 247;
             this.btnClose.Text = "ألغاء";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // frmAddUpdateExtra
             // 
@@ -186,10 +194,10 @@
             this.ClientSize = new System.Drawing.Size(666, 294);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.lblExtraID);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.txtSmallSize);
+            this.Controls.Add(this.txtPrice);
             this.Controls.Add(this.txtFoodName);
             this.Controls.Add(this.pictureBox9);
             this.Controls.Add(this.label10);
@@ -200,9 +208,11 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmAddUpdateExtra";
             this.Text = "frmAddUpdateExtra";
+            this.Load += new System.EventHandler(this.frmAddUpdateExtra_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -210,17 +220,18 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtSmallSize;
+        private System.Windows.Forms.TextBox txtPrice;
         private System.Windows.Forms.TextBox txtFoodName;
         private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblExtraID;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
