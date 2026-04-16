@@ -192,7 +192,13 @@ namespace AwladAli_Data
             {
                 using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
                 {
-                    string query = "SELECT * FROM Users";
+                    string query = @"SELECT UserID, UserName,
+                                      CASE Role 
+                                        WHEN 0 THEN 'Admin' 
+                                        WHEN 1 THEN 'Cashier' 
+                                        ELSE 'Unknown' 
+                                      END AS RoleName
+                                        FROM Users";
 
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {

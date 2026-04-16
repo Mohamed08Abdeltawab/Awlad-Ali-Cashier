@@ -73,6 +73,16 @@ namespace AwladAli.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap add_64 {
+            get {
+                object obj = ResourceManager.GetObject("add 64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Cashier_512 {
             get {
                 object obj = ResourceManager.GetObject("Cashier 512", resourceCulture);
@@ -356,6 +366,16 @@ namespace AwladAli.Properties {
         internal static System.Drawing.Bitmap small_32 {
             get {
                 object obj = ResourceManager.GetObject("small 32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap users_512 {
+            get {
+                object obj = ResourceManager.GetObject("users 512", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

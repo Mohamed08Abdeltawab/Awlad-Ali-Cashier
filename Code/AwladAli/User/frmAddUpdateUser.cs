@@ -111,6 +111,11 @@ namespace AwladAli.User
                 e.Cancel = true;
                 errorProvider1.SetError(txtPassword, "Password cannot be blank");
             }
+            else if(txtPassword.Text.Trim().Length < 4)
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtPassword, "Password must be at least 4 characters long");
+            }
             else
             {
                 errorProvider1.SetError(txtPassword, null);
