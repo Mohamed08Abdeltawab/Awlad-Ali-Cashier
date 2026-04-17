@@ -13,6 +13,7 @@ namespace AwladAli.Bill
         private int _OrderID = -1;
         private clsOrder _Order;
 
+
         private bool _IsOrderConfirmed = false;
 
         PrintDocument printDoc = new PrintDocument();

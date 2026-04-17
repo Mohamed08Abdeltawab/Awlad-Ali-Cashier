@@ -86,7 +86,7 @@ namespace AwladAli.User
             this.label7 = new System.Windows.Forms.Label();
             this.dgvOrders = new System.Windows.Forms.DataGridView();
             this.cmsOrders = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblGridTitle = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label18 = new System.Windows.Forms.Label();
@@ -903,17 +903,18 @@ namespace AwladAli.User
             // cmsOrders
             // 
             this.cmsOrders.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.deleteToolStripMenuItem});
+            this.showToolStripMenuItem});
             this.cmsOrders.Name = "contextMenuStrip1";
-            this.cmsOrders.Size = new System.Drawing.Size(153, 42);
+            this.cmsOrders.Size = new System.Drawing.Size(197, 64);
             // 
-            // deleteToolStripMenuItem
+            // showToolStripMenuItem
             // 
-            this.deleteToolStripMenuItem.Image = global::AwladAli.Properties.Resources.show_32;
-            this.deleteToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(152, 38);
-            this.deleteToolStripMenuItem.Text = "عرض الطلب";
+            this.showToolStripMenuItem.Image = global::AwladAli.Properties.Resources.show_32;
+            this.showToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.showToolStripMenuItem.Name = "showToolStripMenuItem";
+            this.showToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.showToolStripMenuItem.Text = "عرض الطلب";
+            this.showToolStripMenuItem.Click += new System.EventHandler(this.showToolStripMenuItem_Click);
             // 
             // lblGridTitle
             // 
@@ -1158,6 +1159,6 @@ namespace AwladAli.User
         private Label label12;
         private Button btnClose;
         private ContextMenuStrip cmsOrders;
-        private ToolStripMenuItem deleteToolStripMenuItem;
+        private ToolStripMenuItem showToolStripMenuItem;
     }
 }
