@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListExtra));
             this.lblRecordsCount = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.cbFilterBy = new System.Windows.Forms.ComboBox();
@@ -38,10 +39,10 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.dgvExtra = new System.Windows.Forms.DataGridView();
             this.cmsExtra = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.cbRole = new System.Windows.Forms.ComboBox();
             this.AddNewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cbRole = new System.Windows.Forms.ComboBox();
             this.btnAddExtra = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.pbPersonImage = new System.Windows.Forms.PictureBox();
@@ -151,6 +152,33 @@
             this.cmsExtra.Name = "contextMenuStrip1";
             this.cmsExtra.Size = new System.Drawing.Size(186, 118);
             // 
+            // AddNewToolStripMenuItem
+            // 
+            this.AddNewToolStripMenuItem.Image = global::AwladAli.Properties.Resources.add_32;
+            this.AddNewToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.AddNewToolStripMenuItem.Name = "AddNewToolStripMenuItem";
+            this.AddNewToolStripMenuItem.Size = new System.Drawing.Size(185, 38);
+            this.AddNewToolStripMenuItem.Text = "أضافة اضافة جديده";
+            this.AddNewToolStripMenuItem.Click += new System.EventHandler(this.AddNewToolStripMenuItem_Click);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Image = global::AwladAli.Properties.Resources.edit2_32;
+            this.editToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(185, 38);
+            this.editToolStripMenuItem.Text = "تعديل";
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Image = global::AwladAli.Properties.Resources.remove_32;
+            this.deleteToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(185, 38);
+            this.deleteToolStripMenuItem.Text = "حذف";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
             // cbRole
             // 
             this.cbRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -164,33 +192,6 @@
             this.cbRole.Size = new System.Drawing.Size(138, 28);
             this.cbRole.TabIndex = 251;
             this.cbRole.Visible = false;
-            // 
-            // AddNewToolStripMenuItem
-            // 
-            this.AddNewToolStripMenuItem.Image = global::AwladAli.Properties.Resources.add_32;
-            this.AddNewToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.AddNewToolStripMenuItem.Name = "AddNewToolStripMenuItem";
-            this.AddNewToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
-            this.AddNewToolStripMenuItem.Text = "أضافة اضافة جديده";
-            this.AddNewToolStripMenuItem.Click += new System.EventHandler(this.AddNewToolStripMenuItem_Click);
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.Image = global::AwladAli.Properties.Resources.edit2_32;
-            this.editToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
-            this.editToolStripMenuItem.Text = "تعديل";
-            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
-            // 
-            // deleteToolStripMenuItem
-            // 
-            this.deleteToolStripMenuItem.Image = global::AwladAli.Properties.Resources.remove_32;
-            this.deleteToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
-            this.deleteToolStripMenuItem.Text = "حذف";
-            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // btnAddExtra
             // 
@@ -250,6 +251,7 @@
             this.Controls.Add(this.cbRole);
             this.Controls.Add(this.pbPersonImage);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmListExtra";
             this.Text = "frmListExtra";

@@ -31,7 +31,10 @@ namespace AwladAli
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.pnlMainContainer = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.flpAddonsContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.flpProductCards = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlFooter = new System.Windows.Forms.Panel();
@@ -42,17 +45,15 @@ namespace AwladAli
             this.lblTotalPrice = new System.Windows.Forms.Label();
             this.lblTotalText = new System.Windows.Forms.Label();
             this.pnlHeader = new System.Windows.Forms.Panel();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.lblUsername = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.btnSettings = new System.Windows.Forms.Button();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.pnlMainContainer.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.pnlFooter.SuspendLayout();
             this.pnlHeader.SuspendLayout();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,6 +68,30 @@ namespace AwladAli
             this.pnlMainContainer.Name = "pnlMainContainer";
             this.pnlMainContainer.Size = new System.Drawing.Size(1924, 972);
             this.pnlMainContainer.TabIndex = 2;
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel1.BackColor = System.Drawing.Color.Red;
+            this.panel1.BackgroundImage = global::AwladAli.Properties.Resources.CategoryBackground;
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel1.Location = new System.Drawing.Point(1666, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(255, 98);
+            this.panel1.TabIndex = 0;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label3.Location = new System.Drawing.Point(71, 29);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(125, 39);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "الاضافات";
             // 
             // flpAddonsContainer
             // 
@@ -193,6 +218,17 @@ namespace AwladAli
             this.pnlHeader.Size = new System.Drawing.Size(1924, 89);
             this.pnlHeader.TabIndex = 1;
             // 
+            // pictureBox8
+            // 
+            this.pictureBox8.BackColor = System.Drawing.Color.White;
+            this.pictureBox8.Image = global::AwladAli.Properties.Resources.Person_32;
+            this.pictureBox8.Location = new System.Drawing.Point(1449, 31);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(31, 26);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox8.TabIndex = 129;
+            this.pictureBox8.TabStop = false;
+            // 
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
@@ -215,52 +251,6 @@ namespace AwladAli
             this.label2.TabIndex = 122;
             this.label2.Text = ":اسم المستخدم";
             // 
-            // lblTitle
-            // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.ForeColor = System.Drawing.Color.White;
-            this.lblTitle.Location = new System.Drawing.Point(809, 20);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(274, 37);
-            this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "نظام كاشير - أولاد علي";
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel1.BackColor = System.Drawing.Color.Red;
-            this.panel1.BackgroundImage = global::AwladAli.Properties.Resources.CategoryBackground;
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(1666, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(255, 98);
-            this.panel1.TabIndex = 0;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Location = new System.Drawing.Point(71, 29);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(125, 39);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "الاضافات";
-            // 
-            // pictureBox8
-            // 
-            this.pictureBox8.BackColor = System.Drawing.Color.White;
-            this.pictureBox8.Image = global::AwladAli.Properties.Resources.Person_32;
-            this.pictureBox8.Location = new System.Drawing.Point(1449, 31);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(31, 26);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox8.TabIndex = 129;
-            this.pictureBox8.TabStop = false;
-            // 
             // btnSettings
             // 
             this.btnSettings.BackColor = System.Drawing.Color.Transparent;
@@ -282,6 +272,17 @@ namespace AwladAli
             this.btnSettings.UseVisualStyleBackColor = false;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.ForeColor = System.Drawing.Color.White;
+            this.lblTitle.Location = new System.Drawing.Point(809, 20);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(274, 37);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = "نظام كاشير - أولاد علي";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -290,6 +291,7 @@ namespace AwladAli
             this.Controls.Add(this.pnlMainContainer);
             this.Controls.Add(this.pnlHeader);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMain";
             this.Text = "Awlad Ali - POS System";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -297,12 +299,12 @@ namespace AwladAli
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.pnlMainContainer.ResumeLayout(false);
             this.pnlMainContainer.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.pnlFooter.ResumeLayout(false);
             this.pnlFooter.PerformLayout();
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.ResumeLayout(false);
 
