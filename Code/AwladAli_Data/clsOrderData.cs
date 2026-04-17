@@ -99,13 +99,13 @@ namespace AwladAli_Data
             try
             {
                 // استخدام Using للـ Connection يضمن إغلاقه تلقائياً
-                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
                 {
                     // كود الـ SQL بيمسح من التفاصيل أولاً (Child) ثم الأوردر (Parent)
                     string query = @"DELETE FROM OrderDetails WHERE OrderID = @OrderID;
                              DELETE FROM Orders WHERE OrderID = @OrderID;";
 
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@OrderID", OrderID);
 

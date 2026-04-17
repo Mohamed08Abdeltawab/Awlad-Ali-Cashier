@@ -20,7 +20,6 @@ namespace AwladAli.Bill
             set { _IsShowOrder = value; }
         }
 
-        private bool _IsOrderConfirmed = false;
 
         PrintDocument printDoc = new PrintDocument();
 
@@ -197,7 +196,6 @@ namespace AwladAli.Bill
             preview.Document = printDoc;
             preview.ShowDialog(); // للمعاينة قبل الطباعة (اختياري)
 
-            _IsOrderConfirmed = true;
             this.Close();
         }
 
@@ -208,15 +206,16 @@ namespace AwladAli.Bill
 
         private void frmOrderInfo_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (!_IsOrderConfirmed)
+            
+            if (clsOrder.DeleteOrder(_OrderID))
             {
-                // 1. حذف الأوردر وتفاصيله من الداتا بيز
-                // لاحظ أن الـ Delete في الـ Business Layer لازم تمسح الـ Details الأول ثم الـ Order
-                if (clsOrder.DeleteOrder(_OrderID))
-                {
-                    MessageBox.Show("تم إلغاء الطلب وحذفه من النظام.", "تنبيه",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+                MessageBox.Show("تم إلغاء الطلب وحذفه من النظام.", "تنبيه",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                MessageBox.Show(Text = "حدث خطأ أثناء إلغاء الطلب. الرجاء المحاولة مرة أخرى.", "خطأ",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
