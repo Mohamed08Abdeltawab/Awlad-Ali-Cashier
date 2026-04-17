@@ -138,14 +138,15 @@ namespace AwladAli.User
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmAddUpdateUser Frm1 = new frmAddUpdateUser((int)dgvUsers.CurrentRow.Cells[0].Value);
+            int UserID = Convert.ToInt32(dgvUsers.CurrentRow.Cells[0].Value);
+            frmAddUpdateUser Frm1 = new frmAddUpdateUser(UserID);
             Frm1.ShowDialog();
             frmListUsers_Load(null, null);
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int UserID = (int)dgvUsers.CurrentRow.Cells[0].Value;
+            int UserID = Convert.ToInt32(dgvUsers.CurrentRow.Cells[0].Value);
             if (clsUser.DeleteUser(UserID))
             {
                 MessageBox.Show("User has been deleted successfully", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);

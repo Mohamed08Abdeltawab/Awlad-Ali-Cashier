@@ -110,17 +110,37 @@ namespace AwladAli_Data
             {
                 using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
                 {
-                    string query = "DELETE FROM Products WHERE ProductID = @ProductID";
+                    connection.Open();
 
-                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    // استخدام Transaction لضمان مسح الأحجام والمنتج كعملية واحدة
+                    using (var transaction = connection.BeginTransaction())
                     {
-                        command.Parameters.AddWithValue("@ProductID", ProductID);
-                        connection.Open();
-                        rowsAffected = command.ExecuteNonQuery();
+                        // 1. مسح الأحجام المرتبطة بالمنتج أولاً (Child Table)
+                        string deleteSizesQuery = "DELETE FROM ProductSizes WHERE ProductID = @ProductID";
+                        using (SQLiteCommand cmdSizes = new SQLiteCommand(deleteSizesQuery, connection, transaction))
+                        {
+                            cmdSizes.Parameters.AddWithValue("@ProductID", ProductID);
+                            cmdSizes.ExecuteNonQuery();
+                        }
+
+                        // 2. مسح المنتج نفسه (Parent Table)
+                        string deleteProductQuery = "DELETE FROM Products WHERE ProductID = @ProductID";
+                        using (SQLiteCommand cmdProduct = new SQLiteCommand(deleteProductQuery, connection, transaction))
+                        {
+                            cmdProduct.Parameters.AddWithValue("@ProductID", ProductID);
+                            rowsAffected = cmdProduct.ExecuteNonQuery();
+                        }
+
+                        // تأكيد تنفيذ العمليتين
+                        transaction.Commit();
                     }
                 }
             }
-            catch (Exception) { }
+            catch (Exception ex)
+            {
+                // English comment: Log your error using clsGlobal.LogException(ex.Message, ...)
+                return false;
+            }
 
             return (rowsAffected > 0);
         }

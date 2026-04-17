@@ -44,8 +44,8 @@
             this.dgvUsers = new System.Windows.Forms.DataGridView();
             this.cbRole = new System.Windows.Forms.ComboBox();
             this.btnAddUser = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
             this.pbPersonImage = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.cmsUsers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).BeginInit();
@@ -206,23 +206,6 @@
             this.btnAddUser.UseVisualStyleBackColor = true;
             this.btnAddUser.Click += new System.EventHandler(this.btnAddUser_Click);
             // 
-            // btnClose
-            // 
-            this.btnClose.CausesValidation = false;
-            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Image = global::AwladAli.Properties.Resources.Close_32;
-            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(623, 687);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(146, 46);
-            this.btnClose.TabIndex = 241;
-            this.btnClose.Text = "خروج";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
             // pbPersonImage
             // 
             this.pbPersonImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
@@ -236,13 +219,29 @@
             this.pbPersonImage.TabIndex = 132;
             this.pbPersonImage.TabStop = false;
             // 
+            // button1
+            // 
+            this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Image = global::AwladAli.Properties.Resources.Close_32;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(618, 687);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(151, 46);
+            this.button1.TabIndex = 243;
+            this.button1.Text = "خروج";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // frmListUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(792, 740);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnAddUser);
-            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.cbRole);
             this.Controls.Add(this.pbPersonImage);
             this.Controls.Add(this.lblRecordsCount);
@@ -280,8 +279,8 @@
         private System.Windows.Forms.ContextMenuStrip cmsUsers;
         private System.Windows.Forms.DataGridView dgvUsers;
         private System.Windows.Forms.ComboBox cbRole;
-        private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnAddUser;
         private System.Windows.Forms.ToolStripMenuItem AddNewToolStripMenuItem;
+        private System.Windows.Forms.Button button1;
     }
 }

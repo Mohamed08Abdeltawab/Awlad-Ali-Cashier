@@ -65,17 +65,19 @@ namespace AwladAli
 
             foreach (DataRow row in dtCategories.Rows)
             {
-                // إنشاء كارت جديد لكل قسم
-                ctrlCategoryCard categoryCard = new ctrlCategoryCard();
-
-                // الحصول على الـ ID من الصف
                 int categoryID = Convert.ToInt32(row["CategoryID"]);
 
-                categoryCard.LoadCategoryData(categoryID);
+                // التأكد أولاً أن التصنيف يحتوي على منتجات
+                // نفترض وجود دالة HasProducts في كلاس clsProduct
+                if (clsProduct.DoesCategoryHaveProducts(categoryID))
+                {
+                    ctrlCategoryCard categoryCard = new ctrlCategoryCard();
 
-                flpProductCards.Controls.Add(categoryCard);
-                categoryCard.OnOrderChanged += UpdateGrandTotal;
+                    categoryCard.LoadCategoryData(categoryID);
 
+                    flpProductCards.Controls.Add(categoryCard);
+                    categoryCard.OnOrderChanged += UpdateGrandTotal;
+                }
             }
 
             // استئناف التحديث البصري
@@ -133,11 +135,8 @@ namespace AwladAli
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
-            using(frmSettings frm = new frmSettings())
-            {
-                frm.ShowDialog(this);
-            }
-                _RefreshMainScreenData();
+            frmSettings frm = new frmSettings();
+            frm.ShowDialog();
         }
 
         //reset order
