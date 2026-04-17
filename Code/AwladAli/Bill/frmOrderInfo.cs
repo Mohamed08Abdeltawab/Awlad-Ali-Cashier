@@ -20,6 +20,8 @@ namespace AwladAli.Bill
             set { _IsShowOrder = value; }
         }
 
+        private bool _OrderConfirmed = false; // Flag to track if the order was confirmed/saved
+
 
         PrintDocument printDoc = new PrintDocument();
 
@@ -195,6 +197,7 @@ namespace AwladAli.Bill
             PrintPreviewDialog preview = new PrintPreviewDialog();
             preview.Document = printDoc;
             preview.ShowDialog(); // للمعاينة قبل الطباعة (اختياري)
+            _OrderConfirmed = true; // Set the flag to indicate the order was confirmed/saved
 
             this.Close();
         }
@@ -206,16 +209,18 @@ namespace AwladAli.Bill
 
         private void frmOrderInfo_FormClosing(object sender, FormClosingEventArgs e)
         {
-            
-            if (clsOrder.DeleteOrder(_OrderID))
+            if (!_OrderConfirmed)
             {
-                MessageBox.Show("تم إلغاء الطلب وحذفه من النظام.", "تنبيه",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                MessageBox.Show(Text = "حدث خطأ أثناء إلغاء الطلب. الرجاء المحاولة مرة أخرى.", "خطأ",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (clsOrder.DeleteOrder(_OrderID))
+                {
+                    MessageBox.Show("تم إلغاء الطلب وحذفه من النظام.", "تنبيه",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    MessageBox.Show("حدث خطأ أثناء إلغاء الطلب. الرجاء المحاولة مرة أخرى.", "خطأ",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }
