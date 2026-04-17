@@ -64,7 +64,7 @@ namespace AwladAli_Buisness
 
         private bool _AddNewOrder()
         {
-            this.OrderID = clsOrderData.AddNewOrder(this.UserID, this.TotalAmount);
+            this.OrderID = clsOrderData.AddNewOrder(this.UserID, this.OrderDate, this.TotalAmount);
             return (this.OrderID != -1);
         }
 

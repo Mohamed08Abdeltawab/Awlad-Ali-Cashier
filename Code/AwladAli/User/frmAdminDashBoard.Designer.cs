@@ -23,6 +23,7 @@ namespace AwladAli.User
             System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
             System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
             System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdminDashBoard));
             this.lblProduct6 = new System.Windows.Forms.Label();
             this.lblProduct5 = new System.Windows.Forms.Label();
             this.lblProduct4 = new System.Windows.Forms.Label();
@@ -905,14 +906,14 @@ namespace AwladAli.User
             this.cmsOrders.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.showToolStripMenuItem});
             this.cmsOrders.Name = "contextMenuStrip1";
-            this.cmsOrders.Size = new System.Drawing.Size(197, 64);
+            this.cmsOrders.Size = new System.Drawing.Size(153, 42);
             // 
             // showToolStripMenuItem
             // 
             this.showToolStripMenuItem.Image = global::AwladAli.Properties.Resources.show_32;
             this.showToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.showToolStripMenuItem.Name = "showToolStripMenuItem";
-            this.showToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.showToolStripMenuItem.Size = new System.Drawing.Size(152, 38);
             this.showToolStripMenuItem.Text = "عرض الطلب";
             this.showToolStripMenuItem.Click += new System.EventHandler(this.showToolStripMenuItem_Click);
             // 
@@ -1055,6 +1056,7 @@ namespace AwladAli.User
             this.Controls.Add(this.pnlTopFilter);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAdminDashBoard";
             this.Text = "لوحة التحكم - أدمن";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
