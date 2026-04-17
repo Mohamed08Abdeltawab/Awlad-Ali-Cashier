@@ -209,7 +209,7 @@ namespace AwladAli.Bill
 
         private void frmOrderInfo_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (!_OrderConfirmed)
+            if (!_OrderConfirmed && !_IsShowOrder)
             {
                 if (clsOrder.DeleteOrder(_OrderID))
                 {
