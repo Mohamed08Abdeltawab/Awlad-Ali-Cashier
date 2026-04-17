@@ -186,6 +186,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="User\frmAdminDashBoard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\frmAdminDashBoard.Designer.cs">
+      <DependentUpon>frmAdminDashBoard.cs</DependentUpon>
+    </Compile>
     <Compile Include="User\frmListUsers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -256,6 +262,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="User\frmAddUpdateUser.resx">
       <DependentUpon>frmAddUpdateUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\frmAdminDashBoard.resx">
+      <DependentUpon>frmAdminDashBoard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\frmListUsers.resx">
       <DependentUpon>frmListUsers.cs</DependentUpon>
@@ -387,6 +396,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Cashier.ico" />
+    <None Include="Resources\total money 32.png" />
+    <None Include="Resources\day money 32.png" />
+    <None Include="Resources\order 32.png" />
+    <None Include="Resources\all 64.png" />
+    <None Include="Resources\refresh 64.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
