@@ -35,13 +35,18 @@ namespace AwladAli
                 btnSettings.Visible = false;
             }
         }
-        private void frmMain_Load(object sender, EventArgs e)
+        private void _RefreshMainScreenData()
         {
             _CheckAdmin();
             lblUsername.Text = clsGlobal.CurrentUser.UserName;
             _LoadRestaurantMenu();
             _LoadExtraAddons();
         }
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            _RefreshMainScreenData();
+        }
+
 
         private void _LoadRestaurantMenu()
         {
@@ -128,9 +133,11 @@ namespace AwladAli
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
-            frmSettings frm = new frmSettings();
-            frm.ShowDialog();
-            frmMain_Load(null, null); // إعادة تحميل البيانات بعد إغلاق الإعدادات
+            using(frmSettings frm = new frmSettings())
+            {
+                frm.ShowDialog(this);
+            }
+                _RefreshMainScreenData();
         }
 
         //reset order
@@ -196,15 +203,14 @@ namespace AwladAli
             }
         }
 
-        private void _SaveOrder()
+        private bool _SaveOrder()
         {
             // 1. حساب الإجمالي النهائي قبل الحفظ
             decimal totalAmount = Convert.ToDecimal(lblTotalPrice.Text);
 
             if (totalAmount <= 0)
             {
-                MessageBox.Show("لا يمكن حفظ طلب فارغ!");
-                return;
+                return false;
             }
 
             // 2. تجهيز بيانات الأوردر الأساسي
@@ -245,16 +251,17 @@ namespace AwladAli
                         detail.Save();
                     }
                 }
-
+                return true;
             }
+            return false;
         }
 
         private void _ShowOrderInfo()
         {
             //get current order ID from _Order class 
-            if (_Order == null || _Order.OrderID == -1)
+            if (_Order == null || _Order.OrderID == -1 || Convert.ToDecimal(lblTotalPrice.Text) <=0)
             {
-                MessageBox.Show("برجاء إتمام الطلب أولاً أو اختيار طلب لعرضه.", "تنبيه",
+                MessageBox.Show("برجاء إتمام الطلب أولا", "تنبيه",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -263,15 +270,22 @@ namespace AwladAli
 
             frm.ShowDialog();
             //reload data after closing order info form (in case of any changes)
-            frmMain_Load(null, null);
+            _RefreshMainScreenData();
         }
 
 
         private void btnSaveandShowOrderInfo_Click(object sender, EventArgs e)
         {
-            _SaveOrder();
-
-            _ShowOrderInfo();
+            if (_SaveOrder())
+            {
+                _ShowOrderInfo();
+                _ClearCurrentOrder();
+            }
+            else
+            {
+                MessageBox.Show("برجاء إتمام الطلب أولا", "تنبيه",
+                               MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
 

@@ -18,23 +18,23 @@ namespace AwladAli.User
         {
             InitializeComponent();
         }
-
+        
         private void btnUsersList_Click(object sender, EventArgs e)
         {
             frmListUsers Frm1 = new frmListUsers();
-            Frm1.ShowDialog();
+            Frm1.ShowDialog(this);
         }
 
         private void btnCategoriesList_Click(object sender, EventArgs e)
         {
             frmListCategories Frm1 = new frmListCategories();
-            Frm1.ShowDialog();
+            Frm1.ShowDialog(this);
         }
 
         private void btnExtraLists_Click(object sender, EventArgs e)
         {
             frmListExtra Frm1 = new frmListExtra();
-            Frm1.ShowDialog();
+            Frm1.ShowDialog(this);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
