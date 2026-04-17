@@ -255,5 +255,39 @@ namespace AwladAli_Data
 
             return isFound;
         }
+
+
+        public static bool IsUserAdmin(int UserID)
+        {
+            bool isAdmin = false;
+
+            try
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    connection.Open();
+
+                    // نربط جدول المستخدمين بجدول الأدوار ونتأكد من الاسم
+                    string query = @"SELECT 1 FROM Users Where UserID = @UserID AND Role = 0 LIMIT 1";
+
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@UserID", UserID);
+
+                        object result = command.ExecuteScalar();
+                        if (result != null)
+                        {
+                            isAdmin = true;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log error
+            }
+
+            return isAdmin;
+        }
     }
 }

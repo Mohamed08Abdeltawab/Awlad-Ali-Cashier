@@ -80,5 +80,6 @@ namespace AwladAli.Login
             else
                 chkRememberMe.Checked = false;
         }
+
     }
 }

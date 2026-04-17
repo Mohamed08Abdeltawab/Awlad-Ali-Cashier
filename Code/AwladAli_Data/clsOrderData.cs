@@ -94,32 +94,32 @@ namespace AwladAli_Data
         public static bool DeleteOrder(int OrderID)
         {
             int rowsAffected = 0;
-            // نستخدم الـ Connection والـ Command المعتاد عندك
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            // كود الـ SQL بيمسح من التفاصيل أولاً ثم الأوردر
-            string query = @"DELETE FROM OrderDetails WHERE OrderID = @OrderID;
-                     DELETE FROM Orders WHERE OrderID = @OrderID;";
-
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@OrderID", OrderID);
 
             try
             {
-                connection.Open();
-                rowsAffected = command.ExecuteNonQuery();
+                // استخدام Using للـ Connection يضمن إغلاقه تلقائياً
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    // كود الـ SQL بيمسح من التفاصيل أولاً (Child) ثم الأوردر (Parent)
+                    string query = @"DELETE FROM OrderDetails WHERE OrderID = @OrderID;
+                             DELETE FROM Orders WHERE OrderID = @OrderID;";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@OrderID", OrderID);
+
+                        connection.Open();
+                        rowsAffected = command.ExecuteNonQuery();
+                    }
+                }
             }
             catch (Exception ex)
             {
-                // Log your error here
+                // English comment: Log your error here for debugging
                 return false;
             }
-            finally
-            {
-                connection.Close();
-            }
 
-            // rowsAffected المفروض تكون > 0 لو المسح تم بنجاح
+            // rowsAffected المفروض تكون أكبر من 0 لو تم مسح الأوردر أو تفاصيله
             return (rowsAffected > 0);
         }
     }

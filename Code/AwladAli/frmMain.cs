@@ -27,8 +27,17 @@ namespace AwladAli
             this._frmLogin = frm;
         }
 
+        private void _CheckAdmin()
+        {
+            if (!clsUser.IsUserAdmin(clsGlobal.CurrentUser.UserID))
+            {
+                btnSettings.Enabled = false;
+                btnSettings.Visible = false;
+            }
+        }
         private void frmMain_Load(object sender, EventArgs e)
         {
+            _CheckAdmin();
             lblUsername.Text = clsGlobal.CurrentUser.UserName;
             _LoadRestaurantMenu();
             _LoadExtraAddons();

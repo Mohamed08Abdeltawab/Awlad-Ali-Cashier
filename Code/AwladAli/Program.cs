@@ -21,7 +21,7 @@ namespace AwladAli
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmListExtra());
+            Application.Run(new frmLogin());
         }
     }
 }
