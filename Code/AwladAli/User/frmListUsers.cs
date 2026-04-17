@@ -14,7 +14,6 @@ namespace AwladAli.User
     public partial class frmListUsers : Form
     {
         private  DataTable _dtAllUsers;
-
         public frmListUsers()
         {
             InitializeComponent();

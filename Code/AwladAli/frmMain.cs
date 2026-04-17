@@ -137,6 +137,7 @@ namespace AwladAli
         {
             frmSettings frm = new frmSettings();
             frm.ShowDialog();
+                _RefreshMainScreenData(); // إعادة تحميل البيانات بعد إغلاق الإعدادات
         }
 
         //reset order
