@@ -135,7 +135,7 @@ namespace AwladAli
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
-            frmSettings frm = new frmSettings();
+            frmAdminDashBoard frm = new frmAdminDashBoard();
             frm.ShowDialog();
                 _RefreshMainScreenData(); // إعادة تحميل البيانات بعد إغلاق الإعدادات
         }
@@ -287,7 +287,5 @@ namespace AwladAli
                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
-
     }
 }

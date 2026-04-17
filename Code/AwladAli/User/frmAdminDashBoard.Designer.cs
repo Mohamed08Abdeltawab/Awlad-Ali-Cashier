@@ -19,6 +19,7 @@ namespace AwladAli.User
 
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
             System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
             System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
@@ -84,6 +85,8 @@ namespace AwladAli.User
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.dgvOrders = new System.Windows.Forms.DataGridView();
+            this.cmsOrders = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblGridTitle = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label18 = new System.Windows.Forms.Label();
@@ -94,7 +97,7 @@ namespace AwladAli.User
             this.label43 = new System.Windows.Forms.Label();
             this.lblRecordsCount = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -111,6 +114,7 @@ namespace AwladAli.User
             this.pnlOrdersCount.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
+            this.cmsOrders.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -531,6 +535,7 @@ namespace AwladAli.User
             this.cbFilterBy.Name = "cbFilterBy";
             this.cbFilterBy.Size = new System.Drawing.Size(210, 39);
             this.cbFilterBy.TabIndex = 223;
+            this.cbFilterBy.SelectedIndexChanged += new System.EventHandler(this.cbFilterBy_SelectedIndexChanged);
             // 
             // lblTitle
             // 
@@ -555,6 +560,7 @@ namespace AwladAli.User
             this.btnRefreshAll.Size = new System.Drawing.Size(73, 70);
             this.btnRefreshAll.TabIndex = 9;
             this.btnRefreshAll.UseVisualStyleBackColor = false;
+            this.btnRefreshAll.Click += new System.EventHandler(this.btnRefreshAll_Click);
             // 
             // label9
             // 
@@ -615,6 +621,7 @@ namespace AwladAli.User
             this.btnRefresh.Size = new System.Drawing.Size(73, 70);
             this.btnRefresh.TabIndex = 0;
             this.btnRefresh.UseVisualStyleBackColor = false;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // label2
             // 
@@ -804,7 +811,6 @@ namespace AwladAli.User
             this.btnExtraLists.BackColor = System.Drawing.Color.Transparent;
             this.btnExtraLists.BackgroundImage = global::AwladAli.Properties.Resources.settingbtn_background;
             this.btnExtraLists.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnExtraLists.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnExtraLists.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnExtraLists.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExtraLists.ForeColor = System.Drawing.Color.Transparent;
@@ -818,13 +824,13 @@ namespace AwladAli.User
             this.btnExtraLists.Text = "ادارة الأضافات";
             this.btnExtraLists.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnExtraLists.UseVisualStyleBackColor = false;
+            this.btnExtraLists.Click += new System.EventHandler(this.btnExtraLists_Click);
             // 
             // btnCategoriesList
             // 
             this.btnCategoriesList.BackColor = System.Drawing.Color.Transparent;
             this.btnCategoriesList.BackgroundImage = global::AwladAli.Properties.Resources.settingbtn_background;
             this.btnCategoriesList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnCategoriesList.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCategoriesList.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCategoriesList.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCategoriesList.ForeColor = System.Drawing.Color.Transparent;
@@ -838,13 +844,13 @@ namespace AwladAli.User
             this.btnCategoriesList.Text = "ادارة الأطعمة";
             this.btnCategoriesList.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCategoriesList.UseVisualStyleBackColor = false;
+            this.btnCategoriesList.Click += new System.EventHandler(this.btnCategoriesList_Click);
             // 
             // btnUsersList
             // 
             this.btnUsersList.BackColor = System.Drawing.Color.Transparent;
             this.btnUsersList.BackgroundImage = global::AwladAli.Properties.Resources.settingbtn_background;
             this.btnUsersList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnUsersList.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnUsersList.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnUsersList.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUsersList.ForeColor = System.Drawing.Color.Transparent;
@@ -858,6 +864,7 @@ namespace AwladAli.User
             this.btnUsersList.Text = "ادارة المستخدمين";
             this.btnUsersList.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnUsersList.UseVisualStyleBackColor = false;
+            this.btnUsersList.Click += new System.EventHandler(this.btnUsersList_Click);
             // 
             // lblTodayCash
             // 
@@ -887,10 +894,26 @@ namespace AwladAli.User
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvOrders.BackgroundColor = System.Drawing.Color.White;
             this.dgvOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOrders.ContextMenuStrip = this.cmsOrders;
             this.dgvOrders.Location = new System.Drawing.Point(23, 454);
             this.dgvOrders.Name = "dgvOrders";
             this.dgvOrders.Size = new System.Drawing.Size(976, 531);
             this.dgvOrders.TabIndex = 1;
+            // 
+            // cmsOrders
+            // 
+            this.cmsOrders.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.deleteToolStripMenuItem});
+            this.cmsOrders.Name = "contextMenuStrip1";
+            this.cmsOrders.Size = new System.Drawing.Size(153, 42);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Image = global::AwladAli.Properties.Resources.show_32;
+            this.deleteToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(152, 38);
+            this.deleteToolStripMenuItem.Text = "عرض الطلب";
             // 
             // lblGridTitle
             // 
@@ -996,28 +1019,29 @@ namespace AwladAli.User
             this.label12.TabIndex = 132;
             this.label12.Text = "# Records:";
             // 
-            // button1
+            // btnClose
             // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Image = global::AwladAli.Properties.Resources.CloseBlack_721;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(1453, 951);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(374, 80);
-            this.button1.TabIndex = 244;
-            this.button1.Text = "اغلاق";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnClose.BackColor = System.Drawing.Color.White;
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.ForeColor = System.Drawing.Color.Black;
+            this.btnClose.Image = global::AwladAli.Properties.Resources.CloseBlack_721;
+            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClose.Location = new System.Drawing.Point(1453, 951);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(374, 80);
+            this.btnClose.TabIndex = 244;
+            this.btnClose.Text = "اغلاق";
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // frmAdminDashBoard
             // 
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(1924, 1061);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lblRecordsCount);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label43);
@@ -1033,6 +1057,7 @@ namespace AwladAli.User
             this.Name = "frmAdminDashBoard";
             this.Text = "لوحة التحكم - أدمن";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frmAdminDashBoard_Load);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel3.ResumeLayout(false);
@@ -1047,6 +1072,7 @@ namespace AwladAli.User
             this.pnlOrdersCount.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).EndInit();
+            this.cmsOrders.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -1130,6 +1156,8 @@ namespace AwladAli.User
         private Label label45;
         private Label lblRecordsCount;
         private Label label12;
-        private Button button1;
+        private Button btnClose;
+        private ContextMenuStrip cmsOrders;
+        private ToolStripMenuItem deleteToolStripMenuItem;
     }
 }

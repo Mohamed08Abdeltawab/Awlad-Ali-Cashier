@@ -198,12 +198,6 @@
     <Compile Include="User\frmListUsers.Designer.cs">
       <DependentUpon>frmListUsers.cs</DependentUpon>
     </Compile>
-    <Compile Include="User\frmSettings.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="User\frmSettings.Designer.cs">
-      <DependentUpon>frmSettings.cs</DependentUpon>
-    </Compile>
     <Compile Include="User\ctrlUserCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -268,9 +262,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="User\frmListUsers.resx">
       <DependentUpon>frmListUsers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="User\frmSettings.resx">
-      <DependentUpon>frmSettings.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -396,6 +387,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Cashier.ico" />
+    <None Include="Resources\show 32.png" />
     <None Include="Resources\total money 32.png" />
     <None Include="Resources\day money 32.png" />
     <None Include="Resources\order 32.png" />
