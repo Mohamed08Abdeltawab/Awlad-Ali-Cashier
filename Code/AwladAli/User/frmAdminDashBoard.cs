@@ -165,6 +165,7 @@ namespace AwladAli.User
 
             int orderID = Convert.ToInt32(dgvOrders.CurrentRow.Cells[0].Value);
             frmOrderInfo frm = new frmOrderInfo(orderID);
+            frm.IsShowOrder = true;
             frm.ShowDialog();
         }
 

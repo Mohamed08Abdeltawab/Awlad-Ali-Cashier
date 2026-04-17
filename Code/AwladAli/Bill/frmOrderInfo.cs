@@ -12,7 +12,13 @@ namespace AwladAli.Bill
         // Private variable to store the Order ID passed from the Main Form
         private int _OrderID = -1;
         private clsOrder _Order;
-
+        
+        private bool _IsShowOrder = false; // Flag to track if the order was saved/confirmed
+        public bool IsShowOrder
+        {
+            get { return _IsShowOrder; }
+            set { _IsShowOrder = value; }
+        }
 
         private bool _IsOrderConfirmed = false;
 
@@ -32,6 +38,14 @@ namespace AwladAli.Bill
 
         private void _LoadOrderData()
         {
+            if(_IsShowOrder)//get ture will do this
+            {
+                btnSaveAndPrint.Enabled = false; // Disable the button if order is not saved yet
+                btnIgnore.Enabled = false; // Disable the ignore button as well
+
+                btnSaveAndPrint.Visible = false; // Hide the Save & Print button
+                btnIgnore.Visible = false; // Hide the Ignore button
+            }
             // 1. Find the main Order info
             _Order = clsOrder.Find(_OrderID);
 
