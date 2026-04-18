@@ -6,105 +6,71 @@ namespace AwladAli_Buisness
 {
     public class clsProductSize
     {
-        // Enums to define the mode of the object
-        public enum enMode { AddNew = 0, Update = 1 };
-        public enMode Mode = enMode.AddNew;
-
-        // ProductSize Properties
         public int SizeID { get; set; }
         public int ProductID { get; set; }
         public string SizeName { get; set; }
         public decimal Price { get; set; }
+        // الخاصية الجديدة
+        public bool IsNormalSize { get; set; }
 
-        // Navigation Property: To get the parent Product details if needed
         public clsProduct ProductInfo;
 
-        // Default constructor for AddNew mode
         public clsProductSize()
         {
             this.SizeID = -1;
             this.ProductID = -1;
             this.SizeName = "";
             this.Price = 0.0m;
-
-            Mode = enMode.AddNew;
+            this.IsNormalSize = false;
         }
 
-        // Private constructor for Update mode
-        private clsProductSize(int SizeID, int ProductID, string SizeName, decimal Price)
+        private clsProductSize(int SizeID, int ProductID, string SizeName, decimal Price, bool IsNormalSize)
         {
             this.SizeID = SizeID;
             this.ProductID = ProductID;
             this.SizeName = SizeName;
             this.Price = Price;
+            this.IsNormalSize = IsNormalSize;
 
-            // Optional: Load parent product info
             this.ProductInfo = clsProduct.Find(ProductID);
-
-            Mode = enMode.Update;
         }
 
-        // 1. Find Size by ID
         public static clsProductSize Find(int SizeID)
         {
             int ProductID = -1;
             string SizeName = "";
             decimal Price = 0.0m;
+            bool IsNormalSize = false;
 
-            if (clsProductSizeData.GetSizeByID(SizeID, ref ProductID, ref SizeName, ref Price))
+            if (clsProductSizeData.GetSizeByID(SizeID, ref ProductID, ref SizeName, ref Price, ref IsNormalSize))
             {
-                return new clsProductSize(SizeID, ProductID, SizeName, Price);
+                return new clsProductSize(SizeID, ProductID, SizeName, Price, IsNormalSize);
             }
-            else
-            {
-                return null;
-            }
+            return null;
         }
 
-        // 2. Add New Size (Internal helper)
         private bool _AddNewSize()
         {
-            this.SizeID = clsProductSizeData.AddNewSize(this.ProductID, this.SizeName, this.Price);
+            this.SizeID = clsProductSizeData.AddNewSize(this.ProductID, this.SizeName, this.Price, this.IsNormalSize);
             return (this.SizeID != -1);
         }
 
-        // 3. Update Size (Internal helper)
-        private bool _UpdateSize()
-        {
-            return clsProductSizeData.UpdateSize(this.SizeID, this.ProductID, this.SizeName, this.Price);
-        }
 
-        // 4. Save Method
+
         public bool Save()
         {
-            switch (Mode)
+            if (_AddNewSize())
             {
-                case enMode.AddNew:
-                    if (_AddNewSize())
-                    {
-                        Mode = enMode.Update;
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-
-                case enMode.Update:
-                    return _UpdateSize();
+                return true;
             }
-
             return false;
         }
 
-        // 5. Delete Size (Static)
         public static bool DeleteSize(int SizeID)
         {
             return clsProductSizeData.DeleteSize(SizeID);
         }
 
-        // 6. Get All Sizes for a specific product (Static)
-        // This is the most used method in the Cashier screen
         public static DataTable GetProductSizes(int ProductID)
         {
             return clsProductSizeData.GetProductSizes(ProductID);
@@ -115,9 +81,10 @@ namespace AwladAli_Buisness
             return clsProductSizeData.GetPricesByProductID(ProductID);
         }
 
-        public static bool UpdateProductPrices(int ProductID, string S, string M, string L, string XL)
+        // التحديث الهام للدالة اللي بتستخدمها في شاشة الإضافة والتعديل
+        public static bool UpdateProductPrices(int ProductID, bool IsNormalSize, string PriceNormal, string S, string M, string L, string XL)
         {
-            return clsProductSizeData.UpdateProductPrices(ProductID, S, M, L, XL);
+            return clsProductSizeData.UpdateProductPrices(ProductID, IsNormalSize, PriceNormal, S, M, L, XL);
         }
     }
 }

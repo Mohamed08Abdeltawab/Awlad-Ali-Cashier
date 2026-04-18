@@ -46,20 +46,25 @@ namespace AwladAli.Category
                 lblTitle.Text = "اضافة أكلة جديدة";
                 _Product = new clsProduct();
                 _Product.CategoryID = _CategoryID;
-                label7.Text = _CategoryID.ToString();
+                lblCategoryID.Text = _CategoryID.ToString();
                 
             }
             else
             {
                 lblTitle.Text = "تعديل بيانات الأكلة";
             }
+
             txtFoodName.Text = "";
-                txtSmallSize.Text = null;
-                txtMeduimSize.Text = null;
-                txtLargeSize.Text = null;
-                txtXlargeSize.Text = null;
-                btnSave.Enabled = true;
-            
+            txtSmallSize.Text = null;
+            txtMeduimSize.Text = null;
+            txtLargeSize.Text = null;
+            txtXlargeSize.Text = null;
+            btnSave.Enabled = true;
+
+            chkIsNormalSize.Checked = false;
+            txtPriceNormalSize.Text = null;
+            txtPriceNormalSize.Enabled = false;
+
         }
 
         private void _LoadData()
@@ -73,12 +78,11 @@ namespace AwladAli.Category
                 return;
             }
 
-            label6.Text = _Product.ProductID.ToString();
-            label7.Text = _Product.CategoryID.ToString();
+            lblProductID.Text = _Product.ProductID.ToString();
+            lblCategoryID.Text = _Product.CategoryID.ToString();
             txtFoodName.Text = _Product.ProductName;
 
-            // تحميل الأسعار من جدول الـ ProductSizes
-            // افترضنا وجود دالة في البيزنس بتجيب الأسعار مرتبطة بالـ ProductID
+
             DataTable dtPrices = clsProductSize.GetPricesByProductID(_ProductID);
 
             foreach (DataRow row in dtPrices.Rows)
@@ -86,10 +90,22 @@ namespace AwladAli.Category
                 string sizeName = row["SizeName"].ToString();
                 string price = row["Price"].ToString();
 
-                if (sizeName == "S") txtSmallSize.Text = price;
-                if (sizeName == "M") txtMeduimSize.Text = price;
-                if (sizeName == "L") txtLargeSize.Text = price;
-                if (sizeName == "XL") txtXlargeSize.Text = price;
+                // التعديل هنا: نتشيك على العمود الجديد اللي ضفناه في الداتا بيز
+                bool isNormal = Convert.ToBoolean(row["IsNormalSize"]);
+
+                if (isNormal)
+                {
+                    chkIsNormalSize.Checked = true;
+                    txtPriceNormalSize.Text = price;
+                    // بمجرد ما يكون عادي، الـ CheckedChanged هتعطل باقي التكست بوكس أوتوماتيكياً
+                }
+                else
+                {
+                    if (sizeName == "S") txtSmallSize.Text = price;
+                    if (sizeName == "M") txtMeduimSize.Text = price;
+                    if (sizeName == "L") txtLargeSize.Text = price;
+                    if (sizeName == "XL") txtXlargeSize.Text = price;
+                }
             }
         }
 
@@ -110,7 +126,12 @@ namespace AwladAli.Category
             if (string.IsNullOrEmpty(txtFoodName.Text.Trim()))
             {
                 e.Cancel = true;
-                MessageBox.Show("يجب ادخال اسم الأكلة");
+                errorProvider1.SetError(txtFoodName, "اسم الأكلة مطلوب");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(txtFoodName, "");
             }
         }
 
@@ -121,7 +142,7 @@ namespace AwladAli.Category
             if (!this.ValidateChildren()) return;
 
             _Product.ProductName = txtFoodName.Text.Trim();
-            _Product.CategoryID = int.Parse(label7.Text);
+            _Product.CategoryID = int.Parse(lblCategoryID.Text);
 
             if (_Product.Save())
             {
@@ -129,7 +150,7 @@ namespace AwladAli.Category
                 _SaveProductPrices(_Product.ProductID);
 
                 _Mode = enMode.Update;
-                label6.Text = _Product.ProductID.ToString();
+                lblProductID.Text = _Product.ProductID.ToString();
                 lblTitle.Text = "تعديل بيانات الأكلة";
 
                 MessageBox.Show("تم حفظ البيانات بنجاح", "تم", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -142,13 +163,15 @@ namespace AwladAli.Category
 
         private void _SaveProductPrices(int ProductID)
         {
-            // دالة تقوم بمسح الأسعار القديمة وإضافة الجديدة أو عمل Update
-            // دي خطوة مهمة عشان نضمن إن الأسعار مربوطة بالـ ProductID الصح
-            clsProductSize.UpdateProductPrices(ProductID,
+            clsProductSize.UpdateProductPrices(
+                ProductID,
+                chkIsNormalSize.Checked, // باراميتر جديد
+                txtPriceNormalSize.Text.Trim(), // باراميتر جديد
                 txtSmallSize.Text.Trim(),
                 txtMeduimSize.Text.Trim(),
                 txtLargeSize.Text.Trim(),
-                txtXlargeSize.Text.Trim());
+                txtXlargeSize.Text.Trim()
+            );
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -191,5 +214,21 @@ namespace AwladAli.Category
             }
         }
 
+        private void chkIsNormalSize_CheckedChanged(object sender, EventArgs e)
+        {
+            bool isNormal = chkIsNormalSize.Checked;
+
+            txtSmallSize.Enabled = !isNormal;
+            txtMeduimSize.Enabled = !isNormal;
+            txtLargeSize.Enabled = !isNormal;
+            txtXlargeSize.Enabled = !isNormal;
+
+            txtPriceNormalSize.Enabled = isNormal;
+
+            if (isNormal)
+            {
+                txtPriceNormalSize.Focus();
+            }
+        }
     }
 }
