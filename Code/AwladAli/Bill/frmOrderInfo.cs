@@ -94,11 +94,17 @@ namespace AwladAli.Bill
         // 2. الدالة المسؤولة عن "رسم" شكل الفاتورة
         private void PrintOrderPage(object sender, PrintPageEventArgs e)
         {
+            if (System.Drawing.Printing.PrinterSettings.InstalledPrinters.Count == 0)
+            {
+                MessageBox.Show("No printers found on this system!", "Printing Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             Graphics g = e.Graphics;
 
-            Font fontTitle = new Font("Tahoma", 16, FontStyle.Bold);
-            Font fontHeader = new Font("Tahoma", 12, FontStyle.Bold);
-            Font fontBody = new Font("Tahoma", 11);
+            Font fontTitle = new Font("Tahoma", 24, FontStyle.Bold);
+            Font fontHeader = new Font("Tahoma", 18, FontStyle.Bold);
+            Font fontBody = new Font("Tahoma", 16);
 
             float pageWidth = e.PageBounds.Width;
             float margin = 20;
@@ -112,16 +118,16 @@ namespace AwladAli.Bill
 
             // ===== Header =====
             g.DrawString("أولاد علي - Awlad Ali", fontTitle, Brushes.Black, pageWidth / 2, y, center);
-            y += rowHeight + 10;
+            y += rowHeight + 20;
 
             g.DrawString($"رقم الفاتورة: {_OrderID}", fontBody, Brushes.Black, pageWidth - margin, y, right);
-            y += rowHeight;
-
-            g.DrawString($"التاريخ: {DateTime.Now:yyyy-MM-dd HH:mm}", fontBody, Brushes.Black, pageWidth - margin, y, right);
             y += rowHeight + 10;
 
+            g.DrawString($"التاريخ: {_Order.OrderDate:yyyy-MM-dd HH:mm}", fontBody, Brushes.Black, pageWidth - margin, y, right);
+            y += rowHeight + 15;
+
             g.DrawLine(Pens.Black, margin, y, pageWidth - margin, y);
-            y += 10;
+            y += 15;
 
             // ===== Column Widths =====
             float colItemWidth = usableWidth * 0.40f;
@@ -149,9 +155,9 @@ namespace AwladAli.Bill
             g.DrawString("الكمية", fontHeader, Brushes.Black, colQtyX, y, right);
             g.DrawString("الإجمالي", fontHeader, Brushes.Black, colTotalX, y, right);
 
-            y += rowHeight;
+            y += rowHeight + 10;
             g.DrawLine(Pens.Black, margin, y, pageWidth - margin, y);
-            y += 10;
+            y += 15;
 
             // ===== Items =====
             DataTable dtItems = clsOrderDetail.GetOrderItemsForPrinting(_OrderID);
@@ -165,20 +171,20 @@ namespace AwladAli.Bill
 
                 g.DrawString(name, fontBody, Brushes.Black, colItemX, y, right);
                 g.DrawString(price.ToString("0.00"), fontBody, Brushes.Black, colPriceX, y, right);
-                g.DrawString(qty.ToString(), fontBody, Brushes.Black, colQtyX, y, right);
-                g.DrawString(total.ToString("0.00"), fontBody, Brushes.Black, colTotalX, y, right);
+                g.DrawString(qty.ToString(), fontBody, Brushes.Black, colQtyX - 20, y, right);
+                g.DrawString(total.ToString("0.00"), fontBody, Brushes.Black, colTotalX - 20, y, right);
 
                 y += rowHeight;
             }
 
-            y += 10;
+            y += 15;
             g.DrawLine(Pens.Black, margin, y, pageWidth - margin, y);
             y += rowHeight;
 
             // ===== Total =====
             g.DrawString($"الإجمالي: {lblTotalAmount.Text} ج.م", fontTitle, Brushes.Black, pageWidth - margin, y, right);
 
-            y += rowHeight + 10;
+            y += rowHeight + 20;
 
             // ===== Footer =====
             g.DrawString("شكراً لزيارتكم", fontBody, Brushes.Black, pageWidth / 2, y, center);
@@ -211,15 +217,15 @@ namespace AwladAli.Bill
         {
             if (!_OrderConfirmed && !_IsShowOrder)
             {
+                if(MessageBox.Show("هل أنت متأكد أنك تريد إلغاء الطلب؟ سيتم حذف الطلب من النظام.", "تأكيد الإلغاء", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                {
+                    e.Cancel = true; // Cancel the form closing
+                    return;
+                }
                 if (clsOrder.DeleteOrder(_OrderID))
                 {
                     MessageBox.Show("تم إلغاء الطلب وحذفه من النظام.", "تنبيه",
                                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else
-                {
-                    MessageBox.Show("حدث خطأ أثناء إلغاء الطلب. الرجاء المحاولة مرة أخرى.", "خطأ",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
