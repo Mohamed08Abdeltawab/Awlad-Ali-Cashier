@@ -32,10 +32,10 @@ namespace AwladAli.Product
 
         // تحديث دالة SetInfo لاستقبال الـ IDs
         public void SetInfo(int productId, string productName,
-                           int idS, object priceS,
-                           int idM, object priceM,
-                           int idL, object priceL,
-                           int idXl, object priceXl)
+                    int idS, object priceS, bool isNormalS,
+                    int idM, object priceM,
+                    int idL, object priceL,
+                    int idXl, object priceXl)
         {
             this.ProductID = productId;
             lblProductName.Text = productName;
@@ -45,11 +45,24 @@ namespace AwladAli.Product
             this._sizeIdL = idL;
             this._sizeIdXl = idXl;
 
-            _UpdateSizeUI(chkSelectPriceS, numQuantityS, priceS);
+            if (isNormalS)
+            {
+                
+                _UpdateSizeUI(chkSelectPriceS, numQuantityS, priceS);
+
+                chkSelectPriceS.BackColor = System.Drawing.Color.LightGreen;
+            }
+            else
+            {
+                chkSelectPriceS.BackColor = System.Drawing.Color.Transparent;
+                _UpdateSizeUI(chkSelectPriceS, numQuantityS, priceS);
+            }
+
             _UpdateSizeUI(chkSelectPriceM, numQuantityM, priceM);
             _UpdateSizeUI(chkSelectPriceL, numQuantityL, priceL);
             _UpdateSizeUI(chkSelectPriceXL, numQuantityXl, priceXl);
         }
+
 
         // دالة جديدة لاستخراج الأصناف المختارة من هذا السطر
         public List<clsOrderDetail> GetSelectedDetails(int orderId)

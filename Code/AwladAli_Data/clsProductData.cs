@@ -184,23 +184,28 @@ namespace AwladAli_Data
             {
                 using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
                 {
-                    // Query Pivot لجلب الأكلة وأسعارها في سطر واحد
+                    // Query Pivot مطورة لجلب الأكلة، أسعارها، وحالة "الحجم العادي"
                     string query = @"
-                                    SELECT 
-                                    p.ProductID, 
-                                    p.ProductName,
-                                    MAX(CASE WHEN ps.SizeName = 'S' THEN ps.SizeID END) AS SizeID_S,
-                                    MAX(CASE WHEN ps.SizeName = 'S' THEN ps.Price END) AS Price_S,
-                                    MAX(CASE WHEN ps.SizeName = 'M' THEN ps.SizeID END) AS SizeID_M,
-                                    MAX(CASE WHEN ps.SizeName = 'M' THEN ps.Price END) AS Price_M,
-                                    MAX(CASE WHEN ps.SizeName = 'L' THEN ps.SizeID END) AS SizeID_L,
-                                    MAX(CASE WHEN ps.SizeName = 'L' THEN ps.Price END) AS Price_L,
-                                    MAX(CASE WHEN ps.SizeName = 'XL' THEN ps.SizeID END) AS SizeID_XL,
-                                    MAX(CASE WHEN ps.SizeName = 'XL' THEN ps.Price END) AS Price_XL
-                                FROM Products p
-                                LEFT JOIN ProductSizes ps ON p.ProductID = ps.ProductID
-                                WHERE p.CategoryID = @CategoryID
-                                GROUP BY p.ProductID, p.ProductName;";
+                SELECT 
+                    p.ProductID, 
+                    p.ProductName,
+                    -- جلب بيانات الحجم العادي (لو موجود) أو الحجم الصغير
+                    MAX(CASE WHEN ps.SizeName = 'Normal' OR ps.SizeName = 'S' THEN ps.SizeID END) AS SizeID_S,
+                    MAX(CASE WHEN ps.SizeName = 'Normal' OR ps.SizeName = 'S' THEN ps.Price END) AS Price_S,
+                    -- العمود السحري اللي هيعرف الـ UI إن ده سعر ثابت
+                    MAX(CASE WHEN ps.SizeName = 'Normal' OR ps.SizeName = 'S' THEN ps.IsNormalSize END) AS IsNormalSize_S,
+
+                    -- باقي الأحجام التقليدية
+                    MAX(CASE WHEN ps.SizeName = 'M' THEN ps.SizeID END) AS SizeID_M,
+                    MAX(CASE WHEN ps.SizeName = 'M' THEN ps.Price END) AS Price_M,
+                    MAX(CASE WHEN ps.SizeName = 'L' THEN ps.SizeID END) AS SizeID_L,
+                    MAX(CASE WHEN ps.SizeName = 'L' THEN ps.Price END) AS Price_L,
+                    MAX(CASE WHEN ps.SizeName = 'XL' THEN ps.SizeID END) AS SizeID_XL,
+                    MAX(CASE WHEN ps.SizeName = 'XL' THEN ps.Price END) AS Price_XL
+                FROM Products p
+                LEFT JOIN ProductSizes ps ON p.ProductID = ps.ProductID
+                WHERE p.CategoryID = @CategoryID
+                GROUP BY p.ProductID, p.ProductName;";
 
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {
@@ -219,7 +224,8 @@ namespace AwladAli_Data
             }
             catch (Exception ex)
             {
-                // يمكنك هنا تسجيل الخطأ في EventLog كما فعلنا سابقاً
+                // تسجيل الخطأ بشكل احترافي
+                // clsErrorHandler.Log(ex); 
                 Console.WriteLine("Error: " + ex.Message);
             }
 

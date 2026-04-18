@@ -33,15 +33,18 @@ namespace AwladAli.Product
                 {
                     ctrlProductRow rowControl = new ctrlProductRow();
 
-                    // هنا التعديل: بنمرر الـ IDs والأسعار مع بعض
-                    // تأكد أن أسماء الأعمدة (SizeID_S, SizeID_M, إلخ) تطابق ما يخرج من الـ Database Query عندك
+                    // التعديل: تمرير قيمة IsNormalSize_S (التي تعبر عن أن المنتج ذو سعر ثابت)
+                    // نفترض أن الـ DataTable تحتوي على عمود يحدد هل المقاس S هو المقاس العادي
+                    bool isNormalSize = row["IsNormalSize_S"] != DBNull.Value && Convert.ToBoolean(row["IsNormalSize_S"]);
+
                     rowControl.SetInfo(
                         Convert.ToInt32(row["ProductID"]),
                         row["ProductName"].ToString(),
 
-                        // Size S
+                        // Size S (أو Normal Size)
                         row["SizeID_S"] != DBNull.Value ? Convert.ToInt32(row["SizeID_S"]) : -1,
                         row["Price_S"],
+                        isNormalSize, // الباراميتر الجديد اللي ضفناه في ctrlProductRow
 
                         // Size M
                         row["SizeID_M"] != DBNull.Value ? Convert.ToInt32(row["SizeID_M"]) : -1,
@@ -54,7 +57,7 @@ namespace AwladAli.Product
                         // Size XL
                         row["SizeID_XL"] != DBNull.Value ? Convert.ToInt32(row["SizeID_XL"]) : -1,
                         row["Price_XL"]
-);
+                    );
 
                     rowControl.OnPriceChanged += () => OnOrderChanged?.Invoke();
                     flpItemsContainer.Controls.Add(rowControl);
@@ -81,12 +84,21 @@ namespace AwladAli.Product
             {
                 if (ctrl is ctrlProductRow row)
                 {
-                    // استدعاء الدالة اللي عملناها في ctrlProductRow لاستخراج كل الأحجام المختارة
                     allSelectedItems.AddRange(row.GetSelectedDetails(OrderID));
                 }
             }
 
             return allSelectedItems;
+        }
+
+        // دالة إضافية لتصفير كل المنتجات في القسم (مثلاً بعد إتمام الطلب)
+        public void ResetAllRows()
+        {
+            foreach (Control ctrl in flpItemsContainer.Controls)
+            {
+                if (ctrl is ctrlProductRow row)
+                    row.Reset();
+            }
         }
     }
 }
