@@ -1,0 +1,9 @@
+Copyright (c) 2026 Mohamed Abdeltawab Ali (Awlad Ali POS System)
+
+All Rights Reserved.
+
+This software and associated documentation files are proprietary to Mohamed Abdeltawab Ali.
+
+No part of this software may be copied, modified, merged, published, distributed, sublicensed, or sold without the express written permission of the owner.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
