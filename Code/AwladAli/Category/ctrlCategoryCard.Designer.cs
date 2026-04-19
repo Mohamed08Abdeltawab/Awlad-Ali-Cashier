@@ -18,12 +18,12 @@
         private void InitializeComponent()
         {
             this.pnlHeader = new System.Windows.Forms.Panel();
+            this.lblCategoryName = new System.Windows.Forms.Label();
             this.pnlColumnsHeader = new System.Windows.Forms.Panel();
             this.lblHeaderSizes = new System.Windows.Forms.Label();
             this.lblHeaderProduct = new System.Windows.Forms.Label();
             this.flpItemsContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.ctrlProductRow1 = new AwladAli.Product.ctrlProductRow();
-            this.lblCategoryName = new System.Windows.Forms.Label();
             this.pnlHeader.SuspendLayout();
             this.pnlColumnsHeader.SuspendLayout();
             this.flpItemsContainer.SuspendLayout();
@@ -39,6 +39,19 @@
             this.pnlHeader.Size = new System.Drawing.Size(790, 50);
             this.pnlHeader.TabIndex = 2;
             // 
+            // lblCategoryName
+            // 
+            this.lblCategoryName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblCategoryName.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.lblCategoryName.ForeColor = System.Drawing.Color.White;
+            this.lblCategoryName.Image = global::AwladAli.Properties.Resources.CategoryBackground1;
+            this.lblCategoryName.Location = new System.Drawing.Point(0, 0);
+            this.lblCategoryName.Name = "lblCategoryName";
+            this.lblCategoryName.Size = new System.Drawing.Size(790, 50);
+            this.lblCategoryName.TabIndex = 0;
+            this.lblCategoryName.Text = "اسم القسم";
+            this.lblCategoryName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // pnlColumnsHeader
             // 
             this.pnlColumnsHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
@@ -53,11 +66,11 @@
             // lblHeaderSizes
             // 
             this.lblHeaderSizes.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHeaderSizes.Location = new System.Drawing.Point(47, 9);
+            this.lblHeaderSizes.Location = new System.Drawing.Point(26, 10);
             this.lblHeaderSizes.Name = "lblHeaderSizes";
-            this.lblHeaderSizes.Size = new System.Drawing.Size(551, 21);
+            this.lblHeaderSizes.Size = new System.Drawing.Size(611, 21);
             this.lblHeaderSizes.TabIndex = 1;
-            this.lblHeaderSizes.Text = "XL                  L                  M                  S";
+            this.lblHeaderSizes.Text = "XL                  L                  M                  S/عادي";
             // 
             // lblHeaderProduct
             // 
@@ -88,19 +101,6 @@
             this.ctrlProductRow1.Name = "ctrlProductRow1";
             this.ctrlProductRow1.Size = new System.Drawing.Size(782, 40);
             this.ctrlProductRow1.TabIndex = 0;
-            // 
-            // lblCategoryName
-            // 
-            this.lblCategoryName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblCategoryName.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.lblCategoryName.ForeColor = System.Drawing.Color.White;
-            this.lblCategoryName.Image = global::AwladAli.Properties.Resources.CategoryBackground1;
-            this.lblCategoryName.Location = new System.Drawing.Point(0, 0);
-            this.lblCategoryName.Name = "lblCategoryName";
-            this.lblCategoryName.Size = new System.Drawing.Size(790, 50);
-            this.lblCategoryName.TabIndex = 0;
-            this.lblCategoryName.Text = "اسم القسم";
-            this.lblCategoryName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ctrlCategoryCard
             // 
