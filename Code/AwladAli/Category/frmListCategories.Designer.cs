@@ -37,7 +37,7 @@
             this.txtFilterValue = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.cmsUsers = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cmsCategory = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.AddNewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,7 +45,7 @@
             this.btnAddCategory = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.pbPersonImage = new System.Windows.Forms.PictureBox();
-            this.cmsUsers.SuspendLayout();
+            this.cmsCategory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGategory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).BeginInit();
             this.SuspendLayout();
@@ -114,21 +114,21 @@
             this.lblTitle.Text = "ادارة تصنيفات الأكلات";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // cmsUsers
+            // cmsCategory
             // 
-            this.cmsUsers.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cmsCategory.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AddNewToolStripMenuItem,
             this.editToolStripMenuItem,
             this.deleteToolStripMenuItem});
-            this.cmsUsers.Name = "contextMenuStrip1";
-            this.cmsUsers.Size = new System.Drawing.Size(186, 118);
+            this.cmsCategory.Name = "contextMenuStrip1";
+            this.cmsCategory.Size = new System.Drawing.Size(197, 140);
             // 
             // AddNewToolStripMenuItem
             // 
             this.AddNewToolStripMenuItem.Image = global::AwladAli.Properties.Resources.add_32;
             this.AddNewToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.AddNewToolStripMenuItem.Name = "AddNewToolStripMenuItem";
-            this.AddNewToolStripMenuItem.Size = new System.Drawing.Size(185, 38);
+            this.AddNewToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
             this.AddNewToolStripMenuItem.Text = "أضافة تصنيف جديد";
             this.AddNewToolStripMenuItem.Click += new System.EventHandler(this.AddNewToolStripMenuItem_Click);
             // 
@@ -137,7 +137,7 @@
             this.editToolStripMenuItem.Image = global::AwladAli.Properties.Resources.edit2_32;
             this.editToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(185, 38);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
             this.editToolStripMenuItem.Text = "تعديل";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click_1);
             // 
@@ -146,7 +146,7 @@
             this.deleteToolStripMenuItem.Image = global::AwladAli.Properties.Resources.remove_32;
             this.deleteToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(185, 38);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
             this.deleteToolStripMenuItem.Text = "حذف";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click_1);
             // 
@@ -157,7 +157,7 @@
             this.dgvGategory.AllowUserToResizeRows = false;
             this.dgvGategory.BackgroundColor = System.Drawing.Color.White;
             this.dgvGategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvGategory.ContextMenuStrip = this.cmsUsers;
+            this.dgvGategory.ContextMenuStrip = this.cmsCategory;
             this.dgvGategory.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvGategory.Location = new System.Drawing.Point(13, 368);
             this.dgvGategory.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -239,7 +239,7 @@
             this.Name = "frmListCategories";
             this.Text = "frmListCategories";
             this.Load += new System.EventHandler(this.frmListCategories_Load);
-            this.cmsUsers.ResumeLayout(false);
+            this.cmsCategory.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvGategory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).EndInit();
             this.ResumeLayout(false);
@@ -255,7 +255,7 @@
         private System.Windows.Forms.TextBox txtFilterValue;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.ContextMenuStrip cmsUsers;
+        private System.Windows.Forms.ContextMenuStrip cmsCategory;
         private System.Windows.Forms.ToolStripMenuItem AddNewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;

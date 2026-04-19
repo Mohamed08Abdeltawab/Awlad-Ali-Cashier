@@ -76,19 +76,40 @@ namespace AwladAli.Category
 
             if (dgvProduct.Rows.Count > 0)
             {
-                // Customizing column headers and widths
-                dgvProduct.Columns["ProductID"].HeaderText = "ID";
-                dgvProduct.Columns["ProductID"].Width = 60;
+                // 1. ترتيب الأعمدة برمجياً (DisplayIndex) ليكون السعر العادي في الأول
+                dgvProduct.Columns["ProductID"].DisplayIndex = 0;
+                dgvProduct.Columns["ProductName"].DisplayIndex = 1;
+                dgvProduct.Columns["IsNormalSize"].DisplayIndex = 2;
+                dgvProduct.Columns["Small"].DisplayIndex = 3;
 
-                dgvProduct.Columns["ProductName"].HeaderText = "اسم الأكلة";
-                dgvProduct.Columns["ProductName"].Width = 150;
-
+                // 2. تسمية الأعمدة وتنسيقها
+                dgvProduct.Columns["IsNormalSize"].HeaderText = "السعر العادي";
                 dgvProduct.Columns["Small"].HeaderText = "صغير (S)";
                 dgvProduct.Columns["Medium"].HeaderText = "وسط (M)";
                 dgvProduct.Columns["Large"].HeaderText = "كبير (L)";
                 dgvProduct.Columns["XLarge"].HeaderText = "ضخم (XL)";
 
-                // Optional: formatting prices to show 2 decimal places
+                foreach (DataGridViewRow row in dgvProduct.Rows)
+                {
+                    if (row.Cells["IsNormalSize"].Value != DBNull.Value)
+                    {
+                        int isNormal = Convert.ToInt32(row.Cells["IsNormalSize"].Value);
+
+                        if (isNormal == 1)
+                        {
+                            // حالة السعر الثابت (Normal)
+                            row.Cells["IsNormalSize"].Value = row.Cells["Small"].Value;
+                            row.Cells["Small"].Value = 0;
+                            row.Cells["IsNormalSize"].Style.ForeColor = System.Drawing.Color.Green;
+                        }
+                        else
+                        {
+                            row.Cells["IsNormalSize"].Style.ForeColor = System.Drawing.Color.Blue;
+                        }
+                    }
+                }
+
+                // تنسيق الأرقام بمرتبتين عشريتين
                 dgvProduct.Columns["Small"].DefaultCellStyle.Format = "N2";
                 dgvProduct.Columns["Medium"].DefaultCellStyle.Format = "N2";
                 dgvProduct.Columns["Large"].DefaultCellStyle.Format = "N2";
@@ -180,12 +201,15 @@ namespace AwladAli.Category
 
         private void EditMedicinetoolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            int ProductID = Convert.ToInt32(dgvProduct.CurrentRow.Cells[0].Value);
+            if (dgvProduct.CurrentRow == null) return;
 
-            // Open Product form in Update mode
+            int ProductID = Convert.ToInt32(dgvProduct.CurrentRow.Cells["ProductID"].Value);
+
+            // نفتح شاشة الإضافة/التعديل ونمرر الـ CategoryID الحالي والـ ProductID
             frmAddUpdateProduct frm = new frmAddUpdateProduct(_CategoryID, ProductID);
             frm.ShowDialog();
 
+            // تحديث الجدول بعد التعديل
             _RefreshProductsList();
         }
 

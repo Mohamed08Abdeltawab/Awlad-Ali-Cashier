@@ -93,23 +93,29 @@ namespace AwladAli_Data
                 {
                     connection.Open();
 
-                    // Query احترافية تجيب كل تفاصيل الطباعة في سطر واحد
+                    // Query احترافية تجيب كل تفاصيل الطباعة مع معالجة "الحجم العادي"
                     string query = @"
-                SELECT 
-                    OD.DetailID,
-                    CASE 
-                        WHEN OD.ProductID IS NOT NULL THEN P.ProductName || ' (' || COALESCE(PS.SizeName, '') || ')'
-                        WHEN OD.ExtraID IS NOT NULL THEN 'إضافة: ' || E.ExtraName
-                        ELSE 'صنف غير معروف'
-                    END AS ItemDescription,
-                    OD.Quantity,
-                    OD.UnitPrice,
-                    (OD.Quantity * OD.UnitPrice) AS TotalLinePrice
-                FROM OrderDetails OD
-                LEFT JOIN Products P ON OD.ProductID = P.ProductID
-                LEFT JOIN ProductSizes PS ON OD.SizeID = PS.SizeID
-                LEFT JOIN Extras E ON OD.ExtraID = E.ExtraID
-                WHERE OD.OrderID = @OrderID";
+                                    SELECT 
+                                        OD.DetailID,
+                                        CASE 
+                                            WHEN OD.ProductID IS NOT NULL THEN 
+                                                CASE 
+                                                    -- لو كان الحجم عادي (IsNormalSize = 1) يرجع اسم الصنف فقط
+                                                    WHEN PS.IsNormalSize = 1 THEN P.ProductName
+                                                    -- لو له حجم حقيقي (صغير، وسط، كبير) يرجع الاسم وجنبه الحجم
+                                                    ELSE P.ProductName || ' (' || COALESCE(PS.SizeName, '') || ')'
+                                                END
+                                            WHEN OD.ExtraID IS NOT NULL THEN 'إضافة: ' || E.ExtraName
+                                            ELSE 'صنف غير معروف'
+                                        END AS ItemDescription,
+                                        OD.Quantity,
+                                        OD.UnitPrice,
+                                        (OD.Quantity * OD.UnitPrice) AS TotalLinePrice
+                                    FROM OrderDetails OD
+                                    LEFT JOIN Products P ON OD.ProductID = P.ProductID
+                                    LEFT JOIN ProductSizes PS ON OD.SizeID = PS.SizeID
+                                    LEFT JOIN Extras E ON OD.ExtraID = E.ExtraID
+                                    WHERE OD.OrderID = @OrderID";
 
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {

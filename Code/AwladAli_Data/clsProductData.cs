@@ -186,26 +186,23 @@ namespace AwladAli_Data
                 {
                     // Query Pivot مطورة لجلب الأكلة، أسعارها، وحالة "الحجم العادي"
                     string query = @"
-                SELECT 
-                    p.ProductID, 
-                    p.ProductName,
-                    -- جلب بيانات الحجم العادي (لو موجود) أو الحجم الصغير
-                    MAX(CASE WHEN ps.SizeName = 'Normal' OR ps.SizeName = 'S' THEN ps.SizeID END) AS SizeID_S,
-                    MAX(CASE WHEN ps.SizeName = 'Normal' OR ps.SizeName = 'S' THEN ps.Price END) AS Price_S,
-                    -- العمود السحري اللي هيعرف الـ UI إن ده سعر ثابت
-                    MAX(CASE WHEN ps.SizeName = 'Normal' OR ps.SizeName = 'S' THEN ps.IsNormalSize END) AS IsNormalSize_S,
+                                    SELECT 
+                                        p.ProductID, 
+                                        p.ProductName,
+                                        MAX(CASE WHEN ps.SizeName = 'Normal' OR ps.SizeName = 'S' THEN ps.SizeID END) AS SizeID_S,
+                                        MAX(CASE WHEN ps.SizeName = 'Normal' OR ps.SizeName = 'S' THEN ps.Price END) AS Price_S,
+                                        MAX(CASE WHEN ps.SizeName = 'Normal' OR ps.SizeName = 'S' THEN ps.IsNormalSize END) AS IsNormalSize_S,
 
-                    -- باقي الأحجام التقليدية
-                    MAX(CASE WHEN ps.SizeName = 'M' THEN ps.SizeID END) AS SizeID_M,
-                    MAX(CASE WHEN ps.SizeName = 'M' THEN ps.Price END) AS Price_M,
-                    MAX(CASE WHEN ps.SizeName = 'L' THEN ps.SizeID END) AS SizeID_L,
-                    MAX(CASE WHEN ps.SizeName = 'L' THEN ps.Price END) AS Price_L,
-                    MAX(CASE WHEN ps.SizeName = 'XL' THEN ps.SizeID END) AS SizeID_XL,
-                    MAX(CASE WHEN ps.SizeName = 'XL' THEN ps.Price END) AS Price_XL
-                FROM Products p
-                LEFT JOIN ProductSizes ps ON p.ProductID = ps.ProductID
-                WHERE p.CategoryID = @CategoryID
-                GROUP BY p.ProductID, p.ProductName;";
+                                        MAX(CASE WHEN ps.SizeName = 'M' THEN ps.SizeID END) AS SizeID_M,
+                                        MAX(CASE WHEN ps.SizeName = 'M' THEN ps.Price END) AS Price_M,
+                                        MAX(CASE WHEN ps.SizeName = 'L' THEN ps.SizeID END) AS SizeID_L,
+                                        MAX(CASE WHEN ps.SizeName = 'L' THEN ps.Price END) AS Price_L,
+                                        MAX(CASE WHEN ps.SizeName = 'XL' THEN ps.SizeID END) AS SizeID_XL,
+                                        MAX(CASE WHEN ps.SizeName = 'XL' THEN ps.Price END) AS Price_XL
+                                    FROM Products p
+                                    LEFT JOIN ProductSizes ps ON p.ProductID = ps.ProductID
+                                    WHERE p.CategoryID = @CategoryID
+                                    GROUP BY p.ProductID, p.ProductName;";
 
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {
@@ -241,21 +238,23 @@ namespace AwladAli_Data
             {
                 using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
                 {
-                    // Query to select products linked to a specific CategoryID
+                    // Query مطورة لسحب الأسعار مع حالة "الحجم العادي"
                     string query = @"
                                     SELECT 
                                         P.ProductID, 
                                         P.ProductName,
                                         IFNULL(S.Price, 0) AS Small,
+                                        IFNULL(S.IsNormalSize, 0) AS IsNormalSize, 
                                         IFNULL(M.Price, 0) AS Medium,
                                         IFNULL(L.Price, 0) AS Large,
                                         IFNULL(XL.Price, 0) AS XLarge
                                     FROM Products P
-                                    LEFT JOIN ProductSizes S ON P.ProductID = S.ProductID AND S.SizeName = 'S'
+                                    LEFT JOIN ProductSizes S ON P.ProductID = S.ProductID AND (S.SizeName = 'S' OR S.SizeName = 'Normal')
                                     LEFT JOIN ProductSizes M ON P.ProductID = M.ProductID AND M.SizeName = 'M'
                                     LEFT JOIN ProductSizes L ON P.ProductID = L.ProductID AND L.SizeName = 'L'
                                     LEFT JOIN ProductSizes XL ON P.ProductID = XL.ProductID AND XL.SizeName = 'XL'
                                     WHERE P.CategoryID = @CategoryID";
+
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@CategoryID", CategoryID);
@@ -273,7 +272,8 @@ namespace AwladAli_Data
             }
             catch (Exception ex)
             {
-                // Optional: Log the error somewhere
+                // يفضل دائماً تسجيل الخطأ لسهولة التتبع
+                Console.WriteLine("Error in GetAllProductsByCategory: " + ex.Message);
             }
 
             return dt;

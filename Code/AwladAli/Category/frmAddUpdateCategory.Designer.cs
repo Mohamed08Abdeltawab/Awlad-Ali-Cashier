@@ -142,15 +142,15 @@
             this.EditMedicinetoolStripMenuItem,
             this.removeMedicineToolStripMenuItem});
             this.cmsProduct.Name = "contextMenuStrip1";
-            this.cmsProduct.Size = new System.Drawing.Size(186, 80);
+            this.cmsProduct.Size = new System.Drawing.Size(120, 80);
             // 
             // EditMedicinetoolStripMenuItem
             // 
             this.EditMedicinetoolStripMenuItem.Image = global::AwladAli.Properties.Resources.edit2_32;
             this.EditMedicinetoolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.EditMedicinetoolStripMenuItem.Name = "EditMedicinetoolStripMenuItem";
-            this.EditMedicinetoolStripMenuItem.Size = new System.Drawing.Size(185, 38);
-            this.EditMedicinetoolStripMenuItem.Text = "Edit Medicine";
+            this.EditMedicinetoolStripMenuItem.Size = new System.Drawing.Size(119, 38);
+            this.EditMedicinetoolStripMenuItem.Text = "تعديل";
             this.EditMedicinetoolStripMenuItem.Click += new System.EventHandler(this.EditMedicinetoolStripMenuItem_Click_1);
             // 
             // removeMedicineToolStripMenuItem
@@ -158,8 +158,8 @@
             this.removeMedicineToolStripMenuItem.Image = global::AwladAli.Properties.Resources.remove_32;
             this.removeMedicineToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.removeMedicineToolStripMenuItem.Name = "removeMedicineToolStripMenuItem";
-            this.removeMedicineToolStripMenuItem.Size = new System.Drawing.Size(185, 38);
-            this.removeMedicineToolStripMenuItem.Text = "Remove Medicine";
+            this.removeMedicineToolStripMenuItem.Size = new System.Drawing.Size(119, 38);
+            this.removeMedicineToolStripMenuItem.Text = "حذف";
             this.removeMedicineToolStripMenuItem.Click += new System.EventHandler(this.removeMedicineToolStripMenuItem_Click_1);
             // 
             // btnSave
