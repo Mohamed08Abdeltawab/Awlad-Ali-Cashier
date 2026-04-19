@@ -22,9 +22,9 @@
             // lblProductName
             // 
             this.lblProductName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProductName.Location = new System.Drawing.Point(649, 6);
+            this.lblProductName.Location = new System.Drawing.Point(590, 9);
             this.lblProductName.Name = "lblProductName";
-            this.lblProductName.Size = new System.Drawing.Size(127, 25);
+            this.lblProductName.Size = new System.Drawing.Size(164, 25);
             this.lblProductName.TabIndex = 6;
             this.lblProductName.Text = "منتج تجريبي";
             this.lblProductName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -32,7 +32,7 @@
             // chkSelectPriceS
             // 
             this.chkSelectPriceS.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkSelectPriceS.Location = new System.Drawing.Point(595, 11);
+            this.chkSelectPriceS.Location = new System.Drawing.Point(530, 11);
             this.chkSelectPriceS.Name = "chkSelectPriceS";
             this.chkSelectPriceS.Size = new System.Drawing.Size(63, 20);
             this.chkSelectPriceS.TabIndex = 1;
@@ -43,7 +43,7 @@
             // 
             this.numQuantityS.BackColor = System.Drawing.SystemColors.Window;
             this.numQuantityS.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numQuantityS.Location = new System.Drawing.Point(539, 8);
+            this.numQuantityS.Location = new System.Drawing.Point(474, 8);
             this.numQuantityS.Name = "numQuantityS";
             this.numQuantityS.ReadOnly = true;
             this.numQuantityS.Size = new System.Drawing.Size(50, 26);
@@ -54,7 +54,7 @@
             // 
             this.numQuantityM.BackColor = System.Drawing.SystemColors.Window;
             this.numQuantityM.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numQuantityM.Location = new System.Drawing.Point(362, 8);
+            this.numQuantityM.Location = new System.Drawing.Point(320, 8);
             this.numQuantityM.Name = "numQuantityM";
             this.numQuantityM.ReadOnly = true;
             this.numQuantityM.Size = new System.Drawing.Size(50, 26);
@@ -64,7 +64,7 @@
             // chkSelectPriceM
             // 
             this.chkSelectPriceM.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkSelectPriceM.Location = new System.Drawing.Point(418, 11);
+            this.chkSelectPriceM.Location = new System.Drawing.Point(376, 11);
             this.chkSelectPriceM.Name = "chkSelectPriceM";
             this.chkSelectPriceM.Size = new System.Drawing.Size(75, 20);
             this.chkSelectPriceM.TabIndex = 8;
@@ -75,7 +75,7 @@
             // 
             this.numQuantityL.BackColor = System.Drawing.SystemColors.Window;
             this.numQuantityL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numQuantityL.Location = new System.Drawing.Point(185, 8);
+            this.numQuantityL.Location = new System.Drawing.Point(161, 9);
             this.numQuantityL.Name = "numQuantityL";
             this.numQuantityL.ReadOnly = true;
             this.numQuantityL.Size = new System.Drawing.Size(50, 26);
@@ -85,7 +85,7 @@
             // chkSelectPriceL
             // 
             this.chkSelectPriceL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkSelectPriceL.Location = new System.Drawing.Point(241, 11);
+            this.chkSelectPriceL.Location = new System.Drawing.Point(217, 12);
             this.chkSelectPriceL.Name = "chkSelectPriceL";
             this.chkSelectPriceL.Size = new System.Drawing.Size(87, 20);
             this.chkSelectPriceL.TabIndex = 11;
@@ -96,7 +96,7 @@
             // 
             this.numQuantityXl.BackColor = System.Drawing.SystemColors.Window;
             this.numQuantityXl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numQuantityXl.Location = new System.Drawing.Point(4, 8);
+            this.numQuantityXl.Location = new System.Drawing.Point(10, 8);
             this.numQuantityXl.Name = "numQuantityXl";
             this.numQuantityXl.ReadOnly = true;
             this.numQuantityXl.Size = new System.Drawing.Size(50, 26);
@@ -106,7 +106,7 @@
             // chkSelectPriceXL
             // 
             this.chkSelectPriceXL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkSelectPriceXL.Location = new System.Drawing.Point(60, 11);
+            this.chkSelectPriceXL.Location = new System.Drawing.Point(66, 11);
             this.chkSelectPriceXL.Name = "chkSelectPriceXL";
             this.chkSelectPriceXL.Size = new System.Drawing.Size(69, 20);
             this.chkSelectPriceXL.TabIndex = 14;
@@ -126,7 +126,7 @@
             this.Controls.Add(this.chkSelectPriceS);
             this.Controls.Add(this.lblProductName);
             this.Name = "ctrlProductRow";
-            this.Size = new System.Drawing.Size(778, 40);
+            this.Size = new System.Drawing.Size(761, 40);
             ((System.ComponentModel.ISupportInitialize)(this.numQuantityS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numQuantityM)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numQuantityL)).EndInit();

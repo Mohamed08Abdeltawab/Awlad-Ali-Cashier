@@ -60,9 +60,9 @@
             // lblProductName
             // 
             this.lblProductName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProductName.Location = new System.Drawing.Point(112, 3);
+            this.lblProductName.Location = new System.Drawing.Point(114, 4);
             this.lblProductName.Name = "lblProductName";
-            this.lblProductName.Size = new System.Drawing.Size(127, 25);
+            this.lblProductName.Size = new System.Drawing.Size(115, 25);
             this.lblProductName.TabIndex = 9;
             this.lblProductName.Text = "منتج تجريبي";
             this.lblProductName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;

@@ -23,10 +23,8 @@
             this.lblHeaderSizes = new System.Windows.Forms.Label();
             this.lblHeaderProduct = new System.Windows.Forms.Label();
             this.flpItemsContainer = new System.Windows.Forms.FlowLayoutPanel();
-            this.ctrlProductRow1 = new AwladAli.Product.ctrlProductRow();
             this.pnlHeader.SuspendLayout();
             this.pnlColumnsHeader.SuspendLayout();
-            this.flpItemsContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlHeader
@@ -70,12 +68,12 @@
             this.lblHeaderSizes.Name = "lblHeaderSizes";
             this.lblHeaderSizes.Size = new System.Drawing.Size(611, 21);
             this.lblHeaderSizes.TabIndex = 1;
-            this.lblHeaderSizes.Text = "XL                  L                  M                  S/عادي";
+            this.lblHeaderSizes.Text = "XL                L                  M              S/عادي";
             // 
             // lblHeaderProduct
             // 
             this.lblHeaderProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHeaderProduct.Location = new System.Drawing.Point(712, 9);
+            this.lblHeaderProduct.Location = new System.Drawing.Point(690, 10);
             this.lblHeaderProduct.Name = "lblHeaderProduct";
             this.lblHeaderProduct.Size = new System.Drawing.Size(85, 25);
             this.lblHeaderProduct.TabIndex = 0;
@@ -85,7 +83,6 @@
             // 
             this.flpItemsContainer.AutoScroll = true;
             this.flpItemsContainer.BackColor = System.Drawing.Color.White;
-            this.flpItemsContainer.Controls.Add(this.ctrlProductRow1);
             this.flpItemsContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpItemsContainer.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpItemsContainer.Location = new System.Drawing.Point(0, 90);
@@ -93,14 +90,6 @@
             this.flpItemsContainer.Size = new System.Drawing.Size(790, 492);
             this.flpItemsContainer.TabIndex = 0;
             this.flpItemsContainer.WrapContents = false;
-            // 
-            // ctrlProductRow1
-            // 
-            this.ctrlProductRow1.BackColor = System.Drawing.Color.White;
-            this.ctrlProductRow1.Location = new System.Drawing.Point(3, 3);
-            this.ctrlProductRow1.Name = "ctrlProductRow1";
-            this.ctrlProductRow1.Size = new System.Drawing.Size(782, 40);
-            this.ctrlProductRow1.TabIndex = 0;
             // 
             // ctrlCategoryCard
             // 
@@ -112,7 +101,6 @@
             this.Size = new System.Drawing.Size(790, 582);
             this.pnlHeader.ResumeLayout(false);
             this.pnlColumnsHeader.ResumeLayout(false);
-            this.flpItemsContainer.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -125,6 +113,5 @@
         private System.Windows.Forms.FlowLayoutPanel flpItemsContainer;
         private System.Windows.Forms.Label lblHeaderProduct;
         private System.Windows.Forms.Label lblHeaderSizes;
-        private ctrlProductRow ctrlProductRow1;
     }
 }

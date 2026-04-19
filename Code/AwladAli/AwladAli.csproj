@@ -383,6 +383,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Cashier.ico" />
+    <None Include="Resources\Logojpeg.jpeg" />
     <None Include="Resources\show 32.png" />
     <None Include="Resources\total money 32.png" />
     <None Include="Resources\day money 32.png" />

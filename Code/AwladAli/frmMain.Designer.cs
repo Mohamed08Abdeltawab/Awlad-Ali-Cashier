@@ -45,15 +45,18 @@ namespace AwladAli
             this.lblTotalPrice = new System.Windows.Forms.Label();
             this.lblTotalText = new System.Windows.Forms.Label();
             this.pnlHeader = new System.Windows.Forms.Panel();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.lblUsername = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnSettings = new System.Windows.Forms.Button();
-            this.lblTitle = new System.Windows.Forms.Label();
             this.pnlMainContainer.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pnlFooter.SuspendLayout();
             this.pnlHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.SuspendLayout();
             // 
@@ -207,16 +210,51 @@ namespace AwladAli
             // 
             this.pnlHeader.BackColor = System.Drawing.Color.Black;
             this.pnlHeader.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pnlHeader.Controls.Add(this.lblTitle);
+            this.pnlHeader.Controls.Add(this.pictureBox1);
+            this.pnlHeader.Controls.Add(this.label8);
             this.pnlHeader.Controls.Add(this.pictureBox8);
             this.pnlHeader.Controls.Add(this.lblUsername);
             this.pnlHeader.Controls.Add(this.label2);
             this.pnlHeader.Controls.Add(this.btnSettings);
-            this.pnlHeader.Controls.Add(this.lblTitle);
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHeader.Location = new System.Drawing.Point(0, 0);
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.Size = new System.Drawing.Size(1924, 89);
             this.pnlHeader.TabIndex = 1;
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.ForeColor = System.Drawing.Color.White;
+            this.lblTitle.Location = new System.Drawing.Point(1069, 27);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(81, 37);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = "كاشير";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::AwladAli.Properties.Resources.Logojpeg;
+            this.pictureBox1.Location = new System.Drawing.Point(836, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(157, 89);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 139;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.label8.Location = new System.Drawing.Point(382, 43);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(253, 20);
+            this.label8.TabIndex = 138;
+            this.label8.Text = "By Eng: Mohamed Abdeltawab";
             // 
             // pictureBox8
             // 
@@ -272,17 +310,6 @@ namespace AwladAli
             this.btnSettings.UseVisualStyleBackColor = false;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
-            // lblTitle
-            // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.ForeColor = System.Drawing.Color.White;
-            this.lblTitle.Location = new System.Drawing.Point(809, 20);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(274, 37);
-            this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "نظام كاشير - أولاد علي";
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -305,6 +332,7 @@ namespace AwladAli
             this.pnlFooter.PerformLayout();
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.ResumeLayout(false);
 
@@ -331,5 +359,7 @@ namespace AwladAli
         private Panel panel1;
         private Label label3;
         private LinkLabel llReset;
+        private Label label8;
+        private PictureBox pictureBox1;
     }
 }
