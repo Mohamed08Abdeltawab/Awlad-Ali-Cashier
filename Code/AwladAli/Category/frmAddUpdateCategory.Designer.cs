@@ -135,6 +135,7 @@
             this.dgvProduct.Size = new System.Drawing.Size(827, 258);
             this.dgvProduct.TabIndex = 254;
             this.dgvProduct.TabStop = false;
+            this.dgvProduct.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvProduct_CellFormatting);
             // 
             // cmsProduct
             // 

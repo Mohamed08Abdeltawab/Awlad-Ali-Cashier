@@ -103,7 +103,7 @@ namespace AwladAli_Data
                                                     -- لو كان الحجم عادي (IsNormalSize = 1) يرجع اسم الصنف فقط
                                                     WHEN PS.IsNormalSize = 1 THEN P.ProductName
                                                     -- لو له حجم حقيقي (صغير، وسط، كبير) يرجع الاسم وجنبه الحجم
-                                                    ELSE P.ProductName || ' (' || COALESCE(PS.SizeName, '') || ')'
+                                                    ELSE '(' || COALESCE(PS.SizeName, '') || ') ' || P.ProductName
                                                 END
                                             WHEN OD.ExtraID IS NOT NULL THEN 'إضافة: ' || E.ExtraName
                                             ELSE 'صنف غير معروف'

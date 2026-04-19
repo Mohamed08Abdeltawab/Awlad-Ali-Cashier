@@ -225,5 +225,17 @@ namespace AwladAli.Category
             }
         }
 
+        private void dgvProduct_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            // لو القيمة صفر، اظهرها كشرطة
+            if (e.Value != null && e.Value != DBNull.Value && decimal.TryParse(e.Value.ToString(), out decimal val))
+            {
+                if (val == 0)
+                {
+                    e.Value = "-";
+                    e.FormattingApplied = true;
+                }
+            }
+        }
     }
 }

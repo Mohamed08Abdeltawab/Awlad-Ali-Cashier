@@ -43,7 +43,13 @@ namespace AwladAli.Bill
                 {
                     clsProductSize size = clsProductSize.Find((int)_OrderDetail.SizeID);
                     if (size != null)
-                        finalDisplayName = finalDisplayName + $" ({size.SizeName})";
+                    {
+                        if(size.SizeName == "Normal")
+                        {
+                            size.SizeName = ""; // Don't show "Normal" size in the display name
+                        }
+                        finalDisplayName =$"{size.SizeName} " + finalDisplayName;
+                    }
                 }
             }
             // Case 2: The item is an Extra (Addition)
