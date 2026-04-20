@@ -3,7 +3,7 @@ using System;
 using System.Data;
 using System.Data.SQLite;
 
-namespace AwladAli_DataAccess
+namespace AwladAli_Data
 {
     public class clsDashboardData
     {

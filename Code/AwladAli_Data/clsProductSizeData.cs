@@ -100,7 +100,7 @@ namespace AwladAli_Data
                                 {
                                     insertCmd.Parameters.AddWithValue("@ProductID", ProductID);
                                     insertCmd.Parameters.AddWithValue("@SizeName", "Normal");
-                                    insertCmd.Parameters.AddWithValue("@Price", decimal.Parse(PriceNormal));
+                                    decimal.Parse(PriceNormal, System.Globalization.CultureInfo.InvariantCulture);
                                     insertCmd.Parameters.AddWithValue("@IsNormalSize", 1);
                                     insertCmd.ExecuteNonQuery();
                                 }
@@ -121,7 +121,7 @@ namespace AwladAli_Data
                                     {
                                         insertCmd.Parameters.AddWithValue("@ProductID", ProductID);
                                         insertCmd.Parameters.AddWithValue("@SizeName", item.Key);
-                                        insertCmd.Parameters.AddWithValue("@Price", decimal.Parse(item.Value));
+                                        decimal.Parse(item.Value, System.Globalization.CultureInfo.InvariantCulture);
                                         insertCmd.Parameters.AddWithValue("@IsNormalSize", 0);
                                         insertCmd.ExecuteNonQuery();
                                     }

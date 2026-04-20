@@ -284,6 +284,7 @@
             this.llHidePassword.TabIndex = 154;
             this.llHidePassword.TabStop = true;
             this.llHidePassword.Text = "Hide";
+            this.llHidePassword.Visible = false;
             this.llHidePassword.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llHidePassword_LinkClicked);
             // 
             // frmAddUpdateUser

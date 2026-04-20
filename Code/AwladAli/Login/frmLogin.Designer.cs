@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.label8 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -45,7 +46,8 @@
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.llHidePassword = new System.Windows.Forms.LinkLabel();
+            this.llShowPassword = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -76,6 +78,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.Color.White;
+            this.splitContainer1.Panel2.Controls.Add(this.llHidePassword);
+            this.splitContainer1.Panel2.Controls.Add(this.llShowPassword);
             this.splitContainer1.Panel2.Controls.Add(this.btnClose);
             this.splitContainer1.Panel2.Controls.Add(this.label7);
             this.splitContainer1.Panel2.Controls.Add(this.chkRememberMe);
@@ -91,6 +95,18 @@
             this.splitContainer1.SplitterDistance = 417;
             this.splitContainer1.SplitterWidth = 6;
             this.splitContainer1.TabIndex = 1;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(83, 473);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(228, 20);
+            this.label8.TabIndex = 137;
+            this.label8.Text = "Eng: Mohamed Abdeltawab";
             // 
             // label4
             // 
@@ -263,17 +279,28 @@
             this.pictureBox3.TabIndex = 132;
             this.pictureBox3.TabStop = false;
             // 
-            // label8
+            // llHidePassword
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(83, 473);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(228, 20);
-            this.label8.TabIndex = 137;
-            this.label8.Text = "Eng: Mohamed Abdeltawab";
+            this.llHidePassword.AutoSize = true;
+            this.llHidePassword.Location = new System.Drawing.Point(27, 209);
+            this.llHidePassword.Name = "llHidePassword";
+            this.llHidePassword.Size = new System.Drawing.Size(42, 20);
+            this.llHidePassword.TabIndex = 156;
+            this.llHidePassword.TabStop = true;
+            this.llHidePassword.Text = "Hide";
+            this.llHidePassword.Visible = false;
+            this.llHidePassword.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llHidePassword_LinkClicked);
+            // 
+            // llShowPassword
+            // 
+            this.llShowPassword.AutoSize = true;
+            this.llShowPassword.Location = new System.Drawing.Point(20, 209);
+            this.llShowPassword.Name = "llShowPassword";
+            this.llShowPassword.Size = new System.Drawing.Size(49, 20);
+            this.llShowPassword.TabIndex = 155;
+            this.llShowPassword.TabStop = true;
+            this.llShowPassword.Text = "Show";
+            this.llShowPassword.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llShowPassword_LinkClicked_1);
             // 
             // frmLogin
             // 
@@ -322,5 +349,7 @@
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.LinkLabel llHidePassword;
+        private System.Windows.Forms.LinkLabel llShowPassword;
     }
 }

@@ -95,29 +95,36 @@ namespace AwladAli_Data
         public static bool DeleteOrder(int OrderID)
         {
             int rowsAffected = 0;
-
-            try
+            // ✅ FIX — atomic transaction, same pattern as DeleteProduct
+            using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
             {
-                // استخدام Using للـ Connection يضمن إغلاقه تلقائياً
-                using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
+                connection.Open();
+                using (var transaction = connection.BeginTransaction())
                 {
-                    // كود الـ SQL بيمسح من التفاصيل أولاً (Child) ثم الأوردر (Parent)
-                    string query = @"DELETE FROM OrderDetails WHERE OrderID = @OrderID;
-                             DELETE FROM Orders WHERE OrderID = @OrderID;";
-
-                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    try
                     {
-                        command.Parameters.AddWithValue("@OrderID", OrderID);
+                        string deleteDetailsQuery = "DELETE FROM OrderDetails WHERE OrderID = @OrderID";
+                        using (var cmd1 = new SQLiteCommand(deleteDetailsQuery, connection, transaction))
+                        {
+                            cmd1.Parameters.AddWithValue("@OrderID", OrderID);
+                            cmd1.ExecuteNonQuery();
+                        }
 
-                        connection.Open();
-                        rowsAffected = command.ExecuteNonQuery();
+                        string deleteOrderQuery = "DELETE FROM Orders WHERE OrderID = @OrderID";
+                        using (var cmd2 = new SQLiteCommand(deleteOrderQuery, connection, transaction))
+                        {
+                            cmd2.Parameters.AddWithValue("@OrderID", OrderID);
+                            rowsAffected = cmd2.ExecuteNonQuery();
+                        }
+
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        return false;
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                // English comment: Log your error here for debugging
-                return false;
             }
 
             // rowsAffected المفروض تكون أكبر من 0 لو تم مسح الأوردر أو تفاصيله

@@ -18,7 +18,7 @@ namespace AwladAli.GlobalClasses
         // 1. Hashing Password
 
         // 2. Remember Credentials in Registry + Log to Event Log
-        public static bool RememberUsernameAndPassword(string Username, string Password)
+        public static bool RememberUsernameAndPassword(string Username)
         {
             try
             {
@@ -26,7 +26,6 @@ namespace AwladAli.GlobalClasses
                 {
                     // If user unchecked "Remember Me", clear registry values
                     Registry.SetValue(_RegistryPath, "Username", "", RegistryValueKind.String);
-                    Registry.SetValue(_RegistryPath, "Password", "", RegistryValueKind.String);
 
                     LogException("User credentials cleared from Registry.", EventLogEntryType.Information);
                     return true;
@@ -34,7 +33,6 @@ namespace AwladAli.GlobalClasses
 
                 // Save to Registry
                 Registry.SetValue(_RegistryPath, "Username", Username, RegistryValueKind.String);
-                Registry.SetValue(_RegistryPath, "Password", Password, RegistryValueKind.String);
 
                 // Log this action to Windows Event Log
                 LogException($"Credentials for user [{Username}] saved to Registry successfully.", EventLogEntryType.Information);
@@ -49,17 +47,15 @@ namespace AwladAli.GlobalClasses
         }
 
         // 3. Get Credentials from Registry
-        public static bool GetStoredCredential(ref string Username, ref string Password)
+        public static bool GetStoredCredential(ref string Username)
         {
             try
             {
                 string storedUser = Registry.GetValue(_RegistryPath, "Username", null) as string;
-                string storedPass = Registry.GetValue(_RegistryPath, "Password", null) as string;
 
                 if (!string.IsNullOrEmpty(storedUser))
                 {
                     Username = storedUser;
-                    Password = storedPass;
                     return true;
                 }
             }

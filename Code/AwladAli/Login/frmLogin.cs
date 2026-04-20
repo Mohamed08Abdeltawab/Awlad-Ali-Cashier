@@ -46,11 +46,11 @@ namespace AwladAli.Login
                 if (chkRememberMe.Checked)
                 {
                     // Store plain username and password (Registry handles safety)
-                    clsGlobal.RememberUsernameAndPassword(txtUserName.Text.Trim(), txtPassword.Text.Trim());
+                    clsGlobal.RememberUsernameAndPassword(txtUserName.Text.Trim());
                 }
                 else
                 {
-                    clsGlobal.RememberUsernameAndPassword("", "");
+                    clsGlobal.RememberUsernameAndPassword("");
                 }
 
                 // 4. Success Logic
@@ -69,16 +69,32 @@ namespace AwladAli.Login
         }
         private void frmLogin_Load(object sender, EventArgs e)
         {
-            string UserName = "", Password = "";
+            string UserName = "";
 
-            if (clsGlobal.GetStoredCredential(ref UserName, ref Password))
+            if (clsGlobal.GetStoredCredential(ref UserName))
             {
                 txtUserName.Text = UserName;
-                txtPassword.Text = Password;
                 chkRememberMe.Checked = true;
             }
             else
                 chkRememberMe.Checked = false;
+        }
+
+        private void llHidePassword_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            txtPassword.PasswordChar = '*';
+
+            // 2. تبديل الروابط
+            llShowPassword.Visible = true;
+            llHidePassword.Visible = false;
+        }
+        private void llShowPassword_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            txtPassword.PasswordChar = '\0'; // '\0' تعني إظهار النص كما هو
+
+            // 2. تبديل الروابط
+            llShowPassword.Visible = false;
+            llHidePassword.Visible = true;
         }
 
     }
