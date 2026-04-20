@@ -70,7 +70,8 @@ Focused on building clean, architecturally sound software using industry-standar
 
 
 
-🧾 Awlad Ali Cashier System
+🧾 Awlad Ali Cashier System 
+
 نظام متكامل لإدارة المطاعم والمبيعات والمخازن
 مشروع Awlad Ali Cashier هو تطبيق سطح مكتب (Windows) مصمم خصيصاً لإدارة عمليات البيع في المطاعم بشكل سريع ودقيق. البرنامج بيغطي كل حاجة، بداية من تسجيل دخول الموظفين، مروراً بطلب الأوردرات، وصولاً لتقارير الأرباح والمبيعات المفصلة.
 
