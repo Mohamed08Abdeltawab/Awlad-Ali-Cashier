@@ -46,15 +46,15 @@ namespace AwladAli
             this.lblTotalPrice = new System.Windows.Forms.Label();
             this.lblTotalText = new System.Windows.Forms.Label();
             this.pnlHeader = new System.Windows.Forms.Panel();
-            this.lblTimer = new System.Windows.Forms.Label();
-            this.btnSession = new System.Windows.Forms.Button();
+            this.lblSessionTimer = new System.Windows.Forms.Label();
+            this.btnStartSession = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.lblUsername = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnSettings = new System.Windows.Forms.Button();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.sessionTimer = new System.Windows.Forms.Timer(this.components);
             this.pnlMainContainer.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pnlFooter.SuspendLayout();
@@ -213,8 +213,8 @@ namespace AwladAli
             // 
             this.pnlHeader.BackColor = System.Drawing.Color.Black;
             this.pnlHeader.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pnlHeader.Controls.Add(this.lblTimer);
-            this.pnlHeader.Controls.Add(this.btnSession);
+            this.pnlHeader.Controls.Add(this.lblSessionTimer);
+            this.pnlHeader.Controls.Add(this.btnStartSession);
             this.pnlHeader.Controls.Add(this.pictureBox1);
             this.pnlHeader.Controls.Add(this.label8);
             this.pnlHeader.Controls.Add(this.pictureBox8);
@@ -227,36 +227,37 @@ namespace AwladAli
             this.pnlHeader.Size = new System.Drawing.Size(1924, 89);
             this.pnlHeader.TabIndex = 1;
             // 
-            // lblTimer
+            // lblSessionTimer
             // 
-            this.lblTimer.AutoSize = true;
-            this.lblTimer.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTimer.ForeColor = System.Drawing.Color.White;
-            this.lblTimer.Location = new System.Drawing.Point(451, 32);
-            this.lblTimer.Name = "lblTimer";
-            this.lblTimer.Size = new System.Drawing.Size(97, 30);
-            this.lblTimer.TabIndex = 141;
-            this.lblTimer.Text = "00:00:00";
+            this.lblSessionTimer.AutoSize = true;
+            this.lblSessionTimer.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSessionTimer.ForeColor = System.Drawing.Color.White;
+            this.lblSessionTimer.Location = new System.Drawing.Point(451, 32);
+            this.lblSessionTimer.Name = "lblSessionTimer";
+            this.lblSessionTimer.Size = new System.Drawing.Size(97, 30);
+            this.lblSessionTimer.TabIndex = 141;
+            this.lblSessionTimer.Text = "00:00:00";
             // 
-            // btnSession
+            // btnStartSession
             // 
-            this.btnSession.BackColor = System.Drawing.Color.Transparent;
-            this.btnSession.BackgroundImage = global::AwladAli.Properties.Resources.settingbtn_background;
-            this.btnSession.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnSession.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnSession.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSession.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSession.ForeColor = System.Drawing.Color.Transparent;
-            this.btnSession.Image = global::AwladAli.Properties.Resources.session_64;
-            this.btnSession.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSession.Location = new System.Drawing.Point(578, 5);
-            this.btnSession.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnSession.Name = "btnSession";
-            this.btnSession.Size = new System.Drawing.Size(191, 80);
-            this.btnSession.TabIndex = 140;
-            this.btnSession.Text = "بدأ جلسة";
-            this.btnSession.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSession.UseVisualStyleBackColor = false;
+            this.btnStartSession.BackColor = System.Drawing.Color.Transparent;
+            this.btnStartSession.BackgroundImage = global::AwladAli.Properties.Resources.settingbtn_background;
+            this.btnStartSession.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnStartSession.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnStartSession.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnStartSession.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStartSession.ForeColor = System.Drawing.Color.Transparent;
+            this.btnStartSession.Image = global::AwladAli.Properties.Resources.session_64;
+            this.btnStartSession.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnStartSession.Location = new System.Drawing.Point(578, 5);
+            this.btnStartSession.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnStartSession.Name = "btnStartSession";
+            this.btnStartSession.Size = new System.Drawing.Size(191, 80);
+            this.btnStartSession.TabIndex = 140;
+            this.btnStartSession.Text = "بدأ جلسة";
+            this.btnStartSession.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnStartSession.UseVisualStyleBackColor = false;
+            this.btnStartSession.Click += new System.EventHandler(this.btnStartSession_Click);
             // 
             // pictureBox1
             // 
@@ -334,9 +335,10 @@ namespace AwladAli
             this.btnSettings.UseVisualStyleBackColor = false;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
-            // timer1
+            // sessionTimer
             // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.sessionTimer.Interval = 1000;
+            this.sessionTimer.Tick += new System.EventHandler(this.sessionTimer_Tick);
             // 
             // frmMain
             // 
@@ -386,8 +388,8 @@ namespace AwladAli
         private LinkLabel llReset;
         private Label label8;
         private PictureBox pictureBox1;
-        private Button btnSession;
-        private Label lblTimer;
-        private Timer timer1;
+        private Button btnStartSession;
+        private Label lblSessionTimer;
+        private Timer sessionTimer;
     }
 }

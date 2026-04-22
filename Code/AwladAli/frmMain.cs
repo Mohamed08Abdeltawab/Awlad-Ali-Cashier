@@ -27,6 +27,10 @@ namespace AwladAli
             this._frmLogin = frm;
         }
 
+        private int _SessionID = -1;
+        private clsSession _CurrentSession;
+        private DateTime _SessionStartTime;
+
         private void _CheckAdmin()
         {
             if (!clsUser.IsUserAdmin(clsGlobal.CurrentUser.UserID))
@@ -288,10 +292,71 @@ namespace AwladAli
             }
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        
+
+        private void btnStartSession_Click(object sender, EventArgs e)
         {
-            //TimeSpan duration = DateTime.Now - _SessionStartTime;
-            //lblTimer.Text = duration.ToString(@"hh\:mm\:ss");
+            if (_SessionID == -1)//if no active session then start new session
+            {
+
+                _CurrentSession = new clsSession();
+                _CurrentSession.UserID = clsGlobal.CurrentUser.UserID; //current user
+                _CurrentSession.StartTime = DateTime.Now;//set start time to now
+
+                if (_CurrentSession.Save())//try to save session to DB
+                {
+                    _SessionID = _CurrentSession.SessionID; //get session ID after saving
+                    clsGlobal.CurrentSessionID = _CurrentSession.SessionID;
+
+                    _SessionStartTime = _CurrentSession.StartTime;
+                    sessionTimer.Start();
+
+                    btnStartSession.Text = "إنهاء الجلسة";
+                    //my be change in ui to show session is active or not
+                    MessageBox.Show("تم بدء الجلسة بنجاح", "أولاد علي", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("فشل بدء الجلسة", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                //if user click button while active session then end the session
+                _EndSession();
+            }
+        }
+
+
+        private void _EndSession()
+        {
+            if (MessageBox.Show("هل أنت متأكد من إنهاء الجلسة؟", "تأكيد", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                sessionTimer.Stop();
+
+                // هنا ممكن تفتح شاشة تطلب منه يدخل المبلغ اللي في الدرج حالياً
+                _CurrentSession.TotalCash = _CurrentSession.GetCurrentSales();
+
+                if (_CurrentSession.Save())
+                {
+                    _CurrentSession = null;
+                    btnStartSession.Text = "بدء جلسة";
+                    lblSessionTimer.Text = "00:00:00";
+                    //my be change in ui and show in screen
+                    MessageBox.Show("تم إنهاء الجلسة وحفظ المبيعات", "أولاد علي", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("فشل إنهاء الجلسة", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void sessionTimer_Tick(object sender, EventArgs e)
+        {
+            TimeSpan duration = DateTime.Now - _SessionStartTime;
+
+            lblSessionTimer.Text = duration.ToString(@"hh\:mm\:ss");
         }
     }
 }

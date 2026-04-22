@@ -97,5 +97,12 @@ namespace AwladAli.Login
             llHidePassword.Visible = true;
         }
 
+        private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == (char)Keys.Enter)
+            {
+                btnLogin.PerformClick();
+            }
+        }
     }
 }

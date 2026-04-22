@@ -36,6 +36,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.llHidePassword = new System.Windows.Forms.LinkLabel();
+            this.llShowPassword = new System.Windows.Forms.LinkLabel();
             this.btnClose = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.chkRememberMe = new System.Windows.Forms.CheckBox();
@@ -46,8 +48,6 @@
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.llHidePassword = new System.Windows.Forms.LinkLabel();
-            this.llShowPassword = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -166,6 +166,29 @@
             this.label1.Text = "أهلا بكم في";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // llHidePassword
+            // 
+            this.llHidePassword.AutoSize = true;
+            this.llHidePassword.Location = new System.Drawing.Point(27, 209);
+            this.llHidePassword.Name = "llHidePassword";
+            this.llHidePassword.Size = new System.Drawing.Size(42, 20);
+            this.llHidePassword.TabIndex = 156;
+            this.llHidePassword.TabStop = true;
+            this.llHidePassword.Text = "Hide";
+            this.llHidePassword.Visible = false;
+            this.llHidePassword.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llHidePassword_LinkClicked);
+            // 
+            // llShowPassword
+            // 
+            this.llShowPassword.AutoSize = true;
+            this.llShowPassword.Location = new System.Drawing.Point(20, 209);
+            this.llShowPassword.Name = "llShowPassword";
+            this.llShowPassword.Size = new System.Drawing.Size(49, 20);
+            this.llShowPassword.TabIndex = 155;
+            this.llShowPassword.TabStop = true;
+            this.llShowPassword.Text = "Show";
+            this.llShowPassword.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llShowPassword_LinkClicked_1);
+            // 
             // btnClose
             // 
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
@@ -258,6 +281,7 @@
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(230, 26);
             this.txtPassword.TabIndex = 2;
+            this.txtPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPassword_KeyPress);
             // 
             // pictureBox8
             // 
@@ -278,29 +302,6 @@
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 132;
             this.pictureBox3.TabStop = false;
-            // 
-            // llHidePassword
-            // 
-            this.llHidePassword.AutoSize = true;
-            this.llHidePassword.Location = new System.Drawing.Point(27, 209);
-            this.llHidePassword.Name = "llHidePassword";
-            this.llHidePassword.Size = new System.Drawing.Size(42, 20);
-            this.llHidePassword.TabIndex = 156;
-            this.llHidePassword.TabStop = true;
-            this.llHidePassword.Text = "Hide";
-            this.llHidePassword.Visible = false;
-            this.llHidePassword.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llHidePassword_LinkClicked);
-            // 
-            // llShowPassword
-            // 
-            this.llShowPassword.AutoSize = true;
-            this.llShowPassword.Location = new System.Drawing.Point(20, 209);
-            this.llShowPassword.Name = "llShowPassword";
-            this.llShowPassword.Size = new System.Drawing.Size(49, 20);
-            this.llShowPassword.TabIndex = 155;
-            this.llShowPassword.TabStop = true;
-            this.llShowPassword.Text = "Show";
-            this.llShowPassword.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llShowPassword_LinkClicked_1);
             // 
             // frmLogin
             // 

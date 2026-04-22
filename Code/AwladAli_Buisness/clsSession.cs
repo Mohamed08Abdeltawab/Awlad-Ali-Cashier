@@ -12,10 +12,8 @@ namespace AwladAli_Buisness
         public int SessionID { get; set; }
         public int UserID { get; set; }
         public DateTime StartTime { get; set; }
-        public DateTime? EndTime { get; set; } // Nullable لأنه مش موجود وقت البداية
-        public decimal StartingCash { get; set; }
-        public decimal FinalCash { get; set; }
-        public string Notes { get; set; }
+        public DateTime? EndTime { get; set; }
+        public decimal TotalCash { get; set; }
         public bool IsActive { get; set; }
 
         public clsSession()
@@ -23,32 +21,41 @@ namespace AwladAli_Buisness
             this.SessionID = -1;
             this.UserID = -1;
             this.StartTime = DateTime.Now;
-            this.StartingCash = 0;
+            this.TotalCash = 0;
             this.IsActive = true;
             Mode = enMode.AddNew;
         }
 
-        private clsSession(int SessionID, int UserID, DateTime StartTime, decimal StartingCash)
+        private clsSession(int SessionID, int UserID, DateTime StartTime, decimal TotalCash, bool IsActive)
         {
             this.SessionID = SessionID;
             this.UserID = UserID;
             this.StartTime = StartTime;
-            this.StartingCash = StartingCash;
-            this.IsActive = true;
+            this.TotalCash = TotalCash;
+            this.IsActive = IsActive;
             Mode = enMode.Update;
         }
 
+        // 1. دالة بدء الجلسة
         private bool _AddNewSession()
         {
-            this.SessionID = clsSessionData.AddNewSession(this.UserID, this.StartTime, this.StartingCash);
+            // قبل البدء، نغلق أي جلسة "تائهة" لهذا المستخدم لضمان سلامة البيانات
+            clsSessionData.CloseAnyActiveSession();
+
+            this.SessionID = clsSessionData.AddNewSession(this.UserID, this.StartTime);
             return (this.SessionID != -1);
         }
 
+        // 2. دالة إنهاء الجلسة
         private bool _EndSession()
         {
-            return clsSessionData.EndSession(this.SessionID, DateTime.Now, this.FinalCash, this.Notes);
+            // تحديث إجمالي المبيعات من جدول الطلبات قبل الإغلاق
+            this.TotalCash = clsSessionData.GetTotalSalesBySessionID(this.SessionID);
+            
+            return clsSessionData.EndSession(this.SessionID, DateTime.Now, this.TotalCash);
         }
 
+        // 3. دالة الحفظ الذكية
         public bool Save()
         {
             switch (Mode)
@@ -67,18 +74,10 @@ namespace AwladAli_Buisness
             return false;
         }
 
-        // دالة للبحث عن جلسة نشطة للمستخدم الحالي
-        public static clsSession GetActiveSession(int UserID)
+        // دالة مساعدة لحساب المبيعات الحالية (بدون إغلاق الجلسة) لغرض العرض في الـ UI
+        public decimal GetCurrentSales()
         {
-            int SessionID = -1;
-            DateTime StartTime = DateTime.Now;
-            decimal StartingCash = 0;
-
-            if (clsSessionData.GetActiveSessionByUserID(UserID, ref SessionID, ref StartTime, ref StartingCash))
-            {
-                return new clsSession(SessionID, UserID, StartTime, StartingCash);
-            }
-            return null;
+            return clsSessionData.GetTotalSalesBySessionID(this.SessionID);
         }
     }
 }

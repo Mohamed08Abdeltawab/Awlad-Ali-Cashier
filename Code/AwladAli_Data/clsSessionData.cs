@@ -6,23 +6,23 @@ namespace AwladAli_Data
 {
     public class clsSessionData
     {
-        // 1. Add New Session
-        public static int AddNewSession(int UserID, DateTime StartTime, decimal StartingCash)
+        // 1. إضافة جلسة جديدة (فقط UserID و StartTime)
+        public static int AddNewSession(int UserID, DateTime StartTime)
         {
             int SessionID = -1;
             try
             {
                 using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
                 {
-                    string query = @"INSERT INTO Sessions (UserID, StartTime, StartingCash, IsActive) 
-                                     VALUES (@UserID, @StartTime, @StartingCash, 1);
+                    // الحقول بناءً على جدولك الجديد: UserID, StartTime والـ Default بتاع IsActive هو 1
+                    string query = @"INSERT INTO Sessions (UserID, StartTime, IsActive, TotalCash) 
+                                     VALUES (@UserID, @StartTime, 1, 0);
                                      SELECT last_insert_rowid();";
 
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@UserID", UserID);
                         command.Parameters.AddWithValue("@StartTime", StartTime);
-                        command.Parameters.AddWithValue("@StartingCash", StartingCash);
 
                         connection.Open();
                         object result = command.ExecuteScalar();
@@ -37,8 +37,8 @@ namespace AwladAli_Data
             return SessionID;
         }
 
-        // 2. End Session (Update EndTime and FinalCash)
-        public static bool EndSession(int SessionID, DateTime EndTime, decimal FinalCash, string Notes)
+        // 2. إنهاء الجلسة (تحديث EndTime و TotalCash وإغلاق الحالة)
+        public static bool EndSession(int SessionID, DateTime EndTime, decimal TotalCash)
         {
             int rowsAffected = 0;
             try
@@ -47,8 +47,7 @@ namespace AwladAli_Data
                 {
                     string query = @"UPDATE Sessions 
                                      SET EndTime = @EndTime, 
-                                         FinalCash = @FinalCash, 
-                                         Notes = @Notes, 
+                                         TotalCash = @TotalCash, 
                                          IsActive = 0 
                                      WHERE SessionID = @SessionID";
 
@@ -56,8 +55,7 @@ namespace AwladAli_Data
                     {
                         command.Parameters.AddWithValue("@SessionID", SessionID);
                         command.Parameters.AddWithValue("@EndTime", EndTime);
-                        command.Parameters.AddWithValue("@FinalCash", FinalCash);
-                        command.Parameters.AddWithValue("@Notes", Notes);
+                        command.Parameters.AddWithValue("@TotalCash", TotalCash);
 
                         connection.Open();
                         rowsAffected = command.ExecuteNonQuery();
@@ -68,34 +66,56 @@ namespace AwladAli_Data
             return (rowsAffected > 0);
         }
 
-        // 3. Get Active Session for User (عشان لو البرنامج قفل وفتح يعرف إن فيه جلسة شغالة)
-        public static bool GetActiveSessionByUserID(int UserID, ref int SessionID, ref DateTime StartTime, ref decimal StartingCash)
+        // 3. حساب إجمالي مبيعات الجلسة من جدول الطلبات
+        public static decimal GetTotalSalesBySessionID(int SessionID)
         {
-            bool isFound = false;
+            decimal TotalSales = 0;
             try
             {
                 using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
                 {
-                    string query = "SELECT * FROM Sessions WHERE UserID = @UserID AND IsActive = 1 LIMIT 1";
+                    string query = "SELECT SUM(TotalAmount) FROM Orders WHERE SessionID = @SessionID";
+
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@UserID", UserID);
+                        command.Parameters.AddWithValue("@SessionID", SessionID);
                         connection.Open();
-                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        object result = command.ExecuteScalar();
+
+                        if (result != null && decimal.TryParse(result.ToString(), out decimal sum))
                         {
-                            if (reader.Read())
-                            {
-                                isFound = true;
-                                SessionID = Convert.ToInt32(reader["SessionID"]);
-                                StartTime = Convert.ToDateTime(reader["StartTime"]);
-                                StartingCash = Convert.ToDecimal(reader["StartingCash"]);
-                            }
+                            TotalSales = sum;
                         }
                     }
                 }
             }
-            catch (Exception) { isFound = false; }
-            return isFound;
+            catch (Exception) { TotalSales = 0; }
+            return TotalSales;
+        }
+
+        // 4. دالة طوارئ: إغلاق أي جلسة مفتوحة للمستخدم (تستدعى عند فتح البرنامج)
+        // دي عشان لو النور قطع والبرنامج فتح تاني، يصفر الجلسة القديمة قبل ما يبدأ جديدة
+        public static bool CloseAnyActiveSession()
+        {
+            try
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    // أي جلسة IsActive فيها بـ 1 هنخليها 0 ونضع وقت النهاية "الآن"
+                    string query = @"UPDATE Sessions 
+                                     SET IsActive = 0, EndTime = @EndTime 
+                                     WHERE IsActive = 1";
+
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@EndTime", DateTime.Now);
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                        return true;
+                    }
+                }
+            }
+            catch { return false; }
         }
     }
 }
