@@ -31,6 +31,7 @@ namespace AwladAli
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.pnlMainContainer = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -45,13 +46,15 @@ namespace AwladAli
             this.lblTotalPrice = new System.Windows.Forms.Label();
             this.lblTotalText = new System.Windows.Forms.Label();
             this.pnlHeader = new System.Windows.Forms.Panel();
-            this.lblTitle = new System.Windows.Forms.Label();
+            this.lblTimer = new System.Windows.Forms.Label();
+            this.btnSession = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.lblUsername = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnSettings = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pnlMainContainer.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pnlFooter.SuspendLayout();
@@ -210,7 +213,8 @@ namespace AwladAli
             // 
             this.pnlHeader.BackColor = System.Drawing.Color.Black;
             this.pnlHeader.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pnlHeader.Controls.Add(this.lblTitle);
+            this.pnlHeader.Controls.Add(this.lblTimer);
+            this.pnlHeader.Controls.Add(this.btnSession);
             this.pnlHeader.Controls.Add(this.pictureBox1);
             this.pnlHeader.Controls.Add(this.label8);
             this.pnlHeader.Controls.Add(this.pictureBox8);
@@ -223,16 +227,36 @@ namespace AwladAli
             this.pnlHeader.Size = new System.Drawing.Size(1924, 89);
             this.pnlHeader.TabIndex = 1;
             // 
-            // lblTitle
+            // lblTimer
             // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.ForeColor = System.Drawing.Color.White;
-            this.lblTitle.Location = new System.Drawing.Point(1069, 27);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(81, 37);
-            this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "كاشير";
+            this.lblTimer.AutoSize = true;
+            this.lblTimer.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimer.ForeColor = System.Drawing.Color.White;
+            this.lblTimer.Location = new System.Drawing.Point(451, 32);
+            this.lblTimer.Name = "lblTimer";
+            this.lblTimer.Size = new System.Drawing.Size(97, 30);
+            this.lblTimer.TabIndex = 141;
+            this.lblTimer.Text = "00:00:00";
+            // 
+            // btnSession
+            // 
+            this.btnSession.BackColor = System.Drawing.Color.Transparent;
+            this.btnSession.BackgroundImage = global::AwladAli.Properties.Resources.settingbtn_background;
+            this.btnSession.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnSession.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnSession.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSession.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSession.ForeColor = System.Drawing.Color.Transparent;
+            this.btnSession.Image = global::AwladAli.Properties.Resources.session_64;
+            this.btnSession.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSession.Location = new System.Drawing.Point(578, 5);
+            this.btnSession.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSession.Name = "btnSession";
+            this.btnSession.Size = new System.Drawing.Size(191, 80);
+            this.btnSession.TabIndex = 140;
+            this.btnSession.Text = "بدأ جلسة";
+            this.btnSession.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSession.UseVisualStyleBackColor = false;
             // 
             // pictureBox1
             // 
@@ -249,7 +273,7 @@ namespace AwladAli
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.label8.Location = new System.Drawing.Point(382, 43);
+            this.label8.Location = new System.Drawing.Point(1658, 35);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(253, 20);
@@ -310,6 +334,10 @@ namespace AwladAli
             this.btnSettings.UseVisualStyleBackColor = false;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -343,9 +371,6 @@ namespace AwladAli
         private System.Windows.Forms.Panel pnlMainContainer;
         private System.Windows.Forms.FlowLayoutPanel flpProductCards; // Scrollable area for items
         private System.Windows.Forms.Panel pnlFooter; // Fixed bottom area
-
-        // Labels
-        private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label lblTotalText;
         private System.Windows.Forms.Label lblTotalPrice;
         private System.Windows.Forms.Button btnSaveandShowOrderInfo;
@@ -361,5 +386,8 @@ namespace AwladAli
         private LinkLabel llReset;
         private Label label8;
         private PictureBox pictureBox1;
+        private Button btnSession;
+        private Label lblTimer;
+        private Timer timer1;
     }
 }

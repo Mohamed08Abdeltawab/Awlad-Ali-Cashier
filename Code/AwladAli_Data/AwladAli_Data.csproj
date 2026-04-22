@@ -99,6 +99,7 @@
     <Compile Include="clsOrderDetailData.cs" />
     <Compile Include="clsProductData.cs" />
     <Compile Include="clsProductSizeData.cs" />
+    <Compile Include="clsSessionData.cs" />
     <Compile Include="clsUserData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

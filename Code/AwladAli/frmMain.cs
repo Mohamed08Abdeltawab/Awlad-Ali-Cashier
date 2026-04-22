@@ -287,5 +287,11 @@ namespace AwladAli
                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            //TimeSpan duration = DateTime.Now - _SessionStartTime;
+            //lblTimer.Text = duration.ToString(@"hh\:mm\:ss");
+        }
     }
 }
