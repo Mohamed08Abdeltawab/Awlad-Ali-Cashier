@@ -39,9 +39,11 @@ namespace AwladAli
                 btnSettings.Visible = false;
             }
         }
+
         private void _RefreshMainScreenData()
         {
             _CheckAdmin();
+
             lblUsername.Text = clsGlobal.CurrentUser.UserName;
             _LoadRestaurantMenu();
             _LoadExtraAddons();
@@ -211,7 +213,11 @@ namespace AwladAli
         {
             // 1. حساب الإجمالي النهائي قبل الحفظ
             decimal totalAmount = Convert.ToDecimal(lblTotalPrice.Text);
-
+            if(clsGlobal.CurrentSessionID == -1)
+            {
+                MessageBox.Show("برجاء بدء جلسة قبل حفظ الطلب", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
             if (totalAmount <= 0)
             {
                 return false;
@@ -220,6 +226,7 @@ namespace AwladAli
             // 2. تجهيز بيانات الأوردر الأساسي
             _Order = new clsOrder();
             _Order.UserID = clsGlobal.CurrentUser.UserID; // المستخدم اللي سجل دخول
+            _Order.SessionID = clsGlobal.CurrentSessionID; // الجلسة الحالية
             _Order.TotalAmount = totalAmount;
             _Order.OrderDate = DateTime.Now;
 
@@ -358,5 +365,6 @@ namespace AwladAli
 
             lblSessionTimer.Text = duration.ToString(@"hh\:mm\:ss");
         }
+
     }
 }

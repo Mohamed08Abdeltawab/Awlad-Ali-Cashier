@@ -7,7 +7,7 @@ namespace AwladAli_Data
 {
     public class clsOrderData
     {
-        public static int AddNewOrder(int UserID, DateTime OrderDate, decimal TotalAmount)
+        public static int AddNewOrder(int UserID, int SessionID, DateTime OrderDate, decimal TotalAmount)
         {
             int OrderID = -1;
 
@@ -18,13 +18,14 @@ namespace AwladAli_Data
                     connection.Open();
                     // Insert the main order record
                     // OrderDate is handled by the DEFAULT CURRENT_TIMESTAMP in SQLite
-                    string query = @"INSERT INTO Orders (UserID ,OrderDate, TotalAmount) 
-                                     VALUES (@UserID, @OrderDate, @TotalAmount);
+                    string query = @"INSERT INTO Orders (UserID ,OrderDate, TotalAmount,SessionID) 
+                                     VALUES (@UserID, @OrderDate, @TotalAmount, @SessionID);
                                      SELECT last_insert_rowid();";
 
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@UserID", UserID);
+                        command.Parameters.AddWithValue("@SessionID", SessionID);
                         command.Parameters.AddWithValue("@OrderDate", OrderDate);
                         command.Parameters.AddWithValue("@TotalAmount", TotalAmount);
 
@@ -127,7 +128,6 @@ namespace AwladAli_Data
                 }
             }
 
-            // rowsAffected المفروض تكون أكبر من 0 لو تم مسح الأوردر أو تفاصيله
             return (rowsAffected > 0);
         }
     }

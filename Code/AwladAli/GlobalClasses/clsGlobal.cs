@@ -11,7 +11,7 @@ namespace AwladAli.GlobalClasses
     internal static class clsGlobal
     {
         public static clsUser CurrentUser;
-        public static int CurrentSessionID;
+        public static int CurrentSessionID = -1;
 
         // Registry Path for storing credentials
         private static string _RegistryPath = @"HKEY_CURRENT_USER\Software\AwladAli_Cashier";

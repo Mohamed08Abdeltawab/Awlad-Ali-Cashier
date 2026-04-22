@@ -11,6 +11,7 @@ namespace AwladAli_Buisness
 
         public int OrderID { get; set; }
         public int UserID { get; set; }
+        public int SessionID { get; set; }
         public DateTime OrderDate { get; set; }
         public decimal TotalAmount { get; set; }
 
@@ -18,15 +19,17 @@ namespace AwladAli_Buisness
         {
             this.OrderID = -1;
             this.UserID = -1;
+            SessionID = -1;
             this.OrderDate = DateTime.Now;
             this.TotalAmount = 0;
             Mode = enMode.AddNew;
         }
 
-        private clsOrder(int OrderID, int UserID, DateTime OrderDate, decimal TotalAmount)
+        private clsOrder(int OrderID, int UserID, int SessionID, DateTime OrderDate, decimal TotalAmount)
         {
             this.OrderID = OrderID;
             this.UserID = UserID;
+            this.SessionID = SessionID;
             this.OrderDate = OrderDate;
             this.TotalAmount = TotalAmount;
             Mode = enMode.Update;
@@ -40,6 +43,7 @@ namespace AwladAli_Buisness
                 return new clsOrder(
                     Convert.ToInt32(row["OrderID"]),
                     Convert.ToInt32(row["UserID"]),
+                    Convert.ToInt32(row["SessionID"]),
                     Convert.ToDateTime(row["OrderDate"]),
                     Convert.ToDecimal(row["TotalAmount"])
                 );
@@ -64,7 +68,7 @@ namespace AwladAli_Buisness
 
         private bool _AddNewOrder()
         {
-            this.OrderID = clsOrderData.AddNewOrder(this.UserID, this.OrderDate, this.TotalAmount);
+            this.OrderID = clsOrderData.AddNewOrder(this.UserID, this.SessionID, this.OrderDate, this.TotalAmount);
             return (this.OrderID != -1);
         }
 

@@ -34,7 +34,7 @@
             this.chkSelectPriceS.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkSelectPriceS.Location = new System.Drawing.Point(530, 11);
             this.chkSelectPriceS.Name = "chkSelectPriceS";
-            this.chkSelectPriceS.Size = new System.Drawing.Size(63, 20);
+            this.chkSelectPriceS.Size = new System.Drawing.Size(63, 23);
             this.chkSelectPriceS.TabIndex = 1;
             this.chkSelectPriceS.Text = "--";
             this.chkSelectPriceS.CheckedChanged += new System.EventHandler(this.chkSelectPriceS_CheckedChanged);
