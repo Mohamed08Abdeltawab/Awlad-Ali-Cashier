@@ -1,4 +1,5 @@
-﻿using AwladAli_Buisness;
+﻿using AwladAli.GlobalClasses;
+using AwladAli_Buisness;
 using System;
 using System.Collections.Generic;
 using System.Data;

@@ -34,8 +34,6 @@ namespace AwladAli
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.pnlMainContainer = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
             this.flpAddonsContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.flpProductCards = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlFooter = new System.Windows.Forms.Panel();
@@ -47,18 +45,20 @@ namespace AwladAli
             this.lblTotalText = new System.Windows.Forms.Label();
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.lblSessionTimer = new System.Windows.Forms.Label();
-            this.btnStartSession = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.lblUsername = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnSettings = new System.Windows.Forms.Button();
             this.sessionTimer = new System.Windows.Forms.Timer(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnStartSession = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.btnSettings = new System.Windows.Forms.Button();
             this.pnlMainContainer.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.pnlFooter.SuspendLayout();
             this.pnlHeader.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.SuspendLayout();
@@ -74,30 +74,6 @@ namespace AwladAli
             this.pnlMainContainer.Name = "pnlMainContainer";
             this.pnlMainContainer.Size = new System.Drawing.Size(1924, 972);
             this.pnlMainContainer.TabIndex = 2;
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel1.BackColor = System.Drawing.Color.Red;
-            this.panel1.BackgroundImage = global::AwladAli.Properties.Resources.CategoryBackground;
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(1666, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(255, 98);
-            this.panel1.TabIndex = 0;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Location = new System.Drawing.Point(71, 29);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(125, 39);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "الاضافات";
             // 
             // flpAddonsContainer
             // 
@@ -230,44 +206,13 @@ namespace AwladAli
             // lblSessionTimer
             // 
             this.lblSessionTimer.AutoSize = true;
-            this.lblSessionTimer.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSessionTimer.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSessionTimer.ForeColor = System.Drawing.Color.White;
-            this.lblSessionTimer.Location = new System.Drawing.Point(451, 32);
+            this.lblSessionTimer.Location = new System.Drawing.Point(442, 31);
             this.lblSessionTimer.Name = "lblSessionTimer";
-            this.lblSessionTimer.Size = new System.Drawing.Size(97, 30);
+            this.lblSessionTimer.Size = new System.Drawing.Size(112, 32);
             this.lblSessionTimer.TabIndex = 141;
             this.lblSessionTimer.Text = "00:00:00";
-            // 
-            // btnStartSession
-            // 
-            this.btnStartSession.BackColor = System.Drawing.Color.Transparent;
-            this.btnStartSession.BackgroundImage = global::AwladAli.Properties.Resources.settingbtn_background;
-            this.btnStartSession.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnStartSession.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnStartSession.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnStartSession.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStartSession.ForeColor = System.Drawing.Color.Transparent;
-            this.btnStartSession.Image = global::AwladAli.Properties.Resources.session_64;
-            this.btnStartSession.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStartSession.Location = new System.Drawing.Point(578, 5);
-            this.btnStartSession.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnStartSession.Name = "btnStartSession";
-            this.btnStartSession.Size = new System.Drawing.Size(191, 80);
-            this.btnStartSession.TabIndex = 140;
-            this.btnStartSession.Text = "بدأ جلسة";
-            this.btnStartSession.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnStartSession.UseVisualStyleBackColor = false;
-            this.btnStartSession.Click += new System.EventHandler(this.btnStartSession_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::AwladAli.Properties.Resources.Logojpeg;
-            this.pictureBox1.Location = new System.Drawing.Point(836, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(157, 89);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 139;
-            this.pictureBox1.TabStop = false;
             // 
             // label8
             // 
@@ -280,17 +225,6 @@ namespace AwladAli
             this.label8.Size = new System.Drawing.Size(253, 20);
             this.label8.TabIndex = 138;
             this.label8.Text = "By Eng: Mohamed Abdeltawab";
-            // 
-            // pictureBox8
-            // 
-            this.pictureBox8.BackColor = System.Drawing.Color.White;
-            this.pictureBox8.Image = global::AwladAli.Properties.Resources.Person_32;
-            this.pictureBox8.Location = new System.Drawing.Point(1449, 31);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(31, 26);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox8.TabIndex = 129;
-            this.pictureBox8.TabStop = false;
             // 
             // lblUsername
             // 
@@ -314,6 +248,77 @@ namespace AwladAli
             this.label2.TabIndex = 122;
             this.label2.Text = ":اسم المستخدم";
             // 
+            // sessionTimer
+            // 
+            this.sessionTimer.Interval = 1000;
+            this.sessionTimer.Tick += new System.EventHandler(this.sessionTimer_Tick);
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel1.BackColor = System.Drawing.Color.Red;
+            this.panel1.BackgroundImage = global::AwladAli.Properties.Resources.CategoryBackground;
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel1.Location = new System.Drawing.Point(1666, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(255, 98);
+            this.panel1.TabIndex = 0;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label3.Location = new System.Drawing.Point(71, 29);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(125, 39);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "الاضافات";
+            // 
+            // btnStartSession
+            // 
+            this.btnStartSession.BackColor = System.Drawing.Color.Transparent;
+            this.btnStartSession.BackgroundImage = global::AwladAli.Properties.Resources.settingbtn_background;
+            this.btnStartSession.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnStartSession.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnStartSession.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnStartSession.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStartSession.ForeColor = System.Drawing.Color.Transparent;
+            this.btnStartSession.Image = global::AwladAli.Properties.Resources.start_session_64;
+            this.btnStartSession.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnStartSession.Location = new System.Drawing.Point(578, 5);
+            this.btnStartSession.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnStartSession.Name = "btnStartSession";
+            this.btnStartSession.Size = new System.Drawing.Size(198, 80);
+            this.btnStartSession.TabIndex = 140;
+            this.btnStartSession.Text = "بدأ جلسة";
+            this.btnStartSession.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnStartSession.UseVisualStyleBackColor = false;
+            this.btnStartSession.Click += new System.EventHandler(this.btnStartSession_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::AwladAli.Properties.Resources.Logojpeg;
+            this.pictureBox1.Location = new System.Drawing.Point(836, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(157, 89);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 139;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.BackColor = System.Drawing.Color.White;
+            this.pictureBox8.Image = global::AwladAli.Properties.Resources.Person_32;
+            this.pictureBox8.Location = new System.Drawing.Point(1449, 31);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(31, 26);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox8.TabIndex = 129;
+            this.pictureBox8.TabStop = false;
+            // 
             // btnSettings
             // 
             this.btnSettings.BackColor = System.Drawing.Color.Transparent;
@@ -335,11 +340,6 @@ namespace AwladAli
             this.btnSettings.UseVisualStyleBackColor = false;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
-            // sessionTimer
-            // 
-            this.sessionTimer.Interval = 1000;
-            this.sessionTimer.Tick += new System.EventHandler(this.sessionTimer_Tick);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -356,12 +356,12 @@ namespace AwladAli
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.pnlMainContainer.ResumeLayout(false);
             this.pnlMainContainer.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.pnlFooter.ResumeLayout(false);
             this.pnlFooter.PerformLayout();
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.ResumeLayout(false);

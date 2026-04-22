@@ -3,6 +3,7 @@ using AwladAli.Category.Extra;
 using AwladAli.GlobalClasses;
 using AwladAli.Login;
 using AwladAli.Product;
+using AwladAli.Properties;
 using AwladAli.User;
 using AwladAli_Buisness; 
 using System;
@@ -31,6 +32,8 @@ namespace AwladAli
         private clsSession _CurrentSession;
         private DateTime _SessionStartTime;
 
+        private int ErrorFlage = 1;//1 error in Session, 2 error in order
+
         private void _CheckAdmin()
         {
             if (!clsUser.IsUserAdmin(clsGlobal.CurrentUser.UserID))
@@ -39,11 +42,23 @@ namespace AwladAli
                 btnSettings.Visible = false;
             }
         }
-
+        private void _EnableMainScreen()
+        {
+            if(clsGlobal.CurrentSessionID == -1)
+            {
+                flpAddonsContainer.Enabled = false;
+                flpProductCards.Enabled = false;
+            }
+            else
+            {
+                flpAddonsContainer.Enabled = true;
+                flpProductCards.Enabled = true;
+            }
+        }
         private void _RefreshMainScreenData()
         {
             _CheckAdmin();
-
+            _EnableMainScreen();
             lblUsername.Text = clsGlobal.CurrentUser.UserName;
             _LoadRestaurantMenu();
             _LoadExtraAddons();
@@ -136,6 +151,7 @@ namespace AwladAli
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
+            clsSession.CloseAnyActiveSession(); // تأكد من إغلاق أي جلسة مفتوحة قبل الخروج
             Application.Exit();
         }
 
@@ -211,15 +227,17 @@ namespace AwladAli
 
         private bool _SaveOrder()
         {
+            ErrorFlage = 0;
             // 1. حساب الإجمالي النهائي قبل الحفظ
             decimal totalAmount = Convert.ToDecimal(lblTotalPrice.Text);
             if(clsGlobal.CurrentSessionID == -1)
             {
-                MessageBox.Show("برجاء بدء جلسة قبل حفظ الطلب", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ErrorFlage = 1;
                 return false;
             }
             if (totalAmount <= 0)
             {
+                ErrorFlage = 2;
                 return false;
             }
 
@@ -270,7 +288,7 @@ namespace AwladAli
         private void _ShowOrderInfo()
         {
             //get current order ID from _Order class 
-            if (_Order == null || _Order.OrderID == -1 || Convert.ToDecimal(lblTotalPrice.Text) <=0)
+            if (_Order == null || _OrderID == -1 || Convert.ToDecimal(lblTotalPrice.Text) <=0)
             {
                 MessageBox.Show("برجاء إتمام الطلب أولا", "تنبيه",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -292,10 +310,20 @@ namespace AwladAli
                 _ShowOrderInfo();
                 _ClearCurrentOrder();
             }
-            else
+            else if(ErrorFlage == 1)
+            {
+                MessageBox.Show("برجاء بدء جلسة قبل حفظ الطلب", "تنبيه",
+                               MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if(ErrorFlage == 2)
             {
                 MessageBox.Show("برجاء إتمام الطلب أولا", "تنبيه",
                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                MessageBox.Show("فشل حفظ الطلب، حاول مرة أخرى", "خطأ",
+                               MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -312,11 +340,14 @@ namespace AwladAli
 
                 if (_CurrentSession.Save())//try to save session to DB
                 {
+                    btnStartSession.Image = Resources.session_2_64;
                     _SessionID = _CurrentSession.SessionID; //get session ID after saving
                     clsGlobal.CurrentSessionID = _CurrentSession.SessionID;
 
                     _SessionStartTime = _CurrentSession.StartTime;
                     sessionTimer.Start();
+
+                    _EnableMainScreen();
 
                     btnStartSession.Text = "إنهاء الجلسة";
                     //my be change in ui to show session is active or not
@@ -346,11 +377,16 @@ namespace AwladAli
 
                 if (_CurrentSession.Save())
                 {
+                    btnStartSession.Image = Resources.start_session_64;
                     _CurrentSession = null;
+                    _SessionID = -1;
+                    clsGlobal.CurrentSessionID = -1;
+
                     btnStartSession.Text = "بدء جلسة";
                     lblSessionTimer.Text = "00:00:00";
                     //my be change in ui and show in screen
                     MessageBox.Show("تم إنهاء الجلسة وحفظ المبيعات", "أولاد علي", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    _RefreshMainScreenData(); // إعادة تحميل البيانات بعد إنهاء الجلسة
                 }
                 else
                 {

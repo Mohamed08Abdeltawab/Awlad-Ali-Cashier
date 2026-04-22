@@ -79,5 +79,11 @@ namespace AwladAli_Buisness
         {
             return clsSessionData.GetTotalSalesBySessionID(this.SessionID);
         }
+
+        public static void CloseAnyActiveSession()
+        {
+            clsSessionData.CloseAnyActiveSession();
+        }
+
     }
 }
