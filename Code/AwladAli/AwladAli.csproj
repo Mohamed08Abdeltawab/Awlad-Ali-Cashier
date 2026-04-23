@@ -206,6 +206,12 @@
     <Compile Include="User\frmAddUpdateUser.Designer.cs">
       <DependentUpon>frmAddUpdateUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="User\frmProductandExtra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\frmProductandExtra.Designer.cs">
+      <DependentUpon>frmProductandExtra.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Bill\ctrlOrderLine.resx">
       <DependentUpon>ctrlOrderLine.cs</DependentUpon>
     </EmbeddedResource>
@@ -258,6 +264,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="User\frmListUsers.resx">
       <DependentUpon>frmListUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\frmProductandExtra.resx">
+      <DependentUpon>frmProductandExtra.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

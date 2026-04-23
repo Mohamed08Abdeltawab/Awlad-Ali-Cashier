@@ -20,6 +20,7 @@
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.lblCategoryName = new System.Windows.Forms.Label();
             this.pnlColumnsHeader = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.lblHeaderSizes = new System.Windows.Forms.Label();
             this.lblHeaderProduct = new System.Windows.Forms.Label();
             this.flpItemsContainer = new System.Windows.Forms.FlowLayoutPanel();
@@ -53,6 +54,7 @@
             // pnlColumnsHeader
             // 
             this.pnlColumnsHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
+            this.pnlColumnsHeader.Controls.Add(this.label1);
             this.pnlColumnsHeader.Controls.Add(this.lblHeaderSizes);
             this.pnlColumnsHeader.Controls.Add(this.lblHeaderProduct);
             this.pnlColumnsHeader.Dock = System.Windows.Forms.DockStyle.Top;
@@ -61,14 +63,24 @@
             this.pnlColumnsHeader.Size = new System.Drawing.Size(790, 40);
             this.pnlColumnsHeader.TabIndex = 1;
             // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.Chartreuse;
+            this.label1.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(516, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(43, 20);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "عادي";
+            // 
             // lblHeaderSizes
             // 
             this.lblHeaderSizes.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHeaderSizes.Location = new System.Drawing.Point(26, 10);
             this.lblHeaderSizes.Name = "lblHeaderSizes";
-            this.lblHeaderSizes.Size = new System.Drawing.Size(611, 21);
+            this.lblHeaderSizes.Size = new System.Drawing.Size(500, 21);
             this.lblHeaderSizes.TabIndex = 1;
-            this.lblHeaderSizes.Text = "XL                L                  M              S/عادي";
+            this.lblHeaderSizes.Text = "XL                L                  M              S/";
             // 
             // lblHeaderProduct
             // 
@@ -113,5 +125,6 @@
         private System.Windows.Forms.FlowLayoutPanel flpItemsContainer;
         private System.Windows.Forms.Label lblHeaderProduct;
         private System.Windows.Forms.Label lblHeaderSizes;
+        private System.Windows.Forms.Label label1;
     }
 }

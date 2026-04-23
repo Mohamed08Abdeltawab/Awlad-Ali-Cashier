@@ -79,7 +79,7 @@ namespace AwladAli.User
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label14 = new System.Windows.Forms.Label();
             this.lblOrderCount = new System.Windows.Forms.Label();
-            this.btnExtraLists = new System.Windows.Forms.Button();
+            this.btnSessionList = new System.Windows.Forms.Button();
             this.btnCategoriesList = new System.Windows.Forms.Button();
             this.btnUsersList = new System.Windows.Forms.Button();
             this.lblTodayCash = new System.Windows.Forms.Label();
@@ -652,7 +652,7 @@ namespace AwladAli.User
             this.pnlStats.Controls.Add(this.pnlTotalRevenue);
             this.pnlStats.Controls.Add(this.pnlTodayCash);
             this.pnlStats.Controls.Add(this.pnlOrdersCount);
-            this.pnlStats.Controls.Add(this.btnExtraLists);
+            this.pnlStats.Controls.Add(this.btnSessionList);
             this.pnlStats.Controls.Add(this.btnCategoriesList);
             this.pnlStats.Controls.Add(this.btnUsersList);
             this.pnlStats.Dock = System.Windows.Forms.DockStyle.Top;
@@ -807,25 +807,25 @@ namespace AwladAli.User
             this.lblOrderCount.TabIndex = 3;
             this.lblOrderCount.Text = "0";
             // 
-            // btnExtraLists
+            // btnSessionList
             // 
-            this.btnExtraLists.BackColor = System.Drawing.Color.Transparent;
-            this.btnExtraLists.BackgroundImage = global::AwladAli.Properties.Resources.settingbtn_background;
-            this.btnExtraLists.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnExtraLists.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnExtraLists.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExtraLists.ForeColor = System.Drawing.Color.Transparent;
-            this.btnExtraLists.Image = global::AwladAli.Properties.Resources.extra_64;
-            this.btnExtraLists.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExtraLists.Location = new System.Drawing.Point(984, 25);
-            this.btnExtraLists.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnExtraLists.Name = "btnExtraLists";
-            this.btnExtraLists.Size = new System.Drawing.Size(288, 128);
-            this.btnExtraLists.TabIndex = 225;
-            this.btnExtraLists.Text = "ادارة الأضافات";
-            this.btnExtraLists.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnExtraLists.UseVisualStyleBackColor = false;
-            this.btnExtraLists.Click += new System.EventHandler(this.btnExtraLists_Click);
+            this.btnSessionList.BackColor = System.Drawing.Color.Transparent;
+            this.btnSessionList.BackgroundImage = global::AwladAli.Properties.Resources.settingbtn_background;
+            this.btnSessionList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnSessionList.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSessionList.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSessionList.ForeColor = System.Drawing.Color.Transparent;
+            this.btnSessionList.Image = global::AwladAli.Properties.Resources.session_2_64;
+            this.btnSessionList.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSessionList.Location = new System.Drawing.Point(984, 25);
+            this.btnSessionList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSessionList.Name = "btnSessionList";
+            this.btnSessionList.Size = new System.Drawing.Size(290, 128);
+            this.btnSessionList.TabIndex = 225;
+            this.btnSessionList.Text = "ادارة الجلسات";
+            this.btnSessionList.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSessionList.UseVisualStyleBackColor = false;
+            this.btnSessionList.Click += new System.EventHandler(this.btnSessionList_Click);
             // 
             // btnCategoriesList
             // 
@@ -837,7 +837,7 @@ namespace AwladAli.User
             this.btnCategoriesList.ForeColor = System.Drawing.Color.Transparent;
             this.btnCategoriesList.Image = global::AwladAli.Properties.Resources.Foods_64;
             this.btnCategoriesList.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCategoriesList.Location = new System.Drawing.Point(1280, 25);
+            this.btnCategoriesList.Location = new System.Drawing.Point(1282, 25);
             this.btnCategoriesList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCategoriesList.Name = "btnCategoriesList";
             this.btnCategoriesList.Size = new System.Drawing.Size(281, 128);
@@ -857,7 +857,7 @@ namespace AwladAli.User
             this.btnUsersList.ForeColor = System.Drawing.Color.Transparent;
             this.btnUsersList.Image = global::AwladAli.Properties.Resources.users_64;
             this.btnUsersList.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUsersList.Location = new System.Drawing.Point(1569, 25);
+            this.btnUsersList.Location = new System.Drawing.Point(1571, 25);
             this.btnUsersList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnUsersList.Name = "btnUsersList";
             this.btnUsersList.Size = new System.Drawing.Size(282, 128);
@@ -1149,7 +1149,7 @@ namespace AwladAli.User
         private PictureBox pictureBox1;
         private PictureBox pictureBox3;
         private PictureBox pictureBox2;
-        private Button btnExtraLists;
+        private Button btnSessionList;
         private Button btnCategoriesList;
         private Button btnUsersList;
         private Label lblTitle;

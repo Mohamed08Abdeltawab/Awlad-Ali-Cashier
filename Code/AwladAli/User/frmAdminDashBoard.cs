@@ -180,22 +180,19 @@ namespace AwladAli.User
 
         private void btnCategoriesList_Click(object sender, EventArgs e)
         {
-            new frmListCategories().ShowDialog();
+            new frmProductandExtra().ShowDialog();
             _RefreshDashboard(dtpFrom.Value.Date, dtpTo.Value.Date);
         }
-
-        private void btnExtraLists_Click(object sender, EventArgs e)
+        private void btnSessionList_Click(object sender, EventArgs e)
         {
-            new frmListExtra().ShowDialog();
             _RefreshDashboard(dtpFrom.Value.Date, dtpTo.Value.Date);
         }
 
-        // ════════════════════════════════════════════════════════════
-        //  إغلاق
-        // ════════════════════════════════════════════════════════════
+
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
     }
 }
