@@ -85,5 +85,10 @@ namespace AwladAli_Buisness
             clsSessionData.CloseAnyActiveSession();
         }
 
+        public static DataTable GetAllSessions()
+        {
+            return clsSessionData.GetAllSessions();
+        }
+
     }
 }

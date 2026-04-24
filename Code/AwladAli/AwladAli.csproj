@@ -182,6 +182,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Session\frmListSessions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Session\frmListSessions.Designer.cs">
+      <DependentUpon>frmListSessions.cs</DependentUpon>
+    </Compile>
     <Compile Include="User\frmAdminDashBoard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -206,10 +212,10 @@
     <Compile Include="User\frmAddUpdateUser.Designer.cs">
       <DependentUpon>frmAddUpdateUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="User\frmProductandExtra.cs">
+    <Compile Include="Category\frmProductandExtra.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="User\frmProductandExtra.Designer.cs">
+    <Compile Include="Category\frmProductandExtra.Designer.cs">
       <DependentUpon>frmProductandExtra.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Bill\ctrlOrderLine.resx">
@@ -253,6 +259,9 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Session\frmListSessions.resx">
+      <DependentUpon>frmListSessions.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="User\ctrlUserCard.resx">
       <DependentUpon>ctrlUserCard.cs</DependentUpon>
     </EmbeddedResource>
@@ -265,7 +274,7 @@
     <EmbeddedResource Include="User\frmListUsers.resx">
       <DependentUpon>frmListUsers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User\frmProductandExtra.resx">
+    <EmbeddedResource Include="Category\frmProductandExtra.resx">
       <DependentUpon>frmProductandExtra.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -392,6 +401,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Cashier.ico" />
+    <None Include="Resources\Sessions 512.png" />
     <None Include="Resources\session 2 64.png" />
     <None Include="Resources\start session 64.png" />
     <None Include="Resources\session 64.png" />

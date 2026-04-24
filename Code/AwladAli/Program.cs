@@ -2,6 +2,7 @@
 using AwladAli.Category;
 using AwladAli.Category.Extra;
 using AwladAli.Login;
+using AwladAli.Session;
 using AwladAli.User;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,7 @@ namespace AwladAli
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmAdminDashBoard());
+            Application.Run(new frmListSessions());
         }
     }
 }

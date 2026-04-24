@@ -117,5 +117,38 @@ namespace AwladAli_Data
             }
             catch { return false; }
         }
+
+
+        public static DataTable GetAllSessions()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    // JOIN بجلب اسم المستخدم من جدول Users لظهوره في الجريد
+                    string query = @"SELECT Sessions.SessionID, 
+                                    Users.UserName, 
+                                    Sessions.StartTime, 
+                                    Sessions.EndTime, 
+                                    Sessions.TotalCash, 
+                                    Sessions.IsActive
+                             FROM Sessions 
+                             INNER JOIN Users ON Sessions.UserID = Users.UserID
+                             ORDER BY Sessions.SessionID DESC";
+
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        connection.Open();
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows) dt.Load(reader);
+                        }
+                    }
+                }
+            }
+            catch (Exception) { /* Handle Exception */ }
+            return dt;
+        }
     }
 }
