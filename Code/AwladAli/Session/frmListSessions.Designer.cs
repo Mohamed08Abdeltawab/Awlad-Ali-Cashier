@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblRecordsCount = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.cbFilterBy = new System.Windows.Forms.ComboBox();
@@ -77,7 +77,7 @@
             this.cbFilterBy.Items.AddRange(new object[] {
             "لا شيء",
             "معرف الجلسة",
-            "معرف المستخدم",
+            "اسم المستخدم",
             "الوقت",
             "المبلغ",
             "حالة الجلسة"});
@@ -149,16 +149,16 @@
             this.dgvUsers.MultiSelect = false;
             this.dgvUsers.Name = "dgvUsers";
             this.dgvUsers.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvUsers.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvUsers.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvUsers.Size = new System.Drawing.Size(794, 371);
+            this.dgvUsers.Size = new System.Drawing.Size(904, 371);
             this.dgvUsers.TabIndex = 244;
             this.dgvUsers.TabStop = false;
             // 
@@ -169,13 +169,14 @@
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Image = global::AwladAli.Properties.Resources.Close_32;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(656, 699);
+            this.btnClose.Location = new System.Drawing.Point(766, 697);
             this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(151, 46);
             this.btnClose.TabIndex = 254;
             this.btnClose.Text = "خروج";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // pbPersonImage
             // 
@@ -193,7 +194,7 @@
             // dtpFrom
             // 
             this.dtpFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFrom.Location = new System.Drawing.Point(306, 278);
+            this.dtpFrom.Location = new System.Drawing.Point(306, 281);
             this.dtpFrom.Name = "dtpFrom";
             this.dtpFrom.Size = new System.Drawing.Size(332, 29);
             this.dtpFrom.TabIndex = 255;
@@ -219,21 +220,24 @@
             "الكل",
             "اكبر من",
             "اقل من"});
-            this.cbCash.Location = new System.Drawing.Point(307, 277);
+            this.cbCash.Location = new System.Drawing.Point(307, 281);
             this.cbCash.Name = "cbCash";
             this.cbCash.Size = new System.Drawing.Size(137, 28);
             this.cbCash.TabIndex = 257;
             this.cbCash.Visible = false;
+            this.cbCash.SelectedIndexChanged += new System.EventHandler(this.cbCash_SelectedIndexChanged);
             // 
             // txtCashValue
             // 
             this.txtCashValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCashValue.Location = new System.Drawing.Point(451, 278);
+            this.txtCashValue.Location = new System.Drawing.Point(450, 284);
             this.txtCashValue.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtCashValue.Name = "txtCashValue";
             this.txtCashValue.Size = new System.Drawing.Size(155, 26);
             this.txtCashValue.TabIndex = 258;
             this.txtCashValue.Visible = false;
+            this.txtCashValue.Click += new System.EventHandler(this.txtCashValue_TextChanged);
+            this.txtCashValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCashValue_KeyPress);
             // 
             // cbIsActive
             // 
@@ -243,18 +247,18 @@
             "الكل",
             "نشطة",
             "مغلقة"});
-            this.cbIsActive.Location = new System.Drawing.Point(306, 279);
+            this.cbIsActive.Location = new System.Drawing.Point(307, 282);
             this.cbIsActive.Name = "cbIsActive";
             this.cbIsActive.Size = new System.Drawing.Size(137, 28);
             this.cbIsActive.TabIndex = 259;
             this.cbIsActive.Visible = false;
             this.cbIsActive.SelectedIndexChanged += new System.EventHandler(this.cbIsActive_SelectedIndexChanged);
             // 
-            // frmSessionsList
+            // frmListSessions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(827, 760);
+            this.ClientSize = new System.Drawing.Size(930, 760);
             this.Controls.Add(this.cbIsActive);
             this.Controls.Add(this.txtCashValue);
             this.Controls.Add(this.cbCash);
@@ -271,9 +275,9 @@
             this.Controls.Add(this.dgvUsers);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "frmSessionsList";
+            this.Name = "frmListSessions";
             this.Text = "frmSessionList";
-            this.Load += new System.EventHandler(this.frmSessionsList_Load);
+            this.Load += new System.EventHandler(this.frmListSessions_Load);
             this.cmsSessions.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).EndInit();

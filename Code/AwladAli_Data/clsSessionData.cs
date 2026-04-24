@@ -132,7 +132,7 @@ namespace AwladAli_Data
                                     Sessions.StartTime, 
                                     Sessions.EndTime, 
                                     Sessions.TotalCash, 
-                                    Sessions.IsActive
+                                    CASE WHEN Sessions.IsActive = 1 THEN 'نشطة' ELSE 'مغلقة' END AS IsActive
                              FROM Sessions 
                              INNER JOIN Users ON Sessions.UserID = Users.UserID
                              ORDER BY Sessions.SessionID DESC";
