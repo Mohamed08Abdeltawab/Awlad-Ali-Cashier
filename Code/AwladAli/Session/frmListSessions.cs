@@ -153,7 +153,7 @@ namespace AwladAli.Session
         private void ShowToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (dgvUsers.CurrentRow == null) return;
-            int SessionID = (int)dgvUsers.CurrentRow.Cells["SessionID"].Value;
+            int SessionID = Convert.ToInt32(dgvUsers.CurrentRow.Cells["SessionID"].Value);
 
            
             // frmSessionDetails frm = new frmSessionDetails(SessionID);

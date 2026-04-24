@@ -188,6 +188,12 @@
     <Compile Include="Session\frmListSessions.Designer.cs">
       <DependentUpon>frmListSessions.cs</DependentUpon>
     </Compile>
+    <Compile Include="Session\frmSessionInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Session\frmSessionInfo.Designer.cs">
+      <DependentUpon>frmSessionInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="User\frmAdminDashBoard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -261,6 +267,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Session\frmListSessions.resx">
       <DependentUpon>frmListSessions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Session\frmSessionInfo.resx">
+      <DependentUpon>frmSessionInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\ctrlUserCard.resx">
       <DependentUpon>ctrlUserCard.cs</DependentUpon>
@@ -401,6 +410,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Cashier.ico" />
+    <None Include="Resources\Date 32.png" />
+    <None Include="Resources\Session Info 512.png" />
     <None Include="Resources\Sessions 512.png" />
     <None Include="Resources\session 2 64.png" />
     <None Include="Resources\start session 64.png" />

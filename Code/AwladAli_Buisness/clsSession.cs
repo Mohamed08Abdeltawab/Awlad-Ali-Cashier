@@ -26,14 +26,35 @@ namespace AwladAli_Buisness
             Mode = enMode.AddNew;
         }
 
-        private clsSession(int SessionID, int UserID, DateTime StartTime, decimal TotalCash, bool IsActive)
+        // Constructor خاص لبناء الكائن عند العثور عليه
+        private clsSession(int SessionID, int UserID, DateTime StartTime, DateTime? EndTime, decimal TotalCash, bool IsActive)
         {
             this.SessionID = SessionID;
             this.UserID = UserID;
             this.StartTime = StartTime;
+            this.EndTime = EndTime;
             this.TotalCash = TotalCash;
             this.IsActive = IsActive;
-            Mode = enMode.Update;
+            this.Mode = enMode.Update;
+        }
+
+        public static clsSession Find(int SessionID)
+        {
+            int UserID = -1;
+            DateTime StartTime = DateTime.Now;
+            object EndTime = null;
+            decimal TotalCash = 0;
+            bool IsActive = false;
+
+            if (clsSessionData.GetSessionInfoByID(SessionID, ref UserID, ref StartTime, ref EndTime, ref TotalCash, ref IsActive))
+            {
+                // Return an object of the class with the data found in the database
+                return new clsSession(SessionID, UserID, StartTime, (DateTime?)EndTime, TotalCash, IsActive);
+            }
+            else
+            {
+                return null;
+            }
         }
 
         // 1. دالة بدء الجلسة

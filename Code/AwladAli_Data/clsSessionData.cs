@@ -6,6 +6,47 @@ namespace AwladAli_Data
 {
     public class clsSessionData
     {
+        public static bool GetSessionInfoByID(int SessionID, ref int UserID, ref DateTime StartTime,
+                                      ref object EndTime, ref decimal TotalCash, ref bool IsActive)
+        {
+            bool isFound = false;
+
+            try
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = "SELECT * FROM Sessions WHERE SessionID = @SessionID";
+
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@SessionID", SessionID);
+                        connection.Open();
+
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                // The record was found
+                                isFound = true;
+
+                                UserID = Convert.ToInt32(reader["UserID"]);
+                                StartTime = Convert.ToDateTime(reader["StartTime"]);
+
+                                // EndTime might be NULL if the session is still active
+                                EndTime = (reader["EndTime"] == DBNull.Value) ? null : reader["EndTime"];
+
+                                TotalCash = Convert.ToDecimal(reader["TotalCash"]);
+                                IsActive = Convert.ToBoolean(reader["IsActive"]);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception) { isFound = false; }
+
+            return isFound;
+        }
+
         // 1. إضافة جلسة جديدة (فقط UserID و StartTime)
         public static int AddNewSession(int UserID, DateTime StartTime)
         {
