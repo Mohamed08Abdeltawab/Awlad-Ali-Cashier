@@ -59,7 +59,8 @@ namespace AwladAli.Session
             txtCashValue.Clear();
             cbCash.SelectedIndex = 0;
             cbIsActive.SelectedIndex = 0;
-            dtpFrom.Value = DateTime.Now;
+            dtpFrom.MinDate = clsOrder.GetFirstOrderDate();
+            dtpFrom.Value = dtpFrom.MinDate;
 
             _dtAllSessions.DefaultView.RowFilter = "";
             lblRecordsCount.Text = dgvUsers.Rows.Count.ToString();

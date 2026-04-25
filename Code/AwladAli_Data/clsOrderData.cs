@@ -190,5 +190,38 @@ namespace AwladAli_Data
             catch (Exception) { Count = 0; }
             return Count;
         }
+
+
+        public static DateTime GetFirstOrderDate()
+        {
+            // بنفترض تاريخ افتراضي في حال كان الجدول فاضي
+            DateTime FirstDate = DateTime.Now;
+
+            try
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    // query لجلب أصغر تاريخ في الجدول
+                    string query = "SELECT MIN(OrderDate) FROM Orders";
+
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        connection.Open();
+                        object result = command.ExecuteScalar();
+
+                        if (result != null && result != DBNull.Value)
+                        {
+                            FirstDate = Convert.ToDateTime(result);
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                // في حالة الخطأ يرجع تاريخ النهاردة
+            }
+
+            return FirstDate;
+        }
     }
 }

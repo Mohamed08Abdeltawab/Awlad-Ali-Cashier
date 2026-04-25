@@ -51,6 +51,7 @@ namespace AwladAli.User
             lblTotalRevenue.Text = dash.TotalRevenue.ToString("N2");
             lblDayRevenue.Text = dash.TodayRevenue.ToString("N2");
             lblOrderCount.Text = dash.OrdersCount.ToString();
+            dtpFrom.MinDate = clsOrder.GetFirstOrderDate();
         }
 
         // ════════════════════════════════════════════════════════════
@@ -63,13 +64,13 @@ namespace AwladAli.User
 
             if (dgvOrders.Columns.Count >= 4)
             {
-                dgvOrders.Columns[0].HeaderText = "Order ID";
+                dgvOrders.Columns[0].HeaderText = "رقم الطلب";
                 dgvOrders.Columns[0].Width = 130;
-                dgvOrders.Columns[1].HeaderText = "User ID";
-                dgvOrders.Columns[1].Width = 110;
-                dgvOrders.Columns[2].HeaderText = "Date Time";
+                dgvOrders.Columns[1].HeaderText = "اسم المستخدم";
+                dgvOrders.Columns[1].Width = 130;
+                dgvOrders.Columns[2].HeaderText = "التاريخ والوقت";
                 dgvOrders.Columns[2].Width = 220;
-                dgvOrders.Columns[3].HeaderText = "Total Price";
+                dgvOrders.Columns[3].HeaderText = "السعر الإجمالي";
                 dgvOrders.Columns[3].Width = 150;
             }
         }
@@ -135,12 +136,12 @@ namespace AwladAli.User
         // ════════════════════════════════════════════════════════════
         private void cbFilterBy_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DateTime from = new DateTime(2000, 1, 1);
+            DateTime from = clsOrder.GetFirstOrderDate(); // تاريخ أول طلب في النظام
             DateTime to = DateTime.Today;
 
             switch (cbFilterBy.SelectedIndex)
             {
-                case 0: from = new DateTime(2000, 1, 1); to = DateTime.Today; break; // بلا
+                case 0: from = clsOrder.GetFirstOrderDate(); to = DateTime.Today; break; // بلا
                 case 1: from = DateTime.Today; to = DateTime.Today; break; // اليوم
                 case 2: from = DateTime.Today.AddDays(-7); to = DateTime.Today; break; // الأسبوع الماضي
                 case 3: from = DateTime.Today.AddMonths(-1); to = DateTime.Today; break; // الشهر الماضي

@@ -92,5 +92,10 @@ namespace AwladAli_Buisness
         {
             return clsOrderData.GetOrdersCountBySessionID(SessionID);
         }
+
+        public static DateTime GetFirstOrderDate()
+        {
+            return clsOrderData.GetFirstOrderDate();
+        }
     }
 }

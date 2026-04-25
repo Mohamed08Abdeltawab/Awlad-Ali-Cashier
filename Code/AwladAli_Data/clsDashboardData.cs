@@ -172,10 +172,11 @@ namespace AwladAli_Data
 
             string sql = @"
                 SELECT O.OrderID,
-                       O.UserID,
+                       U.UserName,
                        O.OrderDate,
                        O.TotalAmount
                 FROM   Orders O
+                Inner join Users U on U.UserID = O.UserID
                 WHERE  DATE(O.OrderDate) BETWEEN @From AND @To
                 ORDER  BY O.OrderDate DESC";
 
