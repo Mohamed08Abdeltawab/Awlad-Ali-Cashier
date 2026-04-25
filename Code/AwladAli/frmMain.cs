@@ -151,6 +151,20 @@ namespace AwladAli
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if(_SessionID != -1)
+            {
+                if (MessageBox.Show("هل أنت متأكد من إنهاء الجلسة قبل الخروج؟", "تأكيد", 
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    _EndSessionWhenFormClosing();
+                    //no return here because we want to close the form after ending session
+                }
+                else
+                {
+                    e.Cancel = true;
+                    return;
+                }
+            }
             clsSession.CloseAnyActiveSession(); // تأكد من إغلاق أي جلسة مفتوحة قبل الخروج
             Application.Exit();
         }
@@ -252,6 +266,7 @@ namespace AwladAli
             if (_Order.Save())
             {
                 _OrderID = _Order.OrderID; // دلوقتى معانا الـ ID الحقيقي
+                _CurrentSession.TotalCash += totalAmount; // تحديث إجمالي المبيعات في الجلسة الحالية
 
                 // 4. حفظ تفاصيل الأكلات من الـ CategoryCards
                 foreach (Control ctrl in flpProductCards.Controls)
@@ -365,6 +380,19 @@ namespace AwladAli
             }
         }
 
+        private void _EndSessionWhenFormClosing()
+        {
+            sessionTimer.Stop();
+            // هنا ممكن تفتح شاشة تطلب منه يدخل المبلغ اللي في الدرج حالياً
+            _CurrentSession.TotalCash = _CurrentSession.GetCurrentSales();
+
+            if (_CurrentSession.Save())
+            {
+                _CurrentSession = null;
+                _SessionID = -1;
+                clsGlobal.CurrentSessionID = -1;
+            }
+        }
 
         private void _EndSession()
         {

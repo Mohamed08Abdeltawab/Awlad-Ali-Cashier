@@ -25,6 +25,11 @@ namespace AwladAli.Session
                 dgvUsers.Columns["SessionID"].HeaderText = "معرف الجلسة";
                 dgvUsers.Columns["UserName"].HeaderText = "المستخدم";
 
+                dgvUsers.Columns["OrdersCount"].HeaderText = "عدد الطلبات";
+
+
+
+
                 dgvUsers.Columns["StartTime"].Width = 200;
                 dgvUsers.Columns["StartTime"].HeaderText = "وقت البداية";
 

@@ -169,14 +169,15 @@ namespace AwladAli_Data
                 {
                     // JOIN بجلب اسم المستخدم من جدول Users لظهوره في الجريد
                     string query = @"SELECT Sessions.SessionID, 
-                                    Users.UserName, 
-                                    Sessions.StartTime, 
-                                    Sessions.EndTime, 
-                                    Sessions.TotalCash, 
-                                    CASE WHEN Sessions.IsActive = 1 THEN 'نشطة' ELSE 'مغلقة' END AS IsActive
-                             FROM Sessions 
-                             INNER JOIN Users ON Sessions.UserID = Users.UserID
-                             ORDER BY Sessions.SessionID DESC";
+                                     Users.UserName, 
+                                     (SELECT COUNT(*) FROM Orders WHERE Orders.SessionID = Sessions.SessionID) AS OrdersCount,
+                                     Sessions.StartTime, 
+                                     Sessions.EndTime, 
+                                     Sessions.TotalCash, 
+                                     CASE WHEN Sessions.IsActive = 1 THEN 'نشطة' ELSE 'مغلقة' END AS IsActive
+                              FROM Sessions 
+                              INNER JOIN Users ON Sessions.UserID = Users.UserID
+                              ORDER BY Sessions.SessionID DESC";
 
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {
