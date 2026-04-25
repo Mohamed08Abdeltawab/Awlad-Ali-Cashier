@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.lblTitle = new System.Windows.Forms.Label();
-            this.btnSaveAndPrint = new System.Windows.Forms.Button();
+            this.btnPrint = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lblSessionID = new System.Windows.Forms.Label();
             this.lblUserName = new System.Windows.Forms.Label();
@@ -68,19 +68,19 @@
             this.lblTitle.Text = "معلومات الجلسة";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btnSaveAndPrint
+            // btnPrint
             // 
-            this.btnSaveAndPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
-            this.btnSaveAndPrint.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSaveAndPrint.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveAndPrint.ForeColor = System.Drawing.Color.White;
-            this.btnSaveAndPrint.Location = new System.Drawing.Point(12, 725);
-            this.btnSaveAndPrint.Name = "btnSaveAndPrint";
-            this.btnSaveAndPrint.Size = new System.Drawing.Size(317, 74);
-            this.btnSaveAndPrint.TabIndex = 257;
-            this.btnSaveAndPrint.Text = "طباعة";
-            this.btnSaveAndPrint.UseVisualStyleBackColor = false;
-            this.btnSaveAndPrint.Click += new System.EventHandler(this.btnSaveAndPrint_Click);
+            this.btnPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
+            this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnPrint.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.ForeColor = System.Drawing.Color.White;
+            this.btnPrint.Location = new System.Drawing.Point(12, 725);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(317, 74);
+            this.btnPrint.TabIndex = 257;
+            this.btnPrint.Text = "طباعة";
+            this.btnPrint.UseVisualStyleBackColor = false;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // label1
             // 
@@ -319,7 +319,7 @@
             this.Controls.Add(this.lblSessionID);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.btnSaveAndPrint);
+            this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.pbPersonImage);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lblTitle);
@@ -345,7 +345,7 @@
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.PictureBox pbPersonImage;
-        private System.Windows.Forms.Button btnSaveAndPrint;
+        private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label lblSessionID;

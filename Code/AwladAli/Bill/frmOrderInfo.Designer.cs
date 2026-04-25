@@ -178,9 +178,9 @@
             this.btnIgnore.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnIgnore.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.btnIgnore.ForeColor = System.Drawing.Color.White;
-            this.btnIgnore.Location = new System.Drawing.Point(284, 73);
+            this.btnIgnore.Location = new System.Drawing.Point(284, 67);
             this.btnIgnore.Name = "btnIgnore";
-            this.btnIgnore.Size = new System.Drawing.Size(115, 45);
+            this.btnIgnore.Size = new System.Drawing.Size(115, 51);
             this.btnIgnore.TabIndex = 3;
             this.btnIgnore.Text = "حذف والغاء";
             this.btnIgnore.UseVisualStyleBackColor = false;
@@ -190,11 +190,11 @@
             // 
             this.btnSaveAndPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
             this.btnSaveAndPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSaveAndPrint.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btnSaveAndPrint.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSaveAndPrint.ForeColor = System.Drawing.Color.White;
-            this.btnSaveAndPrint.Location = new System.Drawing.Point(68, 73);
+            this.btnSaveAndPrint.Location = new System.Drawing.Point(42, 67);
             this.btnSaveAndPrint.Name = "btnSaveAndPrint";
-            this.btnSaveAndPrint.Size = new System.Drawing.Size(199, 45);
+            this.btnSaveAndPrint.Size = new System.Drawing.Size(225, 51);
             this.btnSaveAndPrint.TabIndex = 2;
             this.btnSaveAndPrint.Text = "حفظ وطباعة";
             this.btnSaveAndPrint.UseVisualStyleBackColor = false;

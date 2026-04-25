@@ -87,5 +87,10 @@ namespace AwladAli_Buisness
         {
             return clsOrderData.GetAllOrdersRelatedBySessionID(SessionID);
         }
+
+        public static int GetOrdersCountBySessionID(int SessionID)
+        {
+            return clsOrderData.GetOrdersCountBySessionID(SessionID);
+        }
     }
 }

@@ -163,5 +163,32 @@ namespace AwladAli_Data
             }
             return dt;
         }
+
+        public static int GetOrdersCountBySessionID(int SessionID)
+        {
+            int Count = 0;
+            try
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    // نستخدم COUNT(*) لجلب عدد الصفوف فقط (أداء عالي)
+                    string query = "SELECT COUNT(*) FROM Orders WHERE SessionID = @SessionID";
+
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@SessionID", SessionID);
+                        connection.Open();
+
+                        object result = command.ExecuteScalar();
+                        if (result != null && int.TryParse(result.ToString(), out int c))
+                        {
+                            Count = c;
+                        }
+                    }
+                }
+            }
+            catch (Exception) { Count = 0; }
+            return Count;
+        }
     }
 }
