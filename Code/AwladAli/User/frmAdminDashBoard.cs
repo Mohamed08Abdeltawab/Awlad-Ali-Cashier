@@ -1,6 +1,7 @@
 ﻿using AwladAli.Bill;
 using AwladAli.Category;
 using AwladAli.Category.Extra;
+using AwladAli.Session;
 using AwladAli_Buisness;
 using System;
 using System.Windows.Forms;
@@ -126,7 +127,7 @@ namespace AwladAli.User
         // ════════════════════════════════════════════════════════════
         private void btnRefreshAll_Click(object sender, EventArgs e)
         {
-            cbFilterBy.SelectedIndex = 0; // "بلا" → بيشغّل SelectedIndexChanged تلقائي
+            cbFilterBy.SelectedIndex = 0; 
         }
 
         // ════════════════════════════════════════════════════════════
@@ -185,6 +186,7 @@ namespace AwladAli.User
         }
         private void btnSessionList_Click(object sender, EventArgs e)
         {
+            new frmListSessions().ShowDialog();
             _RefreshDashboard(dtpFrom.Value.Date, dtpTo.Value.Date);
         }
 

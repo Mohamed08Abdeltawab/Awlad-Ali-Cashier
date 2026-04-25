@@ -82,5 +82,10 @@ namespace AwladAli_Buisness
             // نطلب من طبقة البيانات تنفيذ الحذف
             return clsOrderData.DeleteOrder(OrderID);
         }
+
+        public static DataTable GetAllOrdersRelatedBySessionID(int SessionID)
+        {
+            return clsOrderData.GetAllOrdersRelatedBySessionID(SessionID);
+        }
     }
 }

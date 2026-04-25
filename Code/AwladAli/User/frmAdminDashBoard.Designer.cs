@@ -890,6 +890,7 @@ namespace AwladAli.User
             // 
             // dgvOrders
             // 
+            this.dgvOrders.AllowUserToAddRows = false;
             this.dgvOrders.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));

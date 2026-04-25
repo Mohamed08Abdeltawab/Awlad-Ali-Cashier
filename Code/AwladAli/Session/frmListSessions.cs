@@ -155,9 +155,9 @@ namespace AwladAli.Session
             if (dgvUsers.CurrentRow == null) return;
             int SessionID = Convert.ToInt32(dgvUsers.CurrentRow.Cells["SessionID"].Value);
 
-           
-            // frmSessionDetails frm = new frmSessionDetails(SessionID);
-            // frm.ShowDialog();
+
+            frmSessionInfo frm = new frmSessionInfo(SessionID);
+            frm.ShowDialog();
         }
 
         private void btnClose_Click(object sender, EventArgs e)

@@ -55,16 +55,14 @@ namespace AwladAli.Session
 
         private void btnShowRelatedOrders_Click(object sender, EventArgs e)
         {
-            // هنا هنفتح شاشة عرض الطلبات ونفلترها بالـ SessionID
-            // frmOrdersList frm = new frmOrdersList(_SessionID);
-            // frm.ShowDialog();
+            frmListOrdersForSession frm = new frmListOrdersForSession(_SessionID);
+            frm.ShowDialog();
 
-            MessageBox.Show("سيتم فتح قائمة الطلبات الخاصة بالجلسة رقم: " + _SessionID);
         }
 
         private void btnSaveAndPrint_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("جاري تحضير تقرير الوردية للطباعة...");
+
         }
     }
 }

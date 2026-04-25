@@ -182,6 +182,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Session\frmListOrdersForSession.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Session\frmListOrdersForSession.Designer.cs">
+      <DependentUpon>frmListOrdersForSession.cs</DependentUpon>
+    </Compile>
     <Compile Include="Session\frmListSessions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -264,6 +270,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Session\frmListOrdersForSession.resx">
+      <DependentUpon>frmListOrdersForSession.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Session\frmListSessions.resx">
       <DependentUpon>frmListSessions.cs</DependentUpon>
@@ -410,6 +419,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Cashier.ico" />
+    <None Include="Resources\Order 512.png" />
     <None Include="Resources\Date 32.png" />
     <None Include="Resources\Session Info 512.png" />
     <None Include="Resources\Sessions 512.png" />

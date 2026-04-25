@@ -130,5 +130,38 @@ namespace AwladAli_Data
 
             return (rowsAffected > 0);
         }
+
+
+        public static DataTable GetAllOrdersRelatedBySessionID(int SessionID)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    // Query to get SessionID, OrderID, and TotalAmount for a specific session
+                    string query = @"SELECT SessionID, OrderID, OrderDate, TotalAmount 
+                             FROM Orders 
+                             WHERE SessionID = @SessionID 
+                             ORDER BY OrderDate DESC";
+
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@SessionID", SessionID);
+                        connection.Open();
+
+                        using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(command))
+                        {
+                            adapter.Fill(dt);
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                // Handle exception or log error
+            }
+            return dt;
+        }
     }
 }
