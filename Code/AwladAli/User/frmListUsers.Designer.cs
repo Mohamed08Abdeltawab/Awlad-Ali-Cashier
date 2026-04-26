@@ -221,9 +221,9 @@
             this.cbRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbRole.FormattingEnabled = true;
             this.cbRole.Items.AddRange(new object[] {
-            "All",
-            "Admin",
-            "Cashier"});
+            "الكل",
+            "مسؤول",
+            "كاشير"});
             this.cbRole.Location = new System.Drawing.Point(314, 270);
             this.cbRole.Name = "cbRole";
             this.cbRole.Size = new System.Drawing.Size(138, 28);
@@ -239,7 +239,7 @@
             "الكل",
             "مفعل",
             "معطل"});
-            this.cbActivation.Location = new System.Drawing.Point(314, 271);
+            this.cbActivation.Location = new System.Drawing.Point(314, 270);
             this.cbActivation.Name = "cbActivation";
             this.cbActivation.Size = new System.Drawing.Size(138, 28);
             this.cbActivation.TabIndex = 244;

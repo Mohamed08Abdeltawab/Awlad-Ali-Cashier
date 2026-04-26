@@ -51,7 +51,7 @@ namespace AwladAli.User
         private void cbFilterBy_SelectedIndexChanged(object sender, EventArgs e)
         {
             _dtAllUsers.DefaultView.RowFilter = "";//Reset the filter to show all data before apply new filter.
-            if (cbFilterBy.SelectedIndex == 4)
+            if (cbFilterBy.SelectedIndex == 3)
             {
                 txtFilterValue.Visible = false;
                 cbActivation.Visible = false;
@@ -59,7 +59,7 @@ namespace AwladAli.User
                 cbRole.Focus();
                 cbRole.SelectedIndex = 0;
             }
-            else if(cbFilterBy.SelectedIndex == 5)
+            else if(cbFilterBy.SelectedIndex == 4)
             {
                 txtFilterValue.Visible = false;
                 cbActivation.Visible = true;
