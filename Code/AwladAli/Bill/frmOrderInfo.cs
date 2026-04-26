@@ -52,7 +52,7 @@ namespace AwladAli.Bill
 
             if (_Order == null)
             {
-                MessageBox.Show("Order not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("لم يتم العثور على الطلب!", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
                 return;
             }
@@ -96,7 +96,7 @@ namespace AwladAli.Bill
         {
             if (System.Drawing.Printing.PrinterSettings.InstalledPrinters.Count == 0)
             {
-                MessageBox.Show("No printers found on this system!", "Printing Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("لم يتم العثور على طابعات في هذا النظام!", "خطأ في الطباعة", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
