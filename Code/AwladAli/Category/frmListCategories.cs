@@ -25,17 +25,17 @@ namespace AwladAli.Category
 
             if (dgvGategory.Rows.Count > 0)
             {
-                dgvGategory.Columns[0].HeaderText = "Category ID";
+                dgvGategory.Columns[0].HeaderText = "معرف الصنف";
                 dgvGategory.Columns[0].Width = 120;
 
-                dgvGategory.Columns[1].HeaderText = "Category Name";
+                dgvGategory.Columns[1].HeaderText = "اسم الصنف";
                 dgvGategory.Columns[1].Width = 350; // عرض أكبر لاسم التصنيف
             }
         }
 
         private void cbFilterBy_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtFilterValue.Visible = (cbFilterBy.Text != "None");
+            txtFilterValue.Visible = (cbFilterBy.SelectedIndex != 0);
 
             if (txtFilterValue.Visible)
             {
@@ -55,12 +55,12 @@ namespace AwladAli.Category
             string FilterColumn = "";
 
             // ربط الاختيار في ComboBox بأسماء الأعمدة الحقيقية في قاعدة البيانات
-            switch (cbFilterBy.Text)
+            switch (cbFilterBy.SelectedIndex)
             {
-                case "Category ID":
+                case 1:
                     FilterColumn = "CategoryID";
                     break;
-                case "Category Name":
+                case 2:
                     FilterColumn = "CategoryName";
                     break;
                 default:

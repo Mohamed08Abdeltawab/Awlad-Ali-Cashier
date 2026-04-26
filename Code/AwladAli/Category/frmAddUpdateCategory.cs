@@ -57,7 +57,7 @@ namespace AwladAli.Category
 
             if (_Category == null)
             {
-                MessageBox.Show("Category Not Found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("الفئة غير موجودة!", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
                 return;
             }
@@ -155,7 +155,7 @@ namespace AwladAli.Category
         {
             if (!this.ValidateChildren())
             {
-                MessageBox.Show("Please fill the required fields.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("يرجى ملء الحقول المطلوبة.", "خطأ في التحقق", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -171,11 +171,11 @@ namespace AwladAli.Category
                 lblTitle.Text = "تعديل صنف";
                 btnAddNewProduct.Enabled = true;
 
-                MessageBox.Show("Category Saved Successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("تم حفظ الفئة بنجاح.", "نجاح", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show("Error: Data was not saved.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("خطأ: لم يتم حفظ البيانات.", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -189,7 +189,7 @@ namespace AwladAli.Category
             if (string.IsNullOrEmpty(txtCategoryName.Text.Trim()))
             {
                 e.Cancel = true;
-                errorProvider1.SetError(txtCategoryName, "Category name is required!");
+                errorProvider1.SetError(txtCategoryName, "اسم الفئة مطلوب!");
             }
             else
             {
@@ -215,7 +215,7 @@ namespace AwladAli.Category
 
         private void removeMedicineToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to delete this product?", "Confirm", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("هل أنت متأكد من أنك تريد حذف هذا المنتج؟", "تأكيد", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 int ProductID = Convert.ToInt32(dgvProduct.CurrentRow.Cells[0].Value);
                 if (clsProduct.DeleteProduct(ProductID))
