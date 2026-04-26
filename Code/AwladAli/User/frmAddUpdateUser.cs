@@ -14,6 +14,8 @@ namespace AwladAli.User
 
         public enum enUserRole { Admin = 0, Cashier = 1 };
 
+        public enum enUserActive { Active = 0, Inactive = 1 };
+
         private int _UserID = -1;
         private clsUser _User;
 
@@ -37,6 +39,7 @@ namespace AwladAli.User
                 lblTitle.Text = "Add New User";
                 _User = new clsUser();
                 cbRole.SelectedIndex = 1; // Default to Cashier role
+                cbActivation.SelectedIndex = 0; // Default to Active status
             }
             else
             {
@@ -59,6 +62,12 @@ namespace AwladAli.User
                 this.Close();
                 return;
             }
+            if(clsUser.IsUserAdmin(_UserID))
+            {
+                cbRole.Enabled = false; // Disable role change for admin users
+                cbActivation.Enabled = false; // Disable activation change for admin users
+            }
+
             llHidePassword.Visible = false; // Hide the "Hide Password" link by default in Update mode
             llShowPassword.Visible = true; // Show the "Show Password" link by default in Update mode
             lblUserID.Text = _User.UserID.ToString();
@@ -67,6 +76,7 @@ namespace AwladAli.User
             txtPassword.Text = decryptedPassword;
             txtConfirmPassword.Text = decryptedPassword;
             cbRole.SelectedIndex = (int)_User.Role;
+            cbActivation.SelectedIndex = _User.IsActive ? 0 : 1; // Assuming 0 = Active, 1 = Inactive
         }
 
         private void frmAddUpdateUser_Load(object sender, EventArgs e)
@@ -148,6 +158,7 @@ namespace AwladAli.User
             string encryptedPassword = clsCryptography.Encrypt(txtPassword.Text.Trim());
             _User.Password = encryptedPassword;
             _User.Role = (short)cbRole.SelectedIndex;
+            _User.IsActive = (cbActivation.SelectedIndex == 0); // Assuming 0 = Active, 1 = Inactive
 
             if (_User.Save())
             {
@@ -170,10 +181,7 @@ namespace AwladAli.User
 
         private void llShowPassword_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            // 1. فك تشفير الباسورد اللي جاية من الكلاس (لو إحنا في حالة Update)
-            // أو إظهار اللي مكتوب في الـ TextBox حالياً
-
-            // الطريقة الأبسط هي تغيير خاصية الـ PasswordChar
+           
             txtPassword.PasswordChar = '\0'; // '\0' تعني إظهار النص كما هو
             txtConfirmPassword.PasswordChar = '\0';
 

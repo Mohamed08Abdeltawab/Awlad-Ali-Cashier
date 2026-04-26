@@ -40,18 +40,22 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
-            this.btnClose = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.llShowPassword = new System.Windows.Forms.LinkLabel();
+            this.llHidePassword = new System.Windows.Forms.LinkLabel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cbActivation = new System.Windows.Forms.ComboBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.btnSave = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.llShowPassword = new System.Windows.Forms.LinkLabel();
-            this.llHidePassword = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -169,26 +173,11 @@
             this.txtPassword.TabIndex = 136;
             this.txtPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtPassword_Validating);
             // 
-            // btnClose
-            // 
-            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnClose.Image = global::AwladAli.Properties.Resources.Close_32;
-            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(499, 246);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(126, 37);
-            this.btnClose.TabIndex = 151;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
             // lblTitle
             // 
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblTitle.Location = new System.Drawing.Point(230, 9);
+            this.lblTitle.Location = new System.Drawing.Point(230, 18);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(355, 39);
             this.lblTitle.TabIndex = 152;
@@ -198,6 +187,62 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
+            // 
+            // llShowPassword
+            // 
+            this.llShowPassword.AutoSize = true;
+            this.llShowPassword.Location = new System.Drawing.Point(648, 190);
+            this.llShowPassword.Name = "llShowPassword";
+            this.llShowPassword.Size = new System.Drawing.Size(49, 20);
+            this.llShowPassword.TabIndex = 153;
+            this.llShowPassword.TabStop = true;
+            this.llShowPassword.Text = "Show";
+            this.llShowPassword.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llShowPassword_LinkClicked);
+            // 
+            // llHidePassword
+            // 
+            this.llHidePassword.AutoSize = true;
+            this.llHidePassword.Location = new System.Drawing.Point(655, 190);
+            this.llHidePassword.Name = "llHidePassword";
+            this.llHidePassword.Size = new System.Drawing.Size(42, 20);
+            this.llHidePassword.TabIndex = 154;
+            this.llHidePassword.TabStop = true;
+            this.llHidePassword.Text = "Hide";
+            this.llHidePassword.Visible = false;
+            this.llHidePassword.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llHidePassword_LinkClicked);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(13, 197);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(93, 20);
+            this.label5.TabIndex = 156;
+            this.label5.Text = "Activation:";
+            // 
+            // cbActivation
+            // 
+            this.cbActivation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbActivation.FormattingEnabled = true;
+            this.cbActivation.Items.AddRange(new object[] {
+            "مفعل",
+            "معطل"});
+            this.cbActivation.Location = new System.Drawing.Point(215, 191);
+            this.cbActivation.Name = "cbActivation";
+            this.cbActivation.Size = new System.Drawing.Size(167, 28);
+            this.cbActivation.TabIndex = 155;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::AwladAli.Properties.Resources.Activation_32;
+            this.pictureBox5.Location = new System.Drawing.Point(177, 191);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(31, 26);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 157;
+            this.pictureBox5.TabStop = false;
             // 
             // btnSave
             // 
@@ -213,6 +258,21 @@
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnClose.Image = global::AwladAli.Properties.Resources.Close_32;
+            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClose.Location = new System.Drawing.Point(499, 246);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(126, 37);
+            this.btnClose.TabIndex = 151;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // pictureBox4
             // 
@@ -264,35 +324,15 @@
             this.pictureBox3.TabIndex = 139;
             this.pictureBox3.TabStop = false;
             // 
-            // llShowPassword
-            // 
-            this.llShowPassword.AutoSize = true;
-            this.llShowPassword.Location = new System.Drawing.Point(648, 190);
-            this.llShowPassword.Name = "llShowPassword";
-            this.llShowPassword.Size = new System.Drawing.Size(49, 20);
-            this.llShowPassword.TabIndex = 153;
-            this.llShowPassword.TabStop = true;
-            this.llShowPassword.Text = "Show";
-            this.llShowPassword.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llShowPassword_LinkClicked);
-            // 
-            // llHidePassword
-            // 
-            this.llHidePassword.AutoSize = true;
-            this.llHidePassword.Location = new System.Drawing.Point(655, 190);
-            this.llHidePassword.Name = "llHidePassword";
-            this.llHidePassword.Size = new System.Drawing.Size(42, 20);
-            this.llHidePassword.TabIndex = 154;
-            this.llHidePassword.TabStop = true;
-            this.llHidePassword.Text = "Hide";
-            this.llHidePassword.Visible = false;
-            this.llHidePassword.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llHidePassword_LinkClicked);
-            // 
             // frmAddUpdateUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(790, 297);
+            this.Controls.Add(this.pictureBox5);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.cbActivation);
             this.Controls.Add(this.llHidePassword);
             this.Controls.Add(this.llShowPassword);
             this.Controls.Add(this.lblTitle);
@@ -320,6 +360,7 @@
             this.Text = "frmAddUpdateUser";
             this.Load += new System.EventHandler(this.frmAddUpdateUser_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -353,5 +394,8 @@
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.LinkLabel llHidePassword;
         private System.Windows.Forms.LinkLabel llShowPassword;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox cbActivation;
     }
 }

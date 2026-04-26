@@ -212,12 +212,6 @@
     <Compile Include="User\frmListUsers.Designer.cs">
       <DependentUpon>frmListUsers.cs</DependentUpon>
     </Compile>
-    <Compile Include="User\ctrlUserCard.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="User\ctrlUserCard.Designer.cs">
-      <DependentUpon>ctrlUserCard.cs</DependentUpon>
-    </Compile>
     <Compile Include="User\frmAddUpdateUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -279,9 +273,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Session\frmSessionInfo.resx">
       <DependentUpon>frmSessionInfo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="User\ctrlUserCard.resx">
-      <DependentUpon>ctrlUserCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\frmAddUpdateUser.resx">
       <DependentUpon>frmAddUpdateUser.cs</DependentUpon>
@@ -419,6 +410,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Cashier.ico" />
+    <None Include="Resources\Activation 32.png" />
     <None Include="Resources\Order 512.png" />
     <None Include="Resources\Date 32.png" />
     <None Include="Resources\Session Info 512.png" />
