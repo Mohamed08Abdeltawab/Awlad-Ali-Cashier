@@ -29,8 +29,12 @@ namespace AwladAli.Login
             // 1. Validation check before processing
             if (string.IsNullOrEmpty(txtUserName.Text.Trim()) || string.IsNullOrEmpty(txtPassword.Text.Trim()))
             {
-                MessageBox.Show("Please enter both Username and Password.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                // Display a message box informing the user to fill all required fields
+                MessageBox.Show("يرجى إدخال كل من اسم المستخدم وكلمة المرور.", "خطأ في الإدخال", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                // Log the warning event for empty field login attempts
                 clsGlobal.LogException("Login attempt with empty fields.", System.Diagnostics.EventLogEntryType.Warning);
+
                 return;
             }
 
@@ -63,7 +67,7 @@ namespace AwladAli.Login
             else
             {
                 txtUserName.Focus();
-                MessageBox.Show("Invalid Username/Password or inactive user.", "Wrong Credentials", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("اسم المستخدم أو كلمة المرور غير صالحة، أو المستخدم غير نشط.", "بيانات الاعتماد خاطئة", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 clsGlobal.LogException($"Failed login attempt for username: {txtUserName.Text.Trim()}", System.Diagnostics.EventLogEntryType.Warning);
             }
         }
