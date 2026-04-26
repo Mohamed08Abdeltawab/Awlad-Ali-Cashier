@@ -410,6 +410,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Cashier.ico" />
+    <None Include="Resources\Inactive 32.png" />
+    <None Include="Resources\Active 32.png" />
     <None Include="Resources\Activation 32.png" />
     <None Include="Resources\Order 512.png" />
     <None Include="Resources\Date 32.png" />

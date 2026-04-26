@@ -132,9 +132,9 @@ namespace AwladAli_Buisness
             return clsUserData.IsUserAdmin(UserID);
         }
 
-        public static bool IsUserActive(int UserID)
+        public static bool ActivateUser(int UserID)
         {
-            return clsUserData.IsUserActive(UserID);
+            return clsUserData.ActivateUser(UserID);
         }
 
     }
