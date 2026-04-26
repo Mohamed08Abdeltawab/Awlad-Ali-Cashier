@@ -100,6 +100,7 @@ namespace AwladAli.Session
                 //no data
                 btnMore.Enabled = false;
                 MessageBox.Show("لا توجد طلبات إضافية لهذه الجلسة.", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                _PageNumber--;
             }
         }
 
@@ -114,7 +115,6 @@ namespace AwladAli.Session
             _PageNumber = 1;
             btnMore.Enabled = true;
             _dtOrdersMerge.Clear();
-
             _LoadOrdersWithPagination(_PageNumber, _PageSize);
         }
     }

@@ -46,6 +46,9 @@
             this.cbCash = new System.Windows.Forms.ComboBox();
             this.txtCashValue = new System.Windows.Forms.TextBox();
             this.cbIsActive = new System.Windows.Forms.ComboBox();
+            this.llShowAll = new System.Windows.Forms.LinkLabel();
+            this.llReturnDefault = new System.Windows.Forms.LinkLabel();
+            this.btnMore = new System.Windows.Forms.Button();
             this.cmsSessions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).BeginInit();
@@ -254,11 +257,60 @@
             this.cbIsActive.Visible = false;
             this.cbIsActive.SelectedIndexChanged += new System.EventHandler(this.cbIsActive_SelectedIndexChanged);
             // 
+            // llShowAll
+            // 
+            this.llShowAll.ActiveLinkColor = System.Drawing.Color.White;
+            this.llShowAll.AutoSize = true;
+            this.llShowAll.BackColor = System.Drawing.Color.Transparent;
+            this.llShowAll.DisabledLinkColor = System.Drawing.Color.White;
+            this.llShowAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llShowAll.Location = new System.Drawing.Point(861, 176);
+            this.llShowAll.Name = "llShowAll";
+            this.llShowAll.Size = new System.Drawing.Size(101, 29);
+            this.llShowAll.TabIndex = 268;
+            this.llShowAll.TabStop = true;
+            this.llShowAll.Text = "عرض الكل";
+            this.llShowAll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llShowAll_LinkClicked);
+            // 
+            // llReturnDefault
+            // 
+            this.llReturnDefault.ActiveLinkColor = System.Drawing.Color.White;
+            this.llReturnDefault.AutoSize = true;
+            this.llReturnDefault.BackColor = System.Drawing.Color.Transparent;
+            this.llReturnDefault.DisabledLinkColor = System.Drawing.Color.White;
+            this.llReturnDefault.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llReturnDefault.Location = new System.Drawing.Point(861, 217);
+            this.llReturnDefault.Name = "llReturnDefault";
+            this.llReturnDefault.Size = new System.Drawing.Size(98, 29);
+            this.llReturnDefault.TabIndex = 267;
+            this.llReturnDefault.TabStop = true;
+            this.llReturnDefault.Text = "اعادة تعيين";
+            this.llReturnDefault.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llReturnDefault_LinkClicked);
+            // 
+            // btnMore
+            // 
+            this.btnMore.BackColor = System.Drawing.Color.White;
+            this.btnMore.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnMore.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMore.Image = global::AwladAli.Properties.Resources.next_32;
+            this.btnMore.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMore.Location = new System.Drawing.Point(837, 260);
+            this.btnMore.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnMore.Name = "btnMore";
+            this.btnMore.Size = new System.Drawing.Size(151, 46);
+            this.btnMore.TabIndex = 266;
+            this.btnMore.Text = "اكثر";
+            this.btnMore.UseVisualStyleBackColor = false;
+            this.btnMore.Click += new System.EventHandler(this.btnMore_Click);
+            // 
             // frmListSessions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1030, 760);
+            this.Controls.Add(this.llShowAll);
+            this.Controls.Add(this.llReturnDefault);
+            this.Controls.Add(this.btnMore);
             this.Controls.Add(this.cbIsActive);
             this.Controls.Add(this.txtCashValue);
             this.Controls.Add(this.cbCash);
@@ -304,5 +356,8 @@
         private System.Windows.Forms.ComboBox cbCash;
         private System.Windows.Forms.TextBox txtCashValue;
         private System.Windows.Forms.ComboBox cbIsActive;
+        private System.Windows.Forms.LinkLabel llShowAll;
+        private System.Windows.Forms.LinkLabel llReturnDefault;
+        private System.Windows.Forms.Button btnMore;
     }
 }

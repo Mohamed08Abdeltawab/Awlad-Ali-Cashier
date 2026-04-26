@@ -53,7 +53,7 @@ namespace AwladAli.User
             lblTotalRevenue.Text = dash.TotalRevenue.ToString("N2");
             lblDayRevenue.Text = dash.TodayRevenue.ToString("N2");
             lblOrderCount.Text = dash.OrdersCount.ToString();
-            dtpFrom.MinDate = clsOrder.GetFirstOrderDate();
+            dtpFrom.MinDate = new DateTime(2020, 1, 1);
         }
 
         // ════════════════════════════════════════════════════════════
@@ -232,7 +232,6 @@ namespace AwladAli.User
         {
             btnMore.Enabled = true;
             _dash.PageNumber = 1;
-            _dash.Orders.Clear();
             _dash.LoadOrdersWithPagination();
             _FillGrid(_dash);
         }

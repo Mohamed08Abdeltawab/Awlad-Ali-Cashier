@@ -111,5 +111,11 @@ namespace AwladAli_Buisness
             return clsSessionData.GetAllSessions();
         }
 
+
+        public static DataTable GetSessionsWithPagination(int PageNumber, int PageSize)
+        {
+            return clsSessionData.GetSessionsWithPagination(PageNumber, PageSize);
+        }
+
     }
 }

@@ -193,5 +193,48 @@ namespace AwladAli_Data
             return dt;
         }
 
+
+        public static DataTable GetSessionsWithPagination(int PageNumber, int PageSize)
+        {
+            DataTable dt = new DataTable();
+
+            // حساب عدد الصفوف التي سيتم تخطيها
+            int offset = (PageNumber - 1) * PageSize;
+
+            try
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    // أضفنا LIMIT و OFFSET في نهاية الكويري
+                    string query = @"SELECT Sessions.SessionID, 
+                                     Users.UserName, 
+                                     (SELECT COUNT(*) FROM Orders WHERE Orders.SessionID = Sessions.SessionID) AS OrdersCount,
+                                     Sessions.StartTime, 
+                                     Sessions.EndTime, 
+                                     Sessions.TotalCash, 
+                                     CASE WHEN Sessions.IsActive = 1 THEN 'نشطة' ELSE 'مغلقة' END AS IsActive
+                              FROM Sessions 
+                              INNER JOIN Users ON Sessions.UserID = Users.UserID
+                              ORDER BY Sessions.SessionID DESC
+                              LIMIT @PageSize OFFSET @Offset";
+
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@PageSize", PageSize);
+                        command.Parameters.AddWithValue("@Offset", offset);
+
+                        connection.Open();
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows) dt.Load(reader);
+                        }
+                    }
+                }
+            }
+            catch (Exception) { /* Handle Exception */ }
+
+            return dt;
+        }
+
     }
 }

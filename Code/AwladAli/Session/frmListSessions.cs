@@ -14,6 +14,10 @@ namespace AwladAli.Session
             InitializeComponent();
         }
 
+        int _PageNumber = 1;
+        int _PageSize = 10;
+
+
         private void _RefreshSessionsList()
         {
             _dtAllSessions = clsSession.GetAllSessions();
@@ -41,13 +45,56 @@ namespace AwladAli.Session
             }
         }
 
-       
+        private void _RefreshSessionsListWithPagination(int PageNumber, int PageSize)
+        {
+            _dtAllSessions = clsSession.GetSessionsWithPagination(PageNumber, PageSize);
+            dgvUsers.DataSource = _dtAllSessions;
+            lblRecordsCount.Text = dgvUsers.Rows.Count.ToString();
+
+            if (dgvUsers.Rows.Count > 0)
+            {
+                dgvUsers.Columns["SessionID"].HeaderText = "معرف الجلسة";
+                dgvUsers.Columns["UserName"].HeaderText = "المستخدم";
+
+                dgvUsers.Columns["OrdersCount"].HeaderText = "عدد الطلبات";
+
+
+
+
+                dgvUsers.Columns["StartTime"].Width = 200;
+                dgvUsers.Columns["StartTime"].HeaderText = "وقت البداية";
+
+                dgvUsers.Columns["EndTime"].Width = 200;
+                dgvUsers.Columns["EndTime"].HeaderText = "وقت النهاية";
+
+                dgvUsers.Columns["TotalCash"].HeaderText = "إجمالي المبيعات";
+                dgvUsers.Columns["IsActive"].HeaderText = "نشطة؟";
+            }
+        }
+
+
 
         private void cbFilterBy_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // 0: لا شيء, 1: معرف الجلسة, 2: معرف المستخدم, 3: الوقت, 4: المبلغ, 5: حالة الجلسة
+            if (cbFilterBy.SelectedIndex == 0)
+            {
+                btnMore.Enabled = true;
+                llReturnDefault.Enabled = true;
+                llShowAll.Enabled = true;
 
-            // التحكم في ظهور الأدوات بناءً على الـ Index
+                _PageNumber = 1;
+                _RefreshSessionsListWithPagination(_PageNumber, _PageSize);
+            }
+            else
+            {
+                btnMore.Enabled = false;
+                llReturnDefault.Enabled = false;
+                llShowAll.Enabled = false;
+
+                // تحميل كل الداتا عشان الفلتر يشتغل على قاعدة البيانات كاملة
+                _RefreshSessionsList();
+            }
+
             txtFilterValue.Visible = (cbFilterBy.SelectedIndex == 1 || cbFilterBy.SelectedIndex == 2);
             dtpFrom.Visible = (cbFilterBy.SelectedIndex == 3);
             lblFrom.Visible = (cbFilterBy.SelectedIndex == 3);
@@ -59,15 +106,17 @@ namespace AwladAli.Session
             txtCashValue.Clear();
             cbCash.SelectedIndex = 0;
             cbIsActive.SelectedIndex = 0;
-            dtpFrom.MinDate = clsOrder.GetFirstOrderDate();
-            dtpFrom.Value = dtpFrom.MinDate;
 
-            _dtAllSessions.DefaultView.RowFilter = "";
+            if (_dtAllSessions != null)
+                _dtAllSessions.DefaultView.RowFilter = "";
+
             lblRecordsCount.Text = dgvUsers.Rows.Count.ToString();
         }
 
         private void txtFilterValue_TextChanged(object sender, EventArgs e)
         {
+            if (_dtAllSessions == null || _dtAllSessions.Rows.Count == 0) return;
+
             if (string.IsNullOrWhiteSpace(txtFilterValue.Text))
             {
                 _dtAllSessions.DefaultView.RowFilter = "";
@@ -77,13 +126,21 @@ namespace AwladAli.Session
 
             string FilterColumn = (cbFilterBy.SelectedIndex == 1) ? "SessionID" : "UserName";
 
-            if(FilterColumn == "UserName") 
+            if (FilterColumn == "UserName")
+            {
                 _dtAllSessions.DefaultView.RowFilter = string.Format("[{0}] LIKE '%{1}%'", FilterColumn, txtFilterValue.Text.Trim().Replace("'", "''"));
+            }
             else
-                _dtAllSessions.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, txtFilterValue.Text.Trim());
+            {
+                if (int.TryParse(txtFilterValue.Text.Trim(), out int val))
+                    _dtAllSessions.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, val);
+                else
+                    _dtAllSessions.DefaultView.RowFilter = "1=0"; 
+            }
 
             lblRecordsCount.Text = dgvUsers.Rows.Count.ToString();
         }
+
 
         private void _ApplyCashFilter()
         {
@@ -140,7 +197,8 @@ namespace AwladAli.Session
 
         private void dtpFrom_ValueChanged(object sender, EventArgs e)
         {
-            _dtAllSessions.DefaultView.RowFilter = string.Format("StartTime >= #{0}#", dtpFrom.Value.ToString("yyyy-MM-dd"));
+            if (_dtAllSessions == null) return;
+            string filter = string.Format("StartTime >= #{0}#", dtpFrom.Value.ToString("MM/dd/yyyy"));
             lblRecordsCount.Text = dgvUsers.Rows.Count.ToString();
         }
 
@@ -173,8 +231,45 @@ namespace AwladAli.Session
 
         private void frmListSessions_Load(object sender, EventArgs e)
         {
-            _RefreshSessionsList();
             cbFilterBy.SelectedIndex = 0;
+        }
+
+        private void btnMore_Click(object sender, EventArgs e)
+        {
+            _PageNumber++;
+
+            // 2. جلب الصفحة التالية من البيانات
+            DataTable dtNextSessions = clsSession.GetSessionsWithPagination(_PageNumber, _PageSize);
+
+            if (dtNextSessions != null && dtNextSessions.Rows.Count > 0)
+            {
+                // 3. دمج البيانات الجديدة مع الجدول الحالي
+                _dtAllSessions.Merge(dtNextSessions);
+
+                // تحديث مصدر البيانات والعدد
+                dgvUsers.DataSource = _dtAllSessions;
+                lblRecordsCount.Text = dgvUsers.Rows.Count.ToString();
+            }
+            else
+            {
+                // إذا لم توجد بيانات أخرى
+                btnMore.Enabled = false;
+                MessageBox.Show("لا توجد جلسات إضافية لتحميلها.", "انتهت البيانات", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                _PageNumber--;
+            }
+        }
+
+        private void llReturnDefault_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            _PageNumber = 1;
+            btnMore.Enabled = true;
+            _RefreshSessionsListWithPagination(_PageNumber, _PageSize);
+        }
+
+        private void llShowAll_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            _RefreshSessionsList();
+            btnMore.Enabled = false;
         }
     }
 }

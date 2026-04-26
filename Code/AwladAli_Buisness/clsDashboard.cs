@@ -104,7 +104,7 @@ namespace AwladAli_Buisness
 
         public void LoadAllOrders()
         {
-                       Orders = clsDashboardData.GetOrdersByDateRange(From, To);
+                Orders = clsDashboardData.GetOrdersByDateRange(From, To);
         }
 
 
