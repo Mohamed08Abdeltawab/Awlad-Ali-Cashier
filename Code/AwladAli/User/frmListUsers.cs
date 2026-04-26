@@ -294,6 +294,7 @@ namespace AwladAli.User
                 deleteToolStripMenuItem.Enabled = false;
                 OnToolStripMenuItem.Enabled = false;
                 OffToolStripMenuItem.Enabled = false;
+                editToolStripMenuItem.Enabled = false;
             }
         }
     }

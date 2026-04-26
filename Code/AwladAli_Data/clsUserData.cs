@@ -255,13 +255,13 @@ namespace AwladAli_Data
                 {
                     string query = @"SELECT UserID, UserName,
                                       CASE Role 
-                                        WHEN 0 THEN 'Admin' 
-                                        WHEN 1 THEN 'Cashier' 
-                                        ELSE 'Unknown' 
+                                        WHEN 0 THEN 'مسؤول' 
+                                        WHEN 1 THEN 'كاشير' 
+                                        ELSE 'غير معروف' 
                                       END AS RoleName,
                                       CASE IsActive
-                                        WHEN 1 THEN 'Active'
-                                        ELSE 'Inactive'
+                                        WHEN 1 THEN 'مفعل'
+                                        ELSE 'غير مفعل'
                                       END AS Status
                                         FROM Users";
 
