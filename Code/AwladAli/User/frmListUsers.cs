@@ -27,23 +27,23 @@ namespace AwladAli.User
             cbFilterBy.SelectedIndex = 0;
             lblRecordsCount.Text = dgvUsers.Rows.Count.ToString();
 
-            dgvUsers.Columns[0].HeaderText = "User ID";
+            dgvUsers.Columns[0].HeaderText = "رقم المستخدم";
             dgvUsers.Columns[0].Width = 110;
 
-            dgvUsers.Columns[1].HeaderText = "UserName";
+            dgvUsers.Columns[1].HeaderText = "اسم المستخدم";
             dgvUsers.Columns[1].Width = 170;
 
-            dgvUsers.Columns[2].HeaderText = "Role Name";
+            dgvUsers.Columns[2].HeaderText = "دور المستخدم";
             dgvUsers.Columns[2].Width = 150;
 
-            dgvUsers.Columns[3].HeaderText = "Status";
+            dgvUsers.Columns[3].HeaderText = "حالة المستخدم";
             dgvUsers.Columns[3].Width = 150;
         }
 
         private void cbFilterBy_SelectedIndexChanged(object sender, EventArgs e)
         {
             _dtAllUsers.DefaultView.RowFilter = "";//Reset the filter to show all data before apply new filter.
-            if (cbFilterBy.Text == "Role")
+            if (cbFilterBy.SelectedIndex == 4)
             {
                 txtFilterValue.Visible = false;
                 cbActivation.Visible = false;
@@ -51,7 +51,7 @@ namespace AwladAli.User
                 cbRole.Focus();
                 cbRole.SelectedIndex = 0;
             }
-            else if(cbFilterBy.Text == "Status")
+            else if(cbFilterBy.SelectedIndex == 5)
             {
                 txtFilterValue.Visible = false;
                 cbActivation.Visible = true;
@@ -61,7 +61,7 @@ namespace AwladAli.User
             }
             else
             {
-                txtFilterValue.Visible = (cbFilterBy.Text != "None");
+                txtFilterValue.Visible = (cbFilterBy.SelectedIndex != 0);
                 cbRole.Visible = false;//if not check role 
 
                 txtFilterValue.Text = "";
@@ -73,13 +73,13 @@ namespace AwladAli.User
         {
             string FilterColumn = "";
             //Map Selected Filter to real Column name 
-            switch (cbFilterBy.Text)
+            switch (cbFilterBy.SelectedIndex)
             {
-                case "User ID":
+                case 1: // User ID
                     FilterColumn = "UserID";
                     break;
 
-                case "UserName":
+                case 2: // UserName
                     FilterColumn = "UserName";
                     break;
 
@@ -110,22 +110,22 @@ namespace AwladAli.User
         private void cbRole_SelectedIndexChanged(object sender, EventArgs e)
         {
             string FilterColumn = "RoleName";
-            string FilterValue = cbRole.Text;
+            string FilterValue = cbRole.SelectedIndex.ToString();
 
             switch (FilterValue)
             {
-                case "All":
+                case "0": // All
                     break;
-                case "Admin":
+                case "1": // Admin
                     FilterValue = "Admin";
                     break;
-                case "Cashier":
+                case "2": // Cashier
                     FilterValue = "Cashier";
                     break;
             }
 
 
-            if (FilterValue == "All")
+            if (FilterValue == "0")
                 _dtAllUsers.DefaultView.RowFilter = "";
             else
                 //in this case we deal with numbers not string.
@@ -137,22 +137,22 @@ namespace AwladAli.User
         private void cbActivation_SelectedIndexChanged(object sender, EventArgs e)
         {
             string FilterColumn = "Status";
-            string FilterValue = cbActivation.Text;
+            string FilterValue = cbActivation.SelectedIndex.ToString();
 
             switch (FilterValue)
             {
-                case "All":
+                case "0": // All
                     break;
-                case "Active":
+                case "1": // Active
                     FilterValue = "Active";
                     break;
-                case "Inactive":
+                case "2": // Inactive
                     FilterValue = "Inactive";
                     break;
             }
 
 
-            if (FilterValue == "All")
+            if (FilterValue == "0")
                 _dtAllUsers.DefaultView.RowFilter = "";
             else
                 //in this case we deal with numbers not string.
@@ -164,7 +164,7 @@ namespace AwladAli.User
         private void txtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
         {
             //we allow number incase person id or user id is selected.
-            if (cbFilterBy.Text == "User ID")
+            if (cbFilterBy.SelectedIndex == 1) // User ID 
                 e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
@@ -194,7 +194,7 @@ namespace AwladAli.User
 
             if (clsUser.DeleteUser(UserID))
             {
-                MessageBox.Show("User has been deleted successfully", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("تم حذف المستخدم بنجاح", "تم الحذف", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 frmListUsers_Load(null, null);
             }
             else
@@ -223,7 +223,7 @@ namespace AwladAli.User
             int UserID = Convert.ToInt32(dgvUsers.CurrentRow.Cells[0].Value);
             if (clsUser.ActivateUser(UserID))
             {
-                MessageBox.Show("تم تفعيل المستخدم بنجاح", "Activated", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("تم تفعيل المستخدم بنجاح", "تم التفعيل", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 OnToolStripMenuItem.Enabled = false;
                 OffToolStripMenuItem.Enabled = true;
                 frmListUsers_Load(null, null);
@@ -235,7 +235,7 @@ namespace AwladAli.User
             int UserID = Convert.ToInt32(dgvUsers.CurrentRow.Cells[0].Value);
             if (clsUser.DeactivateUser(UserID))
             {
-                MessageBox.Show("تم تعطيل المستخدم بنجاح", "Deactivated", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("تم تعطيل المستخدم بنجاح", "تم التعطيل", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 OnToolStripMenuItem.Enabled = true;
                 OffToolStripMenuItem.Enabled = false;
                 frmListUsers_Load(null, null);

@@ -79,11 +79,11 @@
             this.cbFilterBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbFilterBy.FormattingEnabled = true;
             this.cbFilterBy.Items.AddRange(new object[] {
-            "None",
-            "User ID",
-            "UserName",
-            "Role",
-            "Status"});
+            "لا شيء",
+            "معرف المستخدم",
+            "اسم المستخدم",
+            "دور المستخدم",
+            "الحالة"});
             this.cbFilterBy.Location = new System.Drawing.Point(97, 270);
             this.cbFilterBy.Name = "cbFilterBy";
             this.cbFilterBy.Size = new System.Drawing.Size(210, 28);
@@ -130,7 +130,7 @@
             this.InactiveStripMenuItem1,
             this.deleteToolStripMenuItem});
             this.cmsUsers.Name = "contextMenuStrip1";
-            this.cmsUsers.Size = new System.Drawing.Size(197, 178);
+            this.cmsUsers.Size = new System.Drawing.Size(191, 156);
             this.cmsUsers.Opening += new System.ComponentModel.CancelEventHandler(this.cmsUsers_Opening);
             // 
             // AddNewToolStripMenuItem
@@ -138,7 +138,7 @@
             this.AddNewToolStripMenuItem.Image = global::AwladAli.Properties.Resources.add_32;
             this.AddNewToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.AddNewToolStripMenuItem.Name = "AddNewToolStripMenuItem";
-            this.AddNewToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.AddNewToolStripMenuItem.Size = new System.Drawing.Size(190, 38);
             this.AddNewToolStripMenuItem.Text = "أضافة مستخدم جديد";
             this.AddNewToolStripMenuItem.Click += new System.EventHandler(this.AddNewToolStripMenuItem_Click);
             // 
@@ -147,7 +147,7 @@
             this.editToolStripMenuItem.Image = global::AwladAli.Properties.Resources.edit2_32;
             this.editToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(190, 38);
             this.editToolStripMenuItem.Text = "تعديل";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
@@ -159,7 +159,7 @@
             this.InactiveStripMenuItem1.Image = global::AwladAli.Properties.Resources.Activation_32;
             this.InactiveStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.InactiveStripMenuItem1.Name = "InactiveStripMenuItem1";
-            this.InactiveStripMenuItem1.Size = new System.Drawing.Size(196, 38);
+            this.InactiveStripMenuItem1.Size = new System.Drawing.Size(190, 38);
             this.InactiveStripMenuItem1.Text = "الحالة";
             // 
             // OnToolStripMenuItem
@@ -167,7 +167,7 @@
             this.OnToolStripMenuItem.Image = global::AwladAli.Properties.Resources.Active_32;
             this.OnToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.OnToolStripMenuItem.Name = "OnToolStripMenuItem";
-            this.OnToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.OnToolStripMenuItem.Size = new System.Drawing.Size(155, 38);
             this.OnToolStripMenuItem.Text = "(ON) تفعيل";
             this.OnToolStripMenuItem.Click += new System.EventHandler(this.OnToolStripMenuItem_Click);
             // 
@@ -176,7 +176,7 @@
             this.OffToolStripMenuItem.Image = global::AwladAli.Properties.Resources.Inactive_32;
             this.OffToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.OffToolStripMenuItem.Name = "OffToolStripMenuItem";
-            this.OffToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.OffToolStripMenuItem.Size = new System.Drawing.Size(155, 38);
             this.OffToolStripMenuItem.Text = "(OFF) تعطيل";
             this.OffToolStripMenuItem.Click += new System.EventHandler(this.OffToolStripMenuItem_Click);
             // 
@@ -185,7 +185,7 @@
             this.deleteToolStripMenuItem.Image = global::AwladAli.Properties.Resources.remove_32;
             this.deleteToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(190, 38);
             this.deleteToolStripMenuItem.Text = "حذف";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
@@ -236,9 +236,9 @@
             this.cbActivation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbActivation.FormattingEnabled = true;
             this.cbActivation.Items.AddRange(new object[] {
-            "All",
-            "Active",
-            "Inactive"});
+            "الكل",
+            "مفعل",
+            "معطل"});
             this.cbActivation.Location = new System.Drawing.Point(314, 271);
             this.cbActivation.Name = "cbActivation";
             this.cbActivation.Size = new System.Drawing.Size(138, 28);
