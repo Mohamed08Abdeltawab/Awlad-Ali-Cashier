@@ -43,6 +43,11 @@ namespace AwladAli.Session
                 dgvUsers.Columns["TotalCash"].HeaderText = "إجمالي المبيعات";
                 dgvUsers.Columns["IsActive"].HeaderText = "نشطة؟";
             }
+            else
+            {
+                cbFilterBy.SelectedIndex = 0;
+                cbFilterBy.Enabled = false;
+            }
         }
 
         private void _RefreshSessionsListWithPagination(int PageNumber, int PageSize)
@@ -69,6 +74,11 @@ namespace AwladAli.Session
 
                 dgvUsers.Columns["TotalCash"].HeaderText = "إجمالي المبيعات";
                 dgvUsers.Columns["IsActive"].HeaderText = "نشطة؟";
+            }
+            else
+            {
+                cbFilterBy.SelectedIndex = 0;
+                cbFilterBy.Enabled = false;
             }
         }
 

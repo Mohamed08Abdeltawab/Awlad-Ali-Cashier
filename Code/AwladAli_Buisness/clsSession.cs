@@ -21,6 +21,7 @@ namespace AwladAli_Buisness
             this.SessionID = -1;
             this.UserID = -1;
             this.StartTime = DateTime.Now;
+            this.EndTime = null;
             this.TotalCash = 0;
             this.IsActive = true;
             Mode = enMode.AddNew;

@@ -27,17 +27,25 @@ namespace AwladAli.User
             cbFilterBy.SelectedIndex = 0;
             lblRecordsCount.Text = dgvUsers.Rows.Count.ToString();
 
-            dgvUsers.Columns[0].HeaderText = "رقم المستخدم";
-            dgvUsers.Columns[0].Width = 110;
+            if(dgvUsers.Rows.Count > 0)
+            {
+                dgvUsers.Columns[0].HeaderText = "رقم المستخدم";
+                dgvUsers.Columns[0].Width = 110;
 
-            dgvUsers.Columns[1].HeaderText = "اسم المستخدم";
-            dgvUsers.Columns[1].Width = 170;
+                dgvUsers.Columns[1].HeaderText = "اسم المستخدم";
+                dgvUsers.Columns[1].Width = 170;
 
-            dgvUsers.Columns[2].HeaderText = "دور المستخدم";
-            dgvUsers.Columns[2].Width = 150;
+                dgvUsers.Columns[2].HeaderText = "دور المستخدم";
+                dgvUsers.Columns[2].Width = 150;
 
-            dgvUsers.Columns[3].HeaderText = "حالة المستخدم";
-            dgvUsers.Columns[3].Width = 150;
+                dgvUsers.Columns[3].HeaderText = "حالة المستخدم";
+                dgvUsers.Columns[3].Width = 150;
+            }
+            else
+            {
+                cbFilterBy.SelectedIndex = 0;
+                cbFilterBy.Enabled = false;
+            }
         }
 
         private void cbFilterBy_SelectedIndexChanged(object sender, EventArgs e)

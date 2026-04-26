@@ -169,12 +169,12 @@
             // llHidePassword
             // 
             this.llHidePassword.AutoSize = true;
-            this.llHidePassword.Location = new System.Drawing.Point(27, 209);
+            this.llHidePassword.Location = new System.Drawing.Point(25, 209);
             this.llHidePassword.Name = "llHidePassword";
-            this.llHidePassword.Size = new System.Drawing.Size(42, 20);
+            this.llHidePassword.Size = new System.Drawing.Size(37, 20);
             this.llHidePassword.TabIndex = 156;
             this.llHidePassword.TabStop = true;
-            this.llHidePassword.Text = "Hide";
+            this.llHidePassword.Text = "اخفاء";
             this.llHidePassword.Visible = false;
             this.llHidePassword.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llHidePassword_LinkClicked);
             // 
@@ -183,10 +183,10 @@
             this.llShowPassword.AutoSize = true;
             this.llShowPassword.Location = new System.Drawing.Point(20, 209);
             this.llShowPassword.Name = "llShowPassword";
-            this.llShowPassword.Size = new System.Drawing.Size(49, 20);
+            this.llShowPassword.Size = new System.Drawing.Size(42, 20);
             this.llShowPassword.TabIndex = 155;
             this.llShowPassword.TabStop = true;
-            this.llShowPassword.Text = "Show";
+            this.llShowPassword.Text = "عرض";
             this.llShowPassword.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llShowPassword_LinkClicked_1);
             // 
             // btnClose

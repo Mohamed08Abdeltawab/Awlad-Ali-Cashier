@@ -180,7 +180,7 @@
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(126, 37);
             this.btnClose.TabIndex = 247;
-            this.btnClose.Text = "ألغاء";
+            this.btnClose.Text = "اغلاق";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 

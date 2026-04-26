@@ -22,7 +22,6 @@ namespace AwladAli.Category
             _dtAllCategories = clsCategory.GetAllCategories();
             dgvGategory.DataSource = _dtAllCategories;
             lblRecordsCount.Text = dgvGategory.Rows.Count.ToString();
-
             if (dgvGategory.Rows.Count > 0)
             {
                 dgvGategory.Columns[0].HeaderText = "معرف الصنف";
@@ -30,6 +29,11 @@ namespace AwladAli.Category
 
                 dgvGategory.Columns[1].HeaderText = "اسم الصنف";
                 dgvGategory.Columns[1].Width = 350; // عرض أكبر لاسم التصنيف
+            }
+            else
+            {
+                cbFilterBy.SelectedIndex = 0;
+                cbFilterBy.Enabled = false;
             }
         }
 

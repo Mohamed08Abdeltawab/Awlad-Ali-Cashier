@@ -33,6 +33,11 @@ namespace AwladAli.Category.Extra
                 dgvExtra.Columns[2].HeaderText = "السعر";
                 dgvExtra.Columns[2].Width = 150;
             }
+            else
+            {
+                cbFilterBy.SelectedIndex = 0;
+                cbFilterBy.Enabled = false;
+            }
         }
 
         private void frmListExtra_Load(object sender, EventArgs e)
