@@ -75,9 +75,9 @@
             this.cbFilterBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbFilterBy.FormattingEnabled = true;
             this.cbFilterBy.Items.AddRange(new object[] {
-            "None",
-            "Extra ID",
-            "Extra Name"});
+            "لا شيء",
+            "معرف الأضافة",
+            "اسم الأضافة"});
             this.cbFilterBy.Location = new System.Drawing.Point(90, 284);
             this.cbFilterBy.Name = "cbFilterBy";
             this.cbFilterBy.Size = new System.Drawing.Size(210, 28);

@@ -24,13 +24,13 @@ namespace AwladAli.Category.Extra
 
             if (dgvExtra.Rows.Count > 0)
             {
-                dgvExtra.Columns[0].HeaderText = "Extra ID";
+                dgvExtra.Columns[0].HeaderText = "معرف الإضافة";
                 dgvExtra.Columns[0].Width = 120;
 
-                dgvExtra.Columns[1].HeaderText = "Extra Name";
+                dgvExtra.Columns[1].HeaderText = "اسم الإضافة";
                 dgvExtra.Columns[1].Width = 300;
 
-                dgvExtra.Columns[2].HeaderText = "Price";
+                dgvExtra.Columns[2].HeaderText = "السعر";
                 dgvExtra.Columns[2].Width = 150;
             }
         }
@@ -48,7 +48,7 @@ namespace AwladAli.Category.Extra
 
         private void cbFilterBy_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtFilterValue.Visible = (cbFilterBy.Text != "None");
+            txtFilterValue.Visible = (cbFilterBy.SelectedIndex != 0);
 
             if (txtFilterValue.Visible)
             {
@@ -66,12 +66,12 @@ namespace AwladAli.Category.Extra
         {
             string FilterColumn = "";
 
-            switch (cbFilterBy.Text)
+            switch (cbFilterBy.SelectedIndex)
             {
-                case "Extra ID":
+                case 1:
                     FilterColumn = "ExtraID";
                     break;
-                case "Extra Name":
+                case 2:
                     FilterColumn = "ExtraName";
                     break;
                 default:
@@ -145,7 +145,7 @@ namespace AwladAli.Category.Extra
         private void txtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
         {
             //we allow number incase person id or user id is selected.
-            if (cbFilterBy.Text == "Extra ID")
+            if (cbFilterBy.SelectedIndex == 1)
                 e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
     }

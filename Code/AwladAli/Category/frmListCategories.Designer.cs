@@ -92,6 +92,7 @@
             this.txtFilterValue.Size = new System.Drawing.Size(198, 26);
             this.txtFilterValue.TabIndex = 245;
             this.txtFilterValue.TextChanged += new System.EventHandler(this.txtFilterValue_TextChanged);
+            this.txtFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterValue_KeyPress);
             // 
             // label1
             // 

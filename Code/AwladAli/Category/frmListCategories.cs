@@ -136,5 +136,11 @@ namespace AwladAli.Category
             frm.ShowDialog();
             frmListCategories_Load(null, null);
         }
+
+        private void txtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (cbFilterBy.SelectedIndex == 1)
+                e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
     }
 }
