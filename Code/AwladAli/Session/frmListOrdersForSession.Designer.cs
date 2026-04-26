@@ -33,10 +33,13 @@
             this.label12 = new System.Windows.Forms.Label();
             this.dgvOrders = new System.Windows.Forms.DataGridView();
             this.cmsOrders = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblTitle = new System.Windows.Forms.Label();
             this.pbPersonImage = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.Button();
-            this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.llShowAll = new System.Windows.Forms.LinkLabel();
+            this.llReturnDefault = new System.Windows.Forms.LinkLabel();
+            this.btnMore = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
             this.cmsOrders.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).BeginInit();
@@ -83,11 +86,20 @@
             this.cmsOrders.Name = "contextMenuStrip1";
             this.cmsOrders.Size = new System.Drawing.Size(153, 42);
             // 
+            // showToolStripMenuItem
+            // 
+            this.showToolStripMenuItem.Image = global::AwladAli.Properties.Resources.show_32;
+            this.showToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.showToolStripMenuItem.Name = "showToolStripMenuItem";
+            this.showToolStripMenuItem.Size = new System.Drawing.Size(152, 38);
+            this.showToolStripMenuItem.Text = "عرض الطلب";
+            this.showToolStripMenuItem.Click += new System.EventHandler(this.showToolStripMenuItem_Click);
+            // 
             // lblTitle
             // 
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblTitle.Location = new System.Drawing.Point(169, 208);
+            this.lblTitle.Location = new System.Drawing.Point(103, 208);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(303, 39);
             this.lblTitle.TabIndex = 258;
@@ -99,7 +111,7 @@
             this.pbPersonImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pbPersonImage.Image = global::AwladAli.Properties.Resources.Order_512;
             this.pbPersonImage.InitialImage = null;
-            this.pbPersonImage.Location = new System.Drawing.Point(209, 14);
+            this.pbPersonImage.Location = new System.Drawing.Point(143, 14);
             this.pbPersonImage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pbPersonImage.Name = "pbPersonImage";
             this.pbPersonImage.Size = new System.Drawing.Size(220, 189);
@@ -122,20 +134,60 @@
             this.btnClose.Text = "خروج";
             this.btnClose.UseVisualStyleBackColor = true;
             // 
-            // showToolStripMenuItem
+            // llShowAll
             // 
-            this.showToolStripMenuItem.Image = global::AwladAli.Properties.Resources.show_32;
-            this.showToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.showToolStripMenuItem.Name = "showToolStripMenuItem";
-            this.showToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
-            this.showToolStripMenuItem.Text = "عرض الطلب";
-            this.showToolStripMenuItem.Click += new System.EventHandler(this.showToolStripMenuItem_Click);
+            this.llShowAll.ActiveLinkColor = System.Drawing.Color.White;
+            this.llShowAll.AutoSize = true;
+            this.llShowAll.BackColor = System.Drawing.Color.Transparent;
+            this.llShowAll.DisabledLinkColor = System.Drawing.Color.White;
+            this.llShowAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llShowAll.Location = new System.Drawing.Point(475, 126);
+            this.llShowAll.Name = "llShowAll";
+            this.llShowAll.Size = new System.Drawing.Size(101, 29);
+            this.llShowAll.TabIndex = 265;
+            this.llShowAll.TabStop = true;
+            this.llShowAll.Text = "عرض الكل";
+            this.llShowAll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llShowAll_LinkClicked);
+            // 
+            // llReturnDefault
+            // 
+            this.llReturnDefault.ActiveLinkColor = System.Drawing.Color.White;
+            this.llReturnDefault.AutoSize = true;
+            this.llReturnDefault.BackColor = System.Drawing.Color.Transparent;
+            this.llReturnDefault.DisabledLinkColor = System.Drawing.Color.White;
+            this.llReturnDefault.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llReturnDefault.Location = new System.Drawing.Point(475, 167);
+            this.llReturnDefault.Name = "llReturnDefault";
+            this.llReturnDefault.Size = new System.Drawing.Size(98, 29);
+            this.llReturnDefault.TabIndex = 264;
+            this.llReturnDefault.TabStop = true;
+            this.llReturnDefault.Text = "اعادة تعيين";
+            this.llReturnDefault.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llReturnDefault_LinkClicked);
+            // 
+            // btnMore
+            // 
+            this.btnMore.BackColor = System.Drawing.Color.White;
+            this.btnMore.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnMore.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMore.Image = global::AwladAli.Properties.Resources.next_32;
+            this.btnMore.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMore.Location = new System.Drawing.Point(451, 210);
+            this.btnMore.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnMore.Name = "btnMore";
+            this.btnMore.Size = new System.Drawing.Size(151, 46);
+            this.btnMore.TabIndex = 263;
+            this.btnMore.Text = "اكثر";
+            this.btnMore.UseVisualStyleBackColor = false;
+            this.btnMore.Click += new System.EventHandler(this.btnMore_Click);
             // 
             // frmListOrdersForSession
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(639, 785);
+            this.Controls.Add(this.llShowAll);
+            this.Controls.Add(this.llReturnDefault);
+            this.Controls.Add(this.btnMore);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.pbPersonImage);
             this.Controls.Add(this.btnClose);
@@ -164,5 +216,8 @@
         private System.Windows.Forms.ToolStripMenuItem showToolStripMenuItem;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.PictureBox pbPersonImage;
+        private System.Windows.Forms.LinkLabel llShowAll;
+        private System.Windows.Forms.LinkLabel llReturnDefault;
+        private System.Windows.Forms.Button btnMore;
     }
 }

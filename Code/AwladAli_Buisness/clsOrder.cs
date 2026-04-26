@@ -88,6 +88,12 @@ namespace AwladAli_Buisness
             return clsOrderData.GetAllOrdersRelatedBySessionID(SessionID);
         }
 
+
+        public static DataTable GetOrdersRelatedBySessionIDWithPagination(int SessionID, int PageNumber, int PageSize)
+        {
+            return clsOrderData.GetOrdersRelatedBySessionIDWithPagination(SessionID, PageNumber, PageSize);
+        }
+
         public static int GetOrdersCountBySessionID(int SessionID)
         {
             return clsOrderData.GetOrdersCountBySessionID(SessionID);
@@ -98,9 +104,5 @@ namespace AwladAli_Buisness
             return clsOrderData.GetFirstOrderDate();
         }
 
-        public static DataTable GetOrdersWithPagination(int PageNumber, int PageSize)
-        {
-            return clsOrderData.GetOrdersWithPagination(PageNumber, PageSize);
-        }
     }
 }

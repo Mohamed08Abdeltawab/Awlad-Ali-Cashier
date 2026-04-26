@@ -213,7 +213,7 @@ namespace AwladAli.User
             if (_dash.Orders.Rows.Count == rowsBefore)
             {
                 btnMore.Enabled = false; 
-                MessageBox.Show("لا توجد بيانات إضافية.");
+                MessageBox.Show("لا توجد بيانات إضافية");
                 _dash.PageNumber--; // ارجع خطوة عشان الرقم ميفضلش يزيد
                 return;
             }
@@ -232,6 +232,7 @@ namespace AwladAli.User
         {
             btnMore.Enabled = true;
             _dash.PageNumber = 1;
+            _dash.Orders.Clear();
             _dash.LoadOrdersWithPagination();
             _FillGrid(_dash);
         }

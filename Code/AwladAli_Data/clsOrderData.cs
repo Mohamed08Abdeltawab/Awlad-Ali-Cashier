@@ -197,6 +197,50 @@ namespace AwladAli_Data
             return dt;
         }
 
+
+
+        public static DataTable GetOrdersRelatedBySessionIDWithPagination(int SessionID, int PageNumber, int PageSize)
+        {
+            DataTable dt = new DataTable();
+
+            // حساب عدد الصفوف التي سيتم تخطيها بناءً على الصفحة الحالية
+            int offset = (PageNumber - 1) * PageSize;
+
+            try
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    // الكويري الأساسية + LIMIT و OFFSET
+                    string query = @"SELECT SessionID, OrderID, OrderDate, TotalAmount 
+                             FROM Orders 
+                             WHERE SessionID = @SessionID 
+                             ORDER BY OrderDate DESC
+                             LIMIT @PageSize OFFSET @Offset";
+
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        // الباراميترز الأساسية (SessionID) + باراميترز الـ Pagination
+                        command.Parameters.AddWithValue("@SessionID", SessionID);
+                        command.Parameters.AddWithValue("@PageSize", PageSize);
+                        command.Parameters.AddWithValue("@Offset", offset);
+
+                        connection.Open();
+
+                        using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(command))
+                        {
+                            adapter.Fill(dt);
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                // Handle exception
+            }
+            return dt;
+        }
+
+
         public static int GetOrdersCountBySessionID(int SessionID)
         {
             int Count = 0;
