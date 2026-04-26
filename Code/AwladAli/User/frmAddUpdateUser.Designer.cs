@@ -67,21 +67,21 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(13, 163);
+            this.label6.Location = new System.Drawing.Point(671, 175);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(51, 20);
+            this.label6.Size = new System.Drawing.Size(93, 20);
             this.label6.TabIndex = 148;
-            this.label6.Text = "Role:";
+            this.label6.Text = ":دور المستخدم";
             // 
             // cbRole
             // 
             this.cbRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbRole.FormattingEnabled = true;
             this.cbRole.Items.AddRange(new object[] {
-            "Admin",
-            "Cashier"});
-            this.cbRole.Location = new System.Drawing.Point(215, 157);
+            "مسؤول",
+            "كاشير"});
+            this.cbRole.Location = new System.Drawing.Point(456, 169);
             this.cbRole.Name = "cbRole";
             this.cbRole.Size = new System.Drawing.Size(167, 28);
             this.cbRole.TabIndex = 147;
@@ -90,7 +90,7 @@
             // 
             this.lblUserID.AutoSize = true;
             this.lblUserID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserID.Location = new System.Drawing.Point(217, 88);
+            this.lblUserID.Location = new System.Drawing.Point(458, 100);
             this.lblUserID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUserID.Name = "lblUserID";
             this.lblUserID.Size = new System.Drawing.Size(39, 20);
@@ -101,16 +101,16 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(13, 88);
+            this.label4.Location = new System.Drawing.Point(671, 100);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(71, 20);
+            this.label4.Size = new System.Drawing.Size(106, 20);
             this.label4.TabIndex = 144;
-            this.label4.Text = "UserID:";
+            this.label4.Text = ":معرف المستخدم";
             // 
             // txtUserName
             // 
-            this.txtUserName.Location = new System.Drawing.Point(215, 126);
+            this.txtUserName.Location = new System.Drawing.Point(456, 138);
             this.txtUserName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtUserName.MaxLength = 50;
             this.txtUserName.Name = "txtUserName";
@@ -120,7 +120,7 @@
             // 
             // txtConfirmPassword
             // 
-            this.txtConfirmPassword.Location = new System.Drawing.Point(592, 159);
+            this.txtConfirmPassword.Location = new System.Drawing.Point(58, 136);
             this.txtConfirmPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtConfirmPassword.MaxLength = 50;
             this.txtConfirmPassword.Name = "txtConfirmPassword";
@@ -133,38 +133,38 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 126);
+            this.label1.Location = new System.Drawing.Point(671, 138);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 20);
+            this.label1.Size = new System.Drawing.Size(91, 20);
             this.label1.TabIndex = 137;
-            this.label1.Text = "UserName:";
+            this.label1.Text = ":اسم المستخدم";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(390, 159);
+            this.label3.Location = new System.Drawing.Point(292, 133);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(158, 20);
+            this.label3.Size = new System.Drawing.Size(105, 20);
             this.label3.TabIndex = 142;
-            this.label3.Text = "Confirm Password:";
+            this.label3.Text = ":تأكيد كلمة السر";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(390, 126);
+            this.label2.Location = new System.Drawing.Point(292, 100);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 20);
+            this.label2.Size = new System.Drawing.Size(72, 20);
             this.label2.TabIndex = 138;
-            this.label2.Text = "Password:";
+            this.label2.Text = ":كلمة السر";
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(592, 123);
+            this.txtPassword.Location = new System.Drawing.Point(58, 100);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPassword.MaxLength = 50;
             this.txtPassword.Name = "txtPassword";
@@ -181,7 +181,7 @@
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(355, 39);
             this.lblTitle.TabIndex = 152;
-            this.lblTitle.Text = "Update User";
+            this.lblTitle.Text = "تعديل مستخدم";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // errorProvider1
@@ -191,23 +191,23 @@
             // llShowPassword
             // 
             this.llShowPassword.AutoSize = true;
-            this.llShowPassword.Location = new System.Drawing.Point(648, 190);
+            this.llShowPassword.Location = new System.Drawing.Point(119, 173);
             this.llShowPassword.Name = "llShowPassword";
-            this.llShowPassword.Size = new System.Drawing.Size(49, 20);
+            this.llShowPassword.Size = new System.Drawing.Size(42, 20);
             this.llShowPassword.TabIndex = 153;
             this.llShowPassword.TabStop = true;
-            this.llShowPassword.Text = "Show";
+            this.llShowPassword.Text = "عرض";
             this.llShowPassword.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llShowPassword_LinkClicked);
             // 
             // llHidePassword
             // 
             this.llHidePassword.AutoSize = true;
-            this.llHidePassword.Location = new System.Drawing.Point(655, 190);
+            this.llHidePassword.Location = new System.Drawing.Point(124, 177);
             this.llHidePassword.Name = "llHidePassword";
-            this.llHidePassword.Size = new System.Drawing.Size(42, 20);
+            this.llHidePassword.Size = new System.Drawing.Size(37, 20);
             this.llHidePassword.TabIndex = 154;
             this.llHidePassword.TabStop = true;
-            this.llHidePassword.Text = "Hide";
+            this.llHidePassword.Text = "اخفاء";
             this.llHidePassword.Visible = false;
             this.llHidePassword.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llHidePassword_LinkClicked);
             // 
@@ -215,12 +215,12 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(13, 197);
+            this.label5.Location = new System.Drawing.Point(671, 209);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(93, 20);
+            this.label5.Size = new System.Drawing.Size(49, 20);
             this.label5.TabIndex = 156;
-            this.label5.Text = "Activation:";
+            this.label5.Text = ":الحالة";
             // 
             // cbActivation
             // 
@@ -229,7 +229,7 @@
             this.cbActivation.Items.AddRange(new object[] {
             "مفعل",
             "معطل"});
-            this.cbActivation.Location = new System.Drawing.Point(215, 191);
+            this.cbActivation.Location = new System.Drawing.Point(456, 203);
             this.cbActivation.Name = "cbActivation";
             this.cbActivation.Size = new System.Drawing.Size(167, 28);
             this.cbActivation.TabIndex = 155;
@@ -237,7 +237,7 @@
             // pictureBox5
             // 
             this.pictureBox5.Image = global::AwladAli.Properties.Resources.Activation_32;
-            this.pictureBox5.Location = new System.Drawing.Point(177, 191);
+            this.pictureBox5.Location = new System.Drawing.Point(633, 203);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(31, 26);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -250,12 +250,12 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSave.Image = global::AwladAli.Properties.Resources.Save_32;
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(633, 246);
+            this.btnSave.Location = new System.Drawing.Point(17, 246);
             this.btnSave.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(126, 37);
             this.btnSave.TabIndex = 150;
-            this.btnSave.Text = "Save";
+            this.btnSave.Text = "حفظ";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -265,19 +265,19 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnClose.Image = global::AwladAli.Properties.Resources.Close_32;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(499, 246);
+            this.btnClose.Location = new System.Drawing.Point(151, 246);
             this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(126, 37);
             this.btnClose.TabIndex = 151;
-            this.btnClose.Text = "Close";
+            this.btnClose.Text = "اغلاق";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // pictureBox4
             // 
             this.pictureBox4.Image = global::AwladAli.Properties.Resources.role2_32;
-            this.pictureBox4.Location = new System.Drawing.Point(177, 157);
+            this.pictureBox4.Location = new System.Drawing.Point(633, 169);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(31, 26);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -287,7 +287,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::AwladAli.Properties.Resources.ID_32;
-            this.pictureBox2.Location = new System.Drawing.Point(177, 88);
+            this.pictureBox2.Location = new System.Drawing.Point(633, 100);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(31, 26);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -297,7 +297,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::AwladAli.Properties.Resources.Password_32;
-            this.pictureBox1.Location = new System.Drawing.Point(554, 159);
+            this.pictureBox1.Location = new System.Drawing.Point(254, 137);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(31, 26);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -307,7 +307,7 @@
             // pictureBox8
             // 
             this.pictureBox8.Image = global::AwladAli.Properties.Resources.Person_32;
-            this.pictureBox8.Location = new System.Drawing.Point(177, 124);
+            this.pictureBox8.Location = new System.Drawing.Point(633, 136);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(31, 26);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -317,7 +317,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::AwladAli.Properties.Resources.Password_32;
-            this.pictureBox3.Location = new System.Drawing.Point(554, 122);
+            this.pictureBox3.Location = new System.Drawing.Point(254, 100);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(31, 26);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;

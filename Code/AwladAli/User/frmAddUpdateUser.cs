@@ -36,14 +36,14 @@ namespace AwladAli.User
         {
             if (_Mode == enMode.AddNew)
             {
-                lblTitle.Text = "Add New User";
+                lblTitle.Text = "اضافة مستخدم جديد";
                 _User = new clsUser();
                 cbRole.SelectedIndex = 1; // Default to Cashier role
                 cbActivation.SelectedIndex = 0; // Default to Active status
             }
             else
             {
-                lblTitle.Text = "Update User";
+                lblTitle.Text = "تعديل مستخدم";
             }
 
             txtUserName.Text = "";
@@ -58,7 +58,7 @@ namespace AwladAli.User
 
             if (_User == null)
             {
-                MessageBox.Show("No User with ID = " + _UserID, "User Not Found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("لا يوجد مستخدم يحمل الرقم التعريفى = " + _UserID, "المستخدم غير موجود", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 this.Close();
                 return;
             }
@@ -92,7 +92,7 @@ namespace AwladAli.User
             if (string.IsNullOrEmpty(txtUserName.Text.Trim()))
             {
                 e.Cancel = true;
-                errorProvider1.SetError(txtUserName, "Username cannot be blank");
+                errorProvider1.SetError(txtUserName, "اسم المستخدم لا يمكن أن يكون فارغاً");
             }
             else
             {
@@ -105,7 +105,7 @@ namespace AwladAli.User
                 if (clsUser.IsUserExist(txtUserName.Text.Trim()))
                 {
                     e.Cancel = true;
-                    errorProvider1.SetError(txtUserName, "Username is used by another user");
+                    errorProvider1.SetError(txtUserName, "اسم المستخدم مستخدم من قبل مستخدم آخر");
                 }
                 else
                 {
@@ -119,12 +119,12 @@ namespace AwladAli.User
             if (string.IsNullOrEmpty(txtPassword.Text.Trim()))
             {
                 e.Cancel = true;
-                errorProvider1.SetError(txtPassword, "Password cannot be blank");
+                errorProvider1.SetError(txtPassword, "كلمة المرور لا يمكن أن تكون فارغة");
             }
             else if(txtPassword.Text.Trim().Length < 4)
             {
                 e.Cancel = true;
-                errorProvider1.SetError(txtPassword, "Password must be at least 4 characters long");
+                errorProvider1.SetError(txtPassword, "يجب أن تكون كلمة المرور مكونة من 4 أحرف على الأقل");
             }
             else
             {
@@ -137,7 +137,7 @@ namespace AwladAli.User
             if (txtConfirmPassword.Text.Trim() != txtPassword.Text.Trim())
             {
                 e.Cancel = true;
-                errorProvider1.SetError(txtConfirmPassword, "Password Confirmation does not match Password!");
+                errorProvider1.SetError(txtConfirmPassword, "تأكيد كلمة المرور لا يتطابق مع كلمة المرور!");
             }
             else
             {
@@ -149,8 +149,8 @@ namespace AwladAli.User
         {
             if (!this.ValidateChildren())
             {
-                MessageBox.Show("Some fields are not valid!, put the mouse over the red icon(s) to see the error",
-                    "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("بعض الحقول غير صالحة! ضع الماوس فوق الأيقونة الحمراء لرؤية الخطأ",
+                    "خطأ في التحقق", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -164,13 +164,13 @@ namespace AwladAli.User
             {
                 lblUserID.Text = _User.UserID.ToString();
                 _Mode = enMode.Update; // Change mode to update after saving
-                lblTitle.Text = "Update User";
+                lblTitle.Text = "تعديل مستخدم";
 
-                MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("تم حفظ البيانات بنجاح.", "تم الحفظ", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show("Error: Data Is not Saved Successfully.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("حدث خطأ: لم يتم حفظ البيانات بنجاح.", "خطأ في الحفظ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

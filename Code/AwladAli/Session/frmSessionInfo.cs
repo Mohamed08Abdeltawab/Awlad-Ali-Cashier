@@ -70,7 +70,7 @@ namespace AwladAli.Session
             // التحقق من وجود طابعة
             if (PrinterSettings.InstalledPrinters.Count == 0)
             {
-                MessageBox.Show("No printers found on this system!", "Printing Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("لم يتم العثور على طابعات في هذا النظام!", "خطأ في الطباعة", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
