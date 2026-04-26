@@ -45,6 +45,7 @@ namespace AwladAli.User
             lblUserID.Text = _User.UserID.ToString();
             lblUsername.Text = _User.UserName.ToString();
             lblRole.Text = _User.Role.ToString();
+            lblIsActive.Text = _User.IsActive ? "Active" : "Inactive";
         }
 
         private void _ResetUserInfo()
@@ -52,6 +53,8 @@ namespace AwladAli.User
             lblUserID.Text = "[???]";
             lblUsername.Text = "[???]";
             lblRole.Text = "[???]";
+            lblIsActive.Text = "[???]";
         }
+
     }
 }

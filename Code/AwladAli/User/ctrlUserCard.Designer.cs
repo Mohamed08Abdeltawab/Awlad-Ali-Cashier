@@ -34,11 +34,15 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblIsActive = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.lblUserID = new System.Windows.Forms.Label();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -97,6 +101,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblIsActive);
+            this.groupBox1.Controls.Add(this.pictureBox1);
+            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label22);
             this.groupBox1.Controls.Add(this.lblUserID);
             this.groupBox1.Controls.Add(this.llEditPersonInfo);
@@ -113,6 +120,36 @@
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "معلومات المستخدم";
+            // 
+            // lblIsActive
+            // 
+            this.lblIsActive.AutoSize = true;
+            this.lblIsActive.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.lblIsActive.Location = new System.Drawing.Point(49, 152);
+            this.lblIsActive.Name = "lblIsActive";
+            this.lblIsActive.Size = new System.Drawing.Size(48, 21);
+            this.lblIsActive.TabIndex = 144;
+            this.lblIsActive.Text = "[????]";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::AwladAli.Properties.Resources.role2_32;
+            this.pictureBox1.Location = new System.Drawing.Point(114, 147);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(31, 26);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 143;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.label3.Location = new System.Drawing.Point(163, 151);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(58, 21);
+            this.label3.TabIndex = 142;
+            this.label3.Text = ":النشاط";
             // 
             // label22
             // 
@@ -165,6 +202,7 @@
             this.Size = new System.Drawing.Size(680, 213);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
@@ -183,5 +221,8 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label lblUserID;
+        private System.Windows.Forms.Label lblIsActive;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label3;
     }
 }

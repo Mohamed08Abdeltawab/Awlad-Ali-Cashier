@@ -40,7 +40,7 @@ namespace AwladAli.Login
             // Note: Make sure the method name in clsUser matches "FindByUsernameAndPassword"
             clsUser user = clsUser.FindByUsernameAndPassword(txtUserName.Text.Trim(), encryptedPassword);
 
-            if (user != null)
+            if (user != null && user.IsActive)
             {
                 // 3. Handle "Remember Me"
                 if (chkRememberMe.Checked)
@@ -63,7 +63,7 @@ namespace AwladAli.Login
             else
             {
                 txtUserName.Focus();
-                MessageBox.Show("Invalid Username/Password.", "Wrong Credentials", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Invalid Username/Password or inactive user.", "Wrong Credentials", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 clsGlobal.LogException($"Failed login attempt for username: {txtUserName.Text.Trim()}", System.Diagnostics.EventLogEntryType.Warning);
             }
         }
