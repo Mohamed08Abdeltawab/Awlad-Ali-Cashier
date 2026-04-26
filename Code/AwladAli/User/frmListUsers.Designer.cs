@@ -167,7 +167,7 @@
             this.OnToolStripMenuItem.Image = global::AwladAli.Properties.Resources.Active_32;
             this.OnToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.OnToolStripMenuItem.Name = "OnToolStripMenuItem";
-            this.OnToolStripMenuItem.Size = new System.Drawing.Size(155, 38);
+            this.OnToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
             this.OnToolStripMenuItem.Text = "(ON) تفعيل";
             this.OnToolStripMenuItem.Click += new System.EventHandler(this.OnToolStripMenuItem_Click);
             // 
@@ -176,12 +176,13 @@
             this.OffToolStripMenuItem.Image = global::AwladAli.Properties.Resources.Inactive_32;
             this.OffToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.OffToolStripMenuItem.Name = "OffToolStripMenuItem";
-            this.OffToolStripMenuItem.Size = new System.Drawing.Size(155, 38);
+            this.OffToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
             this.OffToolStripMenuItem.Text = "(OFF) تعطيل";
             this.OffToolStripMenuItem.Click += new System.EventHandler(this.OffToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
+            this.deleteToolStripMenuItem.Enabled = false;
             this.deleteToolStripMenuItem.Image = global::AwladAli.Properties.Resources.remove_32;
             this.deleteToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";

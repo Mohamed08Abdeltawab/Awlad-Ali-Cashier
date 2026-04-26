@@ -252,31 +252,48 @@ namespace AwladAli.User
 
         private void cmsUsers_Opening(object sender, CancelEventArgs e)
         {
-            if (dgvUsers.CurrentRow == null) return;
-            int UserID = Convert.ToInt32(dgvUsers.CurrentRow.Cells[0].Value);
-            if (UserID == 1)//super admin
-            {
-                OnToolStripMenuItem.Enabled = false;
-                OffToolStripMenuItem.Enabled = false;
-                deleteToolStripMenuItem.Enabled = false;
-                return;
-            }
+            // 1. Reset all to default states
+            deleteToolStripMenuItem.Enabled = false;
+            OnToolStripMenuItem.Enabled = false;
+            OffToolStripMenuItem.Enabled = false;
 
+            if (dgvUsers.CurrentRow == null) return;
+
+            int selectedUserID = Convert.ToInt32(dgvUsers.CurrentRow.Cells[0].Value);
             string currentStatus = dgvUsers.CurrentRow.Cells["Status"].Value.ToString();
 
+            // 2. Initial Status logic (Default behavior)
             if (currentStatus == "Active")
             {
-                // لو هو شغال: اقفل زرار التفعيل وشغل زرار التعطيل
-                OnToolStripMenuItem.Enabled = false;
                 OffToolStripMenuItem.Enabled = true;
-                deleteToolStripMenuItem.Enabled = true;
             }
             else
             {
-                // لو هو معطل: شغل زرار التفعيل واقفل زرار التعطيل
                 OnToolStripMenuItem.Enabled = true;
-                OffToolStripMenuItem.Enabled = false;
+            }
+
+            // 3. Permission: Only Super Admin (ID 1) can delete others
+            if (clsGlobal.CurrentUser.UserID == 1)
+            {
                 deleteToolStripMenuItem.Enabled = true;
+            }
+
+            // 4. Restrictions (The "Never" Rules)
+
+            // Rule A: Nobody can delete themselves
+            if (clsGlobal.CurrentUser.UserID == selectedUserID)
+            {
+                deleteToolStripMenuItem.Enabled = false;
+                OnToolStripMenuItem.Enabled = false;
+                OffToolStripMenuItem.Enabled = false;
+            }
+
+            // Rule B: Super Admin (ID 1) cannot be disabled or deleted by anyone
+            if (selectedUserID == 1)
+            {
+                deleteToolStripMenuItem.Enabled = false;
+                OnToolStripMenuItem.Enabled = false;
+                OffToolStripMenuItem.Enabled = false;
             }
         }
     }

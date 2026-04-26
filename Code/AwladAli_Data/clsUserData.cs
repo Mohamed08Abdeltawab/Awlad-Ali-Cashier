@@ -224,7 +224,7 @@ namespace AwladAli_Data
                 using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
                 {
                     // أضفنا شرط "UserID <> 1" كحماية نهائية حتى لو تم استدعاء الدالة بالخطأ
-                    string query = "DELETE FROM Users WHERE UserID = @UserID AND UserID <> 1";
+                    string query = "DELETE FROM Users WHERE UserID = @UserID AND UserID <> 1 and UserID <> @UserID";
 
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {
