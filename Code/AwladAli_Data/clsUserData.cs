@@ -6,8 +6,8 @@ namespace AwladAli_Data
 {
     public class clsUserData
     {
-        // 1. Find User by ID
-        public static bool GetUserByID(int UserID, ref string UserName, ref string Password, ref int Role)
+        // 1. Find User by ID (Updated to include IsActive)
+        public static bool GetUserByID(int UserID, ref string UserName, ref string Password, ref int Role, ref bool IsActive)
         {
             bool isFound = false;
 
@@ -30,6 +30,8 @@ namespace AwladAli_Data
                                 UserName = (string)reader["UserName"];
                                 Password = (string)reader["Password"];
                                 Role = Convert.ToInt32(reader["Role"]);
+                                // تحويل الـ 0/1 من SQLite إلى bool
+                                IsActive = Convert.ToBoolean(reader["IsActive"]);
                             }
                         }
                     }
@@ -38,13 +40,12 @@ namespace AwladAli_Data
             catch (Exception ex)
             {
                 isFound = false;
-                // Log exception here if needed
             }
 
             return isFound;
         }
 
-        // Find User by Username and Password (Used for Login)
+        // Find User by Username and Password (Updated to ONLY allow Active Users for Login)
         public static bool GetUserByUsernameAndPassword(string UserName, string Password,
             ref int UserID, ref int Role)
         {
@@ -54,8 +55,8 @@ namespace AwladAli_Data
             {
                 using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
                 {
-                    // Query to find a matching active user
-                    string query = "SELECT UserID, Role FROM Users WHERE UserName = @UserName AND Password = @Password";
+                    // أضفنا شرط IsActive = 1 لضمان عدم دخول المستخدمين المعطلين
+                    string query = "SELECT UserID, Role FROM Users WHERE UserName = @UserName AND Password = @Password AND IsActive = 1";
 
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {
@@ -84,8 +85,8 @@ namespace AwladAli_Data
             return isFound;
         }
 
-        // 2. Add New User
-        public static int AddNewUser(string UserName, string Password, int Role)
+        // 2. Add New User (Updated to include IsActive)
+        public static int AddNewUser(string UserName, string Password, int Role, bool IsActive)
         {
             int UserID = -1;
 
@@ -93,8 +94,8 @@ namespace AwladAli_Data
             {
                 using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
                 {
-                    string query = @"INSERT INTO Users (UserName, Password, Role) 
-                                     VALUES (@UserName, @Password, @Role);
+                    string query = @"INSERT INTO Users (UserName, Password, Role, IsActive) 
+                                     VALUES (@UserName, @Password, @Role, @IsActive);
                                      SELECT last_insert_rowid();";
 
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
@@ -102,6 +103,7 @@ namespace AwladAli_Data
                         command.Parameters.AddWithValue("@UserName", UserName);
                         command.Parameters.AddWithValue("@Password", Password);
                         command.Parameters.AddWithValue("@Role", Role);
+                        command.Parameters.AddWithValue("@IsActive", IsActive ? 1 : 0);
 
                         connection.Open();
 
@@ -115,14 +117,13 @@ namespace AwladAli_Data
             }
             catch (Exception ex)
             {
-                // Log exception
             }
 
             return UserID;
         }
 
-        // 3. Update User
-        public static bool UpdateUser(int UserID, string UserName, string Password, int Role)
+        // 3. Update User (Updated to include IsActive)
+        public static bool UpdateUser(int UserID, string UserName, string Password, int Role, bool IsActive)
         {
             int rowsAffected = 0;
 
@@ -133,7 +134,8 @@ namespace AwladAli_Data
                     string query = @"UPDATE Users 
                                      SET UserName = @UserName, 
                                          Password = @Password, 
-                                         Role = @Role 
+                                         Role = @Role,
+                                         IsActive = @IsActive
                                      WHERE UserID = @UserID";
 
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
@@ -142,6 +144,7 @@ namespace AwladAli_Data
                         command.Parameters.AddWithValue("@UserName", UserName);
                         command.Parameters.AddWithValue("@Password", Password);
                         command.Parameters.AddWithValue("@Role", Role);
+                        command.Parameters.AddWithValue("@IsActive", IsActive ? 1 : 0);
 
                         connection.Open();
                         rowsAffected = command.ExecuteNonQuery();
@@ -156,7 +159,35 @@ namespace AwladAli_Data
             return (rowsAffected > 0);
         }
 
-        // 4. Delete User
+        // 4. Deactivate User (Updated to Soft Delete / Deactivate)
+        // بدل ما نمسح، هنغير الحالة لـ 0 عشان نحافظ على الـ Integrity
+        public static bool DeactivateUser(int UserID)
+        {
+            int rowsAffected = 0;
+
+            try
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    // تحويل المستخدم لحالة غير نشط بدل الحذف
+                    string query = "UPDATE Users SET IsActive = 0 WHERE UserID = @UserID";
+
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@UserID", UserID);
+                        connection.Open();
+                        rowsAffected = command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+
+            return (rowsAffected > 0);
+        }
+
+
         public static bool DeleteUser(int UserID)
         {
             int rowsAffected = 0;
@@ -183,7 +214,8 @@ namespace AwladAli_Data
             return (rowsAffected > 0);
         }
 
-        // 5. Get All Users (Returns DataTable for UI Grids)
+
+        // 5. Get All Users (Updated to show IsActive status in UI)
         public static DataTable GetAllUsers()
         {
             DataTable dt = new DataTable();
@@ -197,7 +229,11 @@ namespace AwladAli_Data
                                         WHEN 0 THEN 'Admin' 
                                         WHEN 1 THEN 'Cashier' 
                                         ELSE 'Unknown' 
-                                      END AS RoleName
+                                      END AS RoleName,
+                                      CASE IsActive
+                                        WHEN 1 THEN 'Active'
+                                        ELSE 'Inactive'
+                                      END AS Status
                                         FROM Users";
 
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
@@ -215,7 +251,6 @@ namespace AwladAli_Data
             }
             catch (Exception ex)
             {
-                // Log exception
             }
 
             return dt;
@@ -229,64 +264,70 @@ namespace AwladAli_Data
             {
                 using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
                 {
-                    // نستخدم COUNT عشان نعرف فيه كام يوزر بالاسم ده
                     string query = "SELECT COUNT(*) FROM Users WHERE UserName = @UserName";
-
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@UserName", UserName);
                         connection.Open();
-
-                        // ExecuteScalar بترجع أول قيمة في أول صف (اللي هي هنا نتيجة الـ Count)
                         long count = (long)command.ExecuteScalar();
-
-                        if (count > 0)
-                        {
-                            isFound = true;
-                        }
+                        if (count > 0) isFound = true;
                     }
                 }
             }
-            catch (Exception ex)
-            {
-                // تسجيل الخطأ لو حصل مشكلة في الاتصال
-                isFound = false;
-            }
-
+            catch (Exception ex) { isFound = false; }
             return isFound;
         }
 
-
-        public static bool IsUserAdmin(int UserID)
+        public static bool IsUserActive(int UserID)
         {
-            bool isAdmin = false;
+            bool isActive = false;
 
             try
             {
                 using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
                 {
-                    connection.Open();
-
-                    // نربط جدول المستخدمين بجدول الأدوار ونتأكد من الاسم
-                    string query = @"SELECT 1 FROM Users Where UserID = @UserID AND Role = 0 LIMIT 1";
+                    string query = "SELECT IsActive FROM Users WHERE UserID = @UserID";
 
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@UserID", UserID);
+                        connection.Open();
 
                         object result = command.ExecuteScalar();
+
                         if (result != null)
                         {
-                            isAdmin = true;
+                            isActive = Convert.ToBoolean(result);
                         }
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                // Log error
+                isActive = false;
             }
 
+            return isActive;
+        }
+
+        public static bool IsUserAdmin(int UserID)
+        {
+            bool isAdmin = false;
+            try
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT 1 FROM Users Where UserID = @UserID AND Role = 0 LIMIT 1";
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@UserID", UserID);
+                        object result = command.ExecuteScalar();
+                        if (result != null) isAdmin = true;
+                    }
+                }
+            }
+            catch (Exception ex) { }
             return isAdmin;
         }
     }

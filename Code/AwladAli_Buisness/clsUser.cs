@@ -6,48 +6,48 @@ namespace AwladAli_Buisness
 {
     public class clsUser
     {
-        // Enums to define the mode of the object
         public enum enMode { AddNew = 0, Update = 1 };
         public enMode Mode = enMode.AddNew;
 
-        // User Properties
         public int UserID { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
         public int Role { get; set; }
+        public bool IsActive { get; set; } // الخاصية الجديدة
 
-        // Default constructor for AddNew mode
         public clsUser()
         {
             this.UserID = -1;
             this.UserName = "";
             this.Password = "";
             this.Role = -1;
+            this.IsActive = true; // القيمة الافتراضية لأي يوزر جديد
 
             Mode = enMode.AddNew;
         }
 
-        // Private constructor for Update mode (used internally by Find method)
-        private clsUser(int UserID, string UserName, string Password, int Role)
+        private clsUser(int UserID, string UserName, string Password, int Role, bool IsActive)
         {
             this.UserID = UserID;
             this.UserName = UserName;
             this.Password = Password;
             this.Role = Role;
+            this.IsActive = IsActive;
 
             Mode = enMode.Update;
         }
 
-        // 1. Find User by ID
         public static clsUser Find(int UserID)
         {
             string UserName = "";
             string Password = "";
             int Role = -1;
+            bool IsActive = false;
 
-            if (clsUserData.GetUserByID(UserID, ref UserName, ref Password, ref Role))
+            // تم تحديث استدعاء الداتا لير لاستقبال IsActive
+            if (clsUserData.GetUserByID(UserID, ref UserName, ref Password, ref Role, ref IsActive))
             {
-                return new clsUser(UserID, UserName, Password, Role);
+                return new clsUser(UserID, UserName, Password, Role, IsActive);
             }
             else
             {
@@ -55,17 +55,15 @@ namespace AwladAli_Buisness
             }
         }
 
-        // Static method to find a user for Login purposes
         public static clsUser FindByUsernameAndPassword(string UserName, string Password)
         {
             int UserID = -1;
             int Role = -1;
-
-            // We pass UserName and Password (the Hashed one) to Data Layer
+            // لاحظ أن GetUserByUsernameAndPassword في الداتا لير تفحص IsActive = 1 تلقائياً
             if (clsUserData.GetUserByUsernameAndPassword(UserName, Password, ref UserID, ref Role))
             {
-                // If found, we return a full user object using our existing constructor
-                return new clsUser(UserID, UserName, Password, Role);
+                // بما أنه سجل دخول، فهو بالتأكيد Active
+                return new clsUser(UserID, UserName, Password, Role, true);
             }
             else
             {
@@ -73,20 +71,19 @@ namespace AwladAli_Buisness
             }
         }
 
-        // 2. Add New User (Internal helper)
         private bool _AddNewUser()
         {
-            this.UserID = clsUserData.AddNewUser(this.UserName, this.Password, this.Role);
+            // إرسال IsActive للداتا لير عند الإضافة
+            this.UserID = clsUserData.AddNewUser(this.UserName, this.Password, this.Role, this.IsActive);
             return (this.UserID != -1);
         }
 
-        // 3. Update User (Internal helper)
         private bool _UpdateUser()
         {
-            return clsUserData.UpdateUser(this.UserID, this.UserName, this.Password, this.Role);
+            // إرسال IsActive للداتا لير عند التحديث
+            return clsUserData.UpdateUser(this.UserID, this.UserName, this.Password, this.Role, this.IsActive);
         }
 
-        // 4. Save Method: Routes to Add or Update based on Mode
         public bool Save()
         {
             switch (Mode)
@@ -94,7 +91,7 @@ namespace AwladAli_Buisness
                 case enMode.AddNew:
                     if (_AddNewUser())
                     {
-                        Mode = enMode.Update; // Change mode after successful save
+                        Mode = enMode.Update;
                         return true;
                     }
                     else
@@ -109,13 +106,17 @@ namespace AwladAli_Buisness
             return false;
         }
 
-        // 5. Delete User (Static)
+        public static bool DeactivateUser(int UserID)
+        {
+            // تذكر أن هذه الدالة في الداتا لير أصبحت تقوم بعمل Update IsActive = 0
+            return clsUserData.DeactivateUser(UserID);
+        }
+
         public static bool DeleteUser(int UserID)
         {
             return clsUserData.DeleteUser(UserID);
         }
-
-        // 6. Get All Users (Static)
+        
         public static DataTable GetAllUsers()
         {
             return clsUserData.GetAllUsers();
@@ -130,5 +131,11 @@ namespace AwladAli_Buisness
         {
             return clsUserData.IsUserAdmin(UserID);
         }
+
+        public static bool IsUserActive(int UserID)
+        {
+            return clsUserData.IsUserActive(UserID);
+        }
+
     }
 }
