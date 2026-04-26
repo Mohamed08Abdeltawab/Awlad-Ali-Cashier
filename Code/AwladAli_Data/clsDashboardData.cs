@@ -192,5 +192,44 @@ namespace AwladAli_Data
 
             return dt;
         }
+
+        // نسخة مع Pagination
+        public static DataTable GetOrdersByDateRangeWithPagination(DateTime From, DateTime To, int PageNumber, int PageSize)
+        {
+            DataTable dt = new DataTable();
+
+            // حساب الـ Offset (عدد الصفوف التي سيتم تخطيها)
+            int offset = (PageNumber - 1) * PageSize;
+
+            string sql = @"
+                        SELECT O.OrderID,
+                               U.UserName,
+                               O.OrderDate,
+                               O.TotalAmount
+                        FROM   Orders O
+                        Inner join Users U on U.UserID = O.UserID
+                        WHERE  DATE(O.OrderDate) BETWEEN @From AND @To
+                        ORDER  BY O.OrderDate DESC
+                        LIMIT @PageSize OFFSET @Offset"; // إضافة التحديد والازاحة
+
+            try
+            {
+                using (SQLiteConnection conn = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
+                using (SQLiteCommand cmd = new SQLiteCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@From", _ToSQLiteDate(From));
+                    cmd.Parameters.AddWithValue("@To", _ToSQLiteDate(To));
+                    cmd.Parameters.AddWithValue("@PageSize", PageSize);
+                    cmd.Parameters.AddWithValue("@Offset", offset);
+
+                    conn.Open();
+                    using (SQLiteDataAdapter da = new SQLiteDataAdapter(cmd))
+                        da.Fill(dt);
+                }
+            }
+            catch (Exception) { /* Log Error */ }
+
+            return dt;
+        }
     }
 }

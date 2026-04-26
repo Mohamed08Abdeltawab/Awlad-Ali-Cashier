@@ -98,7 +98,10 @@ namespace AwladAli.User
             this.label43 = new System.Windows.Forms.Label();
             this.lblRecordsCount = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.llReturnDefault = new System.Windows.Forms.LinkLabel();
+            this.btnMore = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.llShowAll = new System.Windows.Forms.LinkLabel();
             tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -1022,6 +1025,37 @@ namespace AwladAli.User
             this.label12.TabIndex = 132;
             this.label12.Text = "# Records:";
             // 
+            // llReturnDefault
+            // 
+            this.llReturnDefault.ActiveLinkColor = System.Drawing.Color.White;
+            this.llReturnDefault.AutoSize = true;
+            this.llReturnDefault.BackColor = System.Drawing.Color.White;
+            this.llReturnDefault.DisabledLinkColor = System.Drawing.Color.White;
+            this.llReturnDefault.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llReturnDefault.Location = new System.Drawing.Point(860, 872);
+            this.llReturnDefault.Name = "llReturnDefault";
+            this.llReturnDefault.Size = new System.Drawing.Size(98, 29);
+            this.llReturnDefault.TabIndex = 247;
+            this.llReturnDefault.TabStop = true;
+            this.llReturnDefault.Text = "اعادة تعيين";
+            this.llReturnDefault.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llReturnDefault_LinkClicked);
+            // 
+            // btnMore
+            // 
+            this.btnMore.BackColor = System.Drawing.Color.White;
+            this.btnMore.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnMore.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMore.Image = global::AwladAli.Properties.Resources.next_32;
+            this.btnMore.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMore.Location = new System.Drawing.Point(833, 915);
+            this.btnMore.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnMore.Name = "btnMore";
+            this.btnMore.Size = new System.Drawing.Size(151, 46);
+            this.btnMore.TabIndex = 246;
+            this.btnMore.Text = "اكثر";
+            this.btnMore.UseVisualStyleBackColor = false;
+            this.btnMore.Click += new System.EventHandler(this.btnMore_Click);
+            // 
             // btnClose
             // 
             this.btnClose.BackColor = System.Drawing.Color.White;
@@ -1040,10 +1074,28 @@ namespace AwladAli.User
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // llShowAll
+            // 
+            this.llShowAll.ActiveLinkColor = System.Drawing.Color.White;
+            this.llShowAll.AutoSize = true;
+            this.llShowAll.BackColor = System.Drawing.Color.White;
+            this.llShowAll.DisabledLinkColor = System.Drawing.Color.White;
+            this.llShowAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llShowAll.Location = new System.Drawing.Point(860, 832);
+            this.llShowAll.Name = "llShowAll";
+            this.llShowAll.Size = new System.Drawing.Size(101, 29);
+            this.llShowAll.TabIndex = 248;
+            this.llShowAll.TabStop = true;
+            this.llShowAll.Text = "عرض الكل";
+            this.llShowAll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llShowAll_LinkClicked);
+            // 
             // frmAdminDashBoard
             // 
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(1924, 1061);
+            this.Controls.Add(this.llShowAll);
+            this.Controls.Add(this.llReturnDefault);
+            this.Controls.Add(this.btnMore);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lblRecordsCount);
             this.Controls.Add(this.label12);
@@ -1163,5 +1215,8 @@ namespace AwladAli.User
         private Button btnClose;
         private ContextMenuStrip cmsOrders;
         private ToolStripMenuItem showToolStripMenuItem;
+        private Button btnMore;
+        private LinkLabel llReturnDefault;
+        private LinkLabel llShowAll;
     }
 }

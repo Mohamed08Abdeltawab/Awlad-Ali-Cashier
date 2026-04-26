@@ -15,6 +15,8 @@ namespace AwladAli.User
             InitializeComponent();
         }
 
+        clsDashboard _dash;
+
         private void frmAdminDashBoard_Load(object sender, EventArgs e)
         {
             dgvOrders.AllowUserToAddRows = false;
@@ -28,13 +30,13 @@ namespace AwladAli.User
         {
             try
             {
-                clsDashboard dash = new clsDashboard(from, to);
+                _dash = new clsDashboard(from, to);
 
-                _FillStats(dash);
-                _FillGrid(dash);
-                _FillTopProducts(dash);
-                _FillTopCategories(dash);
-                _FillTopExtras(dash);
+                _FillStats(_dash);
+                _FillGrid(_dash);
+                _FillTopProducts(_dash);
+                _FillTopCategories(_dash);
+                _FillTopExtras(_dash);
             }
             catch (Exception ex)
             {
@@ -62,7 +64,7 @@ namespace AwladAli.User
             dgvOrders.DataSource = dash.Orders;
             lblRecordsCount.Text = dgvOrders.Rows.Count.ToString();
 
-            if (dgvOrders.Columns.Count >= 4)
+            if (dgvOrders.Rows.Count > 0)
             {
                 dgvOrders.Columns[0].HeaderText = "رقم الطلب";
                 dgvOrders.Columns[0].Width = 130;
@@ -197,5 +199,41 @@ namespace AwladAli.User
             this.Close();
         }
 
+       
+        private void btnMore_Click(object sender, EventArgs e)
+        {
+            _dash.PageNumber++;
+
+            // احتفظ بعدد الصفوف قبل التحميل
+            int rowsBefore = _dash.Orders.Rows.Count;
+
+            _dash.LoadOrdersWithPagination();
+
+            // لو عدد الصفوف م زادش، معناها مفيش داتا جديدة في الصفحة دي
+            if (_dash.Orders.Rows.Count == rowsBefore)
+            {
+                btnMore.Enabled = false; 
+                MessageBox.Show("لا توجد بيانات إضافية.");
+                _dash.PageNumber--; // ارجع خطوة عشان الرقم ميفضلش يزيد
+                return;
+            }
+
+            _FillGrid(_dash);
+        }
+
+        private void llShowAll_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            _dash.LoadAllOrders();
+            _FillGrid(_dash);
+            btnMore.Enabled = false;
+        }
+
+        private void llReturnDefault_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            btnMore.Enabled = true;
+            _dash.PageNumber = 1;
+            _dash.LoadOrdersWithPagination();
+            _FillGrid(_dash);
+        }
     }
 }

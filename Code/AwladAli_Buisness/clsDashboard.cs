@@ -22,7 +22,10 @@ namespace AwladAli_Buisness
         public DataTable TopExtras { get; private set; }
         public DataTable Orders { get; private set; }
 
-        
+        public int PageNumber { get; set; } = 1;
+        public int PageSize { get; set; } = 5;
+
+
         public clsDashboard(DateTime From, DateTime To)
         {
             if (From.Date > To.Date)
@@ -42,7 +45,7 @@ namespace AwladAli_Buisness
             _LoadTopProducts();
             _LoadTopCategories();
             _LoadTopExtras();
-            _LoadOrders();
+            LoadOrdersWithPagination();
         }
 
         private void _LoadRevenue()
@@ -79,12 +82,32 @@ namespace AwladAli_Buisness
             TopExtras = clsDashboardData.GetTopExtras(From, To, 3);
         }
 
-        private void _LoadOrders()
+        public void LoadOrdersWithPagination()
         {
-            Orders = clsDashboardData.GetOrdersByDateRange(From, To);
+            // نجلب الداتا الجديدة فقط للصفحة الحالية
+            DataTable NewOrders = clsDashboardData.GetOrdersByDateRangeWithPagination(From, To, PageNumber, PageSize);
+
+            if (PageNumber == 1)
+            {
+                // لو إحنا في أول صفحة، نساوي الجدول بالداتا الجديدة مباشرة
+                Orders = NewOrders;
+            }
+            else
+            {
+                // لو إحنا في صفحة تانية أو تالتة، ندمج الجديد مع القديم
+                if (NewOrders != null && NewOrders.Rows.Count > 0)
+                {
+                    Orders.Merge(NewOrders);
+                }
+            }
         }
 
-        
+        public void LoadAllOrders()
+        {
+                       Orders = clsDashboardData.GetOrdersByDateRange(From, To);
+        }
+
+
         /// <summary>يرجع كائن clsDashboard لـ"اليوم" فقط</summary>
         public static clsDashboard ForToday()
             => new clsDashboard(DateTime.Today, DateTime.Today);

@@ -93,6 +93,39 @@ namespace AwladAli_Data
         }
 
 
+        public static DataTable GetOrdersWithPagination(int PageNumber, int PageSize)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    connection.Open();
+
+                    int offset = (PageNumber - 1) * PageSize;
+
+                    string query = @"SELECT * FROM Orders 
+                             ORDER BY OrderDate DESC 
+                             LIMIT @PageSize OFFSET @Offset";
+
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@PageSize", PageSize);
+                        command.Parameters.AddWithValue("@Offset", offset);
+
+                        using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(command))
+                        {
+                            adapter.Fill(dt);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex) { }
+
+            return dt;
+        }
+
+
         public static bool DeleteOrder(int OrderID)
         {
             int rowsAffected = 0;

@@ -22,7 +22,7 @@ namespace AwladAli
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmListUsers()); // تمرير معرف الجلسة هنا
+            Application.Run(new frmAdminDashBoard()); // تمرير معرف الجلسة هنا
         }
     }
 }

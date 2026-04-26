@@ -97,5 +97,10 @@ namespace AwladAli_Buisness
         {
             return clsOrderData.GetFirstOrderDate();
         }
+
+        public static DataTable GetOrdersWithPagination(int PageNumber, int PageSize)
+        {
+            return clsOrderData.GetOrdersWithPagination(PageNumber, PageSize);
+        }
     }
 }
