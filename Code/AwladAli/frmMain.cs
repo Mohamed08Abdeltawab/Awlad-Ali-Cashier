@@ -97,7 +97,7 @@ namespace AwladAli
                     categoryCard.LoadCategoryData(categoryID);
 
                     flpProductCards.Controls.Add(categoryCard);
-                    categoryCard.OnOrderChanged += UpdateGrandTotal;
+                    categoryCard.OnOrderChanged += UpdateGrandTotal;//subscribe to order changed event 
                 }
             }
 
