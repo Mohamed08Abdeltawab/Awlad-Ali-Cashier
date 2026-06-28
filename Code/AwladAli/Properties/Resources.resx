@@ -133,6 +133,9 @@
   <data name="Person 32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Person 32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="notes32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\notes32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Order 512" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Order 512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -147,6 +150,9 @@
   </data>
   <data name="Date 32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Date 32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="refresh 64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\refresh 64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Number 32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Number 32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -205,11 +211,11 @@
   <data name="CategoryBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CategoryBackground.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="phone number32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\phone number32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="address32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\address32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CloseBlack 721" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CloseBlack 72.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Foods 64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Foods 64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -235,17 +241,17 @@
   <data name="ID 321" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ID 32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="save32 2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\save32 2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="small 32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\small 32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="extra 64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\extra 64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="sing in 32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sing in 32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="phone number32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\phone number32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="previous 32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\previous 32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="edit2 32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\edit2 32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -253,8 +259,8 @@
   <data name="food 32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\food 32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="refresh 64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\refresh 64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="CloseBlack 721" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CloseBlack 72.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Close 32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Close 32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -277,8 +283,8 @@
   <data name="start session 64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\start session 64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="previous 32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\previous 32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="extra 64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\extra 64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="show 32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\show 32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -295,7 +301,7 @@
   <data name="Sessions 512" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Sessions 512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="notes32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\notes32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="close32 2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\close32 2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

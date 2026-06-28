@@ -16,6 +16,7 @@ namespace AwladAli_Buisness
         public string FullName { get; set; }
         public string Address { get; set; }
         public string Notes { get; set; }
+        public DateTime CreatedDate { get; private set; } = DateTime.Now;
         public bool IsActive { get; set; }
         public int? CreatedByUserID { get; set; }
 
@@ -65,10 +66,11 @@ namespace AwladAli_Buisness
             string fullName = "", address = "", notes = "";
             bool isActive = true;
             int? createdByUserID = null;
+            DateTime createdDate = DateTime.Now;
 
-            if (clsCustomerData.GetCustomerByPhoneNumber(phoneNumber, ref customerID, ref fullName, ref address, ref notes, ref isActive, ref createdByUserID))
+            if (clsCustomerData.GetCustomerByPhoneNumber(phoneNumber, ref customerID, ref fullName, ref address, ref notes, ref createdDate, ref isActive, ref createdByUserID))
             {
-                return new clsCustomer(customerID, phoneNumber, fullName, address, notes, isActive, createdByUserID);
+                return new clsCustomer(customerID, phoneNumber, fullName, address, notes, isActive, createdByUserID) { CreatedDate = createdDate };
             }
             else
             {
@@ -117,6 +119,11 @@ namespace AwladAli_Buisness
             }
 
             return clsCustomerData.DeleteCustomer(customerID);
+        }
+
+        public static bool IsCustomerExist(string phoneNumber)
+        {
+            return clsCustomerData.IsCustomerExist(phoneNumber);
         }
     }
 }

@@ -88,7 +88,7 @@ namespace AwladAli_Data
         /// <summary>
         /// Finds a customer by their phone number and retrieves their details.
         /// </summary>
-        public static bool GetCustomerByPhoneNumber(string phoneNumber, ref int customerID, ref string fullName, ref string address, ref string notes, ref bool isActive, ref int? createdByUserID)
+        public static bool GetCustomerByPhoneNumber(string phoneNumber, ref int customerID, ref string fullName, ref string address, ref string notes,ref DateTime CreatedDate, ref bool isActive, ref int? createdByUserID)
         {
             bool isFound = false;
             try
@@ -111,6 +111,7 @@ namespace AwladAli_Data
                                 fullName = Convert.ToString(reader["FullName"]);
                                 address = Convert.ToString(reader["Address"]);
                                 notes = reader["Notes"] != DBNull.Value ? Convert.ToString(reader["Notes"]) : "";
+                                CreatedDate = Convert.ToDateTime(reader["CreatedDate"]);
                                 isActive = Convert.ToInt32(reader["IsActive"]) == 1;
 
                                 // Retrieve CreatedByUserID safely if it's not null
@@ -232,6 +233,35 @@ namespace AwladAli_Data
             }
             catch (Exception) { }
             return hasOrders;
+        }
+
+        /// <summary>
+        /// Checks if a customer exists in the system.
+        /// </summary>
+        public static bool IsCustomerExist(string PhoneNumber)
+        {
+            bool isExist = false;
+            try
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = "SELECT COUNT(*) FROM Customers WHERE PhoneNumber = @PhoneNumber";
+
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@PhoneNumber", PhoneNumber);
+                        connection.Open();
+
+                        object result = command.ExecuteScalar();
+                        if (result != null && int.TryParse(result.ToString(), out int count))
+                        {
+                            isExist = (count > 0);
+                        }
+                    }
+                }
+            }
+            catch (Exception) { }
+            return isExist;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using AwladAli.Bill;
 using AwladAli.Category;
 using AwladAli.Category.Extra;
+using AwladAli.Customer;
 using AwladAli.Login;
 using AwladAli.Session;
 using AwladAli.User;
@@ -40,7 +41,7 @@ namespace AwladAli
             CultureInfo.DefaultThreadCurrentCulture = culture;
             CultureInfo.DefaultThreadCurrentUICulture = culture;
 
-            Application.Run(new frmLogin());
+            Application.Run(new frmAddUpdateCustomer());
         }
     }
 }
