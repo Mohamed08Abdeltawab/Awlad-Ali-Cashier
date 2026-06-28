@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Data;
-using System.Data.SqlClient;
 using System.Data.SQLite;
 
 namespace AwladAli_Data
 {
     public class clsOrderData
     {
-        public static int AddNewOrder(int UserID, int SessionID, DateTime OrderDate, decimal TotalAmount)
+        // 1. الميثود المحدثة لإضافة أوردر جديد بالأعمدة الجديدة
+        public static int AddNewOrder(int UserID, int SessionID, DateTime OrderDate, decimal TotalAmount, int OrderType, int? CustomerID, decimal DeliveryFee)
         {
             int OrderID = -1;
 
@@ -16,10 +16,10 @@ namespace AwladAli_Data
                 using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
                 {
                     connection.Open();
-                    // Insert the main order record
-                    // OrderDate is handled by the DEFAULT CURRENT_TIMESTAMP in SQLite
-                    string query = @"INSERT INTO Orders (UserID ,OrderDate, TotalAmount,SessionID) 
-                                     VALUES (@UserID, @OrderDate, @TotalAmount, @SessionID);
+
+                    // Added OrderType, CustomerID, and DeliveryFee to the INSERT command
+                    string query = @"INSERT INTO Orders (UserID, SessionID, OrderDate, TotalAmount, OrderType, CustomerID, DeliveryFee) 
+                                     VALUES (@UserID, @SessionID, @OrderDate, @TotalAmount, @OrderType, @CustomerID, @DeliveryFee);
                                      SELECT last_insert_rowid();";
 
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
@@ -28,6 +28,11 @@ namespace AwladAli_Data
                         command.Parameters.AddWithValue("@SessionID", SessionID);
                         command.Parameters.AddWithValue("@OrderDate", OrderDate);
                         command.Parameters.AddWithValue("@TotalAmount", TotalAmount);
+                        command.Parameters.AddWithValue("@OrderType", OrderType);
+
+                        // Handle Nullable CustomerID safely (if Takeaway, it saves DBNull.Value)
+                        command.Parameters.AddWithValue("@CustomerID", CustomerID.HasValue ? (object)CustomerID.Value : DBNull.Value);
+                        command.Parameters.AddWithValue("@DeliveryFee", DeliveryFee);
 
                         object result = command.ExecuteScalar();
                         if (result != null && int.TryParse(result.ToString(), out int insertedID))
@@ -69,6 +74,7 @@ namespace AwladAli_Data
             return (dt.Rows.Count > 0) ? dt.Rows[0] : null;
         }
 
+        // 2. تحديث كويري جلب الكل لتعود البيانات الجديدة مرتبة وشاملة التحديثات
         public static DataTable GetAllOrders()
         {
             DataTable dt = new DataTable();
@@ -77,6 +83,7 @@ namespace AwladAli_Data
                 using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
                 {
                     connection.Open();
+                    // Select all columns to ensure new features appear in the general grid
                     string query = "SELECT * FROM Orders ORDER BY OrderDate DESC";
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {
@@ -92,7 +99,7 @@ namespace AwladAli_Data
             return dt;
         }
 
-
+        // 3. تحديث ميثود الـ Pagination لتشمل كافة الأعمدة الجديدة في شاشات العرض الكبيرة
         public static DataTable GetOrdersWithPagination(int PageNumber, int PageSize)
         {
             DataTable dt = new DataTable();
@@ -105,8 +112,8 @@ namespace AwladAli_Data
                     int offset = (PageNumber - 1) * PageSize;
 
                     string query = @"SELECT * FROM Orders 
-                             ORDER BY OrderDate DESC 
-                             LIMIT @PageSize OFFSET @Offset";
+                                     ORDER BY OrderDate DESC 
+                                     LIMIT @PageSize OFFSET @Offset";
 
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {
@@ -125,11 +132,9 @@ namespace AwladAli_Data
             return dt;
         }
 
-
         public static bool DeleteOrder(int OrderID)
         {
             int rowsAffected = 0;
-            // ✅ FIX — atomic transaction, same pattern as DeleteProduct
             using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
             {
                 connection.Open();
@@ -164,7 +169,7 @@ namespace AwladAli_Data
             return (rowsAffected > 0);
         }
 
-
+        // 4. تحديث جلب الأوردرات تلو الـ Session ليشمل البيانات الإضافية للتأكد من حسابات الطيارين والـ وردية
         public static DataTable GetAllOrdersRelatedBySessionID(int SessionID)
         {
             DataTable dt = new DataTable();
@@ -172,11 +177,11 @@ namespace AwladAli_Data
             {
                 using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
                 {
-                    // Query to get SessionID, OrderID, and TotalAmount for a specific session
-                    string query = @"SELECT SessionID, OrderID, OrderDate, TotalAmount 
-                             FROM Orders 
-                             WHERE SessionID = @SessionID 
-                             ORDER BY OrderDate DESC";
+                    // Added OrderType, CustomerID, and DeliveryFee for accurate financial reporting per session
+                    string query = @"SELECT SessionID, OrderID, OrderDate, TotalAmount, OrderType, CustomerID, DeliveryFee 
+                                     FROM Orders 
+                                     WHERE SessionID = @SessionID 
+                                     ORDER BY OrderDate DESC";
 
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {
@@ -190,36 +195,29 @@ namespace AwladAli_Data
                     }
                 }
             }
-            catch (Exception)
-            {
-                // Handle exception or log error
-            }
+            catch (Exception) { }
             return dt;
         }
 
-
-
+        // 5. تحديث الـ Pagination التابع للوردية (Sessions) ليعرض الفواتير بأنواعها ومصاريف شحنها دقيقة
         public static DataTable GetOrdersRelatedBySessionIDWithPagination(int SessionID, int PageNumber, int PageSize)
         {
             DataTable dt = new DataTable();
-
-            // حساب عدد الصفوف التي سيتم تخطيها بناءً على الصفحة الحالية
             int offset = (PageNumber - 1) * PageSize;
 
             try
             {
                 using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
                 {
-                    // الكويري الأساسية + LIMIT و OFFSET
-                    string query = @"SELECT SessionID, OrderID, OrderDate, TotalAmount 
-                             FROM Orders 
-                             WHERE SessionID = @SessionID 
-                             ORDER BY OrderDate DESC
-                             LIMIT @PageSize OFFSET @Offset";
+                    // Added OrderType, CustomerID, and DeliveryFee to block query
+                    string query = @"SELECT SessionID, OrderID, OrderDate, TotalAmount, OrderType, CustomerID, DeliveryFee 
+                                     FROM Orders 
+                                     WHERE SessionID = @SessionID 
+                                     ORDER BY OrderDate DESC
+                                     LIMIT @PageSize OFFSET @Offset";
 
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {
-                        // الباراميترز الأساسية (SessionID) + باراميترز الـ Pagination
                         command.Parameters.AddWithValue("@SessionID", SessionID);
                         command.Parameters.AddWithValue("@PageSize", PageSize);
                         command.Parameters.AddWithValue("@Offset", offset);
@@ -233,13 +231,9 @@ namespace AwladAli_Data
                     }
                 }
             }
-            catch (Exception)
-            {
-                // Handle exception
-            }
+            catch (Exception) { }
             return dt;
         }
-
 
         public static int GetOrdersCountBySessionID(int SessionID)
         {
@@ -248,7 +242,6 @@ namespace AwladAli_Data
             {
                 using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
                 {
-                    // نستخدم COUNT(*) لجلب عدد الصفوف فقط (أداء عالي)
                     string query = "SELECT COUNT(*) FROM Orders WHERE SessionID = @SessionID";
 
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
@@ -268,17 +261,13 @@ namespace AwladAli_Data
             return Count;
         }
 
-
         public static DateTime GetFirstOrderDate()
         {
-            // بنفترض تاريخ افتراضي في حال كان الجدول فاضي
             DateTime FirstDate = DateTime.Now;
-
             try
             {
                 using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
                 {
-                    // query لجلب أصغر تاريخ في الجدول
                     string query = "SELECT MIN(OrderDate) FROM Orders";
 
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
@@ -293,10 +282,7 @@ namespace AwladAli_Data
                     }
                 }
             }
-            catch (Exception)
-            {
-                // في حالة الخطأ يرجع تاريخ النهاردة
-            }
+            catch (Exception) { }
 
             return FirstDate;
         }
