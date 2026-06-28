@@ -103,6 +103,16 @@ namespace AwladAli.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap address32 {
+            get {
+                object obj = ResourceManager.GetObject("address32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap all_64 {
             get {
                 object obj = ResourceManager.GetObject("all 64", resourceCulture);
@@ -373,6 +383,16 @@ namespace AwladAli.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap notes32 {
+            get {
+                object obj = ResourceManager.GetObject("notes32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Number_32 {
             get {
                 object obj = ResourceManager.GetObject("Number 32", resourceCulture);
@@ -416,6 +436,16 @@ namespace AwladAli.Properties {
         internal static System.Drawing.Bitmap Person_32 {
             get {
                 object obj = ResourceManager.GetObject("Person 32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap phone_number32 {
+            get {
+                object obj = ResourceManager.GetObject("phone number32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

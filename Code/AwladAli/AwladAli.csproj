@@ -149,6 +149,12 @@
     <Compile Include="Category\Product\frmAddUpdateProduct.Designer.cs">
       <DependentUpon>frmAddUpdateProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="Customer\frmAddUpdateCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customer\frmAddUpdateCustomer.Designer.cs">
+      <DependentUpon>frmAddUpdateCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -247,6 +253,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Category\Product\frmAddUpdateProduct.resx">
       <DependentUpon>frmAddUpdateProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customer\frmAddUpdateCustomer.resx">
+      <DependentUpon>frmAddUpdateCustomer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
@@ -410,6 +419,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Cashier.ico" />
+    <None Include="Resources\notes32.png" />
+    <None Include="Resources\address32.png" />
+    <None Include="Resources\phone number32.png" />
     <None Include="Resources\previous 32.png" />
     <None Include="Resources\next 32.png" />
     <None Include="Resources\Inactive 32.png" />
