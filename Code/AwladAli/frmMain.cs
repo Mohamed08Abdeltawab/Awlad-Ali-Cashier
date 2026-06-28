@@ -430,5 +430,26 @@ namespace AwladAli
             lblSessionTimer.Text = duration.ToString(@"hh\:mm\:ss");
         }
 
+        private void rbTakeaway_CheckedChanged(object sender, EventArgs e)
+        {
+            llCustomerDetails.Visible = false;
+            _Order.OrderType = clsOrder.enOrderType.Takeaway;
+        }
+
+        private void rbDelivery_CheckedChanged(object sender, EventArgs e)
+        {
+            llCustomerDetails.Visible = true;
+            _Order.OrderType =  clsOrder.enOrderType.Delivery;
+        }
+
+        private void llCustomerDetails_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            //display screen Add Customer details
+            //we should use object of customer in main class
+            //_Customer = ...
+            //update order and change its type for this thing  get fee and customer id from customer object
+
+            //check if _customer is not null change text and color of link label to show that customer is added
+        }
     }
 }

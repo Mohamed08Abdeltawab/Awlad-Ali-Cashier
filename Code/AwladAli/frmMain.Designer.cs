@@ -34,9 +34,16 @@ namespace AwladAli
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.pnlMainContainer = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.flpAddonsContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.flpProductCards = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlFooter = new System.Windows.Forms.Panel();
+            this.llCustomerDetails = new System.Windows.Forms.LinkLabel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.rbDelivery = new System.Windows.Forms.RadioButton();
+            this.rbTakeaway = new System.Windows.Forms.RadioButton();
             this.llReset = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlLine = new System.Windows.Forms.Panel();
@@ -45,20 +52,20 @@ namespace AwladAli
             this.lblTotalText = new System.Windows.Forms.Label();
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.lblSessionTimer = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.lblUsername = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.sessionTimer = new System.Windows.Forms.Timer(this.components);
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
             this.btnStartSession = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.lblUsername = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnSettings = new System.Windows.Forms.Button();
+            this.sessionTimer = new System.Windows.Forms.Timer(this.components);
             this.pnlMainContainer.SuspendLayout();
-            this.pnlFooter.SuspendLayout();
-            this.pnlHeader.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.pnlFooter.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            this.pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.SuspendLayout();
@@ -74,6 +81,30 @@ namespace AwladAli
             this.pnlMainContainer.Name = "pnlMainContainer";
             this.pnlMainContainer.Size = new System.Drawing.Size(1924, 972);
             this.pnlMainContainer.TabIndex = 2;
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel1.BackColor = System.Drawing.Color.Red;
+            this.panel1.BackgroundImage = global::AwladAli.Properties.Resources.CategoryBackground;
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel1.Location = new System.Drawing.Point(1666, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(255, 98);
+            this.panel1.TabIndex = 0;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label3.Location = new System.Drawing.Point(71, 29);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(125, 39);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "الاضافات";
             // 
             // flpAddonsContainer
             // 
@@ -103,6 +134,11 @@ namespace AwladAli
             this.pnlFooter.AutoSize = true;
             this.pnlFooter.BackColor = System.Drawing.Color.LightGray;
             this.pnlFooter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlFooter.Controls.Add(this.llCustomerDetails);
+            this.pnlFooter.Controls.Add(this.pictureBox2);
+            this.pnlFooter.Controls.Add(this.pictureBox5);
+            this.pnlFooter.Controls.Add(this.rbDelivery);
+            this.pnlFooter.Controls.Add(this.rbTakeaway);
             this.pnlFooter.Controls.Add(this.llReset);
             this.pnlFooter.Controls.Add(this.label1);
             this.pnlFooter.Controls.Add(this.pnlLine);
@@ -114,6 +150,66 @@ namespace AwladAli
             this.pnlFooter.Name = "pnlFooter";
             this.pnlFooter.Size = new System.Drawing.Size(1924, 114);
             this.pnlFooter.TabIndex = 1;
+            // 
+            // llCustomerDetails
+            // 
+            this.llCustomerDetails.AutoSize = true;
+            this.llCustomerDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llCustomerDetails.LinkColor = System.Drawing.Color.Red;
+            this.llCustomerDetails.Location = new System.Drawing.Point(681, 62);
+            this.llCustomerDetails.Name = "llCustomerDetails";
+            this.llCustomerDetails.Size = new System.Drawing.Size(148, 25);
+            this.llCustomerDetails.TabIndex = 183;
+            this.llCustomerDetails.TabStop = true;
+            this.llCustomerDetails.Text = "إضافة بيانات العميل";
+            this.llCustomerDetails.Visible = false;
+            this.llCustomerDetails.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llCustomerDetails_LinkClicked);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::AwladAli.Properties.Resources.delivery32;
+            this.pictureBox2.Location = new System.Drawing.Point(835, 63);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(31, 26);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 182;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::AwladAli.Properties.Resources.takeaway32;
+            this.pictureBox5.Location = new System.Drawing.Point(835, 17);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(31, 26);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 181;
+            this.pictureBox5.TabStop = false;
+            // 
+            // rbDelivery
+            // 
+            this.rbDelivery.AutoSize = true;
+            this.rbDelivery.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbDelivery.Location = new System.Drawing.Point(883, 60);
+            this.rbDelivery.Name = "rbDelivery";
+            this.rbDelivery.Size = new System.Drawing.Size(226, 29);
+            this.rbDelivery.TabIndex = 6;
+            this.rbDelivery.Text = "(Delivery) توصيل للمنزل";
+            this.rbDelivery.UseVisualStyleBackColor = true;
+            this.rbDelivery.CheckedChanged += new System.EventHandler(this.rbDelivery_CheckedChanged);
+            // 
+            // rbTakeaway
+            // 
+            this.rbTakeaway.AutoSize = true;
+            this.rbTakeaway.Checked = true;
+            this.rbTakeaway.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbTakeaway.Location = new System.Drawing.Point(883, 14);
+            this.rbTakeaway.Name = "rbTakeaway";
+            this.rbTakeaway.Size = new System.Drawing.Size(262, 29);
+            this.rbTakeaway.TabIndex = 5;
+            this.rbTakeaway.TabStop = true;
+            this.rbTakeaway.Text = "(Takeaway) إستلام من المحل";
+            this.rbTakeaway.UseVisualStyleBackColor = true;
+            this.rbTakeaway.CheckedChanged += new System.EventHandler(this.rbTakeaway_CheckedChanged);
             // 
             // llReset
             // 
@@ -214,69 +310,6 @@ namespace AwladAli
             this.lblSessionTimer.TabIndex = 141;
             this.lblSessionTimer.Text = "00:00:00";
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.label8.Location = new System.Drawing.Point(1658, 35);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(253, 20);
-            this.label8.TabIndex = 138;
-            this.label8.Text = "By Eng: Mohamed Abdeltawab";
-            // 
-            // lblUsername
-            // 
-            this.lblUsername.AutoSize = true;
-            this.lblUsername.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsername.ForeColor = System.Drawing.Color.White;
-            this.lblUsername.Location = new System.Drawing.Point(1347, 27);
-            this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(62, 30);
-            this.lblUsername.TabIndex = 123;
-            this.lblUsername.Text = "[؟؟؟]";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(1486, 27);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(144, 30);
-            this.label2.TabIndex = 122;
-            this.label2.Text = ":اسم المستخدم";
-            // 
-            // sessionTimer
-            // 
-            this.sessionTimer.Interval = 1000;
-            this.sessionTimer.Tick += new System.EventHandler(this.sessionTimer_Tick);
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel1.BackColor = System.Drawing.Color.Red;
-            this.panel1.BackgroundImage = global::AwladAli.Properties.Resources.CategoryBackground;
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(1666, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(255, 98);
-            this.panel1.TabIndex = 0;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Location = new System.Drawing.Point(71, 29);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(125, 39);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "الاضافات";
-            // 
             // btnStartSession
             // 
             this.btnStartSession.BackColor = System.Drawing.Color.Transparent;
@@ -308,6 +341,18 @@ namespace AwladAli
             this.pictureBox1.TabIndex = 139;
             this.pictureBox1.TabStop = false;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.label8.Location = new System.Drawing.Point(1658, 35);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(253, 20);
+            this.label8.TabIndex = 138;
+            this.label8.Text = "By Eng: Mohamed Abdeltawab";
+            // 
             // pictureBox8
             // 
             this.pictureBox8.BackColor = System.Drawing.Color.White;
@@ -318,6 +363,28 @@ namespace AwladAli
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox8.TabIndex = 129;
             this.pictureBox8.TabStop = false;
+            // 
+            // lblUsername
+            // 
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsername.ForeColor = System.Drawing.Color.White;
+            this.lblUsername.Location = new System.Drawing.Point(1347, 27);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(62, 30);
+            this.lblUsername.TabIndex = 123;
+            this.lblUsername.Text = "[؟؟؟]";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(1486, 27);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(144, 30);
+            this.label2.TabIndex = 122;
+            this.label2.Text = ":اسم المستخدم";
             // 
             // btnSettings
             // 
@@ -340,6 +407,11 @@ namespace AwladAli
             this.btnSettings.UseVisualStyleBackColor = false;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
+            // sessionTimer
+            // 
+            this.sessionTimer.Interval = 1000;
+            this.sessionTimer.Tick += new System.EventHandler(this.sessionTimer_Tick);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -356,12 +428,14 @@ namespace AwladAli
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.pnlMainContainer.ResumeLayout(false);
             this.pnlMainContainer.PerformLayout();
-            this.pnlFooter.ResumeLayout(false);
-            this.pnlFooter.PerformLayout();
-            this.pnlHeader.ResumeLayout(false);
-            this.pnlHeader.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.pnlFooter.ResumeLayout(false);
+            this.pnlFooter.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            this.pnlHeader.ResumeLayout(false);
+            this.pnlHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.ResumeLayout(false);
@@ -391,5 +465,10 @@ namespace AwladAli
         private Button btnStartSession;
         private Label lblSessionTimer;
         private Timer sessionTimer;
+        private RadioButton rbTakeaway;
+        private RadioButton rbDelivery;
+        private PictureBox pictureBox2;
+        private PictureBox pictureBox5;
+        private LinkLabel llCustomerDetails;
     }
 }

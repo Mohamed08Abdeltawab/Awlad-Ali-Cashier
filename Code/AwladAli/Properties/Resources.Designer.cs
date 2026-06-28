@@ -233,6 +233,16 @@ namespace AwladAli.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap delivery32 {
+            get {
+                object obj = ResourceManager.GetObject("delivery32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap edit2_32 {
             get {
                 object obj = ResourceManager.GetObject("edit2 32", resourceCulture);
@@ -636,6 +646,16 @@ namespace AwladAli.Properties {
         internal static System.Drawing.Bitmap start_session_64 {
             get {
                 object obj = ResourceManager.GetObject("start session 64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap takeaway32 {
+            get {
+                object obj = ResourceManager.GetObject("takeaway32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

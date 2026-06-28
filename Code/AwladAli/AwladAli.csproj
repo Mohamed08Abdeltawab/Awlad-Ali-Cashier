@@ -419,6 +419,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Cashier.ico" />
+    <None Include="Resources\delivery32.png" />
+    <None Include="Resources\takeaway32.png" />
     <None Include="Resources\close32 2.png" />
     <None Include="Resources\save32 2.png" />
     <None Include="Resources\notes32.png" />
