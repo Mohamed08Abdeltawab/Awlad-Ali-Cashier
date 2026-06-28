@@ -92,6 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsCategoryData.cs" />
+    <Compile Include="clsCustomerData.cs" />
     <Compile Include="clsDashboardData.cs" />
     <Compile Include="clsDataAccessSettings.cs" />
     <Compile Include="clsExtraData.cs" />
