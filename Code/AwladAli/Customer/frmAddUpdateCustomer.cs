@@ -87,13 +87,8 @@ namespace AwladAli.Customer
                 e.Cancel = true;
                 errorProvider1.SetError(txtPhoneNumber, "رقم الهاتف لا يمكن أن يكون فارغاً");
             }
-            else
-            {
-                errorProvider1.SetError(txtPhoneNumber, null);
-            }
-
             // Check if Username exists (Only in AddNew mode)
-            if (_Mode == enMode.AddNew)
+            else if (_Mode == enMode.AddNew)
             {
                 if (clsCustomer.IsCustomerExist(txtPhoneNumber.Text.Trim()))
                 {
@@ -104,6 +99,10 @@ namespace AwladAli.Customer
                 {
                     errorProvider1.SetError(txtPhoneNumber, null);
                 }
+            }
+            else
+            {
+                errorProvider1.SetError(txtPhoneNumber, null);
             }
         }
 

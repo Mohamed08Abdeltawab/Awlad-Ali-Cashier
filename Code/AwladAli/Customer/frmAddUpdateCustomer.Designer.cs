@@ -169,7 +169,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(96, 20);
             this.label2.TabIndex = 185;
-            this.label2.Text = ":تاريخ الأنشاء";
+            this.label2.Text = ":تاريخ الإنشاء";
             // 
             // label3
             // 
@@ -203,7 +203,7 @@
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(124, 20);
             this.label8.TabIndex = 191;
-            this.label8.Text = ":تم الأنشاء بواسطة";
+            this.label8.Text = ":تم الإنشاء بواسطة";
             // 
             // txtCustomerName
             // 
