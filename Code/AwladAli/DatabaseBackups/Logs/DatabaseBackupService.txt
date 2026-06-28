@@ -1,0 +1,24 @@
+[2026-06-23 11:15:54] Service Started.
+[2026-06-23 11:15:54] Backup interval set to 60 minutes.
+[2026-06-23 11:15:54] Error during backup: Keyword not supported: 'version'.
+[2026-06-23 11:20:46] Service Stopped.
+[2026-06-23 11:23:51] Service Started.
+[2026-06-23 11:23:51] Backup interval set to 60 minutes.
+[2026-06-23 11:23:51] Error during backup: Keyword not supported: 'version'.
+[2026-06-23 11:28:14] Service Stopped.
+[2026-06-23 11:28:31] Service Started.
+[2026-06-23 11:28:31] Backup interval set to 60 minutes.
+[2026-06-23 11:28:31] Error during backup: The given path's format is not supported.
+[2026-06-23 11:28:59] Service Stopped.
+[2026-06-23 11:29:02] Service Started.
+[2026-06-23 11:29:02] Backup interval set to 60 minutes.
+[2026-06-23 11:29:02] Error during backup: The given path's format is not supported.
+[2026-06-23 11:34:07] Service Stopped.
+[2026-06-23 11:36:27] Service Started.
+[2026-06-23 11:36:27] Backup interval set to 60 minutes.
+[2026-06-23 11:36:27] Backup completed successfully at: C:\Users\ma705\Desktop\MyRealProject\Awlad-Ali-Cashier\Code\AwladAli\DatabaseBackups\Backups\Backup_20260623_113627.db
+[2026-06-23 11:36:33] Service Stopped.
+[2026-06-23 11:36:38] Service Started.
+[2026-06-23 11:36:38] Backup interval set to 60 minutes.
+[2026-06-23 11:36:38] Backup completed successfully at: C:\Users\ma705\Desktop\MyRealProject\Awlad-Ali-Cashier\Code\AwladAli\DatabaseBackups\Backups\Backup_20260623_113638.db
+[2026-06-23 11:38:10] Service Stopped.

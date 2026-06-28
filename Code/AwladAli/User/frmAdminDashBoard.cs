@@ -53,7 +53,12 @@ namespace AwladAli.User
             lblTotalRevenue.Text = dash.TotalRevenue.ToString("N2");
             lblDayRevenue.Text = dash.TodayRevenue.ToString("N2");
             lblOrderCount.Text = dash.OrdersCount.ToString();
-            dtpFrom.MinDate = new DateTime(2020, 1, 1);
+
+            dtpFrom.MinDate = clsOrder.GetFirstOrderDate();
+            dtpTo.MinDate = clsOrder.GetFirstOrderDate();
+
+            dtpFrom.MaxDate = DateTime.Today;
+            dtpTo.MaxDate = DateTime.Today;
         }
 
         // ════════════════════════════════════════════════════════════
@@ -117,6 +122,7 @@ namespace AwladAli.User
         {
             if (dtpFrom.Value.Date > dtpTo.Value.Date)
             {
+                dtpTo.Value = dtpFrom.Value.Date;
                 MessageBox.Show("تاريخ البداية يجب أن يكون قبل تاريخ النهاية!",
                                 "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -126,7 +132,7 @@ namespace AwladAli.User
         }
 
         // ════════════════════════════════════════════════════════════
-        //  زر إعادة تعيين – يرجع لـ "بلا"
+        //  زر إعادة تعيين – يرجع لـ لا شيء محدد
         // ════════════════════════════════════════════════════════════
         private void btnRefreshAll_Click(object sender, EventArgs e)
         {
@@ -154,6 +160,8 @@ namespace AwladAli.User
             }
 
             // تحديث الـ DateTimePickers لتعكس الفلتر
+            if(from < dtpFrom.MinDate) from = dtpFrom.MinDate;
+            if(to > dtpTo.MaxDate) to = dtpTo.MaxDate;
             dtpFrom.Value = from;
             dtpTo.Value = to;
 

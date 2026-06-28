@@ -12,6 +12,8 @@ namespace AwladAli.Session
         public frmListSessions()
         {
             InitializeComponent();
+            dtpFrom.MinDate = clsOrder.GetFirstOrderDate();
+            dtpFrom.MaxDate = DateTime.Now;
         }
 
         int _PageNumber = 1;
@@ -208,7 +210,8 @@ namespace AwladAli.Session
         private void dtpFrom_ValueChanged(object sender, EventArgs e)
         {
             if (_dtAllSessions == null) return;
-            string filter = string.Format("StartTime >= #{0}#", dtpFrom.Value.ToString("MM/dd/yyyy"));
+            string filter = string.Format("StartTime >= #{0}#", dtpFrom.Value.ToString(System.Globalization.CultureInfo.InvariantCulture));
+            _dtAllSessions.DefaultView.RowFilter = filter;
             lblRecordsCount.Text = dgvUsers.Rows.Count.ToString();
         }
 

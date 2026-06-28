@@ -51,7 +51,7 @@ namespace AwladAli.User
         private void cbFilterBy_SelectedIndexChanged(object sender, EventArgs e)
         {
             _dtAllUsers.DefaultView.RowFilter = "";//Reset the filter to show all data before apply new filter.
-            if (cbFilterBy.SelectedIndex == 3)
+            if (cbFilterBy.SelectedIndex == 3)//role filter
             {
                 txtFilterValue.Visible = false;
                 cbActivation.Visible = false;
@@ -59,7 +59,7 @@ namespace AwladAli.User
                 cbRole.Focus();
                 cbRole.SelectedIndex = 0;
             }
-            else if(cbFilterBy.SelectedIndex == 4)
+            else if(cbFilterBy.SelectedIndex == 4)//activation filter
             {
                 txtFilterValue.Visible = false;
                 cbActivation.Visible = true;
@@ -263,7 +263,7 @@ namespace AwladAli.User
             string currentStatus = dgvUsers.CurrentRow.Cells["Status"].Value.ToString();
 
             // 2. Initial Status logic (Default behavior)
-            if (currentStatus == "Active")
+            if (currentStatus == "مفعل")//edit: make language arabic as appear in the datagridview
             {
                 OffToolStripMenuItem.Enabled = true;
             }
