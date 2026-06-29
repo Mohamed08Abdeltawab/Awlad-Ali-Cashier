@@ -172,5 +172,6 @@ namespace AwladAli.Customer
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
+
     }
 }

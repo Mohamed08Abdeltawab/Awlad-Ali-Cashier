@@ -34,6 +34,14 @@ namespace AwladAli.Customer
             lblCustomerName.Text = _Customer.FullName;
             lblAddress.Text = _Customer.Address;
             lblActivation.Text = _Customer.IsActive ? "نشط" : "غير نشط";
+            if(_Customer.IsActive)
+            {
+                lblActivation.ForeColor = Color.Green;
+            }
+            else
+            {
+                lblActivation.ForeColor = Color.Red;
+            }
         }
 
         private void llEditDetails_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

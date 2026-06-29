@@ -126,6 +126,84 @@ namespace AwladAli_Data
             return isFound;
         }
 
+
+
+        /// <summary>
+        /// Searches for customers matching a specific phone number text and returns the top 10 records with specific columns.
+        /// </summary>
+        public static DataTable GetTop10CustomersByPhoneNumber(string phoneNumber)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = @"SELECT PhoneNumber, FullName, IsActive 
+                             FROM Customers 
+                             WHERE PhoneNumber LIKE @PhoneNumber
+                             ORDER BY CustomerID DESC
+                             LIMIT 10;";
+
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        // Using '%' at the end to find any numbers starting with or containing the input
+                        command.Parameters.AddWithValue("@PhoneNumber", phoneNumber.Trim() + "%");
+
+                        connection.Open();
+                        using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(command))
+                        {
+                            adapter.Fill(dt);
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                // Return an empty table in case of an error to prevent application crashes
+                return dt;
+            }
+
+            return dt;
+        }
+
+
+        public static DataTable GetTop10CustomersByName(string name)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = @"SELECT PhoneNumber, FullName, IsActive 
+                             FROM Customers 
+                             WHERE FullName LIKE @FullName
+                             ORDER BY CustomerID DESC
+                             LIMIT 10;";
+
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        // Using '%' at the end to find any names starting with or containing the input
+                        command.Parameters.AddWithValue("@FullName", name.Trim() + "%");
+
+                        connection.Open();
+                        using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(command))
+                        {
+                            adapter.Fill(dt);
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                // Return an empty table in case of an error to prevent application crashes
+                return dt;
+            }
+
+            return dt;
+        }
+
+
+
         /// <summary>
         /// Retrieves all customers from the database (Active and Inactive) with their status formatted.
         /// </summary>
@@ -262,6 +340,33 @@ namespace AwladAli_Data
             }
             catch (Exception) { }
             return isExist;
+        }
+
+
+        public static bool Disable(int customerID)
+        {
+            bool rowAffected = false;
+            try
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = "UPDATE Customers SET IsActive = 0 WHERE CustomerID = @CustomerID";
+
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@CustomerID", customerID);
+                        connection.Open();
+
+                        object result = command.ExecuteScalar();
+                        if (result != null && int.TryParse(result.ToString(), out int count))
+                        {
+                            rowAffected = (count > 0);
+                        }
+                    }
+                }
+            }
+            catch (Exception) { }
+            return rowAffected;
         }
     }
 }

@@ -125,5 +125,20 @@ namespace AwladAli_Buisness
         {
             return clsCustomerData.IsCustomerExist(phoneNumber);
         }
+
+        public static DataTable GetTop10CustomersByPhoneNumber(string searchText = "")
+        {
+            return clsCustomerData.GetTop10CustomersByPhoneNumber(searchText);
+        }
+
+        public static DataTable GetTop10CustomersByName(string searchText = "")
+        {
+            return clsCustomerData.GetTop10CustomersByName(searchText);
+        }
+
+        public static bool Disable(int customerID)
+        {
+            return clsCustomerData.Disable(customerID);
+        }
     }
 }
