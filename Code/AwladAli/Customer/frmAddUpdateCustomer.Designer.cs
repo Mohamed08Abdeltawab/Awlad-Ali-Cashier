@@ -187,8 +187,8 @@
             this.cbActivation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbActivation.FormattingEnabled = true;
             this.cbActivation.Items.AddRange(new object[] {
-            "مفعل",
-            "معطل"});
+            "نشظ",
+            "غير نشط"});
             this.cbActivation.Location = new System.Drawing.Point(43, 163);
             this.cbActivation.Name = "cbActivation";
             this.cbActivation.Size = new System.Drawing.Size(167, 28);
@@ -219,7 +219,7 @@
             // 
             this.rtxtAddress.Location = new System.Drawing.Point(436, 220);
             this.rtxtAddress.Name = "rtxtAddress";
-            this.rtxtAddress.Size = new System.Drawing.Size(290, 61);
+            this.rtxtAddress.Size = new System.Drawing.Size(290, 66);
             this.rtxtAddress.TabIndex = 194;
             this.rtxtAddress.Text = "";
             this.rtxtAddress.Validating += new System.ComponentModel.CancelEventHandler(this.rtxtAddress_Validating);

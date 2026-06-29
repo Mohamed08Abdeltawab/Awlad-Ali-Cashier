@@ -149,6 +149,12 @@
     <Compile Include="Category\Product\frmAddUpdateProduct.Designer.cs">
       <DependentUpon>frmAddUpdateProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="Customer\ctrlCustomerInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Customer\ctrlCustomerInfo.Designer.cs">
+      <DependentUpon>ctrlCustomerInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Customer\frmAddUpdateCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -259,6 +265,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Category\Product\frmAddUpdateProduct.resx">
       <DependentUpon>frmAddUpdateProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customer\ctrlCustomerInfo.resx">
+      <DependentUpon>ctrlCustomerInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Customer\frmAddUpdateCustomer.resx">
       <DependentUpon>frmAddUpdateCustomer.cs</DependentUpon>

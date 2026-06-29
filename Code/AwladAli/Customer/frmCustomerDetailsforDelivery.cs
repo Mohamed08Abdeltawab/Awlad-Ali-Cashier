@@ -30,7 +30,7 @@ namespace AwladAli.Customer
 
         private void txtPhoneNameSearch_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(cbSearchWith.SelectedIndex == 0)
+            if(cbSearchWith.SelectedIndex == 0)//if search by phone number
             {
                 e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
             }

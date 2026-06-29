@@ -19,6 +19,7 @@ namespace AwladAli
 
         private int _OrderID = -1;
         private clsOrder _Order;//new order object to hold current order data until saving to DB
+        private clsCustomer _Customer; //to hold customer data if order type is delivery
 
         private int _OrderDetailsID = -1;
         private clsOrderDetail _OrderDetails;
@@ -262,6 +263,32 @@ namespace AwladAli
             _Order.TotalAmount = totalAmount;
             _Order.OrderDate = DateTime.Now;
 
+
+            //add order type and customer details if any
+            if(rbTakeaway.Checked)
+            {
+                _Order.OrderType = clsOrder.enOrderType.Takeaway;
+                _Order.CustomerID = null;
+                _Order.DeliveryFee = 0;
+            }
+            else if(rbDelivery.Checked)
+            {
+                _Order.OrderType = clsOrder.enOrderType.Delivery;
+                // هنا ممكن تضيف منطق لجلب بيانات العميل إذا تم إضافته
+                // افترضنا إن عندك كائن _Customer يحتوي على بيانات العميل
+                if (_Customer != null)
+                {
+                    _Order.CustomerID = _Customer.CustomerID;
+                    //_Order.DeliveryFee = _Customer.DeliveryFee; // لو فيه رسوم توصيل //هنعمل شاشتين واحده نختار العميل وواحده نحط فيها رسوم التوصيل في نفس الفورم
+                }
+                else
+                {
+                    MessageBox.Show("برجاء إضافة بيانات العميل للطلب التوصيل", "تنبيه",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+            }
+
             // 3. حفظ الأوردر (Header)
             if (_Order.Save())
             {
@@ -433,13 +460,11 @@ namespace AwladAli
         private void rbTakeaway_CheckedChanged(object sender, EventArgs e)
         {
             llCustomerDetails.Visible = false;
-            _Order.OrderType = clsOrder.enOrderType.Takeaway;
         }
 
         private void rbDelivery_CheckedChanged(object sender, EventArgs e)
         {
             llCustomerDetails.Visible = true;
-            _Order.OrderType =  clsOrder.enOrderType.Delivery;
         }
 
         private void llCustomerDetails_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
