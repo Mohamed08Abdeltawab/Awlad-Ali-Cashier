@@ -45,12 +45,13 @@
             this.lblPhoneNumber = new System.Windows.Forms.Label();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.lblCustomerName = new System.Windows.Forms.Label();
-            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.ActivationflowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.lblActivation = new System.Windows.Forms.Label();
             this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             this.lblAddress = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.llEditDetails = new System.Windows.Forms.LinkLabel();
+            this.llClear = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -59,7 +60,7 @@
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
-            this.flowLayoutPanel4.SuspendLayout();
+            this.ActivationflowLayoutPanel.SuspendLayout();
             this.flowLayoutPanel5.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -246,16 +247,17 @@
             this.lblCustomerName.TabIndex = 197;
             this.lblCustomerName.Text = "[؟؟؟]";
             // 
-            // flowLayoutPanel4
+            // ActivationflowLayoutPanel
             // 
-            this.flowLayoutPanel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.flowLayoutPanel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flowLayoutPanel4.Controls.Add(this.lblActivation);
-            this.flowLayoutPanel4.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(124, 198);
-            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(459, 26);
-            this.flowLayoutPanel4.TabIndex = 201;
+            this.ActivationflowLayoutPanel.BackColor = System.Drawing.SystemColors.Control;
+            this.ActivationflowLayoutPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ActivationflowLayoutPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ActivationflowLayoutPanel.Controls.Add(this.lblActivation);
+            this.ActivationflowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.ActivationflowLayoutPanel.Location = new System.Drawing.Point(124, 198);
+            this.ActivationflowLayoutPanel.Name = "ActivationflowLayoutPanel";
+            this.ActivationflowLayoutPanel.Size = new System.Drawing.Size(459, 26);
+            this.ActivationflowLayoutPanel.TabIndex = 201;
             // 
             // lblActivation
             // 
@@ -293,11 +295,12 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.llClear);
             this.panel1.Controls.Add(this.llEditDetails);
             this.panel1.Controls.Add(this.lblTitle);
             this.panel1.Controls.Add(this.flowLayoutPanel5);
             this.panel1.Controls.Add(this.pictureBox8);
-            this.panel1.Controls.Add(this.flowLayoutPanel4);
+            this.panel1.Controls.Add(this.ActivationflowLayoutPanel);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.flowLayoutPanel3);
             this.panel1.Controls.Add(this.label4);
@@ -318,6 +321,7 @@
             // llEditDetails
             // 
             this.llEditDetails.AutoSize = true;
+            this.llEditDetails.Enabled = false;
             this.llEditDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.llEditDetails.Location = new System.Drawing.Point(13, 17);
             this.llEditDetails.Name = "llEditDetails";
@@ -326,6 +330,20 @@
             this.llEditDetails.TabStop = true;
             this.llEditDetails.Text = "تعديل المعلومات";
             this.llEditDetails.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llEditDetails_LinkClicked);
+            // 
+            // llClear
+            // 
+            this.llClear.AutoSize = true;
+            this.llClear.Enabled = false;
+            this.llClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llClear.LinkColor = System.Drawing.Color.Red;
+            this.llClear.Location = new System.Drawing.Point(35, 58);
+            this.llClear.Name = "llClear";
+            this.llClear.Size = new System.Drawing.Size(49, 25);
+            this.llClear.TabIndex = 204;
+            this.llClear.TabStop = true;
+            this.llClear.Text = "إفراغ";
+            this.llClear.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llClear_LinkClicked);
             // 
             // ctrlCustomerInfo
             // 
@@ -347,8 +365,8 @@
             this.flowLayoutPanel2.PerformLayout();
             this.flowLayoutPanel3.ResumeLayout(false);
             this.flowLayoutPanel3.PerformLayout();
-            this.flowLayoutPanel4.ResumeLayout(false);
-            this.flowLayoutPanel4.PerformLayout();
+            this.ActivationflowLayoutPanel.ResumeLayout(false);
+            this.ActivationflowLayoutPanel.PerformLayout();
             this.flowLayoutPanel5.ResumeLayout(false);
             this.flowLayoutPanel5.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -376,11 +394,12 @@
         private System.Windows.Forms.Label lblPhoneNumber;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.Label lblCustomerName;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.FlowLayoutPanel ActivationflowLayoutPanel;
         private System.Windows.Forms.Label lblActivation;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
         private System.Windows.Forms.Label lblAddress;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.LinkLabel llEditDetails;
+        private System.Windows.Forms.LinkLabel llClear;
     }
 }

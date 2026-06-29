@@ -14,42 +14,75 @@ namespace AwladAli.Customer
     public partial class ctrlCustomerInfo : UserControl
     {
         clsCustomer _Customer;
-        private string _PhoneNumber;
+        public string CurrentPhoneNumber;
+        public bool EditFlage = true;
         public ctrlCustomerInfo()
         {
             InitializeComponent();
         }
         public void LoadCustomerDetailsByPhoneNumber(string phoneNumber)
         {
-            _PhoneNumber = phoneNumber;
+            CurrentPhoneNumber = phoneNumber;
             _Customer = clsCustomer.FindByPhoneNumber(phoneNumber);
-            if( _Customer == null)
+
+            if (_Customer == null)
             {
                 MessageBox.Show("Customer not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ClearCustomerDetails();
                 return;
             }
+
+            // تفعيل أو تعطيل اللينك بناءً على قيمة الفلاغ
+            llEditDetails.Enabled = EditFlage;
+            llClear.Enabled = EditFlage;
 
             lblCustomerID.Text = _Customer.CustomerID.ToString();
             lblPhoneNumber.Text = _Customer.PhoneNumber;
             lblCustomerName.Text = _Customer.FullName;
             lblAddress.Text = _Customer.Address;
             lblActivation.Text = _Customer.IsActive ? "نشط" : "غير نشط";
-            if(_Customer.IsActive)
+
+            if (_Customer.IsActive)
             {
-                lblActivation.ForeColor = Color.Green;
+                ActivationflowLayoutPanel.BackColor = Color.Lime;
             }
             else
             {
-                lblActivation.ForeColor = Color.Red;
+                ActivationflowLayoutPanel.BackColor = Color.Red;
             }
         }
 
         private void llEditDetails_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmAddUpdateCustomer frm = new frmAddUpdateCustomer(_PhoneNumber);
+            if (CurrentPhoneNumber == null)
+            {
+                MessageBox.Show("No customer selected to edit.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            frmAddUpdateCustomer frm = new frmAddUpdateCustomer(CurrentPhoneNumber);
             frm.ShowDialog();
             // Reload customer details after editing
-            LoadCustomerDetailsByPhoneNumber(_PhoneNumber);
+            LoadCustomerDetailsByPhoneNumber(CurrentPhoneNumber);
+        }
+
+        public void ClearCustomerDetails()
+        {
+            CurrentPhoneNumber = null;
+            lblCustomerID.Text = "[؟؟؟]";
+            lblPhoneNumber.Text = "[؟؟؟]";
+            lblCustomerName.Text = "[؟؟؟]";
+            lblAddress.Text = "[؟؟؟]";
+            lblActivation.Text = "[؟؟؟]";
+            ActivationflowLayoutPanel.BackColor = SystemColors.Control;
+
+            // 💡 التصحيح: يجب تطبيق التغيير على الأداة (Control) مباشرة لتسمع في الواجهة فوراً
+            llEditDetails.Enabled = false;
+            llClear.Enabled = false;
+        }
+
+        private void llClear_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ClearCustomerDetails();
         }
     }
 }

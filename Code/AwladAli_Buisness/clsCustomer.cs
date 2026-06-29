@@ -56,7 +56,7 @@ namespace AwladAli_Buisness
         // Internal method to handle data updates via Data Access Layer
         private bool _UpdateCustomer()
         {
-            return clsCustomerData.UpdateCustomer(this.CustomerID, this.PhoneNumber, this.FullName, this.Address, this.Notes, this.IsActive);
+            return clsCustomerData.UpdateCustomer(this.PhoneNumber, this.FullName, this.Address, this.Notes, this.IsActive);
         }
 
         // Static method to find a customer by phone number and return its object instance
@@ -110,15 +110,15 @@ namespace AwladAli_Buisness
         }
 
         // Static method to delete a customer safely if they have no financial records
-        public static bool Delete(int customerID)
+        public static bool Delete(string phoneNumber)
         {
             // Data integrity check: prevent deleting customers associated with older invoices
-            if (clsCustomerData.IsCustomerHasOrders(customerID))
+            if (clsCustomerData.IsCustomerHasOrders(phoneNumber))
             {
                 return false;
             }
 
-            return clsCustomerData.DeleteCustomer(customerID);
+            return clsCustomerData.DeleteCustomer(phoneNumber);
         }
 
         public static bool IsCustomerExist(string phoneNumber)
@@ -136,9 +136,14 @@ namespace AwladAli_Buisness
             return clsCustomerData.GetTop10CustomersByName(searchText);
         }
 
-        public static bool Disable(int customerID)
+        public static bool Disable(string phoneNumber)
         {
-            return clsCustomerData.Disable(customerID);
+            return clsCustomerData.Disable(phoneNumber);
+        }
+
+        public static bool Activate(string phoneNumber)
+        {
+            return clsCustomerData.Activate(phoneNumber);
         }
     }
 }

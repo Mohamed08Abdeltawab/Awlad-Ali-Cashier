@@ -29,17 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cbSearchWith = new System.Windows.Forms.ComboBox();
             this.dgvCustomers = new System.Windows.Forms.DataGridView();
-            this.lblRecordsCount = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.txtPhoneNameSearch = new System.Windows.Forms.TextBox();
-            this.ctrlCustomerInfo1 = new AwladAli.Customer.ctrlCustomerInfo();
-            this.txtDeliveryFees = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.chkDeliveryFeeStatus = new System.Windows.Forms.CheckBox();
             this.cmsCustomers = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.SelectCustomerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,11 +39,19 @@
             this.OnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OffToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblRecordsCount = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.txtPhoneNameSearch = new System.Windows.Forms.TextBox();
+            this.txtDeliveryFees = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.chkDeliveryFeeStatus = new System.Windows.Forms.CheckBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnAddNewCustomer = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.pbIcon = new System.Windows.Forms.PictureBox();
+            this.ctrlCustomerInfo1 = new AwladAli.Customer.ctrlCustomerInfo();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
             this.cmsCustomers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
@@ -79,24 +79,93 @@
             this.dgvCustomers.AllowUserToResizeRows = false;
             this.dgvCustomers.BackgroundColor = System.Drawing.Color.White;
             this.dgvCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCustomers.ContextMenuStrip = this.cmsCustomers;
             this.dgvCustomers.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvCustomers.Location = new System.Drawing.Point(14, 110);
             this.dgvCustomers.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvCustomers.MultiSelect = false;
             this.dgvCustomers.Name = "dgvCustomers";
             this.dgvCustomers.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCustomers.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCustomers.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvCustomers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCustomers.Size = new System.Drawing.Size(744, 211);
             this.dgvCustomers.TabIndex = 193;
             this.dgvCustomers.TabStop = false;
+            this.dgvCustomers.DoubleClick += new System.EventHandler(this.dgvCustomers_DoubleClick);
+            // 
+            // cmsCustomers
+            // 
+            this.cmsCustomers.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.SelectCustomerToolStripMenuItem,
+            this.editToolStripMenuItem,
+            this.InactiveStripMenuItem1,
+            this.deleteToolStripMenuItem});
+            this.cmsCustomers.Name = "contextMenuStrip1";
+            this.cmsCustomers.Size = new System.Drawing.Size(179, 156);
+            this.cmsCustomers.Opening += new System.ComponentModel.CancelEventHandler(this.cmsCustomers_Opening);
+            // 
+            // SelectCustomerToolStripMenuItem
+            // 
+            this.SelectCustomerToolStripMenuItem.Image = global::AwladAli.Properties.Resources.select32;
+            this.SelectCustomerToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.SelectCustomerToolStripMenuItem.Name = "SelectCustomerToolStripMenuItem";
+            this.SelectCustomerToolStripMenuItem.Size = new System.Drawing.Size(178, 38);
+            this.SelectCustomerToolStripMenuItem.Text = "تأكيد إختيار العميل";
+            this.SelectCustomerToolStripMenuItem.Click += new System.EventHandler(this.SelectCustomerToolStripMenuItem_Click);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Image = global::AwladAli.Properties.Resources.edit2_32;
+            this.editToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(178, 38);
+            this.editToolStripMenuItem.Text = "تعديل";
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            // 
+            // InactiveStripMenuItem1
+            // 
+            this.InactiveStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.OnToolStripMenuItem,
+            this.OffToolStripMenuItem});
+            this.InactiveStripMenuItem1.Image = global::AwladAli.Properties.Resources.Activation_32;
+            this.InactiveStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.InactiveStripMenuItem1.Name = "InactiveStripMenuItem1";
+            this.InactiveStripMenuItem1.Size = new System.Drawing.Size(178, 38);
+            this.InactiveStripMenuItem1.Text = "الحالة";
+            // 
+            // OnToolStripMenuItem
+            // 
+            this.OnToolStripMenuItem.Image = global::AwladAli.Properties.Resources.Active_32;
+            this.OnToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.OnToolStripMenuItem.Name = "OnToolStripMenuItem";
+            this.OnToolStripMenuItem.Size = new System.Drawing.Size(186, 38);
+            this.OnToolStripMenuItem.Text = "(ON) تنشيط";
+            this.OnToolStripMenuItem.Click += new System.EventHandler(this.OnToolStripMenuItem_Click);
+            // 
+            // OffToolStripMenuItem
+            // 
+            this.OffToolStripMenuItem.Image = global::AwladAli.Properties.Resources.Inactive_32;
+            this.OffToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.OffToolStripMenuItem.Name = "OffToolStripMenuItem";
+            this.OffToolStripMenuItem.Size = new System.Drawing.Size(186, 38);
+            this.OffToolStripMenuItem.Text = "(OFF) الغاء التنشيط";
+            this.OffToolStripMenuItem.Click += new System.EventHandler(this.OffToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Image = global::AwladAli.Properties.Resources.remove_32;
+            this.deleteToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(178, 38);
+            this.deleteToolStripMenuItem.Text = "حذف";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // lblRecordsCount
             // 
@@ -140,15 +209,6 @@
             this.txtPhoneNameSearch.TextChanged += new System.EventHandler(this.txtPhoneNameSearch_TextChanged);
             this.txtPhoneNameSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhoneNameSearch_KeyPress);
             // 
-            // ctrlCustomerInfo1
-            // 
-            this.ctrlCustomerInfo1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ctrlCustomerInfo1.Location = new System.Drawing.Point(13, 351);
-            this.ctrlCustomerInfo1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ctrlCustomerInfo1.Name = "ctrlCustomerInfo1";
-            this.ctrlCustomerInfo1.Size = new System.Drawing.Size(752, 351);
-            this.ctrlCustomerInfo1.TabIndex = 246;
-            // 
             // txtDeliveryFees
             // 
             this.txtDeliveryFees.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -183,71 +243,6 @@
             this.chkDeliveryFeeStatus.Text = "إضافة مضاريف للتوصيل";
             this.chkDeliveryFeeStatus.UseVisualStyleBackColor = true;
             this.chkDeliveryFeeStatus.CheckedChanged += new System.EventHandler(this.chkDeliveryFeeStatus_CheckedChanged);
-            // 
-            // cmsCustomers
-            // 
-            this.cmsCustomers.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.SelectCustomerToolStripMenuItem,
-            this.editToolStripMenuItem,
-            this.InactiveStripMenuItem1,
-            this.deleteToolStripMenuItem});
-            this.cmsCustomers.Name = "contextMenuStrip1";
-            this.cmsCustomers.Size = new System.Drawing.Size(197, 178);
-            this.cmsCustomers.Opening += new System.ComponentModel.CancelEventHandler(this.cmsCustomers_Opening);
-            this.cmsCustomers.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.cmsCustomers_MouseDoubleClick);
-            // 
-            // SelectCustomerToolStripMenuItem
-            // 
-            this.SelectCustomerToolStripMenuItem.Image = global::AwladAli.Properties.Resources.select32;
-            this.SelectCustomerToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.SelectCustomerToolStripMenuItem.Name = "SelectCustomerToolStripMenuItem";
-            this.SelectCustomerToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
-            this.SelectCustomerToolStripMenuItem.Text = "تأكيد إختيار العميل";
-            this.SelectCustomerToolStripMenuItem.Click += new System.EventHandler(this.SelectCustomerToolStripMenuItem_Click);
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.Image = global::AwladAli.Properties.Resources.edit2_32;
-            this.editToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
-            this.editToolStripMenuItem.Text = "تعديل";
-            // 
-            // InactiveStripMenuItem1
-            // 
-            this.InactiveStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.OnToolStripMenuItem,
-            this.OffToolStripMenuItem});
-            this.InactiveStripMenuItem1.Image = global::AwladAli.Properties.Resources.Activation_32;
-            this.InactiveStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.InactiveStripMenuItem1.Name = "InactiveStripMenuItem1";
-            this.InactiveStripMenuItem1.Size = new System.Drawing.Size(196, 38);
-            this.InactiveStripMenuItem1.Text = "الحالة";
-            // 
-            // OnToolStripMenuItem
-            // 
-            this.OnToolStripMenuItem.Image = global::AwladAli.Properties.Resources.Active_32;
-            this.OnToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.OnToolStripMenuItem.Name = "OnToolStripMenuItem";
-            this.OnToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
-            this.OnToolStripMenuItem.Text = "(ON) تنشيط";
-            // 
-            // OffToolStripMenuItem
-            // 
-            this.OffToolStripMenuItem.Image = global::AwladAli.Properties.Resources.Inactive_32;
-            this.OffToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.OffToolStripMenuItem.Name = "OffToolStripMenuItem";
-            this.OffToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
-            this.OffToolStripMenuItem.Text = "(OFF) الغاء التنشيط";
-            // 
-            // deleteToolStripMenuItem
-            // 
-            this.deleteToolStripMenuItem.Image = global::AwladAli.Properties.Resources.remove_32;
-            this.deleteToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
-            this.deleteToolStripMenuItem.Text = "حذف";
-            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // pictureBox8
             // 
@@ -300,6 +295,7 @@
             this.btnClose.TabIndex = 194;
             this.btnClose.Text = "إغلاق";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // pbIcon
             // 
@@ -310,6 +306,15 @@
             this.pbIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbIcon.TabIndex = 192;
             this.pbIcon.TabStop = false;
+            // 
+            // ctrlCustomerInfo1
+            // 
+            this.ctrlCustomerInfo1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ctrlCustomerInfo1.Location = new System.Drawing.Point(13, 351);
+            this.ctrlCustomerInfo1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ctrlCustomerInfo1.Name = "ctrlCustomerInfo1";
+            this.ctrlCustomerInfo1.Size = new System.Drawing.Size(752, 351);
+            this.ctrlCustomerInfo1.TabIndex = 246;
             // 
             // frmCustomerDetailsforDelivery
             // 

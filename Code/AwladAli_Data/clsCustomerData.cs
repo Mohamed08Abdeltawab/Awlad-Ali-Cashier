@@ -51,7 +51,7 @@ namespace AwladAli_Data
         /// <summary>
         /// Updates an existing customer's data in the database.
         /// </summary>
-        public static bool UpdateCustomer(int customerID, string phoneNumber, string fullName, string address, string notes, bool isActive)
+        public static bool UpdateCustomer(string phoneNumber, string fullName, string address, string notes, bool isActive)
         {
             int rowsAffected = 0;
             try
@@ -59,16 +59,14 @@ namespace AwladAli_Data
                 using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
                 {
                     string query = @"UPDATE Customers 
-                                     SET PhoneNumber = @PhoneNumber, 
-                                         FullName = @FullName, 
+                                     SET FullName = @FullName, 
                                          Address = @Address, 
                                          Notes = @Notes,
                                          IsActive = @IsActive
-                                     WHERE CustomerID = @CustomerID";
+                                     WHERE PhoneNumber = @PhoneNumber";
 
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@CustomerID", customerID);
                         command.Parameters.AddWithValue("@PhoneNumber", phoneNumber.Trim());
                         command.Parameters.AddWithValue("@FullName", fullName.Trim());
                         command.Parameters.AddWithValue("@Address", address.Trim());
@@ -138,7 +136,7 @@ namespace AwladAli_Data
             {
                 using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
                 {
-                    string query = @"SELECT PhoneNumber, FullName, IsActive 
+                    string query = @"SELECT PhoneNumber, FullName, CASE WHEN IsActive = 1 THEN 'نشط' ELSE 'غير نشط' END AS IsActive
                              FROM Customers 
                              WHERE PhoneNumber LIKE @PhoneNumber
                              ORDER BY CustomerID DESC
@@ -147,7 +145,7 @@ namespace AwladAli_Data
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {
                         // Using '%' at the end to find any numbers starting with or containing the input
-                        command.Parameters.AddWithValue("@PhoneNumber", phoneNumber.Trim() + "%");
+                        command.Parameters.AddWithValue("@PhoneNumber","%" + phoneNumber.Trim() + "%");
 
                         connection.Open();
                         using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(command))
@@ -174,7 +172,7 @@ namespace AwladAli_Data
             {
                 using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
                 {
-                    string query = @"SELECT PhoneNumber, FullName, IsActive 
+                    string query = @"SELECT PhoneNumber, FullName, CASE WHEN IsActive = 1 THEN 'نشط' ELSE 'غير نشط' END AS IsActive
                              FROM Customers 
                              WHERE FullName LIKE @FullName
                              ORDER BY CustomerID DESC
@@ -183,7 +181,7 @@ namespace AwladAli_Data
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {
                         // Using '%' at the end to find any names starting with or containing the input
-                        command.Parameters.AddWithValue("@FullName", name.Trim() + "%");
+                        command.Parameters.AddWithValue("@FullName","%" + name.Trim() + "%");
 
                         connection.Open();
                         using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(command))
@@ -261,19 +259,18 @@ namespace AwladAli_Data
         /// <summary>
         /// Deletes a customer permanently from the database.
         /// </summary>
-        public static bool DeleteCustomer(int customerID)
+        public static bool DeleteCustomer(string PhoneNumber)
         {
             int rowsAffected = 0;
             try
             {
                 using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
                 {
-                    string query = "DELETE FROM Customers WHERE CustomerID = @CustomerID";
+                    string query = "DELETE FROM Customers WHERE PhoneNumber = @PhoneNumber";
 
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@CustomerID", customerID);
-
+                        command.Parameters.AddWithValue("@PhoneNumber", PhoneNumber);
                         connection.Open();
                         rowsAffected = command.ExecuteNonQuery();
                     }
@@ -287,18 +284,18 @@ namespace AwladAli_Data
         /// <summary>
         /// Checks if a customer is linked to any existing orders in the system.
         /// </summary>
-        public static bool IsCustomerHasOrders(int customerID)
+        public static bool IsCustomerHasOrders(string PhoneNumber)
         {
             bool hasOrders = false;
             try
             {
                 using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
                 {
-                    string query = "SELECT COUNT(*) FROM Orders WHERE CustomerID = @CustomerID";
+                    string query = "SELECT COUNT(*) FROM Orders WHERE PhoneNumber = @PhoneNumber";
 
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@CustomerID", customerID);
+                        command.Parameters.AddWithValue("@PhoneNumber", PhoneNumber);
                         connection.Open();
 
                         object result = command.ExecuteScalar();
@@ -343,25 +340,45 @@ namespace AwladAli_Data
         }
 
 
-        public static bool Disable(int customerID)
+        public static bool Disable(string PhoneNumber)
         {
             bool rowAffected = false;
             try
             {
                 using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
                 {
-                    string query = "UPDATE Customers SET IsActive = 0 WHERE CustomerID = @CustomerID";
+                    string query = "UPDATE Customers SET IsActive = 0 WHERE PhoneNumber = @PhoneNumber";
 
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@CustomerID", customerID);
+                        command.Parameters.AddWithValue("@PhoneNumber", PhoneNumber);
                         connection.Open();
 
-                        object result = command.ExecuteScalar();
-                        if (result != null && int.TryParse(result.ToString(), out int count))
-                        {
-                            rowAffected = (count > 0);
-                        }
+                        int rowsAffected = command.ExecuteNonQuery();
+                        rowAffected = (rowsAffected > 0);
+                    }
+                }
+            }
+            catch (Exception) { }
+            return rowAffected;
+        }
+
+        public static bool Activate(string PhoneNumber)
+        {
+            bool rowAffected = false;
+            try
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = "UPDATE Customers SET IsActive = 1 WHERE PhoneNumber = @PhoneNumber";
+
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@PhoneNumber", PhoneNumber);
+                        connection.Open();
+
+                        int rowsAffected = command.ExecuteNonQuery();
+                        rowAffected = (rowsAffected > 0);
                     }
                 }
             }
