@@ -152,6 +152,7 @@
     <Compile Include="Customer\ctrlCustomerInfo.Designer.cs">
       <DependentUpon>ctrlCustomerInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Customer\CustomerSavedEventArgsReturnDeliveryData.cs" />
     <Compile Include="Customer\frmAddUpdateCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -310,6 +311,7 @@
     <EmbeddedResource Include="Category\frmProductandExtra.resx">
       <DependentUpon>frmProductandExtra.cs</DependentUpon>
     </EmbeddedResource>
+    <Compile Include="Customer\CustomerSavedEventArgsFillCtrl.cs" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

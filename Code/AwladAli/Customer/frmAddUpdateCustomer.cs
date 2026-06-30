@@ -14,6 +14,7 @@ namespace AwladAli.Customer
 {
     public partial class frmAddUpdateCustomer : Form
     {
+        public event EventHandler<CustomerSavedEventArgsFillCtrl> CustomerSaved;
         public enum enMode { AddNew = 0, Update = 1 };
         private enMode _Mode;
 
@@ -156,6 +157,7 @@ namespace AwladAli.Customer
                 lblTitle.Text = "تعديل عميل";
                 _Mode = enMode.Update; // Change mode to update after saving
                 MessageBox.Show("تم حفظ بيانات العميل بنجاح", "نجاح", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CustomerSaved?.Invoke(this, new CustomerSavedEventArgsFillCtrl(_Customer.PhoneNumber)); // Raise the event to notify subscribers
             }
             else
             {

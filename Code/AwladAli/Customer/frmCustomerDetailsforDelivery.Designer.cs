@@ -51,11 +51,13 @@
             this.btnAddNewCustomer = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.pbIcon = new System.Windows.Forms.PictureBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.ctrlCustomerInfo1 = new AwladAli.Customer.ctrlCustomerInfo();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
             this.cmsCustomers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // cbSearchWith
@@ -211,6 +213,8 @@
             // 
             // txtDeliveryFees
             // 
+            this.txtDeliveryFees.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDeliveryFees.Enabled = false;
             this.txtDeliveryFees.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDeliveryFees.Location = new System.Drawing.Point(370, 750);
             this.txtDeliveryFees.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -218,6 +222,9 @@
             this.txtDeliveryFees.Name = "txtDeliveryFees";
             this.txtDeliveryFees.Size = new System.Drawing.Size(219, 31);
             this.txtDeliveryFees.TabIndex = 247;
+            this.txtDeliveryFees.Text = "0";
+            this.txtDeliveryFees.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDeliveryFees_KeyPress);
+            this.txtDeliveryFees.Validating += new System.ComponentModel.CancelEventHandler(this.txtDeliveryFees_Validating);
             // 
             // label1
             // 
@@ -233,8 +240,6 @@
             // chkDeliveryFeeStatus
             // 
             this.chkDeliveryFeeStatus.AutoSize = true;
-            this.chkDeliveryFeeStatus.Checked = true;
-            this.chkDeliveryFeeStatus.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkDeliveryFeeStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkDeliveryFeeStatus.Location = new System.Drawing.Point(553, 710);
             this.chkDeliveryFeeStatus.Name = "chkDeliveryFeeStatus";
@@ -256,7 +261,6 @@
             // 
             // btnSave
             // 
-            this.btnSave.Enabled = false;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSave.Image = global::AwladAli.Properties.Resources.save32_2;
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -267,6 +271,7 @@
             this.btnSave.TabIndex = 245;
             this.btnSave.Text = "حفظ";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnAddNewCustomer
             // 
@@ -307,6 +312,10 @@
             this.pbIcon.TabIndex = 192;
             this.pbIcon.TabStop = false;
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // ctrlCustomerInfo1
             // 
             this.ctrlCustomerInfo1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -320,6 +329,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(779, 850);
             this.Controls.Add(this.chkDeliveryFeeStatus);
             this.Controls.Add(this.txtDeliveryFees);
@@ -346,6 +356,7 @@
             this.cmsCustomers.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -375,5 +386,6 @@
         private System.Windows.Forms.ToolStripMenuItem OffToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SelectCustomerToolStripMenuItem;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

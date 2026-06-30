@@ -14,7 +14,7 @@ namespace AwladAli.Customer
     public partial class ctrlCustomerInfo : UserControl
     {
         clsCustomer _Customer;
-        public string CurrentPhoneNumber;
+        public string CurrentPhoneNumber = "-1";
         public bool EditFlage = true;
         public ctrlCustomerInfo()
         {
