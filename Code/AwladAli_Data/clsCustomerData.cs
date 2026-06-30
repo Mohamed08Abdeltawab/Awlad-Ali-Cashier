@@ -51,7 +51,7 @@ namespace AwladAli_Data
         /// <summary>
         /// Updates an existing customer's data in the database.
         /// </summary>
-        public static bool UpdateCustomer(string phoneNumber, string fullName, string address, string notes, bool isActive)
+        public static bool UpdateCustomer(int CustomerID, string phoneNumber, string fullName, string address, string notes, bool isActive)
         {
             int rowsAffected = 0;
             try
@@ -59,14 +59,16 @@ namespace AwladAli_Data
                 using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
                 {
                     string query = @"UPDATE Customers 
-                                     SET FullName = @FullName, 
+                                     SET PhoneNumber = @PhoneNumber,
+                                         FullName = @FullName, 
                                          Address = @Address, 
                                          Notes = @Notes,
                                          IsActive = @IsActive
-                                     WHERE PhoneNumber = @PhoneNumber";
+                                     WHERE CustomerID = @CustomerID";
 
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {
+                        command.Parameters.AddWithValue("@CustomerID", CustomerID);
                         command.Parameters.AddWithValue("@PhoneNumber", phoneNumber.Trim());
                         command.Parameters.AddWithValue("@FullName", fullName.Trim());
                         command.Parameters.AddWithValue("@Address", address.Trim());

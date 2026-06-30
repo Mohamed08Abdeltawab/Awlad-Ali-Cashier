@@ -56,7 +56,7 @@ namespace AwladAli_Buisness
         // Internal method to handle data updates via Data Access Layer
         private bool _UpdateCustomer()
         {
-            return clsCustomerData.UpdateCustomer(this.PhoneNumber, this.FullName, this.Address, this.Notes, this.IsActive);
+            return clsCustomerData.UpdateCustomer(this.CustomerID, this.PhoneNumber, this.FullName, this.Address, this.Notes, this.IsActive);
         }
 
         // Static method to find a customer by phone number and return its object instance

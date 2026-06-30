@@ -19,8 +19,9 @@ namespace AwladAli.Customer
         private enMode _Mode;
 
         public enum enCustomerActive { Active = 0, Inactive = 1 };//in save will see condition if == 0 then active else inactive
-        private string _PhoneNumber = "";
+        public string _PhoneNumber = "";
         private clsCustomer _Customer;
+        private clsUser _User;
         public frmAddUpdateCustomer()
         {
             InitializeComponent();
@@ -41,7 +42,12 @@ namespace AwladAli.Customer
                 lblTitle.Text = "اضافة عميل جديد";
                 _Customer = new clsCustomer();
                 cbActivation.SelectedIndex = 0; // Default to Active status
-                lblCreatedByUser.Text = clsGlobal.CurrentUser != null ? clsGlobal.CurrentUser.UserID.ToString() : "N/A";
+
+                _User = clsUser.Find(clsGlobal.CurrentUser.UserID);
+                if (_User != null)
+                    lblCreatedByUser.Text = _User.UserName;
+                else
+                    lblCreatedByUser.Text = "N/A";
             }
             else
             {
@@ -69,7 +75,20 @@ namespace AwladAli.Customer
             rtxtNotes.Text = _Customer.Notes;
             lblCreatedDate.Text = _Customer.CreatedDate.ToString("yyyy-MM-dd HH:mm:ss");
             cbActivation.SelectedIndex = _Customer.IsActive ? 0 : 1; // Assuming IsActive is a boolean
-            lblCreatedByUser.Text = _Customer.CreatedByUserID.HasValue ? _Customer.CreatedByUserID.Value.ToString() : "N/A";
+
+            if (_Customer.CreatedByUserID.HasValue)
+            {
+                _User = clsUser.Find(_Customer.CreatedByUserID.Value);
+
+                if (_User != null)
+                    lblCreatedByUser.Text = _User.UserName;
+                else
+                    lblCreatedByUser.Text = "N/A";
+            }
+            else
+            {
+                lblCreatedByUser.Text = "N/A";
+            }
         }
 
         private void frmAddUpdateCustomer_Load(object sender, EventArgs e)

@@ -62,9 +62,15 @@ namespace AwladAli.Customer
                 return;
             }
             frmAddUpdateCustomer frm = new frmAddUpdateCustomer(CurrentPhoneNumber);
+            frm.CustomerSaved += Frm_CustomerSaved;
             frm.ShowDialog();
             // Reload customer details after editing
             LoadCustomerDetailsByPhoneNumber(CurrentPhoneNumber);
+        }
+
+        private void Frm_CustomerSaved(object sender, CustomerSavedEventArgsFillCtrl e)
+        {
+            CurrentPhoneNumber = e.PhoneNumber;
         }
 
         public void ClearCustomerDetails()

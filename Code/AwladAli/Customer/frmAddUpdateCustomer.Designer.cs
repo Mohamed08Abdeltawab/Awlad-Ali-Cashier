@@ -211,6 +211,7 @@
             this.txtCustomerName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtCustomerName.MaxLength = 50;
             this.txtCustomerName.Name = "txtCustomerName";
+            this.txtCustomerName.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtCustomerName.Size = new System.Drawing.Size(219, 26);
             this.txtCustomerName.TabIndex = 193;
             this.txtCustomerName.Validating += new System.ComponentModel.CancelEventHandler(this.txtCustomerName_Validating);
@@ -219,6 +220,7 @@
             // 
             this.rtxtAddress.Location = new System.Drawing.Point(436, 220);
             this.rtxtAddress.Name = "rtxtAddress";
+            this.rtxtAddress.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.rtxtAddress.Size = new System.Drawing.Size(290, 66);
             this.rtxtAddress.TabIndex = 194;
             this.rtxtAddress.Text = "";
@@ -228,6 +230,7 @@
             // 
             this.rtxtNotes.Location = new System.Drawing.Point(436, 305);
             this.rtxtNotes.Name = "rtxtNotes";
+            this.rtxtNotes.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.rtxtNotes.Size = new System.Drawing.Size(290, 64);
             this.rtxtNotes.TabIndex = 195;
             this.rtxtNotes.Text = "";

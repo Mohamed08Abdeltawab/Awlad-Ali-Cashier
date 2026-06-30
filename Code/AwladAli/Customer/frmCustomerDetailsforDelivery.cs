@@ -138,7 +138,7 @@ namespace AwladAli.Customer
             if (chkDeliveryFeeStatus.Checked)
             {
                 txtDeliveryFees.Enabled = true;
-                txtDeliveryFees.Text = "5";
+                txtDeliveryFees.Text = "20";
                 txtDeliveryFees.Focus(); 
             }
             else
