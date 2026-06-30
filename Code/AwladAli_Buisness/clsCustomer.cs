@@ -145,5 +145,10 @@ namespace AwladAli_Buisness
         {
             return clsCustomerData.Activate(phoneNumber);
         }
+
+        public static int? GetCustomerIDByPhoneNumber(string phoneNumber)
+        {
+            return clsCustomerData.GetCustomerIDByPhoneNumber(phoneNumber);
+        }
     }
 }

@@ -62,6 +62,7 @@ namespace AwladAli
             this.label2 = new System.Windows.Forms.Label();
             this.btnSettings = new System.Windows.Forms.Button();
             this.sessionTimer = new System.Windows.Forms.Timer(this.components);
+            this.pnlTakeawayDelivery = new System.Windows.Forms.Panel();
             this.pnlMainContainer.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pnlFooter.SuspendLayout();
@@ -71,6 +72,7 @@ namespace AwladAli
             this.pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            this.pnlTakeawayDelivery.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlMainContainer
@@ -137,13 +139,7 @@ namespace AwladAli
             this.pnlFooter.AutoSize = true;
             this.pnlFooter.BackColor = System.Drawing.Color.LightGray;
             this.pnlFooter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlFooter.Controls.Add(this.llShowCustomerDetails);
-            this.pnlFooter.Controls.Add(this.pbCancel);
-            this.pnlFooter.Controls.Add(this.llCustomerDetails);
-            this.pnlFooter.Controls.Add(this.pictureBox2);
-            this.pnlFooter.Controls.Add(this.pictureBox5);
-            this.pnlFooter.Controls.Add(this.rbDelivery);
-            this.pnlFooter.Controls.Add(this.rbTakeaway);
+            this.pnlFooter.Controls.Add(this.pnlTakeawayDelivery);
             this.pnlFooter.Controls.Add(this.llReset);
             this.pnlFooter.Controls.Add(this.label1);
             this.pnlFooter.Controls.Add(this.pnlLine);
@@ -161,7 +157,7 @@ namespace AwladAli
             this.llShowCustomerDetails.AutoSize = true;
             this.llShowCustomerDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.llShowCustomerDetails.LinkColor = System.Drawing.Color.Green;
-            this.llShowCustomerDetails.Location = new System.Drawing.Point(823, 67);
+            this.llShowCustomerDetails.Location = new System.Drawing.Point(66, 64);
             this.llShowCustomerDetails.Name = "llShowCustomerDetails";
             this.llShowCustomerDetails.Size = new System.Drawing.Size(168, 25);
             this.llShowCustomerDetails.TabIndex = 185;
@@ -174,7 +170,7 @@ namespace AwladAli
             // 
             this.pbCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbCancel.Image = global::AwladAli.Properties.Resources.cancel32;
-            this.pbCancel.Location = new System.Drawing.Point(997, 67);
+            this.pbCancel.Location = new System.Drawing.Point(240, 64);
             this.pbCancel.Name = "pbCancel";
             this.pbCancel.Size = new System.Drawing.Size(31, 26);
             this.pbCancel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -188,7 +184,7 @@ namespace AwladAli
             this.llCustomerDetails.AutoSize = true;
             this.llCustomerDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.llCustomerDetails.LinkColor = System.Drawing.Color.Red;
-            this.llCustomerDetails.Location = new System.Drawing.Point(843, 68);
+            this.llCustomerDetails.Location = new System.Drawing.Point(86, 64);
             this.llCustomerDetails.Name = "llCustomerDetails";
             this.llCustomerDetails.Size = new System.Drawing.Size(148, 25);
             this.llCustomerDetails.TabIndex = 183;
@@ -200,7 +196,7 @@ namespace AwladAli
             // pictureBox2
             // 
             this.pictureBox2.Image = global::AwladAli.Properties.Resources.delivery32;
-            this.pictureBox2.Location = new System.Drawing.Point(1266, 64);
+            this.pictureBox2.Location = new System.Drawing.Point(509, 61);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(31, 26);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -210,7 +206,7 @@ namespace AwladAli
             // pictureBox5
             // 
             this.pictureBox5.Image = global::AwladAli.Properties.Resources.takeaway32;
-            this.pictureBox5.Location = new System.Drawing.Point(1266, 17);
+            this.pictureBox5.Location = new System.Drawing.Point(509, 13);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(31, 26);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -223,7 +219,7 @@ namespace AwladAli
             this.rbDelivery.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.rbDelivery.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rbDelivery.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbDelivery.Location = new System.Drawing.Point(1034, 64);
+            this.rbDelivery.Location = new System.Drawing.Point(277, 61);
             this.rbDelivery.Name = "rbDelivery";
             this.rbDelivery.Size = new System.Drawing.Size(226, 29);
             this.rbDelivery.TabIndex = 6;
@@ -238,7 +234,7 @@ namespace AwladAli
             this.rbTakeaway.Checked = true;
             this.rbTakeaway.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rbTakeaway.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbTakeaway.Location = new System.Drawing.Point(998, 14);
+            this.rbTakeaway.Location = new System.Drawing.Point(241, 10);
             this.rbTakeaway.Name = "rbTakeaway";
             this.rbTakeaway.Size = new System.Drawing.Size(262, 29);
             this.rbTakeaway.TabIndex = 5;
@@ -448,6 +444,21 @@ namespace AwladAli
             this.sessionTimer.Interval = 1000;
             this.sessionTimer.Tick += new System.EventHandler(this.sessionTimer_Tick);
             // 
+            // pnlTakeawayDelivery
+            // 
+            this.pnlTakeawayDelivery.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlTakeawayDelivery.Controls.Add(this.rbTakeaway);
+            this.pnlTakeawayDelivery.Controls.Add(this.llShowCustomerDetails);
+            this.pnlTakeawayDelivery.Controls.Add(this.rbDelivery);
+            this.pnlTakeawayDelivery.Controls.Add(this.pbCancel);
+            this.pnlTakeawayDelivery.Controls.Add(this.pictureBox5);
+            this.pnlTakeawayDelivery.Controls.Add(this.llCustomerDetails);
+            this.pnlTakeawayDelivery.Controls.Add(this.pictureBox2);
+            this.pnlTakeawayDelivery.Location = new System.Drawing.Point(691, 3);
+            this.pnlTakeawayDelivery.Name = "pnlTakeawayDelivery";
+            this.pnlTakeawayDelivery.Size = new System.Drawing.Size(552, 104);
+            this.pnlTakeawayDelivery.TabIndex = 186;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -475,6 +486,8 @@ namespace AwladAli
             this.pnlHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            this.pnlTakeawayDelivery.ResumeLayout(false);
+            this.pnlTakeawayDelivery.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -509,5 +522,6 @@ namespace AwladAli
         private Label lblTotalPrice;
         private Label lblTotalText;
         private LinkLabel llShowCustomerDetails;
+        private Panel pnlTakeawayDelivery;
     }
 }

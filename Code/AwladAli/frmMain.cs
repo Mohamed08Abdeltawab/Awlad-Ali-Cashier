@@ -23,15 +23,7 @@ namespace AwladAli
         private clsOrder _Order;//new order object to hold current order data until saving to DB
         private clsCustomer _Customer; //to hold customer data if order type is delivery
 
-        private int _OrderDetailsID = -1;
-        private clsOrderDetail _OrderDetails;
-
         clsGlobal.CustomerDetailsInfo _CustomerDetailsInfo;
-        private string _DeliveryFee;
-        private bool _IsDeliveryFeeChecked = false;
-
-        public enum enMode { AddNew = 0, Update = 1 }
-        enMode _Mode = enMode.AddNew;
 
         public frmMain(frmLogin frm)
         {
@@ -55,15 +47,17 @@ namespace AwladAli
         }
         private void _EnableMainScreen()
         {
-            if(clsGlobal.CurrentSessionID == -1)
+            if(clsGlobal.CurrentSessionID == -1 || _CurrentSession == null)
             {
                 flpAddonsContainer.Enabled = false;
                 flpProductCards.Enabled = false;
+                pnlTakeawayDelivery.Enabled = false;
             }
             else
             {
                 flpAddonsContainer.Enabled = true;
                 flpProductCards.Enabled = true;
+                pnlTakeawayDelivery.Enabled = true;
             }
         }
         private void _RefreshMainScreenData()
@@ -121,6 +115,7 @@ namespace AwladAli
         {
             decimal productsTotal = 0;
             decimal extrasTotal = 0;
+            decimal deliveryFee = 0;
 
             // جمع إجمالي الأكلات
             foreach (Control ctrl in flpProductCards.Controls)
@@ -136,8 +131,13 @@ namespace AwladAli
                     extrasTotal += extra.TotalRowPrice;
             }
 
+            if (rbDelivery.Checked)
+            {
+                deliveryFee = decimal.TryParse(_CustomerDetailsInfo.DeliveryFee, out decimal fee) ? fee : 0;
+            }
+
             // عرض المجموع النهائي في الليبل
-            lblTotalPrice.Text = (productsTotal + extrasTotal).ToString("0.00");
+            lblTotalPrice.Text = (productsTotal + extrasTotal + deliveryFee).ToString("0.00");
         }
 
         // 2. تعديل دالة تحميل الإضافات عشان تستخدم الدالة الموحدة
@@ -145,6 +145,8 @@ namespace AwladAli
         {
             flpAddonsContainer.Controls.Clear();
             DataTable dtAllExtras = clsExtra.GetAllExtras();
+
+            if (dtAllExtras == null || dtAllExtras.Rows.Count == 0) return;
 
             foreach (DataRow row in dtAllExtras.Rows)
             {
@@ -162,13 +164,12 @@ namespace AwladAli
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(_SessionID != -1)
+            if (_CurrentSession != null && _SessionID != -1)
             {
-                if (MessageBox.Show("هل أنت متأكد من إنهاء الجلسة قبل الخروج؟", "تأكيد", 
+                if (MessageBox.Show("هل أنت متأكد من إنهاء الجلسة قبل الخروج؟", "تأكيد",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     _EndSessionWhenFormClosing();
-                    //no return here because we want to close the form after ending session
                 }
                 else
                 {
@@ -176,7 +177,7 @@ namespace AwladAli
                     return;
                 }
             }
-            clsSession.CloseAnyActiveSession(); // تأكد من إغلاق أي جلسة مفتوحة قبل الخروج
+            clsSession.CloseAnyActiveSession();
             Application.Exit();
         }
 
@@ -230,6 +231,7 @@ namespace AwladAli
         private void llReset_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             _ClearCurrentOrder();
+            rbTakeaway_CheckedChanged(sender, e);
         }
 
 
@@ -272,7 +274,7 @@ namespace AwladAli
             _Order.SessionID = clsGlobal.CurrentSessionID; // الجلسة الحالية
             _Order.TotalAmount = totalAmount;
             _Order.OrderDate = DateTime.Now;
-
+            ;
 
             //add order type and customer details if any
             if(rbTakeaway.Checked)
@@ -284,12 +286,18 @@ namespace AwladAli
             else if(rbDelivery.Checked)
             {
                 _Order.OrderType = clsOrder.enOrderType.Delivery;
-                // هنا ممكن تضيف منطق لجلب بيانات العميل إذا تم إضافته
-                // افترضنا إن عندك كائن _Customer يحتوي على بيانات العميل
+                //_Order.CustomerID = clsCustomer.GetCustomerIDByPhoneNumber(_CustomerDetailsInfo.PhoneNumber);
+                if(string.IsNullOrEmpty(_CustomerDetailsInfo.PhoneNumber))
+                {
+                    ErrorFlage = 3;
+                    return false;
+                }
+
+                _Customer = clsCustomer.FindByPhoneNumber(_CustomerDetailsInfo.PhoneNumber);
                 if (_Customer != null)
                 {
                     _Order.CustomerID = _Customer.CustomerID;
-                    //_Order.DeliveryFee = _Customer.DeliveryFee; // لو فيه رسوم توصيل //هنعمل شاشتين واحده نختار العميل وواحده نحط فيها رسوم التوصيل في نفس الفورم
+                    _Order.DeliveryFee = decimal.TryParse(_CustomerDetailsInfo.DeliveryFee, out decimal fee) ? fee : 0;
                 }
                 else
                 {
@@ -303,7 +311,10 @@ namespace AwladAli
             if (_Order.Save())
             {
                 _OrderID = _Order.OrderID; // دلوقتى معانا الـ ID الحقيقي
-                _CurrentSession.TotalCash += totalAmount; // تحديث إجمالي المبيعات في الجلسة الحالية
+                if (_CurrentSession != null)
+                {
+                    _CurrentSession.TotalCash += totalAmount;
+                }
 
                 // 4. حفظ تفاصيل الأكلات من الـ CategoryCards
                 foreach (Control ctrl in flpProductCards.Controls)
@@ -371,6 +382,11 @@ namespace AwladAli
             {
                 MessageBox.Show("برجاء إتمام الطلب أولا", "تنبيه",
                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if(ErrorFlage == 3)
+            {
+                MessageBox.Show("برجاء إضافة بيانات العميل للطلب التوصيل", "تنبيه",
+                                   MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
@@ -470,11 +486,17 @@ namespace AwladAli
         private void rbTakeaway_CheckedChanged(object sender, EventArgs e)
         {
             llCustomerDetails.Visible = false;
+            llShowCustomerDetails.Visible = false;
+            llCustomerDetails.Visible = false;
+            pbCancel.Visible = false;
+            _CustomerDetailsInfo = default(clsGlobal.CustomerDetailsInfo);
+            UpdateGrandTotal();
         }
 
         private void rbDelivery_CheckedChanged(object sender, EventArgs e)
         {
             llCustomerDetails.Visible = true;
+            UpdateGrandTotal();
         }
 
         private void llCustomerDetails_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -489,6 +511,7 @@ namespace AwladAli
                 llCustomerDetails.Visible = false;
                 pbCancel.Visible = true;
             }
+            UpdateGrandTotal();
         }
 
         public void frm_DeliveryDataBack(object sender, CustomerSavedEventArgsReturnDeliveryData e)
@@ -501,6 +524,7 @@ namespace AwladAli
             frmCustomerDetailsforDelivery frm = new frmCustomerDetailsforDelivery(_CustomerDetailsInfo);
             frm.DeliveryDataBack += frm_DeliveryDataBack;
             frm.ShowDialog();
+            UpdateGrandTotal();
         }
 
 
@@ -510,6 +534,7 @@ namespace AwladAli
             llCustomerDetails.Visible = true;
             pbCancel.Visible = false;
             _CustomerDetailsInfo = default(clsGlobal.CustomerDetailsInfo);
+            UpdateGrandTotal();
         }
     }
 }

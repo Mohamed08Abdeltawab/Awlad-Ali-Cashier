@@ -387,5 +387,39 @@ namespace AwladAli_Data
             catch (Exception) { }
             return rowAffected;
         }
+
+        public static int? GetCustomerIDByPhoneNumber(string phoneNumber)
+{
+    int? customerID = null;
+    try
+    {
+        using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
+        {
+            // كويري لجلب الـ ID بناءً على رقم الهاتف
+            string query = "SELECT CustomerID FROM Customers WHERE PhoneNumber = @PhoneNumber LIMIT 1;";
+
+            using (SQLiteCommand command = new SQLiteCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@PhoneNumber", phoneNumber.Trim());
+                
+                connection.Open();
+                object result = command.ExecuteScalar();
+
+                // التحقق من أن النتيجة ليست فارغة وقابلة للتحويل لرقم
+                if (result != null && int.TryParse(result.ToString(), out int id))
+                {
+                    customerID = id;
+                }
+            }
+        }
+    }
+    catch (Exception) 
+    { 
+        // في حالة حدوث أي خطأ نرجع null لأمان الكود
+        customerID = null; 
+    }
+
+    return customerID;
+}
     }
 }
