@@ -74,7 +74,6 @@ namespace AwladAli.Login
         private void frmLogin_Load(object sender, EventArgs e)
         {
             string UserName = "";
-
             if (clsGlobal.GetStoredCredential(ref UserName))
             {
                 txtUserName.Text = UserName;
@@ -82,6 +81,8 @@ namespace AwladAli.Login
             }
             else
                 chkRememberMe.Checked = false;
+
+            txtPassword.Focus();
         }
 
         private void llHidePassword_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

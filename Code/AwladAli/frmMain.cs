@@ -1,5 +1,6 @@
 ﻿using AwladAli.Bill;
 using AwladAli.Category.Extra;
+using AwladAli.Customer;
 using AwladAli.GlobalClasses;
 using AwladAli.Login;
 using AwladAli.Product;
@@ -9,6 +10,7 @@ using AwladAli_Buisness;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Security.Policy;
 using System.Windows.Forms;
 
 namespace AwladAli
@@ -23,6 +25,14 @@ namespace AwladAli
 
         private int _OrderDetailsID = -1;
         private clsOrderDetail _OrderDetails;
+
+        clsGlobal.CustomerDetailsInfo _CustomerDetailsInfo;
+        private string _DeliveryFee;
+        private bool _IsDeliveryFeeChecked = false;
+
+        public enum enMode { AddNew = 0, Update = 1 }
+        enMode _Mode = enMode.AddNew;
+
         public frmMain(frmLogin frm)
         {
             InitializeComponent();
@@ -469,12 +479,37 @@ namespace AwladAli
 
         private void llCustomerDetails_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            //display screen Add Customer details
-            //we should use object of customer in main class
-            //_Customer = ...
-            //update order and change its type for this thing  get fee and customer id from customer object
+            frmCustomerDetailsforDelivery frm = new frmCustomerDetailsforDelivery();
+            frm.DeliveryDataBack += frm_DeliveryDataBack;
+            frm.ShowDialog();
 
-            //check if _customer is not null change text and color of link label to show that customer is added
+            if (!string.IsNullOrEmpty(_CustomerDetailsInfo.PhoneNumber))
+            {
+                llShowCustomerDetails.Visible = true;
+                llCustomerDetails.Visible = false;
+                pbCancel.Visible = true;
+            }
+        }
+
+        public void frm_DeliveryDataBack(object sender, CustomerSavedEventArgsReturnDeliveryData e)
+        {
+            _CustomerDetailsInfo = e.CustomerDetailsInfo;
+        }
+
+        private void llShowCustomerDetails_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmCustomerDetailsforDelivery frm = new frmCustomerDetailsforDelivery(_CustomerDetailsInfo);
+            frm.DeliveryDataBack += frm_DeliveryDataBack;
+            frm.ShowDialog();
+        }
+
+
+        private void pbCancel_Click(object sender, EventArgs e)
+        {
+            llShowCustomerDetails.Visible = false;
+            llCustomerDetails.Visible = true;
+            pbCancel.Visible = false;
+            _CustomerDetailsInfo = default(clsGlobal.CustomerDetailsInfo);
         }
     }
 }

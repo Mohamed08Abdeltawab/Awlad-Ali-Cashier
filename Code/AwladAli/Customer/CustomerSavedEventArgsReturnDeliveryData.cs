@@ -1,16 +1,16 @@
-﻿using System;
+﻿using AwladAli.GlobalClasses;
+using AwladAli_Buisness;
+using System;
 
 
 namespace AwladAli.Customer
 {
     public class CustomerSavedEventArgsReturnDeliveryData : EventArgs
     {
-        public string PhoneNumber { get; }
-        public string DeliveryFee { get; }
-        public CustomerSavedEventArgsReturnDeliveryData(string phoneNumber, string deliveryFee)
+        public clsGlobal.CustomerDetailsInfo CustomerDetailsInfo { get; }
+        public CustomerSavedEventArgsReturnDeliveryData(clsGlobal.CustomerDetailsInfo details)
         {
-            PhoneNumber = phoneNumber;
-            DeliveryFee = deliveryFee;
+            CustomerDetailsInfo = details;
         }
     }
 }

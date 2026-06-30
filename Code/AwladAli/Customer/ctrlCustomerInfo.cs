@@ -16,6 +16,7 @@ namespace AwladAli.Customer
         clsCustomer _Customer;
         public string CurrentPhoneNumber = "-1";
         public bool EditFlage = true;
+        public bool IsActive = false;
         public ctrlCustomerInfo()
         {
             InitializeComponent();
@@ -41,6 +42,7 @@ namespace AwladAli.Customer
             lblCustomerName.Text = _Customer.FullName;
             lblAddress.Text = _Customer.Address;
             lblActivation.Text = _Customer.IsActive ? "نشط" : "غير نشط";
+            IsActive = _Customer.IsActive;
 
             if (_Customer.IsActive)
             {
@@ -73,6 +75,7 @@ namespace AwladAli.Customer
             lblCustomerName.Text = "[؟؟؟]";
             lblAddress.Text = "[؟؟؟]";
             lblActivation.Text = "[؟؟؟]";
+            IsActive = false;
             ActivationflowLayoutPanel.BackColor = SystemColors.Control;
 
             // 💡 التصحيح: يجب تطبيق التغيير على الأداة (Control) مباشرة لتسمع في الواجهة فوراً

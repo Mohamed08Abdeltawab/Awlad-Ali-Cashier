@@ -8,7 +8,7 @@ using Microsoft.Win32; // Required for Registry
 
 namespace AwladAli.GlobalClasses
 {
-    internal static class clsGlobal
+    public static class clsGlobal
     {
         public static clsUser CurrentUser;
         public static int CurrentSessionID = -1;
@@ -94,6 +94,14 @@ namespace AwladAli.GlobalClasses
         public static void ShowInfoMessage(string message)
         {
             MessageBox.Show(message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+
+        public struct CustomerDetailsInfo
+        {
+            public string PhoneNumber;
+            public string DeliveryFee;
+            public bool DeliveryFeeChecked;
         }
     }
 

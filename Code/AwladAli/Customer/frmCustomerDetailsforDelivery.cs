@@ -1,13 +1,16 @@
-﻿using AwladAli_Buisness;
+﻿using AwladAli.GlobalClasses;
+using AwladAli_Buisness;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static AwladAli.GlobalClasses.clsGlobal;
 
 namespace AwladAli.Customer
 {
@@ -15,11 +18,23 @@ namespace AwladAli.Customer
     public partial class frmCustomerDetailsforDelivery : Form
     {
         public event EventHandler<CustomerSavedEventArgsReturnDeliveryData> DeliveryDataBack;
+        private enum enMode { AddNew =  0, Update = 1 }
+        enMode _Mode = enMode.AddNew;
         //clsCustomer _Customer;
         DataTable _dtCustomers;
+
+        clsGlobal.CustomerDetailsInfo _CustomerDetailsInfo;
         public frmCustomerDetailsforDelivery()
         {
             InitializeComponent();
+            _Mode = enMode.AddNew;
+        }
+
+        public frmCustomerDetailsforDelivery(clsGlobal.CustomerDetailsInfo details)
+        {
+            InitializeComponent();
+            _CustomerDetailsInfo = details;
+            _Mode = enMode.Update;
         }
 
         private void frmCustomerDetailsforDelivery_Load(object sender, EventArgs e)
@@ -29,11 +44,36 @@ namespace AwladAli.Customer
 
         private void _LoadCustomerDetails()
         {
-            cbSearchWith.SelectedIndex = 0; // Default to search by phone number
-            txtPhoneNameSearch.Text = "";
+            if (_Mode == enMode.AddNew)
+            {
+                cbSearchWith.SelectedIndex = 0; // Default to search by phone number
+                txtPhoneNameSearch.Text = "";
 
-            txtPhoneNameSearch_TextChanged(null, null);
-            txtPhoneNameSearch.Focus();
+                txtPhoneNameSearch_TextChanged(null, null);
+                txtPhoneNameSearch.Focus();
+                ctrlCustomerInfo1.ClearCustomerDetails();
+                chkDeliveryFeeStatus.Checked = false;
+            }
+            else
+            {
+                if (clsCustomer.IsCustomerExist(_CustomerDetailsInfo.PhoneNumber))
+                {
+                    cbSearchWith.SelectedIndex = 0; // Default to search by phone number
+                    txtPhoneNameSearch.Text = _CustomerDetailsInfo.PhoneNumber;
+
+                    txtPhoneNameSearch_TextChanged(null, null);
+                    txtPhoneNameSearch.Focus();
+
+                    ctrlCustomerInfo1.LoadCustomerDetailsByPhoneNumber(_CustomerDetailsInfo.PhoneNumber);
+                    chkDeliveryFeeStatus.Checked = _CustomerDetailsInfo.DeliveryFeeChecked;
+                    txtDeliveryFees.Text = _CustomerDetailsInfo.DeliveryFee;
+                }
+                else
+                {
+                    MessageBox.Show("لا توجد بينات متاحلة لرقم الهاتف: " + _CustomerDetailsInfo.PhoneNumber, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+                
         }
 
         private void txtPhoneNameSearch_KeyPress(object sender, KeyPressEventArgs e)
@@ -288,8 +328,6 @@ namespace AwladAli.Customer
                 return;
             }
 
-
-
             string currentPhone = ctrlCustomerInfo1.CurrentPhoneNumber;
             if (!clsCustomer.IsCustomerExist(currentPhone))
             {
@@ -298,10 +336,21 @@ namespace AwladAli.Customer
                 return;
             }
 
+            if (!ctrlCustomerInfo1.IsActive)
+            {
+                MessageBox.Show("لا يمكن إختيار عميل غير نشط برجاء إعادة تنشيطة.",
+                                "خطأ في اختيار العميل", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             string deliveryFeesToSend = chkDeliveryFeeStatus.Checked ? txtDeliveryFees.Text.Trim() : "0";
 
+            _CustomerDetailsInfo.PhoneNumber = currentPhone;
+            _CustomerDetailsInfo.DeliveryFee = deliveryFeesToSend;
+            _CustomerDetailsInfo.DeliveryFeeChecked = chkDeliveryFeeStatus.Checked;
 
-            DeliveryDataBack?.Invoke(this, new CustomerSavedEventArgsReturnDeliveryData(ctrlCustomerInfo1.CurrentPhoneNumber, deliveryFeesToSend));
+
+            DeliveryDataBack?.Invoke(this, new CustomerSavedEventArgsReturnDeliveryData(_CustomerDetailsInfo));
             this.Close();
         }
     }

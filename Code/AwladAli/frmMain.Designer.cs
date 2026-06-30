@@ -39,6 +39,7 @@ namespace AwladAli
             this.flpAddonsContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.flpProductCards = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlFooter = new System.Windows.Forms.Panel();
+            this.llShowCustomerDetails = new System.Windows.Forms.LinkLabel();
             this.pbCancel = new System.Windows.Forms.PictureBox();
             this.llCustomerDetails = new System.Windows.Forms.LinkLabel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -136,6 +137,7 @@ namespace AwladAli
             this.pnlFooter.AutoSize = true;
             this.pnlFooter.BackColor = System.Drawing.Color.LightGray;
             this.pnlFooter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlFooter.Controls.Add(this.llShowCustomerDetails);
             this.pnlFooter.Controls.Add(this.pbCancel);
             this.pnlFooter.Controls.Add(this.llCustomerDetails);
             this.pnlFooter.Controls.Add(this.pictureBox2);
@@ -154,8 +156,23 @@ namespace AwladAli
             this.pnlFooter.Size = new System.Drawing.Size(1924, 114);
             this.pnlFooter.TabIndex = 1;
             // 
+            // llShowCustomerDetails
+            // 
+            this.llShowCustomerDetails.AutoSize = true;
+            this.llShowCustomerDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llShowCustomerDetails.LinkColor = System.Drawing.Color.Green;
+            this.llShowCustomerDetails.Location = new System.Drawing.Point(823, 67);
+            this.llShowCustomerDetails.Name = "llShowCustomerDetails";
+            this.llShowCustomerDetails.Size = new System.Drawing.Size(168, 25);
+            this.llShowCustomerDetails.TabIndex = 185;
+            this.llShowCustomerDetails.TabStop = true;
+            this.llShowCustomerDetails.Text = "عرض معلومات العميل";
+            this.llShowCustomerDetails.Visible = false;
+            this.llShowCustomerDetails.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llShowCustomerDetails_LinkClicked);
+            // 
             // pbCancel
             // 
+            this.pbCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbCancel.Image = global::AwladAli.Properties.Resources.cancel32;
             this.pbCancel.Location = new System.Drawing.Point(997, 67);
             this.pbCancel.Name = "pbCancel";
@@ -164,6 +181,7 @@ namespace AwladAli
             this.pbCancel.TabIndex = 184;
             this.pbCancel.TabStop = false;
             this.pbCancel.Visible = false;
+            this.pbCancel.Click += new System.EventHandler(this.pbCancel_Click);
             // 
             // llCustomerDetails
             // 
@@ -490,5 +508,6 @@ namespace AwladAli
         private Button btnSaveandShowOrderInfo;
         private Label lblTotalPrice;
         private Label lblTotalText;
+        private LinkLabel llShowCustomerDetails;
     }
 }
