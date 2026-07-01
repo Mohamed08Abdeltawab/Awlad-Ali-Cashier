@@ -138,6 +138,8 @@ namespace AwladAli
             }
 
             // عرض المجموع النهائي في الليبل
+            lblMealPrice.Text = (productsTotal + extrasTotal).ToString("0.00");
+            lblDeliveryFee.Text = deliveryFee.ToString("0.00");
             lblTotalPrice.Text = (productsTotal + extrasTotal + deliveryFee).ToString("0.00");
         }
 
@@ -223,6 +225,8 @@ namespace AwladAli
 
             // 3. تصفير إجمالي السعر في الشاشة الرئيسية
             lblTotalPrice.Text = "0.00";
+            lblMealPrice.Text = "0.00";
+            lblDeliveryFee.Text = "0.00";
 
             // 4. إعادة تهيئة كائن الأوردر
             _Order = new clsOrder();
@@ -257,7 +261,7 @@ namespace AwladAli
         {
             ErrorFlage = 0;
             // 1. حساب الإجمالي النهائي قبل الحفظ
-            decimal totalAmount = Convert.ToDecimal(lblTotalPrice.Text);
+            decimal totalAmount = Convert.ToDecimal(lblMealPrice.Text);
             if(clsGlobal.CurrentSessionID == -1)
             {
                 ErrorFlage = 1;
@@ -275,7 +279,6 @@ namespace AwladAli
             _Order.SessionID = clsGlobal.CurrentSessionID; // الجلسة الحالية
             _Order.TotalAmount = totalAmount;
             _Order.OrderDate = DateTime.Now;
-            ;
 
             //add order type and customer details if any
             if(rbTakeaway.Checked)
@@ -298,7 +301,7 @@ namespace AwladAli
                 if (_Customer != null)
                 {
                     _Order.CustomerID = _Customer.CustomerID;
-                    _Order.DeliveryFee = decimal.TryParse(_CustomerDetailsInfo.DeliveryFee, out decimal fee) ? fee : 0;
+                    _Order.DeliveryFee = decimal.TryParse(lblDeliveryFee.Text, out decimal fee) ? fee : 0;
                 }
                 else
                 {
@@ -490,6 +493,7 @@ namespace AwladAli
             llShowCustomerDetails.Visible = false;
             llCustomerDetails.Visible = false;
             pbCancel.Visible = false;
+            lblDeliveryFee.Text = "0.00";
             _CustomerDetailsInfo = default(clsGlobal.CustomerDetailsInfo);
             UpdateGrandTotal();
         }

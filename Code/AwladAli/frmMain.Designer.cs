@@ -39,13 +39,14 @@ namespace AwladAli
             this.flpAddonsContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.flpProductCards = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlFooter = new System.Windows.Forms.Panel();
+            this.pnlTakeawayDelivery = new System.Windows.Forms.Panel();
+            this.rbTakeaway = new System.Windows.Forms.RadioButton();
             this.llShowCustomerDetails = new System.Windows.Forms.LinkLabel();
+            this.rbDelivery = new System.Windows.Forms.RadioButton();
             this.pbCancel = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.llCustomerDetails = new System.Windows.Forms.LinkLabel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.rbDelivery = new System.Windows.Forms.RadioButton();
-            this.rbTakeaway = new System.Windows.Forms.RadioButton();
             this.llReset = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlLine = new System.Windows.Forms.Panel();
@@ -62,17 +63,22 @@ namespace AwladAli
             this.label2 = new System.Windows.Forms.Label();
             this.btnSettings = new System.Windows.Forms.Button();
             this.sessionTimer = new System.Windows.Forms.Timer(this.components);
-            this.pnlTakeawayDelivery = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblMealPrice = new System.Windows.Forms.Label();
+            this.lblDeliveryFee = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.pnlMainContainer.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pnlFooter.SuspendLayout();
+            this.pnlTakeawayDelivery.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCancel)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
-            this.pnlTakeawayDelivery.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlMainContainer
@@ -139,6 +145,12 @@ namespace AwladAli
             this.pnlFooter.AutoSize = true;
             this.pnlFooter.BackColor = System.Drawing.Color.LightGray;
             this.pnlFooter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlFooter.Controls.Add(this.label6);
+            this.pnlFooter.Controls.Add(this.label5);
+            this.pnlFooter.Controls.Add(this.lblDeliveryFee);
+            this.pnlFooter.Controls.Add(this.label7);
+            this.pnlFooter.Controls.Add(this.lblMealPrice);
+            this.pnlFooter.Controls.Add(this.label4);
             this.pnlFooter.Controls.Add(this.pnlTakeawayDelivery);
             this.pnlFooter.Controls.Add(this.llReset);
             this.pnlFooter.Controls.Add(this.label1);
@@ -152,12 +164,43 @@ namespace AwladAli
             this.pnlFooter.Size = new System.Drawing.Size(1924, 114);
             this.pnlFooter.TabIndex = 1;
             // 
+            // pnlTakeawayDelivery
+            // 
+            this.pnlTakeawayDelivery.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlTakeawayDelivery.Controls.Add(this.rbTakeaway);
+            this.pnlTakeawayDelivery.Controls.Add(this.llShowCustomerDetails);
+            this.pnlTakeawayDelivery.Controls.Add(this.rbDelivery);
+            this.pnlTakeawayDelivery.Controls.Add(this.pbCancel);
+            this.pnlTakeawayDelivery.Controls.Add(this.pictureBox5);
+            this.pnlTakeawayDelivery.Controls.Add(this.llCustomerDetails);
+            this.pnlTakeawayDelivery.Controls.Add(this.pictureBox2);
+            this.pnlTakeawayDelivery.Location = new System.Drawing.Point(691, 3);
+            this.pnlTakeawayDelivery.Name = "pnlTakeawayDelivery";
+            this.pnlTakeawayDelivery.Size = new System.Drawing.Size(552, 104);
+            this.pnlTakeawayDelivery.TabIndex = 186;
+            // 
+            // rbTakeaway
+            // 
+            this.rbTakeaway.AutoSize = true;
+            this.rbTakeaway.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.rbTakeaway.Checked = true;
+            this.rbTakeaway.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rbTakeaway.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbTakeaway.Location = new System.Drawing.Point(241, 10);
+            this.rbTakeaway.Name = "rbTakeaway";
+            this.rbTakeaway.Size = new System.Drawing.Size(262, 29);
+            this.rbTakeaway.TabIndex = 5;
+            this.rbTakeaway.TabStop = true;
+            this.rbTakeaway.Text = "(Takeaway) إستلام من المحل";
+            this.rbTakeaway.UseVisualStyleBackColor = true;
+            this.rbTakeaway.CheckedChanged += new System.EventHandler(this.rbTakeaway_CheckedChanged);
+            // 
             // llShowCustomerDetails
             // 
             this.llShowCustomerDetails.AutoSize = true;
             this.llShowCustomerDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.llShowCustomerDetails.LinkColor = System.Drawing.Color.Green;
-            this.llShowCustomerDetails.Location = new System.Drawing.Point(66, 64);
+            this.llShowCustomerDetails.Location = new System.Drawing.Point(49, 63);
             this.llShowCustomerDetails.Name = "llShowCustomerDetails";
             this.llShowCustomerDetails.Size = new System.Drawing.Size(168, 25);
             this.llShowCustomerDetails.TabIndex = 185;
@@ -166,11 +209,25 @@ namespace AwladAli
             this.llShowCustomerDetails.Visible = false;
             this.llShowCustomerDetails.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llShowCustomerDetails_LinkClicked);
             // 
+            // rbDelivery
+            // 
+            this.rbDelivery.AutoSize = true;
+            this.rbDelivery.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.rbDelivery.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rbDelivery.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbDelivery.Location = new System.Drawing.Point(277, 61);
+            this.rbDelivery.Name = "rbDelivery";
+            this.rbDelivery.Size = new System.Drawing.Size(226, 29);
+            this.rbDelivery.TabIndex = 6;
+            this.rbDelivery.Text = "(Delivery) توصيل للمنزل";
+            this.rbDelivery.UseVisualStyleBackColor = true;
+            this.rbDelivery.CheckedChanged += new System.EventHandler(this.rbDelivery_CheckedChanged);
+            // 
             // pbCancel
             // 
             this.pbCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbCancel.Image = global::AwladAli.Properties.Resources.cancel32;
-            this.pbCancel.Location = new System.Drawing.Point(240, 64);
+            this.pbCancel.Location = new System.Drawing.Point(12, 64);
             this.pbCancel.Name = "pbCancel";
             this.pbCancel.Size = new System.Drawing.Size(31, 26);
             this.pbCancel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -179,12 +236,22 @@ namespace AwladAli
             this.pbCancel.Visible = false;
             this.pbCancel.Click += new System.EventHandler(this.pbCancel_Click);
             // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::AwladAli.Properties.Resources.takeaway32;
+            this.pictureBox5.Location = new System.Drawing.Point(509, 13);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(31, 26);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 181;
+            this.pictureBox5.TabStop = false;
+            // 
             // llCustomerDetails
             // 
             this.llCustomerDetails.AutoSize = true;
             this.llCustomerDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.llCustomerDetails.LinkColor = System.Drawing.Color.Red;
-            this.llCustomerDetails.Location = new System.Drawing.Point(86, 64);
+            this.llCustomerDetails.Location = new System.Drawing.Point(58, 61);
             this.llCustomerDetails.Name = "llCustomerDetails";
             this.llCustomerDetails.Size = new System.Drawing.Size(148, 25);
             this.llCustomerDetails.TabIndex = 183;
@@ -203,46 +270,6 @@ namespace AwladAli
             this.pictureBox2.TabIndex = 182;
             this.pictureBox2.TabStop = false;
             // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = global::AwladAli.Properties.Resources.takeaway32;
-            this.pictureBox5.Location = new System.Drawing.Point(509, 13);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(31, 26);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 181;
-            this.pictureBox5.TabStop = false;
-            // 
-            // rbDelivery
-            // 
-            this.rbDelivery.AutoSize = true;
-            this.rbDelivery.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.rbDelivery.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rbDelivery.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbDelivery.Location = new System.Drawing.Point(277, 61);
-            this.rbDelivery.Name = "rbDelivery";
-            this.rbDelivery.Size = new System.Drawing.Size(226, 29);
-            this.rbDelivery.TabIndex = 6;
-            this.rbDelivery.Text = "(Delivery) توصيل للمنزل";
-            this.rbDelivery.UseVisualStyleBackColor = true;
-            this.rbDelivery.CheckedChanged += new System.EventHandler(this.rbDelivery_CheckedChanged);
-            // 
-            // rbTakeaway
-            // 
-            this.rbTakeaway.AutoSize = true;
-            this.rbTakeaway.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.rbTakeaway.Checked = true;
-            this.rbTakeaway.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rbTakeaway.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbTakeaway.Location = new System.Drawing.Point(241, 10);
-            this.rbTakeaway.Name = "rbTakeaway";
-            this.rbTakeaway.Size = new System.Drawing.Size(262, 29);
-            this.rbTakeaway.TabIndex = 5;
-            this.rbTakeaway.TabStop = true;
-            this.rbTakeaway.Text = "(Takeaway) إستلام من المحل";
-            this.rbTakeaway.UseVisualStyleBackColor = true;
-            this.rbTakeaway.CheckedChanged += new System.EventHandler(this.rbTakeaway_CheckedChanged);
-            // 
             // llReset
             // 
             this.llReset.AutoSize = true;
@@ -260,9 +287,9 @@ namespace AwladAli
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
-            this.label1.Location = new System.Drawing.Point(1452, 29);
+            this.label1.Location = new System.Drawing.Point(1389, 58);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 60);
+            this.label1.Size = new System.Drawing.Size(97, 43);
             this.label1.TabIndex = 3;
             this.label1.Text = "جُنية";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -295,9 +322,9 @@ namespace AwladAli
             this.lblTotalPrice.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
             this.lblTotalPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
             this.lblTotalPrice.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblTotalPrice.Location = new System.Drawing.Point(1555, 29);
+            this.lblTotalPrice.Location = new System.Drawing.Point(1492, 58);
             this.lblTotalPrice.Name = "lblTotalPrice";
-            this.lblTotalPrice.Size = new System.Drawing.Size(160, 60);
+            this.lblTotalPrice.Size = new System.Drawing.Size(164, 43);
             this.lblTotalPrice.TabIndex = 1;
             this.lblTotalPrice.Text = "0.00";
             this.lblTotalPrice.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -306,9 +333,9 @@ namespace AwladAli
             // 
             this.lblTotalText.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblTotalText.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalText.Location = new System.Drawing.Point(1681, 29);
+            this.lblTotalText.Location = new System.Drawing.Point(1677, 51);
             this.lblTotalText.Name = "lblTotalText";
-            this.lblTotalText.Size = new System.Drawing.Size(207, 50);
+            this.lblTotalText.Size = new System.Drawing.Size(184, 50);
             this.lblTotalText.TabIndex = 2;
             this.lblTotalText.Text = ":أجمالي السعر";
             this.lblTotalText.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -444,20 +471,81 @@ namespace AwladAli
             this.sessionTimer.Interval = 1000;
             this.sessionTimer.Tick += new System.EventHandler(this.sessionTimer_Tick);
             // 
-            // pnlTakeawayDelivery
+            // label4
             // 
-            this.pnlTakeawayDelivery.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pnlTakeawayDelivery.Controls.Add(this.rbTakeaway);
-            this.pnlTakeawayDelivery.Controls.Add(this.llShowCustomerDetails);
-            this.pnlTakeawayDelivery.Controls.Add(this.rbDelivery);
-            this.pnlTakeawayDelivery.Controls.Add(this.pbCancel);
-            this.pnlTakeawayDelivery.Controls.Add(this.pictureBox5);
-            this.pnlTakeawayDelivery.Controls.Add(this.llCustomerDetails);
-            this.pnlTakeawayDelivery.Controls.Add(this.pictureBox2);
-            this.pnlTakeawayDelivery.Location = new System.Drawing.Point(691, 3);
-            this.pnlTakeawayDelivery.Name = "pnlTakeawayDelivery";
-            this.pnlTakeawayDelivery.Size = new System.Drawing.Size(552, 104);
-            this.pnlTakeawayDelivery.TabIndex = 186;
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.label4.Location = new System.Drawing.Point(1755, 15);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(106, 28);
+            this.label4.TabIndex = 187;
+            this.label4.Text = ":سعر الوجبة";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblMealPrice
+            // 
+            this.lblMealPrice.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblMealPrice.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMealPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.lblMealPrice.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblMealPrice.Location = new System.Drawing.Point(1641, 16);
+            this.lblMealPrice.Name = "lblMealPrice";
+            this.lblMealPrice.Size = new System.Drawing.Size(102, 27);
+            this.lblMealPrice.TabIndex = 188;
+            this.lblMealPrice.Text = "0.00";
+            this.lblMealPrice.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblDeliveryFee
+            // 
+            this.lblDeliveryFee.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblDeliveryFee.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDeliveryFee.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.lblDeliveryFee.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblDeliveryFee.Location = new System.Drawing.Point(1346, 17);
+            this.lblDeliveryFee.Name = "lblDeliveryFee";
+            this.lblDeliveryFee.Size = new System.Drawing.Size(96, 25);
+            this.lblDeliveryFee.TabIndex = 190;
+            this.lblDeliveryFee.Text = "0.00";
+            this.lblDeliveryFee.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.label7.Location = new System.Drawing.Point(1454, 16);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(127, 26);
+            this.label7.TabIndex = 189;
+            this.label7.Text = ":سعر التوصيل";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.label5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label5.Location = new System.Drawing.Point(1292, 17);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(48, 25);
+            this.label5.TabIndex = 191;
+            this.label5.Text = "جُنية";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.label6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label6.Location = new System.Drawing.Point(1587, 18);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(48, 25);
+            this.label6.TabIndex = 192;
+            this.label6.Text = "جُنية";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // frmMain
             // 
@@ -479,15 +567,15 @@ namespace AwladAli
             this.panel1.PerformLayout();
             this.pnlFooter.ResumeLayout(false);
             this.pnlFooter.PerformLayout();
+            this.pnlTakeawayDelivery.ResumeLayout(false);
+            this.pnlTakeawayDelivery.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCancel)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
-            this.pnlTakeawayDelivery.ResumeLayout(false);
-            this.pnlTakeawayDelivery.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -523,5 +611,11 @@ namespace AwladAli
         private Label lblTotalText;
         private LinkLabel llShowCustomerDetails;
         private Panel pnlTakeawayDelivery;
+        private Label lblMealPrice;
+        private Label label4;
+        private Label lblDeliveryFee;
+        private Label label7;
+        private Label label6;
+        private Label label5;
     }
 }

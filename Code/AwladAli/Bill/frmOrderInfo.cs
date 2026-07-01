@@ -12,7 +12,7 @@ namespace AwladAli.Bill
         // Private variable to store the Order ID passed from the Main Form
         private int _OrderID = -1;
         private clsOrder _Order;
-        clsCustomer _Customer = null;
+        clsCustomer _Customer;
 
         private bool _showCloseConfirmation = true; // Flag to control the close confirmation dialog
 
@@ -64,7 +64,10 @@ namespace AwladAli.Bill
             // 2. Fill Header Labels
             lblOrderID.Text = _Order.OrderID.ToString();
             lblOrderDate.Text = _Order.OrderDate.ToString("yyyy-MM-dd HH:mm:ss");
-            lblTotalAmount.Text = _Order.TotalAmount.ToString("0.00") + " ج.م";
+            lblMealPrice.Text = _Order.TotalAmount.ToString("0.00");
+            lblDeliveryFee.Text = _Order.DeliveryFee.ToString("0.00");
+            lblTotalAmount.Text = (_Order.TotalAmount + _Order.DeliveryFee).ToString("0.00");
+
 
             if (_Order.OrderType == clsOrder.enOrderType.Takeaway)
             {
@@ -76,20 +79,16 @@ namespace AwladAli.Bill
             else if(_Order.OrderType == clsOrder.enOrderType.Delivery)
             {
                 //get customer name if available
+                pbIconStatus.Image = Properties.Resources.delivery32; // Assuming you have an icon for delivery
                 _Customer = clsCustomer.FindByCustomerID(_Order.CustomerID ?? -1);
                 lblTitleStatus.Text = "(Delivery) توصيل للمنزل";
-                if (_Customer != null)
+                if (_Customer == null)
                 {
-                    lblCustomerName.Text = _Customer.FullName;
-                    lblPhoneNumber.Text = _Customer.PhoneNumber;
-                    pbIconStatus.Image = Properties.Resources.delivery32; // Assuming you have an icon for delivery
-
+                    MessageBox.Show("لم يتم العثور على بيانات العميل!", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
-                else
-                {
-                    lblCustomerName.Text = "N/A"; // No customer name available
-                    lblPhoneNumber.Text = "N/A"; // No phone number available
-                }
+                lblCustomerName.Text = _Customer.FullName;
+                lblPhoneNumber.Text = _Customer.PhoneNumber;
             }
 
             // 3. Load Order Details (The Items)
@@ -139,7 +138,7 @@ namespace AwladAli.Bill
             float pageWidth = e.PageBounds.Width;
             float margin = 20;
             float y = 20;
-            float rowHeight = 30;
+            float rowHeight = 35;
 
             float usableWidth = pageWidth - (margin * 2);
 
@@ -211,10 +210,48 @@ namespace AwladAli.Bill
             g.DrawLine(Pens.Black, margin, y, pageWidth - margin, y);
             y += rowHeight;
 
-            // ===== Total =====
-            g.DrawString($"الإجمالي: {lblTotalAmount.Text} ج.م", fontTitle, Brushes.Black, pageWidth - margin, y, right);
+            if (_Order.OrderType == clsOrder.enOrderType.Takeaway)
+            {
+                g.DrawString("(Takeaway) " + "نوع الطلب: إستلام من المحل", fontBody, Brushes.Black, pageWidth - margin, y, right);
+                y += rowHeight; 
+                g.DrawString($"الإجمالي: {lblTotalAmount.Text}", fontTitle, Brushes.Black, pageWidth - margin, y, right);
+            }
+            else if (_Order.OrderType == clsOrder.enOrderType.Delivery)
+            {
+                g.DrawString("(Delivery) " + "نوع الطلب: توصيل للمنزل", fontBody, Brushes.Black, pageWidth - margin, y, right);
+                y += rowHeight;
 
-            y += rowHeight + 20;
+                string customerName = _Customer != null ? _Customer.FullName : "N/A";
+                g.DrawString($"اسم العميل: {customerName}", fontBody, Brushes.Black, pageWidth - margin, y, right);
+                y += rowHeight;
+
+                // طباعة رقم تليفون العميل
+                string customerPhone = _Customer != null ? _Customer.PhoneNumber : "N/A";
+                g.DrawString($"رقم العميل: {customerPhone}", fontBody, Brushes.Black, pageWidth - margin, y, right);
+                y += rowHeight;
+
+                g.DrawString($"العنوان: {_Customer.Address}", fontBody, Brushes.Black, pageWidth - margin, y, right);
+                y += rowHeight;
+
+                if (_Order.DeliveryFee > 0)
+                {
+                    g.DrawString($"سعر الوجبة: {lblMealPrice.Text} ج.م", fontBody, Brushes.Black, pageWidth - margin, y, right);
+                    y += rowHeight;
+                    g.DrawString($"مصاريف التوصيل: {lblDeliveryFee.Text} ج.م", fontBody, Brushes.Black, pageWidth - margin, y, right);
+                }
+                else
+                {
+                    g.DrawString($"مصاريف التوصيل: الحساب مع المندوب", fontBody, Brushes.Black, pageWidth - margin, y, right);
+                }
+                y += rowHeight;
+                if (decimal.TryParse(lblTotalAmount.Text.ToString(), out decimal totalAmount))
+                {
+                    string totalWithDelivery = (totalAmount).ToString("0.00");
+                    g.DrawString($"الإجمالي: {totalWithDelivery} ج.م", fontTitle, Brushes.Black, pageWidth - margin, y, right);
+                }
+            }
+
+            y += 20; // مسافة أمان إضافية قبل الـ Footer
 
             // ===== Footer =====
             g.DrawString("شكراً لزيارتكم", fontBody, Brushes.Black, pageWidth / 2, y, center);

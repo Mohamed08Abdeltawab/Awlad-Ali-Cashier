@@ -87,7 +87,7 @@ namespace AwladAli_Buisness
             int? createdByUserID = null;
             DateTime createdDate = DateTime.Now;
 
-            if (clsCustomerData.GetCustomerInfoByID(ref customerID, ref phoneNumber, ref fullName, ref address, ref notes, ref createdDate, ref isActive, ref createdByUserID))
+            if (clsCustomerData.GetCustomerInfoByID(customerID, ref phoneNumber, ref fullName, ref address, ref notes, ref createdDate, ref isActive, ref createdByUserID))
             {
                 return new clsCustomer(customerID, phoneNumber, fullName, address, notes, isActive, createdByUserID) { CreatedDate = createdDate };
             }

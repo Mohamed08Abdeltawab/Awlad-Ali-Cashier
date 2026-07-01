@@ -388,7 +388,7 @@ namespace AwladAli_Data
             return rowAffected;
         }
 
-        public static bool GetCustomerInfoByID(ref int customerID, ref string phoneNumber, ref string fullName, ref string address, ref string notes, ref DateTime CreatedDate, ref bool isActive, ref int? createdByUserID)
+        public static bool GetCustomerInfoByID(int customerID, ref string phoneNumber, ref string fullName, ref string address, ref string notes, ref DateTime CreatedDate, ref bool isActive, ref int? createdByUserID)
         {
             bool isFound = false;
             try
