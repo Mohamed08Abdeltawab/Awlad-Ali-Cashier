@@ -143,5 +143,10 @@ namespace AwladAli_Buisness
         {
             return clsOrderData.GetFirstOrderDate();
         }
+
+        public static bool IsOrderExist(int OrderID)
+        {
+            return clsOrderData.IsOrderExist(OrderID);
+        }
     }
 }

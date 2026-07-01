@@ -14,6 +14,8 @@ namespace AwladAli.Bill
         private clsOrder _Order;
         clsCustomer _Customer = null;
 
+        private bool _showCloseConfirmation = true; // Flag to control the close confirmation dialog
+
         private bool _IsShowOrder = false; // Flag to track if the order was saved/confirmed
         public bool IsShowOrder
         {
@@ -54,6 +56,7 @@ namespace AwladAli.Bill
             if (_Order == null)
             {
                 MessageBox.Show("لم يتم العثور على الطلب!", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _showCloseConfirmation = false; // Disable the close confirmation dialog since we're closing due to an error
                 this.Close();
                 return;
             }
@@ -242,7 +245,7 @@ namespace AwladAli.Bill
 
         private void frmOrderInfo_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (!_OrderConfirmed && !_IsShowOrder)
+            if (!_OrderConfirmed && !_IsShowOrder && _showCloseConfirmation)
             {
                 if(MessageBox.Show("هل أنت متأكد أنك تريد إلغاء الطلب؟ سيتم حذف الطلب من النظام.", "تأكيد الإلغاء", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
                 {

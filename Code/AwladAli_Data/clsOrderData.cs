@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SQLite;
+using System.Security.Policy;
 
 namespace AwladAli_Data
 {
@@ -285,6 +286,28 @@ namespace AwladAli_Data
             catch (Exception) { }
 
             return FirstDate;
+        }
+
+        public static bool IsOrderExist(int orderID)
+        {
+            bool isFound = false;
+
+            try
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = "SELECT top 1 FROM Orders WHERE OrderID = @OrderID";
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@OrderID", orderID);
+                        connection.Open();
+                        long count = (long)command.ExecuteScalar();
+                        if (count > 0) isFound = true;
+                    }
+                }
+            }
+            catch (Exception ex) { isFound = false; }
+            return isFound;
         }
     }
 }
