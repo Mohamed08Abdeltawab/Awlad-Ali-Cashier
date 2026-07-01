@@ -388,38 +388,41 @@ namespace AwladAli_Data
             return rowAffected;
         }
 
-        public static int? GetCustomerIDByPhoneNumber(string phoneNumber)
-{
-    int? customerID = null;
-    try
-    {
-        using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
+        public static bool GetCustomerInfoByID(ref int customerID, ref string phoneNumber, ref string fullName, ref string address, ref string notes, ref DateTime CreatedDate, ref bool isActive, ref int? createdByUserID)
         {
-            // كويري لجلب الـ ID بناءً على رقم الهاتف
-            string query = "SELECT CustomerID FROM Customers WHERE PhoneNumber = @PhoneNumber LIMIT 1;";
-
-            using (SQLiteCommand command = new SQLiteCommand(query, connection))
+            bool isFound = false;
+            try
             {
-                command.Parameters.AddWithValue("@PhoneNumber", phoneNumber.Trim());
-                
-                connection.Open();
-                object result = command.ExecuteScalar();
-
-                // التحقق من أن النتيجة ليست فارغة وقابلة للتحويل لرقم
-                if (result != null && int.TryParse(result.ToString(), out int id))
+                using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
                 {
-                    customerID = id;
+                    string query = "SELECT * FROM Customers WHERE CustomerID = @CustomerID";
+
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@CustomerID", customerID);
+                        connection.Open();
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                isFound = true;
+                                phoneNumber = Convert.ToString(reader["PhoneNumber"]);
+                                fullName = Convert.ToString(reader["FullName"]);
+                                address = Convert.ToString(reader["Address"]);
+                                notes = reader["Notes"] != DBNull.Value ? Convert.ToString(reader["Notes"]) : "";
+                                CreatedDate = Convert.ToDateTime(reader["CreatedDate"]);
+                                isActive = Convert.ToInt32(reader["IsActive"]) == 1;
+
+                                // Retrieve CreatedByUserID safely if it's not null
+                                createdByUserID = reader["CreatedByUserID"] != DBNull.Value ? (int?)Convert.ToInt32(reader["CreatedByUserID"]) : null;
+                            }
+                        }
+                    }
                 }
             }
-        }
-    }
-    catch (Exception) 
-    { 
-        // في حالة حدوث أي خطأ نرجع null لأمان الكود
-        customerID = null; 
-    }
+            catch (Exception) { isFound = false; }
 
-    return customerID;
-}
+            return isFound;
+        }
     }
 }

@@ -41,7 +41,7 @@ namespace AwladAli
             CultureInfo.DefaultThreadCurrentCulture = culture;
             CultureInfo.DefaultThreadCurrentUICulture = culture;
 
-            Application.Run(new frmLogin());
+            Application.Run(new frmCustomerDetailsforDelivery());
         }
     }
 }

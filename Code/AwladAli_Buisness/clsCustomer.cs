@@ -78,6 +78,25 @@ namespace AwladAli_Buisness
             }
         }
 
+        // Static method to find a customer by phone number and return its object instance
+        public static clsCustomer FindByCustomerID(int customerID)
+        {
+            string phoneNumber = "";
+            string fullName = "", address = "", notes = "";
+            bool isActive = true;
+            int? createdByUserID = null;
+            DateTime createdDate = DateTime.Now;
+
+            if (clsCustomerData.GetCustomerInfoByID(ref customerID, ref phoneNumber, ref fullName, ref address, ref notes, ref createdDate, ref isActive, ref createdByUserID))
+            {
+                return new clsCustomer(customerID, phoneNumber, fullName, address, notes, isActive, createdByUserID) { CreatedDate = createdDate };
+            }
+            else
+            {
+                return null; // Customer not found
+            }
+        }
+
         // Smart Save method to determine whether to Insert or Update based on the object state
         public bool Save()
         {
@@ -146,9 +165,5 @@ namespace AwladAli_Buisness
             return clsCustomerData.Activate(phoneNumber);
         }
 
-        public static int? GetCustomerIDByPhoneNumber(string phoneNumber)
-        {
-            return clsCustomerData.GetCustomerIDByPhoneNumber(phoneNumber);
-        }
     }
 }

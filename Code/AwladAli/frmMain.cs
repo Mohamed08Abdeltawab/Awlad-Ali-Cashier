@@ -78,6 +78,7 @@ namespace AwladAli
         {
             flpProductCards.Controls.Clear();
             lblTotalPrice.Text = "0.00";
+            rbTakeaway.Checked = true; // Set default order type to Takeaway
 
             DataTable dtCategories = clsCategory.GetAllCategories();
 
@@ -231,7 +232,7 @@ namespace AwladAli
         private void llReset_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             _ClearCurrentOrder();
-            rbTakeaway_CheckedChanged(sender, e);
+            rbTakeaway.Checked = true;
         }
 
 

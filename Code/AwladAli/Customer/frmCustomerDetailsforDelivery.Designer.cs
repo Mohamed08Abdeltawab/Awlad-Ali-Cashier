@@ -53,6 +53,7 @@
             this.pbIcon = new System.Windows.Forms.PictureBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.ctrlCustomerInfo1 = new AwladAli.Customer.ctrlCustomerInfo();
+            this.ttDeliveryFeeHelp = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
             this.cmsCustomers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
@@ -100,6 +101,7 @@
             this.dgvCustomers.Size = new System.Drawing.Size(744, 211);
             this.dgvCustomers.TabIndex = 193;
             this.dgvCustomers.TabStop = false;
+            this.ttDeliveryFeeHelp.SetToolTip(this.dgvCustomers, "يتم عرض اول 10 صفوف فقط عند البحث في قاعدة البيانات \r\n");
             this.dgvCustomers.DoubleClick += new System.EventHandler(this.dgvCustomers_DoubleClick);
             // 
             // cmsCustomers
@@ -246,6 +248,8 @@
             this.chkDeliveryFeeStatus.Size = new System.Drawing.Size(206, 29);
             this.chkDeliveryFeeStatus.TabIndex = 250;
             this.chkDeliveryFeeStatus.Text = "إضافة مضاريف للتوصيل";
+            this.ttDeliveryFeeHelp.SetToolTip(this.chkDeliveryFeeStatus, "إذا لم تضيف مصاريف التوصيل سيتم احتسابها صفر ويطبع في البون\r\n \'الحساب مع المندوب\'" +
+        "");
             this.chkDeliveryFeeStatus.UseVisualStyleBackColor = true;
             this.chkDeliveryFeeStatus.CheckedChanged += new System.EventHandler(this.chkDeliveryFeeStatus_CheckedChanged);
             // 
@@ -325,6 +329,11 @@
             this.ctrlCustomerInfo1.Size = new System.Drawing.Size(752, 351);
             this.ctrlCustomerInfo1.TabIndex = 246;
             // 
+            // ttDeliveryFeeHelp
+            // 
+            this.ttDeliveryFeeHelp.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.ttDeliveryFeeHelp.ToolTipTitle = "مساعد";
+            // 
             // frmCustomerDetailsforDelivery
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -387,5 +396,6 @@
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SelectCustomerToolStripMenuItem;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ToolTip ttDeliveryFeeHelp;
     }
 }

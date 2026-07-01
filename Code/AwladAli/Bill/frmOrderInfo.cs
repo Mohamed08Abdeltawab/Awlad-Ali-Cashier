@@ -12,7 +12,8 @@ namespace AwladAli.Bill
         // Private variable to store the Order ID passed from the Main Form
         private int _OrderID = -1;
         private clsOrder _Order;
-        
+        clsCustomer _Customer = null;
+
         private bool _IsShowOrder = false; // Flag to track if the order was saved/confirmed
         public bool IsShowOrder
         {
@@ -58,9 +59,35 @@ namespace AwladAli.Bill
             }
 
             // 2. Fill Header Labels
-            lblOrderID.Text = "رقم الفاتورة: #" + _Order.OrderID.ToString();
-            lblOrderDate.Text = "التاريخ: " + _Order.OrderDate.ToString("yyyy-MM-dd HH:mm");
+            lblOrderID.Text = _Order.OrderID.ToString();
+            lblOrderDate.Text = _Order.OrderDate.ToString("yyyy-MM-dd HH:mm:ss");
             lblTotalAmount.Text = _Order.TotalAmount.ToString("0.00") + " ج.م";
+
+            if (_Order.OrderType == clsOrder.enOrderType.Takeaway)
+            {
+                lblTitleStatus.Text = "(Takeaway) إستلام من المحل";
+                lblCustomerName.Text = "N/A"; // No customer name for takeaway orders
+                lblPhoneNumber.Text = "N/A"; // No phone number for takeaway orders
+                pbIconStatus.Image = Properties.Resources.takeaway32; // Assuming you have an icon for takeaway
+            }
+            else if(_Order.OrderType == clsOrder.enOrderType.Delivery)
+            {
+                //get customer name if available
+                _Customer = clsCustomer.FindByCustomerID(_Order.CustomerID ?? -1);
+                lblTitleStatus.Text = "(Delivery) توصيل للمنزل";
+                if (_Customer != null)
+                {
+                    lblCustomerName.Text = _Customer.FullName;
+                    lblPhoneNumber.Text = _Customer.PhoneNumber;
+                    pbIconStatus.Image = Properties.Resources.delivery32; // Assuming you have an icon for delivery
+
+                }
+                else
+                {
+                    lblCustomerName.Text = "N/A"; // No customer name available
+                    lblPhoneNumber.Text = "N/A"; // No phone number available
+                }
+            }
 
             // 3. Load Order Details (The Items)
             _LoadOrderItems();

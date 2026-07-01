@@ -42,10 +42,14 @@ namespace AwladAli.Customer
                 lblTitle.Text = "اضافة عميل جديد";
                 _Customer = new clsCustomer();
                 cbActivation.SelectedIndex = 0; // Default to Active status
-
-                _User = clsUser.Find(clsGlobal.CurrentUser.UserID);
-                if (_User != null)
-                    lblCreatedByUser.Text = _User.UserName;
+                if(clsGlobal.CurrentUser != null)
+                {
+                    _User = clsUser.Find(clsGlobal.CurrentUser.UserID);
+                    if (_User != null)
+                        lblCreatedByUser.Text = _User.UserName;
+                    else
+                        lblCreatedByUser.Text = "N/A";
+                }
                 else
                     lblCreatedByUser.Text = "N/A";
             }
