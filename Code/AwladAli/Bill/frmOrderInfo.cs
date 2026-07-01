@@ -210,48 +210,96 @@ namespace AwladAli.Bill
             g.DrawLine(Pens.Black, margin, y, pageWidth - margin, y);
             y += rowHeight;
 
+            // تجهيز أدوات تنسيق إضافية
+            StringFormat left = new StringFormat() { Alignment = StringAlignment.Near}; // للمحاذاة اليسارية للقيم
+            Pen thinPen = new Pen(Color.LightGray, 1); // خط خفيف جداً لتقسيم الجدول السفلي
+
             if (_Order.OrderType == clsOrder.enOrderType.Takeaway)
             {
-                g.DrawString("(Takeaway) " + "نوع الطلب: إستلام من المحل", fontBody, Brushes.Black, pageWidth - margin, y, right);
-                y += rowHeight; 
-                g.DrawString($"الإجمالي: {lblTotalAmount.Text}", fontTitle, Brushes.Black, pageWidth - margin, y, right);
+                // ===== تنسيق التيك أواي ملموم وشيك =====
+                g.DrawString(":نوع الطلب", fontBody, Brushes.Black, pageWidth - margin, y, right);
+                g.DrawString("(Takeaway) " + "إستلام من المحل", fontHeader, Brushes.Black, margin, y, left);
+                y += rowHeight + 15;
+
+                g.DrawLine(Pens.Black, margin, y, pageWidth - margin, y);
+                y += 15;
+
+                g.DrawString(":الإجمالي النهائي", fontTitle, Brushes.Black, pageWidth - margin, y, right);
+                g.DrawString($"{_Order.TotalAmount.ToString("0.00")} EGP", fontTitle, Brushes.Blue, margin, y, left);
+                y += rowHeight;
             }
             else if (_Order.OrderType == clsOrder.enOrderType.Delivery)
             {
-                g.DrawString("(Delivery) " + "نوع الطلب: توصيل للمنزل", fontBody, Brushes.Black, pageWidth - margin, y, right);
-                y += rowHeight;
 
+                // ===== 1. عنوان القسم السفلي =====
+                g.DrawString("بيانات التوصيل والعميل", fontHeader, Brushes.Black, pageWidth - margin, y, right);
+                y += rowHeight + 10;
+
+                // الحساب الدقيق لحجم المستطيل (البوكس الحاضن) بناءً على 3 أسطر
+                float boxTop = y;
+                float boxHeight = rowHeight * 3;
+                g.DrawRectangle(Pens.Black, margin, boxTop, usableWidth, boxHeight);
+
+                // حشوة داخلية بسيطة (Padding) عشان النص مينزلش لازق في سقف البوكس
+                float textPaddingY = 5;
+
+                // ===== سطر 1: اسم العميل =====
                 string customerName = _Customer != null ? _Customer.FullName : "N/A";
-                g.DrawString($"اسم العميل: {customerName}", fontBody, Brushes.Black, pageWidth - margin, y, right);
-                y += rowHeight;
+                g.DrawString(":اسم العميل", fontBody, Brushes.DimGray, pageWidth - margin, y + textPaddingY, right);
+                g.DrawString(customerName + "  ", fontBody, Brushes.Black, margin, y + textPaddingY, left);
 
-                // طباعة رقم تليفون العميل
+                y += rowHeight; // النزول للسطر التالي
+                g.DrawLine(thinPen, margin, y, pageWidth - margin, y); // رسم الخط الفاصل بالظبط عند حافة السطر
+
+                // ===== سطر 2: رقم الهاتف =====
                 string customerPhone = _Customer != null ? _Customer.PhoneNumber : "N/A";
-                g.DrawString($"رقم العميل: {customerPhone}", fontBody, Brushes.Black, pageWidth - margin, y, right);
+                g.DrawString(":رقم الهاتف", fontBody, Brushes.DimGray, pageWidth - margin, y + textPaddingY, right);
+                g.DrawString(customerPhone + "  ", fontBody, Brushes.Black, margin, y + textPaddingY, left);
+
+                y += rowHeight; // النزول للسطر التالي
+                g.DrawLine(thinPen, margin, y, pageWidth - margin, y); // رسم الخط الفاصل بالظبط عند حافة السطر
+
+                // ===== سطر 3: العنوان =====
+                string customerAddress = _Customer != null ? _Customer.Address : "N/A";
+                g.DrawString(":العنوان", fontBody, Brushes.DimGray, pageWidth - margin, y + textPaddingY, right);
+                g.DrawString(customerAddress + "  ", fontBody, Brushes.Black, margin, y + textPaddingY, left);
+
+                // الانتقال النهائي لما بعد البوكس بالكامل لطباعة الإجمالي
+                y = boxTop + boxHeight + 25;
+
+                // 2. منطقة الحساب النهائي (تفقيط احترافي)
+                decimal subTotal = lblMealPrice.Text != "N/A" ? _Order.TotalAmount : 0;
+                decimal deliveryFee = lblDeliveryFee.Text != "N/A" ? _Order.DeliveryFee : 0;
+                decimal grandTotal = subTotal + deliveryFee;
+
+                // طباعة الحساب الصافي للأكل
+                g.DrawString(":إجمالي الوجبات", fontBody, Brushes.Black, pageWidth - margin, y, right);
+                g.DrawString($"{subTotal.ToString("0.00")} EGP", fontBody, Brushes.Black, margin, y, left);
                 y += rowHeight;
 
-                g.DrawString($"العنوان: {_Customer.Address}", fontBody, Brushes.Black, pageWidth - margin, y, right);
-                y += rowHeight;
-
-                if (_Order.DeliveryFee > 0)
+                // طباعة الديليفري لو متاح ومضاف للحساب
+                g.DrawString(":رسوم التوصيل", fontBody, Brushes.Black, pageWidth - margin, y, right);
+                if (deliveryFee > 0)
                 {
-                    g.DrawString($"سعر الوجبة: {lblMealPrice.Text} ج.م", fontBody, Brushes.Black, pageWidth - margin, y, right);
-                    y += rowHeight;
-                    g.DrawString($"مصاريف التوصيل: {lblDeliveryFee.Text} ج.م", fontBody, Brushes.Black, pageWidth - margin, y, right);
+                    g.DrawString($"{_Order.DeliveryFee.ToString("0.00")} EGP", fontBody, Brushes.Black, margin, y + 5, left);
                 }
                 else
                 {
-                    g.DrawString($"مصاريف التوصيل: الحساب مع المندوب", fontBody, Brushes.Black, pageWidth - margin, y, right);
+                    g.DrawString("الحساب مع المندوب  ", fontBody, Brushes.Black, margin, y + 5, left);
                 }
                 y += rowHeight;
-                if (decimal.TryParse(lblTotalAmount.Text.ToString(), out decimal totalAmount))
-                {
-                    string totalWithDelivery = (totalAmount).ToString("0.00");
-                    g.DrawString($"الإجمالي: {totalWithDelivery} ج.م", fontTitle, Brushes.Black, pageWidth - margin, y, right);
-                }
+
+                // خط نهائي سميك قبل المجموع الكلي
+                g.DrawLine(new Pen(Color.Black, 2), margin, y + 5, pageWidth - margin, y + 5);
+                y += 15;
+
+                // الإجمالي النهائي الكبير المفصّل
+                g.DrawString(":الإجمالي", fontTitle, Brushes.Black, pageWidth - margin, y, right);
+                g.DrawString($"{grandTotal.ToString("0.00")} EGP", fontTitle, Brushes.Black, margin, y, left);
+                y += rowHeight;
             }
 
-            y += 20; // مسافة أمان إضافية قبل الـ Footer
+            y += 40; // مسافة محترمة قبل التذييل لراحة العين
 
             // ===== Footer =====
             g.DrawString("شكراً لزيارتكم", fontBody, Brushes.Black, pageWidth / 2, y, center);

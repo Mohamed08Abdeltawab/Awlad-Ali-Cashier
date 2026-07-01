@@ -48,10 +48,10 @@
             this.label7 = new System.Windows.Forms.Label();
             this.lblMealPrice = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.ctrlOrderLine1 = new AwladAli.Bill.ctrlOrderLine();
             this.label6 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.ctrlOrderLine1 = new AwladAli.Bill.ctrlOrderLine();
             this.pnlBillHeader.SuspendLayout();
             this.pnlOrderItemsHeader.SuspendLayout();
             this.flpOrderItems.SuspendLayout();
@@ -371,12 +371,12 @@
             this.lblDeliveryFee.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDeliveryFee.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
             this.lblDeliveryFee.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblDeliveryFee.Location = new System.Drawing.Point(218, 176);
+            this.lblDeliveryFee.Location = new System.Drawing.Point(212, 175);
             this.lblDeliveryFee.Name = "lblDeliveryFee";
             this.lblDeliveryFee.Size = new System.Drawing.Size(96, 25);
             this.lblDeliveryFee.TabIndex = 198;
             this.lblDeliveryFee.Text = "0.00";
-            this.lblDeliveryFee.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblDeliveryFee.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label7
             // 
@@ -401,7 +401,7 @@
             this.lblMealPrice.Size = new System.Drawing.Size(102, 27);
             this.lblMealPrice.TabIndex = 196;
             this.lblMealPrice.Text = "0.00";
-            this.lblMealPrice.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblMealPrice.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label8
             // 
@@ -414,15 +414,6 @@
             this.label8.TabIndex = 195;
             this.label8.Text = ":سعر الوجبة";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ctrlOrderLine1
-            // 
-            this.ctrlOrderLine1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ctrlOrderLine1.Location = new System.Drawing.Point(14, 15);
-            this.ctrlOrderLine1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ctrlOrderLine1.Name = "ctrlOrderLine1";
-            this.ctrlOrderLine1.Size = new System.Drawing.Size(436, 39);
-            this.ctrlOrderLine1.TabIndex = 0;
             // 
             // label6
             // 
@@ -460,6 +451,15 @@
             this.label10.TabIndex = 202;
             this.label10.Text = "ج.م";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // ctrlOrderLine1
+            // 
+            this.ctrlOrderLine1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ctrlOrderLine1.Location = new System.Drawing.Point(14, 15);
+            this.ctrlOrderLine1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ctrlOrderLine1.Name = "ctrlOrderLine1";
+            this.ctrlOrderLine1.Size = new System.Drawing.Size(436, 39);
+            this.ctrlOrderLine1.TabIndex = 0;
             // 
             // frmOrderInfo
             // 
