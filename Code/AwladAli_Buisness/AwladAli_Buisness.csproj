@@ -95,6 +95,7 @@
     <Compile Include="clsCustomer.cs" />
     <Compile Include="clsDashboard.cs" />
     <Compile Include="clsEmployee.cs" />
+    <Compile Include="clsEmployeeTransaction.cs" />
     <Compile Include="clsExtra.cs" />
     <Compile Include="clsOrder.cs" />
     <Compile Include="clsOrderDetail.cs" />
