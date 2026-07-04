@@ -72,12 +72,37 @@ namespace AwladAli
                     }
                     else
                     {
-                        //there is active session for another user, disable main screen controls and show message
+                        // Lock the main screen controls and force the user to explicitly start a new session under their account
                         _DisableMainScreenControls();
-                        string message = $"توجد جلسة مفتوحة حالياً باسم المستخدم ({sessionUser.UserName}).\n\n" +
-                                         $"برجاء تسجيل الدخول بحسابه لإنهاء الجلسة، أو اطلب من الأدمن إغلاقها لتتمكن من بدء ورديتك الجديدة.";
+                        // 🔴 Different User: Show the custom conflict dialog and pass the active username
+                        using (frmSessionConflictDialog dialog = new frmSessionConflictDialog(sessionUser.UserName))
+                        {
+                            DialogResult result = dialog.ShowDialog();
 
-                        MessageBox.Show(message, "تنبيه تغيير الوردية", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            if (result == DialogResult.Yes)
+                            {
+                                // 🛠️ Handle closing the old session (Triggered by button click or closing the form via X button)
+                                _CurrentSession.EndTime = DateTime.Now;
+                                _CurrentSession.IsActive = false;
+
+                                // Ensure any older active sessions are forced closed before initializing a new one
+                                clsSession.CloseAnyActiveSession();
+
+                                // Save the session updates to the database (Updates EndTime and IsActive status)
+                                if (_CurrentSession.Save())
+                                {
+                                    // Display a success confirmation message to the user
+                                    MessageBox.Show("تم إغلاق الجلسة القديمة المعلقة بنجاح. يمكنك الآن بدء ورديتك الجديدة.",
+                                                    "تأكيد الإجراء", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
+                            else if (result == DialogResult.No)
+                            {
+                                // ↩️ Logout Option: Stop the running timer and restart the application to trigger the login screen
+                                sessionTimer.Stop();
+                                Application.Restart();
+                            }
+                        }
                     }
                 }
                 else
@@ -216,23 +241,7 @@ namespace AwladAli
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            /*
-                        if (_CurrentSession != null && _SessionID != -1)
-                        {
-                            if (MessageBox.Show("هل أنت متأكد من إنهاء الجلسة قبل الخروج؟", "تأكيد",
-                                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                            {
-                                _EndSessionWhenFormClosing();
-                            }
-                            else
-                            {
-                                e.Cancel = true;
-                                return;
-                            }
-                        }
-                        clsSession.CloseAnyActiveSession();
-            */
-            Application.Exit();
+           Application.Exit();
         }
 
         private void btnSettings_Click(object sender, EventArgs e)

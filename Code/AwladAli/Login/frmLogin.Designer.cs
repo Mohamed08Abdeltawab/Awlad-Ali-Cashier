@@ -60,6 +60,7 @@
             // splitContainer1
             // 
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainer1.IsSplitterFixed = true;
             this.splitContainer1.Location = new System.Drawing.Point(4, 4);
             this.splitContainer1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.splitContainer1.Name = "splitContainer1";
@@ -92,7 +93,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.pictureBox3);
             this.splitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.splitContainer1.Size = new System.Drawing.Size(901, 523);
-            this.splitContainer1.SplitterDistance = 417;
+            this.splitContainer1.SplitterDistance = 416;
             this.splitContainer1.SplitterWidth = 6;
             this.splitContainer1.TabIndex = 1;
             // 

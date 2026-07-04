@@ -12,9 +12,33 @@ namespace AwladAli
 {
     public partial class frmSessionConflictDialog : Form
     {
-        public frmSessionConflictDialog()
+        public frmSessionConflictDialog(string activeUserName)
         {
             InitializeComponent();
+            lblMessage.Text = $"({activeUserName})" + "توجد جلسة مفتوحة حالياً باسم المستخدم\n\n" +
+                          $"برجاء اختيار إجراء للمتابعة";
+        }
+
+        private void frmSessionConflictDialog_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // 🛡️ المطب الذكي: لو قفل الشاشة من زرار الـ X (ولم يضغط على أي زرار)
+            if (this.DialogResult == DialogResult.Cancel || this.DialogResult == DialogResult.None)
+            {
+                // إجبار النتيجة لتكون 'Yes' ليفهم السيستم أنه اختار إغلاق الجلسة القديمة
+                this.DialogResult = DialogResult.Yes;
+            }
+        }
+
+        private void btnCloseOldSession_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Yes; // سنعتبر 'Yes' تعني إغلاق الجلسة القديمة
+            this.Close();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.No; // سنعتبر 'No' تعني تسجيل الخروج
+            this.Close();
         }
     }
 }
