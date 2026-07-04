@@ -100,10 +100,18 @@ namespace AwladAli_Data
                                         CASE 
                                             WHEN OD.ProductID IS NOT NULL THEN 
                                                 CASE 
-                                                    -- لو كان الحجم عادي (IsNormalSize = 1) يرجع اسم الصنف فقط
-                                                    WHEN PS.IsNormalSize = 1 THEN P.ProductName
-                                                    -- لو له حجم حقيقي (صغير، وسط، كبير) يرجع الاسم وجنبه الحجم
-                                                    ELSE '(' || COALESCE(PS.SizeName, '') || ') ' || P.ProductName
+                                                    -- If it is a normal size, just return the product name without any prefix
+                                                    WHEN PS.IsNormalSize = 1 OR PS.SizeName = 'Normal' THEN P.ProductName
+                                
+                                                    -- If it has a specific size, translate it and prepend it to the product name
+                                                   ELSE P.ProductName || ':  ' || 
+                                                    CASE UPPER(TRIM(PS.SizeName))
+                                                        WHEN 'S'  THEN 'صغير'
+                                                        WHEN 'M'  THEN 'وسط'
+                                                        WHEN 'L'  THEN 'كبير'
+                                                        WHEN 'XL' THEN 'جامبو'
+                                                        ELSE PS.SizeName
+                                                    END 
                                                 END
                                             WHEN OD.ExtraID IS NOT NULL THEN 'إضافة: ' || E.ExtraName
                                             ELSE 'صنف غير معروف'
