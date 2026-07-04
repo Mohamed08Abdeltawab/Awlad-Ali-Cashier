@@ -82,7 +82,6 @@ namespace AwladAli.Login
             else
                 chkRememberMe.Checked = false;
 
-            txtPassword.Focus();
         }
 
         private void llHidePassword_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

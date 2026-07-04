@@ -238,7 +238,8 @@ namespace AwladAli_Data
 
 
 
-        public static bool GetActiveSessionInfoByUserID(int userID, ref int sessionID, ref DateTime startTime, ref decimal totalCash, ref bool isActive)
+        // Finds the latest active session in the whole system and retrieves its associated user info
+        public static bool GetAnyActiveSessionWithUserInfo(ref int sessionID, ref int userID, ref DateTime startTime, ref decimal totalCash, ref bool isActive)
         {
             bool isFound = false;
             try
@@ -247,22 +248,21 @@ namespace AwladAli_Data
                 {
                     connection.Open();
 
-                    // 1. كويري لجلب أحدث جلسة مفتوحة فقط (الأعلى في الـ ID)
-                    string selectQuery = @"SELECT SessionID, StartTime, TotalCash, IsActive 
-                                       FROM Sessions 
-                                       WHERE UserID = @UserID AND EndTime IS NULL AND IsActive = 1 
-                                       ORDER BY SessionID DESC LIMIT 1;";
+                    // 1. Query to find the latest open session in the entire system with its user details
+                    string selectQuery = @"SELECT S.SessionID, S.UserID, S.StartTime, S.TotalCash, S.IsActive
+                                       FROM Sessions S
+                                       WHERE S.EndTime IS NULL AND S.IsActive = 1 
+                                       ORDER BY S.SessionID DESC LIMIT 1;";
 
                     using (SQLiteCommand selectCommand = new SQLiteCommand(selectQuery, connection))
                     {
-                        selectCommand.Parameters.AddWithValue("@UserID", userID);
-
                         using (SQLiteDataReader reader = selectCommand.ExecuteReader())
                         {
                             if (reader.Read())
                             {
                                 isFound = true;
                                 sessionID = Convert.ToInt32(reader["SessionID"]);
+                                userID = Convert.ToInt32(reader["UserID"]);
                                 startTime = Convert.ToDateTime(reader["StartTime"]);
                                 totalCash = Convert.ToDecimal(reader["TotalCash"]);
                                 isActive = Convert.ToInt32(reader["IsActive"]) == 1;
@@ -270,20 +270,19 @@ namespace AwladAli_Data
                         }
                     }
 
-                    // 2. 🛡️ تنظيف وقائي: لو لقيت جلسة مفتوحة، اقفل أي جلسة تانية مفتوحة لليوزر ده ما عدا الجلسة الأحدث اللي لسه جايبينها
+                    // 2. 🛡️ Cleanup: If an active session is found, force-close any older corrupted open sessions for safety
                     if (isFound)
                     {
                         string cleanUpQuery = @"UPDATE Sessions 
                                             SET EndTime = @EndTime, IsActive = 0 
-                                            WHERE UserID = @UserID AND EndTime IS NULL AND IsActive = 1 AND SessionID != @CurrentSessionID;";
+                                            WHERE EndTime IS NULL AND IsActive = 1 AND SessionID != @CurrentSessionID;";
 
                         using (SQLiteCommand cleanUpCommand = new SQLiteCommand(cleanUpQuery, connection))
                         {
-                            cleanUpCommand.Parameters.AddWithValue("@UserID", userID);
                             cleanUpCommand.Parameters.AddWithValue("@CurrentSessionID", sessionID);
                             cleanUpCommand.Parameters.AddWithValue("@EndTime", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
 
-                            cleanUpCommand.ExecuteNonQuery(); // هيقفل أي جلسة تانية قديمة تاهت في الداتا بيز
+                            cleanUpCommand.ExecuteNonQuery();
                         }
                     }
                 }

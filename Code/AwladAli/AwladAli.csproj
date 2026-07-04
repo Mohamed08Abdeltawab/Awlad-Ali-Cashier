@@ -171,6 +171,12 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSessionConflictDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSessionConflictDialog.Designer.cs">
+      <DependentUpon>frmSessionConflictDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="GlobalClasses\clsCryptography.cs" />
     <Compile Include="GlobalClasses\clsGlobal.cs" />
     <Compile Include="Login\frmLogin.cs">
@@ -275,6 +281,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSessionConflictDialog.resx">
+      <DependentUpon>frmSessionConflictDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>

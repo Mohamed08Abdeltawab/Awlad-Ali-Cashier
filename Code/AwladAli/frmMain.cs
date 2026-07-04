@@ -47,26 +47,75 @@ namespace AwladAli
         }
         private void _EnableMainScreen()
         {
-            if(clsGlobal.CurrentSessionID == -1 || _CurrentSession == null)
+            _CurrentSession = clsSession.FindAnyActiveSessionWithUserInfo();
+
+            if (_CurrentSession != null)
             {
-                flpAddonsContainer.Enabled = false;
-                flpProductCards.Enabled = false;
-                pnlTakeawayDelivery.Enabled = false;
+                clsUser sessionUser = clsUser.Find(_CurrentSession.UserID);
+
+                if (sessionUser != null)
+                {
+                    //check if the active session belongs to the current logged-in user
+                    if (sessionUser.UserID == clsGlobal.CurrentUser.UserID)
+                    {
+                        flpAddonsContainer.Enabled = true;
+                        flpProductCards.Enabled = true;
+                        pnlTakeawayDelivery.Enabled = true;
+
+                        _SessionID = _CurrentSession.SessionID;
+                        clsGlobal.CurrentSessionID = _CurrentSession.SessionID;
+                        _SessionStartTime = _CurrentSession.StartTime;
+
+                        sessionTimer.Start();
+                        btnStartSession.Image = Resources.session_2_64;
+                        btnStartSession.Text = "إنهاء الجلسة";
+                    }
+                    else
+                    {
+                        //there is active session for another user, disable main screen controls and show message
+                        _DisableMainScreenControls();
+                        string message = $"توجد جلسة مفتوحة حالياً باسم المستخدم ({sessionUser.UserName}).\n\n" +
+                                         $"برجاء تسجيل الدخول بحسابه لإنهاء الجلسة، أو اطلب من الأدمن إغلاقها لتتمكن من بدء ورديتك الجديدة.";
+
+                        MessageBox.Show(message, "تنبيه تغيير الوردية", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else
+                {
+                    //there is an active session for an unknown user, disable main screen controls and show message
+                    _DisableMainScreenControls();
+                    MessageBox.Show("يوجد جلسة نشطة لمستخدم غير معروف. لا يمكنك بدء جلسة جديدة.", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
-                flpAddonsContainer.Enabled = true;
-                flpProductCards.Enabled = true;
-                pnlTakeawayDelivery.Enabled = true;
+                //there is no active session, disable main screen controls
+                _DisableMainScreenControls();
             }
         }
+
+        private void _DisableMainScreenControls()
+        {
+            flpAddonsContainer.Enabled = false;
+            flpProductCards.Enabled = false;
+            pnlTakeawayDelivery.Enabled = false;
+
+            _SessionID = -1;
+            clsGlobal.CurrentSessionID = -1;
+            sessionTimer.Stop();
+            btnStartSession.Image = Resources.start_session_64;
+            btnStartSession.Text = "بدء جلسة";
+            lblSessionTimer.Text = "00:00:00";
+        }
+
+
         private void _RefreshMainScreenData()
         {
             _CheckAdmin();
-            _EnableMainScreen();
             lblUsername.Text = clsGlobal.CurrentUser.UserName;
             _LoadRestaurantMenu();
             _LoadExtraAddons();
+            _EnableMainScreen();
         }
         private void frmMain_Load(object sender, EventArgs e)
         {
@@ -167,20 +216,22 @@ namespace AwladAli
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (_CurrentSession != null && _SessionID != -1)
-            {
-                if (MessageBox.Show("هل أنت متأكد من إنهاء الجلسة قبل الخروج؟", "تأكيد",
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    _EndSessionWhenFormClosing();
-                }
-                else
-                {
-                    e.Cancel = true;
-                    return;
-                }
-            }
-            clsSession.CloseAnyActiveSession();
+            /*
+                        if (_CurrentSession != null && _SessionID != -1)
+                        {
+                            if (MessageBox.Show("هل أنت متأكد من إنهاء الجلسة قبل الخروج؟", "تأكيد",
+                                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            {
+                                _EndSessionWhenFormClosing();
+                            }
+                            else
+                            {
+                                e.Cancel = true;
+                                return;
+                            }
+                        }
+                        clsSession.CloseAnyActiveSession();
+            */
             Application.Exit();
         }
 
@@ -403,7 +454,6 @@ namespace AwladAli
 
         private void btnStartSession_Click(object sender, EventArgs e)
         {
-            
             if (_SessionID == -1 || _CurrentSession == null)//if no active session then start new session
             {
                 _CurrentSession = new clsSession();
@@ -436,7 +486,7 @@ namespace AwladAli
                 _EndSession();
             }
         }
-
+/*
         private void _EndSessionWhenFormClosing()
         {
             sessionTimer.Stop();
@@ -450,6 +500,7 @@ namespace AwladAli
                 clsGlobal.CurrentSessionID = -1;
             }
         }
+*/
 
         private void _EndSession()
         {

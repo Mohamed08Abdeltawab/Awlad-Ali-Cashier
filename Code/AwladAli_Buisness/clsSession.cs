@@ -59,21 +59,23 @@ namespace AwladAli_Buisness
         }
 
 
-        public static clsSession FindActiveSessionByUserID(int userID)
+        public static clsSession FindAnyActiveSessionWithUserInfo()
         {
             int sessionID = -1;
+            int userID = -1;
             DateTime startTime = DateTime.Now;
             decimal totalCash = 0.00m;
             bool isActive = false;
 
-            // الدالة دي دلوقتي بتجيب الأحدث وبتقفل الباقي أوتوماتيك
-            if (clsSessionData.GetActiveSessionInfoByUserID(userID, ref sessionID, ref startTime, ref totalCash, ref isActive))
+            if (clsSessionData.GetAnyActiveSessionWithUserInfo(ref sessionID, ref userID, ref startTime, ref totalCash, ref isActive))
             {
-                return new clsSession(sessionID, userID, startTime, null, totalCash, isActive);
+                // Create the object and assign the fetched user full name to it
+                clsSession session = new clsSession(sessionID, userID, startTime, null, totalCash, isActive);
+                return session;
             }
             else
             {
-                return null;
+                return null; // System is clean, no active sessions exist
             }
         }
 
