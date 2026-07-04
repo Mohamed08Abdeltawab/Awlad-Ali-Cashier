@@ -236,5 +236,61 @@ namespace AwladAli_Data
             return dt;
         }
 
+
+
+        public static bool GetActiveSessionInfoByUserID(int userID, ref int sessionID, ref DateTime startTime, ref decimal totalCash, ref bool isActive)
+        {
+            bool isFound = false;
+            try
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    connection.Open();
+
+                    // 1. كويري لجلب أحدث جلسة مفتوحة فقط (الأعلى في الـ ID)
+                    string selectQuery = @"SELECT SessionID, StartTime, TotalCash, IsActive 
+                                       FROM Sessions 
+                                       WHERE UserID = @UserID AND EndTime IS NULL AND IsActive = 1 
+                                       ORDER BY SessionID DESC LIMIT 1;";
+
+                    using (SQLiteCommand selectCommand = new SQLiteCommand(selectQuery, connection))
+                    {
+                        selectCommand.Parameters.AddWithValue("@UserID", userID);
+
+                        using (SQLiteDataReader reader = selectCommand.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                isFound = true;
+                                sessionID = Convert.ToInt32(reader["SessionID"]);
+                                startTime = Convert.ToDateTime(reader["StartTime"]);
+                                totalCash = Convert.ToDecimal(reader["TotalCash"]);
+                                isActive = Convert.ToInt32(reader["IsActive"]) == 1;
+                            }
+                        }
+                    }
+
+                    // 2. 🛡️ تنظيف وقائي: لو لقيت جلسة مفتوحة، اقفل أي جلسة تانية مفتوحة لليوزر ده ما عدا الجلسة الأحدث اللي لسه جايبينها
+                    if (isFound)
+                    {
+                        string cleanUpQuery = @"UPDATE Sessions 
+                                            SET EndTime = @EndTime, IsActive = 0 
+                                            WHERE UserID = @UserID AND EndTime IS NULL AND IsActive = 1 AND SessionID != @CurrentSessionID;";
+
+                        using (SQLiteCommand cleanUpCommand = new SQLiteCommand(cleanUpQuery, connection))
+                        {
+                            cleanUpCommand.Parameters.AddWithValue("@UserID", userID);
+                            cleanUpCommand.Parameters.AddWithValue("@CurrentSessionID", sessionID);
+                            cleanUpCommand.Parameters.AddWithValue("@EndTime", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+
+                            cleanUpCommand.ExecuteNonQuery(); // هيقفل أي جلسة تانية قديمة تاهت في الداتا بيز
+                        }
+                    }
+                }
+            }
+            catch (Exception) { isFound = false; }
+            return isFound;
+        }
+
     }
 }

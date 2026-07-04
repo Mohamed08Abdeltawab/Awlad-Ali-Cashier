@@ -403,9 +403,9 @@ namespace AwladAli
 
         private void btnStartSession_Click(object sender, EventArgs e)
         {
-            if (_SessionID == -1)//if no active session then start new session
+            
+            if (_SessionID == -1 || _CurrentSession == null)//if no active session then start new session
             {
-
                 _CurrentSession = new clsSession();
                 _CurrentSession.UserID = clsGlobal.CurrentUser.UserID; //current user
                 _CurrentSession.StartTime = DateTime.Now;//set start time to now

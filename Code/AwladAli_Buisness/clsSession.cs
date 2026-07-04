@@ -58,6 +58,26 @@ namespace AwladAli_Buisness
             }
         }
 
+
+        public static clsSession FindActiveSessionByUserID(int userID)
+        {
+            int sessionID = -1;
+            DateTime startTime = DateTime.Now;
+            decimal totalCash = 0.00m;
+            bool isActive = false;
+
+            // الدالة دي دلوقتي بتجيب الأحدث وبتقفل الباقي أوتوماتيك
+            if (clsSessionData.GetActiveSessionInfoByUserID(userID, ref sessionID, ref startTime, ref totalCash, ref isActive))
+            {
+                return new clsSession(sessionID, userID, startTime, null, totalCash, isActive);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+
         // 1. دالة بدء الجلسة
         private bool _AddNewSession()
         {
