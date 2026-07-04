@@ -121,6 +121,10 @@ namespace AwladAli.Bill
 
 
         // 2. الدالة المسؤولة عن "رسم" شكل الفاتورة
+        // 🛑 CRITICAL: Define this variable outside the method (at the class level)
+        // This tracking index ensures the printer knows where it left off on the next page.
+        private int _currentItemIndex = 0;
+
         private void PrintOrderPage(object sender, PrintPageEventArgs e)
         {
             if (System.Drawing.Printing.PrinterSettings.InstalledPrinters.Count == 0)
@@ -131,64 +135,61 @@ namespace AwladAli.Bill
 
             Graphics g = e.Graphics;
 
-            Font fontTitle = new Font("Tahoma", 24, FontStyle.Bold);
-            Font fontHeader = new Font("Tahoma", 18, FontStyle.Bold);
-            Font fontBody = new Font("Tahoma", 16);
+            // 🏆 صغرنا حجوم الخطوط قليلاً لتناسب عرض الرول وتظهر شيك جداً كالمطاعم الكبرى
+            Font fontTitle = new Font("Tahoma", 13, FontStyle.Bold);
+            Font fontHeader = new Font("Tahoma", 9, FontStyle.Bold);
+            Font fontBody = new Font("Tahoma", 8);
+            Font fontFooter = new Font("Tahoma", 8, FontStyle.Italic);
 
             float pageWidth = e.PageBounds.Width;
-            float margin = 20;
-            float y = 20;
-            float rowHeight = 35;
+            float margin = 10; // تقليل الهامش لزيادة المساحة المتاحة
+            float y = 15;
+            float rowHeight = 28;
 
             float usableWidth = pageWidth - (margin * 2);
 
-            StringFormat right = new StringFormat() { Alignment = StringAlignment.Far };
-            StringFormat center = new StringFormat() { Alignment = StringAlignment.Center };
+            // أدوات التحكم في اتجاه نصوص كل عمود بالمسطرة
+            StringFormat alignRight = new StringFormat() { Alignment = StringAlignment.Far };
+            StringFormat alignCenter = new StringFormat() { Alignment = StringAlignment.Center };
+            StringFormat alignLeft = new StringFormat() { Alignment = StringAlignment.Near };
 
-            // ===== Header =====
-            g.DrawString("أولاد علي - Awlad Ali", fontTitle, Brushes.Black, pageWidth / 2, y, center);
-            y += rowHeight + 20;
-
-            g.DrawString($"رقم الفاتورة: {_OrderID}", fontBody, Brushes.Black, pageWidth - margin, y, right);
-            y += rowHeight + 10;
-
-            g.DrawString($"التاريخ: {_Order.OrderDate:yyyy-MM-dd HH:mm}", fontBody, Brushes.Black, pageWidth - margin, y, right);
+            // ===== 1. Header Section =====
+            g.DrawString("أولاد علي - Awlad Ali", fontTitle, Brushes.Black, pageWidth / 2, y, alignCenter);
             y += rowHeight + 15;
 
-            g.DrawLine(Pens.Black, margin, y, pageWidth - margin, y);
-            y += 15;
+            g.DrawString($"رقم الفاتورة: {_OrderID}", fontBody, Brushes.Black, pageWidth - margin, y, alignRight);
+            y += rowHeight;
 
-            // ===== Column Widths =====
-            float colItemWidth = usableWidth * 0.40f;
-            float colPriceWidth = usableWidth * 0.20f;
-            float colQtyWidth = usableWidth * 0.15f;
+            g.DrawString($"التاريخ: {_Order.OrderDate:yyyy-MM-dd HH:mm}", fontBody, Brushes.Black, pageWidth - margin, y, alignRight);
+            y += rowHeight + 10;
+
+            g.DrawLine(Pens.Black, margin, y, pageWidth - margin, y);
+            y += 10;
+
+            // ===== 2. الأعمدة وحساب إحداثياتها بدقة منعاً للتداخل =====
+            // تقسيم المساحة المتاحة: الصنف 45%، السعر 18%، الكمية 12%، الإجمالي 25%
+            float colItemWidth = usableWidth * 0.45f;
+            float colPriceWidth = usableWidth * 0.18f;
+            float colQtyWidth = usableWidth * 0.12f;
             float colTotalWidth = usableWidth * 0.25f;
 
-            // ===== RTL Positions (ابدأ من اليمين) =====
-            float x = pageWidth - margin;
+            // نقاط الـ X الثابتة لكل عمود (التحرك من اليسار إلى اليمين بناءً على نوع المحاذاة)
+            float xTotal = margin;                           // الإجمالي في أقصى الشمال
+            float xQty = xTotal + colTotalWidth;           // الكمية بعد الإجمالي
+            float xPrice = xQty + colQtyWidth;               // السعر بعد الكمية
+            float xItem = pageWidth - margin;               // الصنف يبدأ محاذاته من أقصى اليمين
 
-            float colItemX = x;                    // الصنف (أول عمود يمين)
-            x -= colItemWidth;
+            // ===== طباعة عناوين الجدول =====
+            g.DrawString("الصنف", fontHeader, Brushes.Black, xItem, y, alignRight);
+            g.DrawString("السعر", fontHeader, Brushes.Black, xPrice, y, alignLeft);
+            g.DrawString("الكمية", fontHeader, Brushes.Black, xQty + (colQtyWidth / 2) - 4, y, alignCenter);
+            g.DrawString("الإجمالي", fontHeader, Brushes.Black, xTotal, y, alignLeft);
 
-            float colPriceX = x;
-            x -= colPriceWidth;
-
-            float colQtyX = x;
-            x -= colQtyWidth;
-
-            float colTotalX = x;                   // آخر عمود شمال
-
-            // ===== Headers =====
-            g.DrawString("الصنف", fontHeader, Brushes.Black, colItemX, y, right);
-            g.DrawString("السعر", fontHeader, Brushes.Black, colPriceX, y, right);
-            g.DrawString("الكمية", fontHeader, Brushes.Black, colQtyX, y, right);
-            g.DrawString("الإجمالي", fontHeader, Brushes.Black, colTotalX, y, right);
-
-            y += rowHeight + 10;
+            y += rowHeight;
             g.DrawLine(Pens.Black, margin, y, pageWidth - margin, y);
-            y += 15;
+            y += 10;
 
-            // ===== Items =====
+            // ===== 3. Items List Loop =====
             DataTable dtItems = clsOrderDetail.GetOrderItemsForPrinting(_OrderID);
 
             foreach (DataRow row in dtItems.Rows)
@@ -198,127 +199,124 @@ namespace AwladAli.Bill
                 decimal price = Convert.ToDecimal(row["UnitPrice"]);
                 decimal total = qty * price;
 
-                g.DrawString(name, fontBody, Brushes.Black, colItemX, y, right);
-                g.DrawString(price.ToString("0.00"), fontBody, Brushes.Black, colPriceX, y, right);
-                g.DrawString(qty.ToString(), fontBody, Brushes.Black, colQtyX - 20, y, right);
-                g.DrawString(total.ToString("0.00"), fontBody, Brushes.Black, colTotalX - 20, y, right);
+                // طباعة كل عمود بمحاذاته المستقلة المستحيل تخليه يركب فوق العمود التاني
+                g.DrawString(name, fontBody, Brushes.Black, xItem, y, alignRight);
+                g.DrawString(price.ToString("0.00"), fontBody, Brushes.Black, xPrice, y, alignLeft);
+                g.DrawString(qty.ToString(), fontBody, Brushes.Black, xQty + (colQtyWidth / 2), y, alignCenter);
+                g.DrawString(total.ToString("0.00"), fontBody, Brushes.Black, xTotal, y, alignLeft);
 
                 y += rowHeight;
             }
 
-            y += 15;
-            g.DrawLine(Pens.Black, margin, y, pageWidth - margin, y);
-            y += rowHeight;
+            e.HasMorePages = false;
 
-            // تجهيز أدوات تنسيق إضافية
-            StringFormat left = new StringFormat() { Alignment = StringAlignment.Near}; // للمحاذاة اليسارية للقيم
-            Pen thinPen = new Pen(Color.LightGray, 1); // خط خفيف جداً لتقسيم الجدول السفلي
+            // ===== 4. Totals & Customer Info =====
+            y += 10;
+            g.DrawLine(Pens.Black, margin, y, pageWidth - margin, y);
+            y += 15;
+
+            Pen thinPen = new Pen(Color.LightGray, 1);
 
             if (_Order.OrderType == clsOrder.enOrderType.Takeaway)
             {
-                // ===== تنسيق التيك أواي ملموم وشيك =====
-                g.DrawString(":نوع الطلب", fontBody, Brushes.Black, pageWidth - margin, y, right);
-                g.DrawString("(Takeaway) " + "إستلام من المحل", fontHeader, Brushes.Black, margin, y, left);
-                y += rowHeight + 15;
+                g.DrawString(":نوع الطلب", fontBody, Brushes.Black, pageWidth - margin, y, alignRight);
+                g.DrawString("تيك أواي (Takeaway)", fontHeader, Brushes.Black, margin, y, alignLeft);
+                y += rowHeight + 10;
 
                 g.DrawLine(Pens.Black, margin, y, pageWidth - margin, y);
                 y += 15;
 
-                g.DrawString(":الإجمالي النهائي", fontTitle, Brushes.Black, pageWidth - margin, y, right);
-                g.DrawString($"{_Order.TotalAmount.ToString("0.00")} EGP", fontTitle, Brushes.Blue, margin, y, left);
+                g.DrawString(":الإجمالي النهائي", fontHeader, Brushes.Black, pageWidth - margin, y, alignRight);
+                g.DrawString($"{_Order.TotalAmount.ToString("0.00")} EGP", fontTitle, Brushes.Blue, margin, y - 5, alignLeft);
                 y += rowHeight;
             }
             else if (_Order.OrderType == clsOrder.enOrderType.Delivery)
             {
+                g.DrawString("بيانات التوصيل والعميل", fontHeader, Brushes.Black, pageWidth - margin, y, alignRight);
+                y += rowHeight + 8;
 
-                // ===== 1. عنوان القسم السفلي =====
-                g.DrawString("بيانات التوصيل والعميل", fontHeader, Brushes.Black, pageWidth - margin, y, right);
-                y += rowHeight + 10;
-
-                // الحساب الدقيق لحجم المستطيل (البوكس الحاضن) بناءً على 3 أسطر
                 float boxTop = y;
                 float boxHeight = rowHeight * 3;
                 g.DrawRectangle(Pens.Black, margin, boxTop, usableWidth, boxHeight);
 
-                // حشوة داخلية بسيطة (Padding) عشان النص مينزلش لازق في سقف البوكس
-                float textPaddingY = 5;
+                float textPaddingY = 4;
 
-                // ===== سطر 1: اسم العميل =====
                 string customerName = _Customer != null ? _Customer.FullName : "N/A";
-                g.DrawString(":اسم العميل", fontBody, Brushes.DimGray, pageWidth - margin, y + textPaddingY, right);
-                g.DrawString(customerName + "  ", fontBody, Brushes.Black, margin, y + textPaddingY, left);
+                g.DrawString(":اسم العميل", fontBody, Brushes.DimGray, pageWidth - margin - 5, y + textPaddingY, alignRight);
+                g.DrawString(customerName, fontBody, Brushes.Black, margin + 5, y + textPaddingY, alignLeft);
 
-                y += rowHeight; // النزول للسطر التالي
-                g.DrawLine(thinPen, margin, y, pageWidth - margin, y); // رسم الخط الفاصل بالظبط عند حافة السطر
+                y += rowHeight;
+                g.DrawLine(thinPen, margin, y, pageWidth - margin, y);
 
-                // ===== سطر 2: رقم الهاتف =====
                 string customerPhone = _Customer != null ? _Customer.PhoneNumber : "N/A";
-                g.DrawString(":رقم الهاتف", fontBody, Brushes.DimGray, pageWidth - margin, y + textPaddingY, right);
-                g.DrawString(customerPhone + "  ", fontBody, Brushes.Black, margin, y + textPaddingY, left);
+                g.DrawString(":رقم الهاتف", fontBody, Brushes.DimGray, pageWidth - margin - 5, y + textPaddingY, alignRight);
+                g.DrawString(customerPhone, fontBody, Brushes.Black, margin + 5, y + textPaddingY, alignLeft);
 
-                y += rowHeight; // النزول للسطر التالي
-                g.DrawLine(thinPen, margin, y, pageWidth - margin, y); // رسم الخط الفاصل بالظبط عند حافة السطر
+                y += rowHeight;
+                g.DrawLine(thinPen, margin, y, pageWidth - margin, y);
 
-                // ===== سطر 3: العنوان =====
                 string customerAddress = _Customer != null ? _Customer.Address : "N/A";
-                g.DrawString(":العنوان", fontBody, Brushes.DimGray, pageWidth - margin, y + textPaddingY, right);
-                g.DrawString(customerAddress + "  ", fontBody, Brushes.Black, margin, y + textPaddingY, left);
+                g.DrawString(":العنوان", fontBody, Brushes.DimGray, pageWidth - margin - 5, y + textPaddingY, alignRight);
+                g.DrawString(customerAddress, fontBody, Brushes.Black, margin + 5, y + textPaddingY, alignLeft);
 
-                // الانتقال النهائي لما بعد البوكس بالكامل لطباعة الإجمالي
-                y = boxTop + boxHeight + 25;
+                y = boxTop + boxHeight + 20;
 
-                // 2. منطقة الحساب النهائي (تفقيط احترافي)
                 decimal subTotal = lblMealPrice.Text != "N/A" ? _Order.TotalAmount : 0;
                 decimal deliveryFee = lblDeliveryFee.Text != "N/A" ? _Order.DeliveryFee : 0;
                 decimal grandTotal = subTotal + deliveryFee;
 
-                // طباعة الحساب الصافي للأكل
-                g.DrawString(":إجمالي الوجبات", fontBody, Brushes.Black, pageWidth - margin, y, right);
-                g.DrawString($"{subTotal.ToString("0.00")} EGP", fontBody, Brushes.Black, margin, y, left);
+                g.DrawString(":إجمالي الوجبات", fontBody, Brushes.Black, pageWidth - margin, y, alignRight);
+                g.DrawString($"{subTotal.ToString("0.00")} EGP", fontBody, Brushes.Black, margin, y, alignLeft);
                 y += rowHeight;
 
-                // طباعة الديليفري لو متاح ومضاف للحساب
-                g.DrawString(":رسوم التوصيل", fontBody, Brushes.Black, pageWidth - margin, y, right);
+                g.DrawString(":رسوم التوصيل", fontBody, Brushes.Black, pageWidth - margin, y, alignRight);
                 if (deliveryFee > 0)
                 {
-                    g.DrawString($"{_Order.DeliveryFee.ToString("0.00")} EGP", fontBody, Brushes.Black, margin, y + 5, left);
+                    g.DrawString($"{deliveryFee.ToString("0.00")} EGP", fontBody, Brushes.Black, margin, y, alignLeft);
                 }
                 else
                 {
-                    g.DrawString("الحساب مع المندوب  ", fontBody, Brushes.Black, margin, y + 5, left);
+                    g.DrawString("الحساب مع المندوب", fontBody, Brushes.Black, margin, y, alignLeft);
                 }
                 y += rowHeight;
 
-                // خط نهائي سميك قبل المجموع الكلي
-                g.DrawLine(new Pen(Color.Black, 2), margin, y + 5, pageWidth - margin, y + 5);
+                g.DrawLine(new Pen(Color.Black, 1.5f), margin, y + 5, pageWidth - margin, y + 5);
                 y += 15;
 
-                // الإجمالي النهائي الكبير المفصّل
-                g.DrawString(":الإجمالي", fontTitle, Brushes.Black, pageWidth - margin, y, right);
-                g.DrawString($"{grandTotal.ToString("0.00")} EGP", fontTitle, Brushes.Black, margin, y, left);
+                g.DrawString(":الإجمالي الكلي", fontHeader, Brushes.Black, pageWidth - margin, y, alignRight);
+                g.DrawString($"{grandTotal.ToString("0.00")} EGP", fontTitle, Brushes.Black, margin, y - 5, alignLeft);
                 y += rowHeight;
             }
 
-            y += 40; // مسافة محترمة قبل التذييل لراحة العين
-
-            // ===== Footer =====
-            g.DrawString("شكراً لزيارتكم", fontBody, Brushes.Black, pageWidth / 2, y, center);
+            y += 30;
+            g.DrawString("شكراً لزيارتكم", fontFooter, Brushes.Black, pageWidth / 2, y, alignCenter);
         }
-
-
 
         private void btnSaveAndPrint_Click(object sender, EventArgs e)
         {
-            // ربط حدث الرسم بدالة الطباعة
+            // Attach the drawing event method to the print document instance
             printDoc.PrintPage += new PrintPageEventHandler(PrintOrderPage);
 
-            // إظهار مربع حوار الطباعة أو الطباعة مباشرة
-            // printDoc.Print(); // للطباعة المباشرة على البرنتر الافتراضي
+            // 📄 Fetch the items first to calculate the exact dynamic height required for the thermal roll
+            DataTable dtItems = clsOrderDetail.GetOrderItemsForPrinting(_OrderID);
+            int itemCount = dtItems.Rows.Count;
 
+            // Calculate approximate visual height: 
+            // 250px (Header/Logo) + 400px (Totals/Delivery Box/Footer) + (Items Count * Row Height)
+            int approximateHeight = 250 + 400 + (itemCount * 35);
+
+            // Set custom paper size for thermal printers inside the preview window 
+            // Width: 300px (standard 80mm scaling), Height: completely dynamic based on items
+            System.Drawing.Printing.PaperSize receiptSize = new System.Drawing.Printing.PaperSize("CustomReceipt", 300, approximateHeight);
+            printDoc.DefaultPageSettings.PaperSize = receiptSize;
+
+            // Initialize and display the structured Print Preview Dialog
             PrintPreviewDialog preview = new PrintPreviewDialog();
             preview.Document = printDoc;
-            preview.ShowDialog(); // للمعاينة قبل الطباعة (اختياري)
-            _OrderConfirmed = true; // Set the flag to indicate the order was confirmed/saved
+            preview.ShowDialog();
+
+            // Set the flag to indicate the order was confirmed/saved successfully
+            _OrderConfirmed = true;
 
             this.Close();
         }
