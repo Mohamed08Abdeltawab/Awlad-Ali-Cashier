@@ -241,7 +241,29 @@ namespace AwladAli
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-           Application.Exit();
+            // Stop the timer immediately to prevent any background ticks
+            sessionTimer.Stop();
+
+            if (_CurrentSession != null)
+            {
+                // Ask the user if they want to end their active session before exiting
+                DialogResult result = MessageBox.Show("هل تريد إنهاء الجلسة الحالية قبل الخروج؟", "تأكيد", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    // End the session normally (updates EndTime and IsActive in DB)
+                    _EndSessionWhenFormClosing();
+                }
+                // ✅ If they press 'No', we don't do anything. 
+                // The form will continue its closing process naturally without loops.
+            }
+
+            // 🛡️ CRITICAL FIX: If the user closed the window from the X button, 
+            // shutdown the entire process safely without triggering infinite loops.
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                Environment.Exit(0);
+            }
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
@@ -495,7 +517,7 @@ namespace AwladAli
                 _EndSession();
             }
         }
-/*
+
         private void _EndSessionWhenFormClosing()
         {
             sessionTimer.Stop();
@@ -509,7 +531,6 @@ namespace AwladAli
                 clsGlobal.CurrentSessionID = -1;
             }
         }
-*/
 
         private void _EndSession()
         {
