@@ -236,30 +236,41 @@ namespace AwladAli.Bill
                 y += rowHeight + 8;
 
                 float boxTop = y;
-                float boxHeight = rowHeight * 3;
-                g.DrawRectangle(Pens.Black, margin, boxTop, usableWidth, boxHeight);
-
                 float textPaddingY = 4;
 
+                // ===== 1. ضبط مساحات العرض بالمسطرة =====
+                float labelWidth = 70; // المساحة المخصصة للكلمات الرمادية بره الصندوق
+                float boxWidth = usableWidth - labelWidth; // المساحة المتبقية للصناديق
+
+                // إحداثيات الـ X لكل جزء
+                float xLabel = pageWidth - margin; // الكلمة الرمادية تبدأ من أقصى اليمين
+                float xBoxStart = margin;          // الصندوق يبدأ من أقصى الشمال ويفرش لليمين
+
+                // ===== Row 1: Customer Name =====
                 string customerName = _Customer != null ? _Customer.FullName : "N/A";
-                g.DrawString(":اسم العميل", fontBody, Brushes.DimGray, pageWidth - margin - 5, y + textPaddingY, alignRight);
-                g.DrawString(customerName, fontBody, Brushes.Black, margin + 5, y + textPaddingY, alignLeft);
+                g.DrawString(":اسم العميل", fontBody, Brushes.DimGray, xLabel, y + textPaddingY, alignRight);
+                g.DrawRectangle(Pens.Black, xBoxStart, y, boxWidth, rowHeight);
+                g.DrawString(customerName, fontBody, Brushes.Black, xBoxStart + boxWidth - 5, y + textPaddingY, alignRight);
+                y += rowHeight + 5; // مسافة صغيرة 5 بكسل بين كل صندوق والتاني لشكل أشيك
 
-                y += rowHeight;
-                g.DrawLine(thinPen, margin, y, pageWidth - margin, y);
-
+                // ===== Row 2: Phone Number =====
                 string customerPhone = _Customer != null ? _Customer.PhoneNumber : "N/A";
-                g.DrawString(":رقم الهاتف", fontBody, Brushes.DimGray, pageWidth - margin - 5, y + textPaddingY, alignRight);
-                g.DrawString(customerPhone, fontBody, Brushes.Black, margin + 5, y + textPaddingY, alignLeft);
+                g.DrawString(":رقم الهاتف", fontBody, Brushes.DimGray, xLabel, y + textPaddingY, alignRight);
+                g.DrawRectangle(Pens.Black, xBoxStart, y, boxWidth, rowHeight);
+                g.DrawString(customerPhone, fontBody, Brushes.Black, xBoxStart + boxWidth - 5, y + textPaddingY, alignRight);
+                y += rowHeight + 5;
 
-                y += rowHeight;
-                g.DrawLine(thinPen, margin, y, pageWidth - margin, y);
-
+                // ===== Row 3: Address (Double Height Box for multi-line text) =====
                 string customerAddress = _Customer != null ? _Customer.Address : "N/A";
-                g.DrawString(":العنوان", fontBody, Brushes.DimGray, pageWidth - margin - 5, y + textPaddingY, alignRight);
-                g.DrawString(customerAddress, fontBody, Brushes.Black, margin + 5, y + textPaddingY, alignLeft);
+                g.DrawString(":العنوان", fontBody, Brushes.DimGray, xLabel, y + textPaddingY, alignRight);
+                // 🏆 Double the box height to match exactly 2 rows
+                float doubleBoxHeight = rowHeight * 2;
+                g.DrawRectangle(Pens.Black, xBoxStart, y, boxWidth, doubleBoxHeight);
+                RectangleF addressBoxRect = new RectangleF(xBoxStart, y + textPaddingY, boxWidth - 5, doubleBoxHeight - textPaddingY);
+                g.DrawString(customerAddress, fontBody, Brushes.Black, addressBoxRect, alignRight);
 
-                y = boxTop + boxHeight + 20;
+                // Move y completely past the double-height box plus the margin
+                y += doubleBoxHeight + 20;
 
                 decimal subTotal = lblMealPrice.Text != "N/A" ? _Order.TotalAmount : 0;
                 decimal deliveryFee = lblDeliveryFee.Text != "N/A" ? _Order.DeliveryFee : 0;

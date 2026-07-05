@@ -131,7 +131,7 @@
             // 
             this.txtPhoneNumber.Location = new System.Drawing.Point(507, 122);
             this.txtPhoneNumber.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtPhoneNumber.MaxLength = 50;
+            this.txtPhoneNumber.MaxLength = 15;
             this.txtPhoneNumber.Name = "txtPhoneNumber";
             this.txtPhoneNumber.Size = new System.Drawing.Size(219, 26);
             this.txtPhoneNumber.TabIndex = 158;
@@ -209,7 +209,7 @@
             // 
             this.txtCustomerName.Location = new System.Drawing.Point(507, 167);
             this.txtCustomerName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtCustomerName.MaxLength = 50;
+            this.txtCustomerName.MaxLength = 35;
             this.txtCustomerName.Name = "txtCustomerName";
             this.txtCustomerName.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtCustomerName.Size = new System.Drawing.Size(219, 26);
@@ -219,6 +219,7 @@
             // rtxtAddress
             // 
             this.rtxtAddress.Location = new System.Drawing.Point(436, 220);
+            this.rtxtAddress.MaxLength = 70;
             this.rtxtAddress.Name = "rtxtAddress";
             this.rtxtAddress.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.rtxtAddress.Size = new System.Drawing.Size(290, 66);
@@ -229,6 +230,7 @@
             // rtxtNotes
             // 
             this.rtxtNotes.Location = new System.Drawing.Point(436, 305);
+            this.rtxtNotes.MaxLength = 250;
             this.rtxtNotes.Name = "rtxtNotes";
             this.rtxtNotes.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.rtxtNotes.Size = new System.Drawing.Size(290, 64);

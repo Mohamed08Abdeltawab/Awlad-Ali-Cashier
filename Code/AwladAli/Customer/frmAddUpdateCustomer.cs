@@ -106,15 +106,28 @@ namespace AwladAli.Customer
 
         private void txtPhoneNumber_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrEmpty(txtPhoneNumber.Text.Trim()))
+            string input = txtPhoneNumber.Text.Trim();
+
+            // 1. Check if empty
+            if (string.IsNullOrEmpty(input))
             {
                 e.Cancel = true;
                 errorProvider1.SetError(txtPhoneNumber, "رقم الهاتف لا يمكن أن يكون فارغاً");
+                return;
             }
-            // Check if Username exists (Only in AddNew mode)
-            else if (_Mode == enMode.AddNew)
+
+            // 2. Check length (Minimum 3, Maximum 15)
+            if (input.Length < 3 || input.Length > 15)
             {
-                if (clsCustomer.IsCustomerExist(txtPhoneNumber.Text.Trim()))
+                e.Cancel = true;
+                errorProvider1.SetError(txtPhoneNumber, "رقم الهاتف يجب أن يكون بين 3 و 15 رقماً");
+                return;
+            }
+
+            // 4. Check if Customer exists (Only in AddNew mode)
+            if (_Mode == enMode.AddNew)
+            {
+                if (clsCustomer.IsCustomerExist(input))
                 {
                     e.Cancel = true;
                     errorProvider1.SetError(txtPhoneNumber, "رقم الهاتف مستخدم من قبل عميل آخر");
@@ -132,7 +145,8 @@ namespace AwladAli.Customer
 
         private void txtCustomerName_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrEmpty(txtCustomerName.Text.Trim()))
+            string input = txtCustomerName.Text.Trim();
+            if (string.IsNullOrEmpty(input))
             {
                 e.Cancel = true;
                 errorProvider1.SetError(txtCustomerName, "اسم العميل لا يمكن أن يكون فارغاً");
@@ -195,7 +209,19 @@ namespace AwladAli.Customer
 
         private void txtPhoneNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+            // 1. Allow only digits and control keys (like Backspace)
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+                return;
+            }
+
+            // 2. Prevent consecutive zeros at the very beginning (e.g., preventing "00")
+            // If the first character is '0' and the user tries to type another '0' at the second position
+            if (txtPhoneNumber.Text == "0" && e.KeyChar == '0' && txtPhoneNumber.SelectionStart == 1)
+            {
+                e.Handled = true;
+            }
         }
 
     }

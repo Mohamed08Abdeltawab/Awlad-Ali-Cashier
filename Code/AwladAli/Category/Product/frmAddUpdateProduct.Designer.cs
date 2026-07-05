@@ -108,6 +108,7 @@
             this.txtFoodName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtFoodName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFoodName.Location = new System.Drawing.Point(354, 91);
+            this.txtFoodName.MaxLength = 25;
             this.txtFoodName.Name = "txtFoodName";
             this.txtFoodName.Size = new System.Drawing.Size(220, 31);
             this.txtFoodName.TabIndex = 227;
@@ -118,6 +119,7 @@
             this.txtSmallSize.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSmallSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSmallSize.Location = new System.Drawing.Point(352, 201);
+            this.txtSmallSize.MaxLength = 10;
             this.txtSmallSize.Name = "txtSmallSize";
             this.txtSmallSize.Size = new System.Drawing.Size(169, 31);
             this.txtSmallSize.TabIndex = 228;
@@ -128,6 +130,7 @@
             this.txtMeduimSize.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMeduimSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMeduimSize.Location = new System.Drawing.Point(352, 273);
+            this.txtMeduimSize.MaxLength = 10;
             this.txtMeduimSize.Name = "txtMeduimSize";
             this.txtMeduimSize.Size = new System.Drawing.Size(169, 31);
             this.txtMeduimSize.TabIndex = 231;
@@ -149,6 +152,7 @@
             this.txtLargeSize.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtLargeSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLargeSize.Location = new System.Drawing.Point(352, 347);
+            this.txtLargeSize.MaxLength = 10;
             this.txtLargeSize.Name = "txtLargeSize";
             this.txtLargeSize.Size = new System.Drawing.Size(169, 31);
             this.txtLargeSize.TabIndex = 234;
@@ -170,6 +174,7 @@
             this.txtXlargeSize.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtXlargeSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtXlargeSize.Location = new System.Drawing.Point(352, 423);
+            this.txtXlargeSize.MaxLength = 10;
             this.txtXlargeSize.Name = "txtXlargeSize";
             this.txtXlargeSize.Size = new System.Drawing.Size(168, 31);
             this.txtXlargeSize.TabIndex = 237;
@@ -261,6 +266,7 @@
             this.txtPriceNormalSize.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPriceNormalSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPriceNormalSize.Location = new System.Drawing.Point(38, 279);
+            this.txtPriceNormalSize.MaxLength = 10;
             this.txtPriceNormalSize.Name = "txtPriceNormalSize";
             this.txtPriceNormalSize.Size = new System.Drawing.Size(169, 31);
             this.txtPriceNormalSize.TabIndex = 249;

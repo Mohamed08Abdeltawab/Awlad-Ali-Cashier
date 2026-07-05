@@ -126,6 +126,11 @@ namespace AwladAli.User
                 e.Cancel = true;
                 errorProvider1.SetError(txtPassword, "يجب أن تكون كلمة المرور مكونة من 4 أحرف على الأقل");
             }
+            else if(txtPassword.Text.Trim().Length > 32)
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtPassword, "يجب أن تكون كلمة المرور مكونة من 32 أحرف كحد أقصى");
+            }
             else
             {
                 errorProvider1.SetError(txtPassword, null);

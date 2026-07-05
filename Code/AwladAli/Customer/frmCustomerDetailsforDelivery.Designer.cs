@@ -220,7 +220,7 @@
             this.txtDeliveryFees.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDeliveryFees.Location = new System.Drawing.Point(370, 750);
             this.txtDeliveryFees.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtDeliveryFees.MaxLength = 50;
+            this.txtDeliveryFees.MaxLength = 10;
             this.txtDeliveryFees.Name = "txtDeliveryFees";
             this.txtDeliveryFees.Size = new System.Drawing.Size(219, 31);
             this.txtDeliveryFees.TabIndex = 247;

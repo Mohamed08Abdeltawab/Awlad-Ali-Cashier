@@ -54,6 +54,7 @@
             this.txtPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPrice.Location = new System.Drawing.Point(268, 155);
+            this.txtPrice.MaxLength = 10;
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(220, 31);
             this.txtPrice.TabIndex = 235;
@@ -64,6 +65,7 @@
             this.txtFoodName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtFoodName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFoodName.Location = new System.Drawing.Point(268, 87);
+            this.txtFoodName.MaxLength = 25;
             this.txtFoodName.Name = "txtFoodName";
             this.txtFoodName.Size = new System.Drawing.Size(220, 31);
             this.txtFoodName.TabIndex = 234;
