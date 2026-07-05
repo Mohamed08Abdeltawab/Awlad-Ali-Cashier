@@ -55,7 +55,7 @@ namespace AwladAli
 
                 if (sessionUser != null)
                 {
-                    //check if the active session belongs to the current logged-in user
+                    // check if the active session belongs to the current logged-in user
                     if (sessionUser.UserID == clsGlobal.CurrentUser.UserID)
                     {
                         flpAddonsContainer.Enabled = true;
@@ -64,24 +64,25 @@ namespace AwladAli
 
                         _SessionID = _CurrentSession.SessionID;
                         clsGlobal.CurrentSessionID = _CurrentSession.SessionID;
-                        _SessionStartTime = _CurrentSession.StartTime;
 
-                        sessionTimer.Start();
                         btnStartSession.Image = Resources.session_2_64;
                         btnStartSession.Text = "إنهاء الجلسة";
+
+                        // ✅ CRITICAL FIX: Always invoke the resume math logic BEFORE turning the timer ticks on
+                        _ResumeSessionTimer();
                     }
                     else
                     {
                         // Lock the main screen controls and force the user to explicitly start a new session under their account
                         _DisableMainScreenControls();
-                        // 🔴 Different User: Show the custom conflict dialog and pass the active username
+
+                        // Different User: Show the custom conflict dialog and pass the active username
                         using (frmSessionConflictDialog dialog = new frmSessionConflictDialog(sessionUser.UserName))
                         {
                             DialogResult result = dialog.ShowDialog();
 
                             if (result == DialogResult.Yes)
                             {
-                                // 🛠️ Handle closing the old session (Triggered by button click or closing the form via X button)
                                 _CurrentSession.EndTime = DateTime.Now;
                                 _CurrentSession.IsActive = false;
 
@@ -91,30 +92,43 @@ namespace AwladAli
                                 // Save the session updates to the database (Updates EndTime and IsActive status)
                                 if (_CurrentSession.Save())
                                 {
-                                    // Display a success confirmation message to the user
                                     MessageBox.Show("تم إغلاق الجلسة القديمة المعلقة بنجاح. يمكنك الآن بدء ورديتك الجديدة.",
                                                     "تأكيد الإجراء", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
                             }
                             else if (result == DialogResult.No)
                             {
-                                // ↩️ Logout Option: Stop the running timer and restart the application to trigger the login screen
+                                // ✅ SAFE LOGOUT FIX: Safe and clean transfer to Login Screen instead of standard Application.Restart
                                 sessionTimer.Stop();
-                                Application.Restart();
+                                this.Hide();
+
+                                // Open your Login Form dynamically
+                                using (frmLogin loginForm = new frmLogin())
+                                {
+                                    if (loginForm.ShowDialog() == DialogResult.OK)
+                                    {
+                                        // If another user authenticated successfully, re-evaluate screens state
+                                        _EnableMainScreen();
+                                        this.Show();
+                                    }
+                                    else
+                                    {
+                                        // Shutdown process if they closed the login frame
+                                        Environment.Exit(0);
+                                    }
+                                }
                             }
                         }
                     }
                 }
                 else
                 {
-                    //there is an active session for an unknown user, disable main screen controls and show message
                     _DisableMainScreenControls();
-                    MessageBox.Show("يوجد جلسة نشطة لمستخدم غير معروف. لا يمكنك بدء جلسة جديدة.", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("يوجد جلسة نشطة لممستخدم غير معروف. لا يمكنك بدء جلسة جديدة.", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                //there is no active session, disable main screen controls
                 _DisableMainScreenControls();
             }
         }
@@ -131,6 +145,31 @@ namespace AwladAli
             btnStartSession.Image = Resources.start_session_64;
             btnStartSession.Text = "بدء جلسة";
             lblSessionTimer.Text = "00:00:00";
+        }
+
+
+        private void _ResumeSessionTimer()
+        {
+            // Fetch the stored exit time and the actual session start time from DB
+            DateTime lastExitTime = Properties.Settings.Default.AppExitTime;
+
+            // Safety check: if it's a valid old date and session is active
+            if (lastExitTime != DateTime.MinValue && _CurrentSession.IsActive)
+            {
+                // 1. Calculate how long the application was closed
+                TimeSpan elapsedClosedTime = DateTime.Now - lastExitTime;
+
+                // 2. Shift the start time forward by the closed duration to eliminate the gap
+                _SessionStartTime = _CurrentSession.StartTime.Add(elapsedClosedTime);
+            }
+            else
+            {
+                // Default normal startup fallback
+                _SessionStartTime = _CurrentSession.StartTime;
+            }
+
+            // 3. Start the continuous UI updates
+            sessionTimer.Start();
         }
 
 
@@ -243,7 +282,6 @@ namespace AwladAli
         {
             // Stop the timer immediately to prevent any background ticks
             sessionTimer.Stop();
-
             if (_CurrentSession != null)
             {
                 // Ask the user if they want to end their active session before exiting
@@ -256,6 +294,8 @@ namespace AwladAli
                 }
                 // ✅ If they press 'No', we don't do anything. 
                 // The form will continue its closing process naturally without loops.
+                Properties.Settings.Default.AppExitTime = DateTime.Now;
+                Properties.Settings.Default.Save();
             }
 
             // 🛡️ CRITICAL FIX: If the user closed the window from the X button, 
@@ -565,7 +605,16 @@ namespace AwladAli
         {
             TimeSpan duration = DateTime.Now - _SessionStartTime;
 
-            lblSessionTimer.Text = duration.ToString(@"hh\:mm\:ss");
+            // 🏆 Math.Floor ensures we get the absolute total hours without rounding up fractions
+            int totalHours = (int)Math.Floor(duration.TotalHours);
+
+            // 🎯 Format each part perfectly: D2 ensures a leading zero if the number is less than 10 (e.g., "05")
+            string hoursStr = totalHours.ToString("D2");
+            string minutesStr = duration.Minutes.ToString("D2");
+            string secondsStr = duration.Seconds.ToString("D2");
+
+            // Display the final combined string to the label layout
+            lblSessionTimer.Text = $"{hoursStr}:{minutesStr}:{secondsStr}";
         }
 
         private void rbTakeaway_CheckedChanged(object sender, EventArgs e)
