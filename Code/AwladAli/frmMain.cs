@@ -149,24 +149,31 @@ namespace AwladAli
 
         private void _ResumeSessionTimer()
         {
+            // 1. If the timer is already running live, do absolutely nothing to protect the current running elapsed duration
+            if (sessionTimer.Enabled && _SessionStartTime != DateTime.MinValue)
+            {
+                return;
+            }
+
             DateTime lastExitTime = Properties.Settings.Default.AppExitTime;
 
-            // Safety check: if it's a valid old date and session is active
+            // 2. Safety check: if it's a valid old date and session is active (App just started cold)
             if (lastExitTime != DateTime.MinValue && _CurrentSession.IsActive)
             {
                 TimeSpan elapsedClosedTime = DateTime.Now - lastExitTime;
                 _SessionStartTime = _CurrentSession.StartTime.Add(elapsedClosedTime);
 
-                // 🎯 CRITICAL FIX: Reset the setting immediately so subsequent refreshes won't trigger this loop
+                // Reset the setting immediately so subsequent live refreshes won't trigger this loop gap
                 Properties.Settings.Default.AppExitTime = DateTime.MinValue;
                 Properties.Settings.Default.Save();
             }
             else
             {
-                // Default normal startup fallback
+                // Default cold startup fallback: bind to the static DB launch checkpoint cleanly
                 _SessionStartTime = _CurrentSession.StartTime;
             }
 
+            // 3. Turn on continuous UI ticks updates
             sessionTimer.Start();
         }
 
