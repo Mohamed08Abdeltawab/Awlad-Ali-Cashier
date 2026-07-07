@@ -34,8 +34,6 @@ namespace AwladAli
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.pnlMainContainer = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
             this.flpAddonsContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.flpProductCards = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlFooter = new System.Windows.Forms.Panel();
@@ -49,10 +47,7 @@ namespace AwladAli
             this.rbTakeaway = new System.Windows.Forms.RadioButton();
             this.llShowCustomerDetails = new System.Windows.Forms.LinkLabel();
             this.rbDelivery = new System.Windows.Forms.RadioButton();
-            this.pbCancel = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.llCustomerDetails = new System.Windows.Forms.LinkLabel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.llReset = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlLine = new System.Windows.Forms.Panel();
@@ -61,22 +56,28 @@ namespace AwladAli
             this.lblTotalText = new System.Windows.Forms.Label();
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.lblSessionTimer = new System.Windows.Forms.Label();
-            this.btnStartSession = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.lblUsername = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnSettings = new System.Windows.Forms.Button();
             this.sessionTimer = new System.Windows.Forms.Timer(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pbCancel = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnLogout = new System.Windows.Forms.Button();
+            this.btnStartSession = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.btnSettings = new System.Windows.Forms.Button();
             this.pnlMainContainer.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.pnlFooter.SuspendLayout();
             this.pnlTakeawayDelivery.SuspendLayout();
+            this.pnlHeader.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCancel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.SuspendLayout();
@@ -92,30 +93,6 @@ namespace AwladAli
             this.pnlMainContainer.Name = "pnlMainContainer";
             this.pnlMainContainer.Size = new System.Drawing.Size(1902, 949);
             this.pnlMainContainer.TabIndex = 2;
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel1.BackColor = System.Drawing.Color.Red;
-            this.panel1.BackgroundImage = global::AwladAli.Properties.Resources.CategoryBackground;
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(1655, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(255, 98);
-            this.panel1.TabIndex = 0;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Location = new System.Drawing.Point(71, 29);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(125, 39);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "الاضافات";
             // 
             // flpAddonsContainer
             // 
@@ -299,29 +276,6 @@ namespace AwladAli
             this.rbDelivery.UseVisualStyleBackColor = true;
             this.rbDelivery.CheckedChanged += new System.EventHandler(this.rbDelivery_CheckedChanged);
             // 
-            // pbCancel
-            // 
-            this.pbCancel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbCancel.Image = global::AwladAli.Properties.Resources.cancel32;
-            this.pbCancel.Location = new System.Drawing.Point(12, 64);
-            this.pbCancel.Name = "pbCancel";
-            this.pbCancel.Size = new System.Drawing.Size(31, 26);
-            this.pbCancel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbCancel.TabIndex = 184;
-            this.pbCancel.TabStop = false;
-            this.pbCancel.Visible = false;
-            this.pbCancel.Click += new System.EventHandler(this.pbCancel_Click);
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = global::AwladAli.Properties.Resources.takeaway32;
-            this.pictureBox5.Location = new System.Drawing.Point(509, 13);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(31, 26);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 181;
-            this.pictureBox5.TabStop = false;
-            // 
             // llCustomerDetails
             // 
             this.llCustomerDetails.AutoSize = true;
@@ -335,16 +289,6 @@ namespace AwladAli
             this.llCustomerDetails.Text = "إضافة بيانات العميل";
             this.llCustomerDetails.Visible = false;
             this.llCustomerDetails.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llCustomerDetails_LinkClicked);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::AwladAli.Properties.Resources.delivery32;
-            this.pictureBox2.Location = new System.Drawing.Point(509, 61);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(31, 26);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 182;
-            this.pictureBox2.TabStop = false;
             // 
             // llReset
             // 
@@ -420,6 +364,7 @@ namespace AwladAli
             // 
             this.pnlHeader.BackColor = System.Drawing.Color.Black;
             this.pnlHeader.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pnlHeader.Controls.Add(this.btnLogout);
             this.pnlHeader.Controls.Add(this.lblSessionTimer);
             this.pnlHeader.Controls.Add(this.btnStartSession);
             this.pnlHeader.Controls.Add(this.pictureBox1);
@@ -444,6 +389,124 @@ namespace AwladAli
             this.lblSessionTimer.Size = new System.Drawing.Size(112, 32);
             this.lblSessionTimer.TabIndex = 141;
             this.lblSessionTimer.Text = "00:00:00";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.label8.Location = new System.Drawing.Point(1014, 54);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(253, 20);
+            this.label8.TabIndex = 138;
+            this.label8.Text = "By Eng: Mohamed Abdeltawab";
+            // 
+            // lblUsername
+            // 
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsername.ForeColor = System.Drawing.Color.White;
+            this.lblUsername.Location = new System.Drawing.Point(1347, 27);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(62, 30);
+            this.lblUsername.TabIndex = 123;
+            this.lblUsername.Text = "[؟؟؟]";
+            this.lblUsername.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(1486, 27);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(144, 30);
+            this.label2.TabIndex = 122;
+            this.label2.Text = ":اسم المستخدم";
+            // 
+            // sessionTimer
+            // 
+            this.sessionTimer.Interval = 1000;
+            this.sessionTimer.Tick += new System.EventHandler(this.sessionTimer_Tick);
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel1.BackColor = System.Drawing.Color.Red;
+            this.panel1.BackgroundImage = global::AwladAli.Properties.Resources.CategoryBackground;
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel1.Location = new System.Drawing.Point(1655, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(255, 98);
+            this.panel1.TabIndex = 0;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label3.Location = new System.Drawing.Point(71, 29);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(125, 39);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "الاضافات";
+            // 
+            // pbCancel
+            // 
+            this.pbCancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbCancel.Image = global::AwladAli.Properties.Resources.cancel32;
+            this.pbCancel.Location = new System.Drawing.Point(12, 64);
+            this.pbCancel.Name = "pbCancel";
+            this.pbCancel.Size = new System.Drawing.Size(31, 26);
+            this.pbCancel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbCancel.TabIndex = 184;
+            this.pbCancel.TabStop = false;
+            this.pbCancel.Visible = false;
+            this.pbCancel.Click += new System.EventHandler(this.pbCancel_Click);
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::AwladAli.Properties.Resources.takeaway32;
+            this.pictureBox5.Location = new System.Drawing.Point(509, 13);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(31, 26);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 181;
+            this.pictureBox5.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::AwladAli.Properties.Resources.delivery32;
+            this.pictureBox2.Location = new System.Drawing.Point(509, 61);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(31, 26);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 182;
+            this.pictureBox2.TabStop = false;
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.BackColor = System.Drawing.Color.Transparent;
+            this.btnLogout.BackgroundImage = global::AwladAli.Properties.Resources.settingbtn_background;
+            this.btnLogout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnLogout.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.ForeColor = System.Drawing.Color.Transparent;
+            this.btnLogout.Image = global::AwladAli.Properties.Resources.logout64;
+            this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLogout.Location = new System.Drawing.Point(1663, 4);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(235, 80);
+            this.btnLogout.TabIndex = 142;
+            this.btnLogout.Text = "تسجيل الخروج";
+            this.btnLogout.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLogout.UseVisualStyleBackColor = false;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // btnStartSession
             // 
@@ -476,18 +539,6 @@ namespace AwladAli
             this.pictureBox1.TabIndex = 139;
             this.pictureBox1.TabStop = false;
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.label8.Location = new System.Drawing.Point(1658, 35);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(253, 20);
-            this.label8.TabIndex = 138;
-            this.label8.Text = "By Eng: Mohamed Abdeltawab";
-            // 
             // pictureBox8
             // 
             this.pictureBox8.BackColor = System.Drawing.Color.White;
@@ -498,29 +549,6 @@ namespace AwladAli
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox8.TabIndex = 129;
             this.pictureBox8.TabStop = false;
-            // 
-            // lblUsername
-            // 
-            this.lblUsername.AutoSize = true;
-            this.lblUsername.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsername.ForeColor = System.Drawing.Color.White;
-            this.lblUsername.Location = new System.Drawing.Point(1347, 27);
-            this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(62, 30);
-            this.lblUsername.TabIndex = 123;
-            this.lblUsername.Text = "[؟؟؟]";
-            this.lblUsername.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(1486, 27);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(144, 30);
-            this.label2.TabIndex = 122;
-            this.label2.Text = ":اسم المستخدم";
             // 
             // btnSettings
             // 
@@ -543,11 +571,6 @@ namespace AwladAli
             this.btnSettings.UseVisualStyleBackColor = false;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
-            // sessionTimer
-            // 
-            this.sessionTimer.Interval = 1000;
-            this.sessionTimer.Tick += new System.EventHandler(this.sessionTimer_Tick);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -563,19 +586,20 @@ namespace AwladAli
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.frmMain_Load);
+            this.Shown += new System.EventHandler(this.frmMain_Shown);
             this.pnlMainContainer.ResumeLayout(false);
             this.pnlMainContainer.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.pnlFooter.ResumeLayout(false);
             this.pnlFooter.PerformLayout();
             this.pnlTakeawayDelivery.ResumeLayout(false);
             this.pnlTakeawayDelivery.PerformLayout();
+            this.pnlHeader.ResumeLayout(false);
+            this.pnlHeader.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCancel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.pnlHeader.ResumeLayout(false);
-            this.pnlHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.ResumeLayout(false);
@@ -619,5 +643,6 @@ namespace AwladAli
         private Label label7;
         private Label label6;
         private Label label5;
+        private Button btnLogout;
     }
 }

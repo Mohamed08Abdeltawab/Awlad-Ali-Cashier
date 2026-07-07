@@ -12,6 +12,7 @@ namespace AwladAli.GlobalClasses
     {
         public static clsUser CurrentUser;
         public static int CurrentSessionID = -1;
+        public static bool IsLoggingOut = false;
 
         // Registry Path for storing credentials
         private static string _RegistryPath = @"HKEY_CURRENT_USER\Software\AwladAli_Cashier";

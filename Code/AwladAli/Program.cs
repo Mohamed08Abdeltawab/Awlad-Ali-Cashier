@@ -2,9 +2,11 @@
 using AwladAli.Category;
 using AwladAli.Category.Extra;
 using AwladAli.Customer;
+using AwladAli.GlobalClasses;
 using AwladAli.Login;
 using AwladAli.Session;
 using AwladAli.User;
+using AwladAli_Buisness; // Ensure your business core namespace is linked for clsGlobal
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -26,22 +28,51 @@ namespace AwladAli
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            // 1. إنشاء ثقافة جديدة (مثلاً العربية مصر أو الإنجليزية بريطانيا لأنهم بيدعموا dd-MM-yyyy)
+            // 1. Create a specialized global culture configuration framework layout
             CultureInfo culture = CultureInfo.CreateSpecificCulture("en-GB");
 
-            // 2. تخصيص تنسيق التاريخ والوقت داخل هذه الثقافة بالشكل الذي تريده تماماً
+            // 2. Format configuration specifications rules definition
             culture.DateTimeFormat.ShortDatePattern = "dd-MM-yyyy";
-            culture.DateTimeFormat.LongTimePattern = "hh:mm:ss tt"; // تنسيق الوقت 12 ساعة (AM/PM)
+            culture.DateTimeFormat.LongTimePattern = "hh:mm:ss tt";
 
-            // 3. تطبيق الثقافة على البرنامج بالكامل (كل الـ Threads والواجهات)
+            // 3. Inject continuous execution culture patterns into running threads
             Thread.CurrentThread.CurrentCulture = culture;
             Thread.CurrentThread.CurrentUICulture = culture;
 
-            // للمشاريع الحديثة في دوت نت يفضل إضافة هذا السطر أيضاً:
             CultureInfo.DefaultThreadCurrentCulture = culture;
             CultureInfo.DefaultThreadCurrentUICulture = culture;
 
-            Application.Run(new frmLogin());
+            bool keepRunning = true;
+
+            // 4. Master loop lifecycle architecture to safely manage continuous application restarts via logouts
+            while (keepRunning)
+            {
+                using (frmLogin loginForm = new frmLogin())
+                {
+                    // Evaluate if credentials security verification returned confirmation result safely
+                    if (loginForm.ShowDialog() == DialogResult.OK)
+                    {
+                        // Open the master dashboard window passing the authenticated user validation context
+                        frmMain mainForm = new frmMain(loginForm);
+                        Application.Run(mainForm);
+
+                        // Evaluate logout transition flag state upon the layout frame closing process
+                        if (clsGlobal.IsLoggingOut)
+                        {
+                            keepRunning = true;
+                            clsGlobal.IsLoggingOut = false; // Purge layout configuration state immediately
+                        }
+                        else
+                        {
+                            keepRunning = false; // Hard loop termination context execution if close reason is manual X click
+                        }
+                    }
+                    else
+                    {
+                        keepRunning = false; // Kill loop execution context if the login dialog frame was exited
+                    }
+                }
+            }
         }
     }
 }

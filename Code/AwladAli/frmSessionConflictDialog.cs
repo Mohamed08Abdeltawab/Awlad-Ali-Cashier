@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AwladAli.GlobalClasses;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,7 +16,7 @@ namespace AwladAli
         public frmSessionConflictDialog(string activeUserName)
         {
             InitializeComponent();
-            lblMessage.Text = $"({activeUserName})" + "توجد جلسة مفتوحة حالياً باسم المستخدم\n\n" +
+            lblMessage.Text = $"({activeUserName}) " + "توجد جلسة مفتوحة حالياً باسم المستخدم\n\n" +
                           $"برجاء اختيار إجراء للمتابعة";
         }
 
@@ -38,7 +39,9 @@ namespace AwladAli
         private void btnLogout_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.No; // سنعتبر 'No' تعني تسجيل الخروج
+            clsGlobal.IsLoggingOut = true;
             this.Close();
         }
+
     }
 }

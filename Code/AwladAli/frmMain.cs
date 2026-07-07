@@ -103,20 +103,8 @@ namespace AwladAli
                             else if (result == DialogResult.No)
                             {
                                 sessionTimer.Stop();
-                                this.Hide();
-
-                                using (frmLogin loginForm = new frmLogin())
-                                {
-                                    if (loginForm.ShowDialog() == DialogResult.OK)
-                                    {
-                                        _EnableMainScreen(false);
-                                        this.Show();
-                                    }
-                                    else
-                                    {
-                                        Environment.Exit(0);
-                                    }
-                                }
+                                clsGlobal.IsLoggingOut = true;
+                                this.Close();
                             }
                         }
                     }
@@ -184,7 +172,6 @@ namespace AwladAli
             lblUsername.Text = clsGlobal.CurrentUser.UserName;
             _LoadRestaurantMenu();
             _LoadExtraAddons();
-            _EnableMainScreen(false);
         }
         private void frmMain_Load(object sender, EventArgs e)
         {
@@ -287,24 +274,35 @@ namespace AwladAli
         {
             // Stop the timer immediately to prevent any background ticks
             sessionTimer.Stop();
+
+            // 1. If the user triggered a LogOut, bypass the standard exit message boxes cleanly
+            if (clsGlobal.IsLoggingOut)
+            {
+                return;
+            }
+
+            // 2. Normal Exit Flow (When user clicks the 'X' button on the main window directly)
             if (_CurrentSession != null)
             {
-                // Ask the user if they want to end their active session before exiting
-                DialogResult result = MessageBox.Show("هل تريد إنهاء الجلسة الحالية قبل الخروج؟", "تأكيد", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show("هل تريد إنهاء الجلسة الحالية قبل الخروج؟", "تأكيد", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Cancel)
+                {
+                    e.Cancel = true; // Prevent the form from closing
+                    sessionTimer.Start(); // Resume the UI ticks smoothly
+                    return;
+                }
 
                 if (result == DialogResult.Yes)
                 {
-                    // End the session normally (updates EndTime and IsActive in DB)
                     _EndSessionWhenFormClosing();
                 }
-                // ✅ If they press 'No', we don't do anything. 
-                // The form will continue its closing process naturally without loops.
+
                 Properties.Settings.Default.AppExitTime = DateTime.Now;
                 Properties.Settings.Default.Save();
             }
 
-            // 🛡️ CRITICAL FIX: If the user closed the window from the X button, 
-            // shutdown the entire process safely without triggering infinite loops.
+            // 🛡️ Safe hard exit if the window closed directly by user clicking X top bar button
             if (e.CloseReason == CloseReason.UserClosing)
             {
                 Environment.Exit(0);
@@ -704,6 +702,40 @@ namespace AwladAli
             pbCancel.Visible = false;
             _CustomerDetailsInfo = default(clsGlobal.CustomerDetailsInfo);
             UpdateGrandTotal();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            if (_CurrentSession != null && _CurrentSession.IsActive)
+            {
+                DialogResult result = MessageBox.Show("هل تريد إنهاء الجلسة الحالية قبل تسجيل الخروج؟", "تأكيد",
+                                                      MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Cancel) return;
+
+                sessionTimer.Stop();
+
+                if (result == DialogResult.Yes)
+                {
+                    _EndSessionWhenFormClosing();
+                }
+                else if (result == DialogResult.No)
+                {
+                    Properties.Settings.Default.AppExitTime = DateTime.Now;
+                    Properties.Settings.Default.Save();
+                }
+            }
+
+            // 🎯 CRITICAL FIX: Raise the static logout state flag to inform Program.cs layout loop
+            clsGlobal.IsLoggingOut = true;
+
+            // 🎯 CRITICAL FIX: Close this current frame instance cleanly to let Program.cs rebuild context natively
+            this.Close();
+        }
+
+        private void frmMain_Shown(object sender, EventArgs e)
+        {
+            _EnableMainScreen(false);
         }
     }
 }
