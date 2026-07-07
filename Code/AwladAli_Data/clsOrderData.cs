@@ -51,6 +51,40 @@ namespace AwladAli_Data
             return OrderID;
         }
 
+
+        public static int AddNewOrderWithTransaction(SQLiteConnection connection, SQLiteTransaction transaction, int UserID, int SessionID, DateTime OrderDate, decimal TotalAmount, int OrderType, int? CustomerID, decimal DeliveryFee)
+        {
+            int OrderID = -1;
+
+            // We do NOT use try-catch or close connection inside this method.
+            // The managing Form controls the transaction lifetime scope.
+            string query = @"INSERT INTO Orders (UserID, SessionID, OrderDate, TotalAmount, OrderType, CustomerID, DeliveryFee) 
+                     VALUES (@UserID, @SessionID, @OrderDate, @TotalAmount, @OrderType, @CustomerID, @DeliveryFee);
+                     SELECT last_insert_rowid();";
+
+            using (SQLiteCommand command = new SQLiteCommand(query, connection, transaction))
+            {
+                // 🎯 CRITICAL: Bind the existing active transaction context to the command
+                command.Transaction = transaction;
+
+                command.Parameters.AddWithValue("@UserID", UserID);
+                command.Parameters.AddWithValue("@SessionID", SessionID);
+                command.Parameters.AddWithValue("@OrderDate", OrderDate);
+                command.Parameters.AddWithValue("@TotalAmount", TotalAmount);
+                command.Parameters.AddWithValue("@OrderType", OrderType);
+                command.Parameters.AddWithValue("@CustomerID", CustomerID.HasValue ? (object)CustomerID.Value : DBNull.Value);
+                command.Parameters.AddWithValue("@DeliveryFee", DeliveryFee);
+
+                object result = command.ExecuteScalar();
+                if (result != null && int.TryParse(result.ToString(), out int insertedID))
+                {
+                    OrderID = insertedID;
+                }
+            }
+
+            return OrderID;
+        }
+
         public static DataRow GetOrderInfoByID(int OrderID)
         {
             DataTable dt = new DataTable();

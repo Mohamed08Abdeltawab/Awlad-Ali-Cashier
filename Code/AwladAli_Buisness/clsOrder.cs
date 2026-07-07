@@ -1,6 +1,7 @@
-﻿using System;
+﻿using AwladAli_Data;
+using System;
 using System.Data;
-using AwladAli_Data;
+using System.Data.SQLite;
 
 namespace AwladAli_Buisness
 {
@@ -91,6 +92,7 @@ namespace AwladAli_Buisness
             return false;
         }
 
+
         // Internal method to trigger the insertion in Data Access Layer with the new features
         private bool _AddNewOrder()
         {
@@ -147,6 +149,39 @@ namespace AwladAli_Buisness
         public static bool IsOrderExist(int OrderID)
         {
             return clsOrderData.IsOrderExist(OrderID);
+        }
+
+
+        public bool SaveWithTransaction(SQLiteConnection connection, SQLiteTransaction transaction)
+        {
+            switch (Mode)
+            {
+                case enMode.AddNew:
+                    if (_AddNewOrderWithTransaction(connection, transaction))
+                    {
+                        Mode = enMode.Update;
+                        return true;
+                    }
+                    return false;
+            }
+            return false;
+        }
+
+        private bool _AddNewOrderWithTransaction(SQLiteConnection connection, SQLiteTransaction transaction)
+        {
+            this.OrderID = clsOrderData.AddNewOrderWithTransaction(
+                connection,
+                transaction,
+                this.UserID,
+                this.SessionID,
+                this.OrderDate,
+                this.TotalAmount,
+                (int)this.OrderType,
+                this.CustomerID,
+                this.DeliveryFee
+            );
+
+            return (this.OrderID != -1);
         }
     }
 }

@@ -10,6 +10,7 @@ using AwladAli_Buisness;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Security.Policy;
 using System.Windows.Forms;
 
@@ -45,7 +46,8 @@ namespace AwladAli
                 btnSettings.Visible = false;
             }
         }
-        private void _EnableMainScreen()
+        // Added a boolean flag (isNewSession) to prevent overriding the start time on brand new sessions
+        private void _EnableMainScreen(bool isNewSession = false)
         {
             _CurrentSession = clsSession.FindAnyActiveSessionWithUserInfo();
 
@@ -55,28 +57,25 @@ namespace AwladAli
 
                 if (sessionUser != null)
                 {
-                    // check if the active session belongs to the current logged-in user
                     if (sessionUser.UserID == clsGlobal.CurrentUser.UserID)
                     {
                         flpAddonsContainer.Enabled = true;
                         flpProductCards.Enabled = true;
                         pnlTakeawayDelivery.Enabled = true;
 
+                        // Inside _EnableMainScreen (Back to normal structure)
                         _SessionID = _CurrentSession.SessionID;
                         clsGlobal.CurrentSessionID = _CurrentSession.SessionID;
 
                         btnStartSession.Image = Resources.session_2_64;
                         btnStartSession.Text = "إنهاء الجلسة";
 
-                        // ✅ CRITICAL FIX: Always invoke the resume math logic BEFORE turning the timer ticks on
-                        _ResumeSessionTimer();
+                        _ResumeSessionTimer(); // This will work flawlessly now because AppExitTime resets to MinValue!
                     }
                     else
                     {
-                        // Lock the main screen controls and force the user to explicitly start a new session under their account
                         _DisableMainScreenControls();
 
-                        // Different User: Show the custom conflict dialog and pass the active username
                         using (frmSessionConflictDialog dialog = new frmSessionConflictDialog(sessionUser.UserName))
                         {
                             DialogResult result = dialog.ShowDialog();
@@ -86,10 +85,8 @@ namespace AwladAli
                                 _CurrentSession.EndTime = DateTime.Now;
                                 _CurrentSession.IsActive = false;
 
-                                // Ensure any older active sessions are forced closed before initializing a new one
                                 clsSession.CloseAnyActiveSession();
 
-                                // Save the session updates to the database (Updates EndTime and IsActive status)
                                 if (_CurrentSession.Save())
                                 {
                                     MessageBox.Show("تم إغلاق الجلسة القديمة المعلقة بنجاح. يمكنك الآن بدء ورديتك الجديدة.",
@@ -98,22 +95,18 @@ namespace AwladAli
                             }
                             else if (result == DialogResult.No)
                             {
-                                // ✅ SAFE LOGOUT FIX: Safe and clean transfer to Login Screen instead of standard Application.Restart
                                 sessionTimer.Stop();
                                 this.Hide();
 
-                                // Open your Login Form dynamically
                                 using (frmLogin loginForm = new frmLogin())
                                 {
                                     if (loginForm.ShowDialog() == DialogResult.OK)
                                     {
-                                        // If another user authenticated successfully, re-evaluate screens state
-                                        _EnableMainScreen();
+                                        _EnableMainScreen(false);
                                         this.Show();
                                     }
                                     else
                                     {
-                                        // Shutdown process if they closed the login frame
                                         Environment.Exit(0);
                                     }
                                 }
@@ -132,7 +125,6 @@ namespace AwladAli
                 _DisableMainScreenControls();
             }
         }
-
         private void _DisableMainScreenControls()
         {
             flpAddonsContainer.Enabled = false;
@@ -150,17 +142,17 @@ namespace AwladAli
 
         private void _ResumeSessionTimer()
         {
-            // Fetch the stored exit time and the actual session start time from DB
             DateTime lastExitTime = Properties.Settings.Default.AppExitTime;
 
             // Safety check: if it's a valid old date and session is active
             if (lastExitTime != DateTime.MinValue && _CurrentSession.IsActive)
             {
-                // 1. Calculate how long the application was closed
                 TimeSpan elapsedClosedTime = DateTime.Now - lastExitTime;
-
-                // 2. Shift the start time forward by the closed duration to eliminate the gap
                 _SessionStartTime = _CurrentSession.StartTime.Add(elapsedClosedTime);
+
+                // 🎯 CRITICAL FIX: Reset the setting immediately so subsequent refreshes won't trigger this loop
+                Properties.Settings.Default.AppExitTime = DateTime.MinValue;
+                Properties.Settings.Default.Save();
             }
             else
             {
@@ -168,7 +160,6 @@ namespace AwladAli
                 _SessionStartTime = _CurrentSession.StartTime;
             }
 
-            // 3. Start the continuous UI updates
             sessionTimer.Start();
         }
 
@@ -179,7 +170,7 @@ namespace AwladAli
             lblUsername.Text = clsGlobal.CurrentUser.UserName;
             _LoadRestaurantMenu();
             _LoadExtraAddons();
-            _EnableMainScreen();
+            _EnableMainScreen(false);
         }
         private void frmMain_Load(object sender, EventArgs e)
         {
@@ -245,9 +236,9 @@ namespace AwladAli
                     extrasTotal += extra.TotalRowPrice;
             }
 
-            if (rbDelivery.Checked)
+            if (rbDelivery.Checked &&!string.IsNullOrWhiteSpace(_CustomerDetailsInfo.DeliveryFee))
             {
-                deliveryFee = decimal.TryParse(_CustomerDetailsInfo.DeliveryFee, out decimal fee) ? fee : 0;
+                deliveryFee = decimal.TryParse(_CustomerDetailsInfo.DeliveryFee, out decimal fee)? fee: 0;
             }
 
             // عرض المجموع النهائي في الليبل
@@ -361,30 +352,13 @@ namespace AwladAli
             rbTakeaway.Checked = true;
         }
 
-
-        //save order
-        private void _SaveProductsFromCard(ctrlCategoryCard card, int OrderID)
-        {
-            // 1. طلب قائمة الأصناف المختارة من الكارد
-            List<clsOrderDetail> itemsToSave = card.GetSelectedItems(OrderID);
-
-            // 2. اللف على القائمة وحفظ كل سطر في الداتا بيز
-            foreach (clsOrderDetail detail in itemsToSave)
-            {
-                if (!detail.Save())
-                {
-                    // لو حصل مشكلة في سطر معين ممكن تظهر رسالة أو تسجل Log
-                    MessageBox.Show($"فشل حفظ الصنف رقم {detail.ProductID}");
-                }
-            }
-        }
-
+        public string ConnectionString = $@"Data Source={Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "AwladAli.db")};Version=3;";
         private bool _SaveOrder()
         {
             ErrorFlage = 0;
-            // 1. حساب الإجمالي النهائي قبل الحفظ
             decimal totalAmount = Convert.ToDecimal(lblMealPrice.Text);
-            if(clsGlobal.CurrentSessionID == -1)
+
+            if (clsGlobal.CurrentSessionID == -1)
             {
                 ErrorFlage = 1;
                 return false;
@@ -395,83 +369,121 @@ namespace AwladAli
                 return false;
             }
 
-            // 2. تجهيز بيانات الأوردر الأساسي
-            _Order = new clsOrder();
-            _Order.UserID = clsGlobal.CurrentUser.UserID; // المستخدم اللي سجل دخول
-            _Order.SessionID = clsGlobal.CurrentSessionID; // الجلسة الحالية
-            _Order.TotalAmount = totalAmount;
-            _Order.OrderDate = DateTime.Now;
 
-            //add order type and customer details if any
-            if(rbTakeaway.Checked)
+            // 1. Establish the main database connection manually to control transaction scope
+            using (System.Data.SQLite.SQLiteConnection connection = new System.Data.SQLite.SQLiteConnection(ConnectionString))
             {
-                _Order.OrderType = clsOrder.enOrderType.Takeaway;
-                _Order.CustomerID = null;
-                _Order.DeliveryFee = 0;
-            }
-            else if(rbDelivery.Checked)
-            {
-                _Order.OrderType = clsOrder.enOrderType.Delivery;
-                //_Order.CustomerID = clsCustomer.GetCustomerIDByPhoneNumber(_CustomerDetailsInfo.PhoneNumber);
-                if(string.IsNullOrEmpty(_CustomerDetailsInfo.PhoneNumber))
-                {
-                    ErrorFlage = 3;
-                    return false;
-                }
+                connection.Open();
 
-                _Customer = clsCustomer.FindByPhoneNumber(_CustomerDetailsInfo.PhoneNumber);
-                if (_Customer != null)
+                // 2. Start the database transaction context
+                using (System.Data.SQLite.SQLiteTransaction transaction = connection.BeginTransaction())
                 {
-                    _Order.CustomerID = _Customer.CustomerID;
-                    _Order.DeliveryFee = decimal.TryParse(lblDeliveryFee.Text, out decimal fee) ? fee : 0;
-                }
-                else
-                {
-                    MessageBox.Show("برجاء إضافة بيانات العميل للطلب التوصيل", "تنبيه",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return false;
-                }
-            }
-
-            // 3. حفظ الأوردر (Header)
-            if (_Order.Save())
-            {
-                _OrderID = _Order.OrderID; // دلوقتى معانا الـ ID الحقيقي
-                if (_CurrentSession != null)
-                {
-                    _CurrentSession.TotalCash += totalAmount;
-                }
-
-                // 4. حفظ تفاصيل الأكلات من الـ CategoryCards
-                foreach (Control ctrl in flpProductCards.Controls)
-                {
-                    if (ctrl is ctrlCategoryCard card)
+                    try
                     {
-                        // افترضنا إن الكارد عنده دالة بترجع قائمة بالأصناف اللي تم اختيارها
-                        // أو بنلف على الـ Products اللي جوه الكارد
-                        _SaveProductsFromCard(card, _OrderID);
+                        // Setup core order header record properties
+                        _Order = new clsOrder();
+                        _Order.UserID = clsGlobal.CurrentUser.UserID;
+                        _Order.SessionID = clsGlobal.CurrentSessionID;
+                        _Order.TotalAmount = totalAmount;
+                        _Order.OrderDate = DateTime.Now;
+
+                        if (rbTakeaway.Checked)
+                        {
+                            _Order.OrderType = clsOrder.enOrderType.Takeaway;
+                            _Order.CustomerID = null;
+                            _Order.DeliveryFee = 0;
+                        }
+                        else if (rbDelivery.Checked)
+                        {
+                            _Order.OrderType = clsOrder.enOrderType.Delivery;
+                            if (string.IsNullOrEmpty(_CustomerDetailsInfo.PhoneNumber))
+                            {
+                                ErrorFlage = 3;
+                                transaction.Rollback();
+                                return false;
+                            }
+
+                            _Customer = clsCustomer.FindByPhoneNumber(_CustomerDetailsInfo.PhoneNumber);
+                            if (_Customer != null)
+                            {
+                                _Order.CustomerID = _Customer.CustomerID;
+                                _Order.DeliveryFee = decimal.TryParse(lblDeliveryFee.Text, out decimal fee) ? fee : 0;
+                            }
+                            else
+                            {
+                                MessageBox.Show("برجاء إضافة بيانات العميل للطلب التوصيل", "تنبيه",
+                                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                transaction.Rollback();
+                                return false;
+                            }
+                        }
+
+                        // 3. Save the main order record header with shared transaction link
+                        if (!_Order.SaveWithTransaction(connection, transaction))
+                        {
+                            transaction.Rollback();
+                            return false;
+                        }
+
+                        _OrderID = _Order.OrderID;
+
+                        // 4. Save detailed meal products items from Category Cards loops
+                        foreach (Control ctrl in flpProductCards.Controls)
+                        {
+                            if (ctrl is ctrlCategoryCard card)
+                            {
+                                List<clsOrderDetail> itemsToSave = card.GetSelectedItems(_OrderID);
+                                foreach (clsOrderDetail detail in itemsToSave)
+                                {
+                                    // Pass shared transaction down to product details query stream
+                                    if (!detail.SaveWithTransaction(connection, transaction))
+                                    {
+                                        throw new Exception("Failed to insert product item detail record.");
+                                    }
+                                }
+                            }
+                        }
+
+                        // 5. Save detailed extra addons records
+                        foreach (Control ctrl in flpAddonsContainer.Controls)
+                        {
+                            if (ctrl is ctrlExtraRow extraRow && extraRow.Quantity > 0)
+                            {
+                                clsOrderDetail detail = new clsOrderDetail();
+                                detail.OrderID = _OrderID;
+                                detail.ExtraID = extraRow.ExtraID;
+                                detail.Quantity = extraRow.Quantity;
+                                detail.UnitPrice = extraRow.Price;
+                                detail.ProductID = null;
+                                detail.SizeID = null;
+
+                                // Pass shared transaction down to extra addons query stream
+                                if (!detail.SaveWithTransaction(connection, transaction))
+                                {
+                                    throw new Exception("Failed to insert extra addon item record.");
+                                }
+                            }
+                        }
+
+                        // 6. Database Atomic Commit: Safely write everything to disk now
+                        transaction.Commit();
+
+                        // 7. Safe Live RAM State Update: Safe to modify since disk operations succeeded
+                        if (_CurrentSession != null)
+                        {
+                            _CurrentSession.TotalCash += totalAmount;
+                        }
+
+                        return true;
+                    }
+                    catch (Exception)
+                    {
+                        // 🛑 Disaster Recovery: Wipe out partial changes if an issue pops up
+                        transaction.Rollback();
+                        return false;
                     }
                 }
-
-                // 5. حفظ الإضافات (Extras)
-                foreach (Control ctrl in flpAddonsContainer.Controls)
-                {
-                    if (ctrl is ctrlExtraRow extraRow && extraRow.Quantity > 0)
-                    {
-                        clsOrderDetail detail = new clsOrderDetail();
-                        detail.OrderID = _OrderID;
-                        detail.ExtraID = extraRow.ExtraID;
-                        detail.Quantity = extraRow.Quantity;
-                        detail.UnitPrice = extraRow.Price;
-                        detail.ProductID = null; // لأنه Extra
-                        detail.SizeID = null;
-
-                        detail.Save();
-                    }
-                }
-                return true;
             }
-            return false;
         }
 
         private void _ShowOrderInfo()
@@ -521,29 +533,32 @@ namespace AwladAli
             }
         }
 
-        
+
 
         private void btnStartSession_Click(object sender, EventArgs e)
         {
-            if (_SessionID == -1 || _CurrentSession == null)//if no active session then start new session
+            if (_SessionID == -1 || _CurrentSession == null)
             {
                 _CurrentSession = new clsSession();
-                _CurrentSession.UserID = clsGlobal.CurrentUser.UserID; //current user
-                _CurrentSession.StartTime = DateTime.Now;//set start time to now
+                _CurrentSession.UserID = clsGlobal.CurrentUser.UserID;
+                _CurrentSession.StartTime = DateTime.Now;
 
-                if (_CurrentSession.Save())//try to save session to DB
+                if (_CurrentSession.Save())
                 {
                     btnStartSession.Image = Resources.session_2_64;
-                    _SessionID = _CurrentSession.SessionID; //get session ID after saving
+                    _SessionID = _CurrentSession.SessionID;
                     clsGlobal.CurrentSessionID = _CurrentSession.SessionID;
 
                     _SessionStartTime = _CurrentSession.StartTime;
-                    sessionTimer.Start();
 
-                    _EnableMainScreen();
+                    // 🎯 CRITICAL FIX: Clear the exit time setting on brand new sessions immediately
+                    Properties.Settings.Default.AppExitTime = DateTime.MinValue;
+                    Properties.Settings.Default.Save();
+
+                    sessionTimer.Start();
+                    _EnableMainScreen(); // Now it will execute safely without flags
 
                     btnStartSession.Text = "إنهاء الجلسة";
-                    //my be change in ui to show session is active or not
                     MessageBox.Show("تم بدء الجلسة بنجاح", "أولاد علي", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
@@ -553,7 +568,6 @@ namespace AwladAli
             }
             else
             {
-                //if user click button while active session then end the session
                 _EndSession();
             }
         }

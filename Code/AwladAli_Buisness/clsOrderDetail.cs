@@ -1,6 +1,7 @@
-﻿using System;
+﻿using AwladAli_Data;
+using System;
 using System.Data;
-using AwladAli_Data;
+using System.Data.SQLite;
 
 namespace AwladAli_Buisness
 {
@@ -43,6 +44,7 @@ namespace AwladAli_Buisness
             this.ExtraID = ExtraID;
             Mode = enMode.Update;
         }
+
 
         // Add a new detail record to the database
         private bool _AddNewOrderDetail()
@@ -107,6 +109,42 @@ namespace AwladAli_Buisness
         public static DataTable GetOrderItemsForPrinting(int OrderID)
         {
             return clsOrderDetailData.GetOrderItemsForPrinting(OrderID);
+        }
+
+
+        public bool SaveWithTransaction(SQLiteConnection connection, SQLiteTransaction transaction)
+        {
+            switch (Mode)
+            {
+                case enMode.AddNew:
+                    if (_AddNewOrderDetailWithTransaction(connection, transaction))
+                    {
+                        Mode = enMode.Update;
+                        return true;
+                    }
+                    return false;
+
+                case enMode.Update:
+                    return _UpdateOrderDetail();
+            }
+
+            return false;
+        }
+
+        private bool _AddNewOrderDetailWithTransaction(SQLiteConnection connection, SQLiteTransaction transaction)
+        {
+            this.DetailID = clsOrderDetailData.AddNewOrderDetailWithTransaction(
+                connection,
+                transaction,
+                this.OrderID,
+                this.ProductID,
+                this.SizeID,
+                this.Quantity,
+                this.UnitPrice,
+                this.ExtraID
+            );
+
+            return (this.DetailID != -1);
         }
     }
 }

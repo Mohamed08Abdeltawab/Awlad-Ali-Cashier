@@ -53,6 +53,38 @@ namespace AwladAli_Data
             return DetailID;
         }
 
+        public static int AddNewOrderDetailWithTransaction(SQLiteConnection connection, SQLiteTransaction transaction, int OrderID, int? ProductID, int? SizeID, int Quantity, decimal UnitPrice, int? ExtraID)
+        {
+            int DetailID = -1;
+
+            // We do NOT use try-catch or open/close connection inside this method.
+            // The controlling UI Form handles the master transaction scope.
+            string query = @"INSERT INTO OrderDetails (OrderID, ProductID, SizeID, Quantity, UnitPrice, ExtraID) 
+                     VALUES (@OrderID, @ProductID, @SizeID, @Quantity, @UnitPrice, @ExtraID);
+                     SELECT last_insert_rowid();";
+
+            using (SQLiteCommand command = new SQLiteCommand(query, connection, transaction))
+            {
+                // 🎯 CRITICAL: Bind the existing active transaction context to the command
+                command.Transaction = transaction;
+
+                command.Parameters.AddWithValue("@OrderID", OrderID);
+                command.Parameters.AddWithValue("@ProductID", (object)ProductID ?? DBNull.Value);
+                command.Parameters.AddWithValue("@SizeID", (object)SizeID ?? DBNull.Value);
+                command.Parameters.AddWithValue("@ExtraID", (object)ExtraID ?? DBNull.Value);
+                command.Parameters.AddWithValue("@Quantity", Quantity);
+                command.Parameters.AddWithValue("@UnitPrice", UnitPrice);
+
+                object result = command.ExecuteScalar();
+                if (result != null && int.TryParse(result.ToString(), out int insertedID))
+                {
+                    DetailID = insertedID;
+                }
+            }
+
+            return DetailID;
+        }
+
         /// <summary>
         /// Retrieves all detail lines associated with a specific Order ID.
         /// </summary>
