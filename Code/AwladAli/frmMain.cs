@@ -66,7 +66,7 @@ namespace AwladAli
             sessionTimer.Start();
         }
         // Added a boolean flag (isNewSession) to prevent overriding the start time on brand new sessions
-        private void _EnableMainScreen(bool isNewSession = false)
+        private void _EnableMainScreen()
         {
             _CurrentSession = clsSession.FindAnyActiveSessionWithUserInfo();
 
@@ -162,7 +162,7 @@ namespace AwladAli
             _RefreshMainScreenData();
         }
 
-
+         
         private void _LoadRestaurantMenu()
         {
             flpProductCards.Controls.Clear();
@@ -295,11 +295,9 @@ namespace AwladAli
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
-            using(frmAdminDashBoard frm = new frmAdminDashBoard())
-            {
-                frm.ShowDialog();
-            }
-            _RefreshMainScreenData(); // إعادة تحميل البيانات بعد إغلاق الإعدادات
+            frmAdminDashBoard frm = new frmAdminDashBoard();
+            frm.ShowDialog();
+            _RefreshMainScreenData();
         }
 
         //reset order
@@ -310,18 +308,6 @@ namespace AwladAli
             {
                 if (ctrlCategory is ctrlCategoryCard card)
                 {
-                    //// نمر على كل سطر منتج جوه الكارد ونصفره
-                    //foreach (Control ctrlProduct in card.Controls.Find("flpItemsContainer", true))
-                    //{
-                    //    if (ctrlProduct is FlowLayoutPanel flp)
-                    //    {
-                    //        foreach (Control row in flp.Controls)
-                    //        {
-                    //            if (row is ctrlProductRow productRow)
-                    //                productRow.Reset();
-                    //        }
-                    //    }
-                    //}
                     card.ResetAllRows(); 
                 }
             }
@@ -609,6 +595,7 @@ namespace AwladAli
                     btnStartSession.Text = "بدء جلسة";
                     lblSessionTimer.Text = "00:00:00";
                     MessageBox.Show("تم إنهاء الجلسة وحفظ المبيعات", "أولاد علي", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    _EnableMainScreen(); 
                     _RefreshMainScreenData();
                 }
                 else
@@ -680,11 +667,9 @@ namespace AwladAli
 
         private void llShowCustomerDetails_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            using(frmCustomerDetailsforDelivery frm = new frmCustomerDetailsforDelivery(_CustomerDetailsInfo))
-            {
-                frm.DeliveryDataBack += frm_DeliveryDataBack;
-                frm.ShowDialog();
-            }
+            frmCustomerDetailsforDelivery frm = new frmCustomerDetailsforDelivery(_CustomerDetailsInfo);
+            frm.DeliveryDataBack += frm_DeliveryDataBack;
+            frm.ShowDialog();
             UpdateGrandTotal();
         }
 
@@ -727,7 +712,7 @@ namespace AwladAli
 
         private void frmMain_Shown(object sender, EventArgs e)
         {
-            _EnableMainScreen(false); // Pass false to indicate it's not a new session
+            _EnableMainScreen(); 
         }
     }
 }

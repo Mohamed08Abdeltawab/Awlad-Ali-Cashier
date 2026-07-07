@@ -23,6 +23,12 @@ namespace AwladAli.User
 
             //calling the refresh method with default dates to load all data at the beginning
             cbFilterBy.SelectedIndex = 0;
+
+            //dgvOrders.Refresh();
+            //dgvOrders.Update();
+
+            this.Refresh();
+            this.Update();
         }
 
         
