@@ -22,5 +22,16 @@ namespace AwladAli.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.DateTime AppExitTime {
+            get {
+                return ((global::System.DateTime)(this["AppExitTime"]));
+            }
+            set {
+                this["AppExitTime"] = value;
+            }
+        }
     }
 }

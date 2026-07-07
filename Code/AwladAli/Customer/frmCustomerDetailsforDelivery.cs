@@ -73,7 +73,7 @@ namespace AwladAli.Customer
                     MessageBox.Show("لا توجد بينات متاحلة لرقم الهاتف: " + _CustomerDetailsInfo.PhoneNumber, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-                
+
         }
 
         private void txtPhoneNameSearch_KeyPress(object sender, KeyPressEventArgs e)
