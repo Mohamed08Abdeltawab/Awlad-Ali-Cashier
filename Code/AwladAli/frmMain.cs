@@ -26,17 +26,24 @@ namespace AwladAli
 
         clsGlobal.CustomerDetailsInfo _CustomerDetailsInfo;
 
+        private enum enErrorFlag
+        {
+            None = 0,
+            SessionNotStarted = 1,
+            OrderNotCompleted = 2,
+            CustomerDetailsMissing = 3
+        }
+        enErrorFlag errorFlag = enErrorFlag.None;
+
+
         public frmMain(frmLogin frm)
         {
             InitializeComponent();
             this._frmLogin = frm;
         }
-
         private int _SessionID = -1;
         private clsSession _CurrentSession;
         private DateTime _SessionStartTime;
-
-        private int ErrorFlage = 1;//1 error in Session, 2 error in order
 
         private void _CheckAdmin()
         {
@@ -299,9 +306,11 @@ namespace AwladAli
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
-            frmAdminDashBoard frm = new frmAdminDashBoard();
-            frm.ShowDialog();
-                _RefreshMainScreenData(); // إعادة تحميل البيانات بعد إغلاق الإعدادات
+            using(frmAdminDashBoard frm = new frmAdminDashBoard())
+            {
+                frm.ShowDialog();
+            }
+            _RefreshMainScreenData(); // إعادة تحميل البيانات بعد إغلاق الإعدادات
         }
 
         //reset order
@@ -312,18 +321,19 @@ namespace AwladAli
             {
                 if (ctrlCategory is ctrlCategoryCard card)
                 {
-                    // نمر على كل سطر منتج جوه الكارد ونصفره
-                    foreach (Control ctrlProduct in card.Controls.Find("flpItemsContainer", true))
-                    {
-                        if (ctrlProduct is FlowLayoutPanel flp)
-                        {
-                            foreach (Control row in flp.Controls)
-                            {
-                                if (row is ctrlProductRow productRow)
-                                    productRow.Reset();
-                            }
-                        }
-                    }
+                    //// نمر على كل سطر منتج جوه الكارد ونصفره
+                    //foreach (Control ctrlProduct in card.Controls.Find("flpItemsContainer", true))
+                    //{
+                    //    if (ctrlProduct is FlowLayoutPanel flp)
+                    //    {
+                    //        foreach (Control row in flp.Controls)
+                    //        {
+                    //            if (row is ctrlProductRow productRow)
+                    //                productRow.Reset();
+                    //        }
+                    //    }
+                    //}
+                    card.ResetAllRows(); 
                 }
             }
 
@@ -355,17 +365,16 @@ namespace AwladAli
         public string ConnectionString = $@"Data Source={Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "AwladAli.db")};Version=3;";
         private bool _SaveOrder()
         {
-            ErrorFlage = 0;
-            decimal totalAmount = Convert.ToDecimal(lblMealPrice.Text);
+            decimal totalAmount = decimal.TryParse(lblMealPrice.Text, out decimal result) ? result : 0;
 
             if (clsGlobal.CurrentSessionID == -1)
             {
-                ErrorFlage = 1;
+                errorFlag = enErrorFlag.SessionNotStarted;
                 return false;
             }
             if (totalAmount <= 0)
             {
-                ErrorFlage = 2;
+                errorFlag = enErrorFlag.OrderNotCompleted;
                 return false;
             }
 
@@ -398,7 +407,7 @@ namespace AwladAli
                             _Order.OrderType = clsOrder.enOrderType.Delivery;
                             if (string.IsNullOrEmpty(_CustomerDetailsInfo.PhoneNumber))
                             {
-                                ErrorFlage = 3;
+                                errorFlag = enErrorFlag.CustomerDetailsMissing;
                                 transaction.Rollback();
                                 return false;
                             }
@@ -489,16 +498,18 @@ namespace AwladAli
         private void _ShowOrderInfo()
         {
             //get current order ID from _Order class 
-            if (_Order == null || _OrderID == -1 || Convert.ToDecimal(lblTotalPrice.Text) <=0)
+            decimal totalAmount = decimal.TryParse(lblTotalPrice.Text, out decimal result) ? result : 0;
+            if (_Order == null || _OrderID == -1 || totalAmount <= 0)
             {
                 MessageBox.Show("برجاء إتمام الطلب أولا", "تنبيه",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            frmOrderInfo frm = new frmOrderInfo(_OrderID);
-
-            frm.ShowDialog();
+            using(frmOrderInfo frm = new frmOrderInfo(_OrderID))
+            {
+                frm.ShowDialog();
+            }
             //reload data after closing order info form (in case of any changes)
             _RefreshMainScreenData();
         }
@@ -511,17 +522,17 @@ namespace AwladAli
                 _ShowOrderInfo();
                 _ClearCurrentOrder();
             }
-            else if(ErrorFlage == 1)
+            else if(errorFlag == enErrorFlag.SessionNotStarted)
             {
                 MessageBox.Show("برجاء بدء جلسة قبل حفظ الطلب", "تنبيه",
                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else if(ErrorFlage == 2)
+            else if(errorFlag == enErrorFlag.OrderNotCompleted)
             {
                 MessageBox.Show("برجاء إتمام الطلب أولا", "تنبيه",
                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else if(ErrorFlage == 3)
+            else if(errorFlag == enErrorFlag.CustomerDetailsMissing)
             {
                 MessageBox.Show("برجاء إضافة بيانات العميل للطلب التوصيل", "تنبيه",
                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -670,9 +681,11 @@ namespace AwladAli
 
         private void llShowCustomerDetails_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmCustomerDetailsforDelivery frm = new frmCustomerDetailsforDelivery(_CustomerDetailsInfo);
-            frm.DeliveryDataBack += frm_DeliveryDataBack;
-            frm.ShowDialog();
+            using(frmCustomerDetailsforDelivery frm = new frmCustomerDetailsforDelivery(_CustomerDetailsInfo))
+            {
+                frm.DeliveryDataBack += frm_DeliveryDataBack;
+                frm.ShowDialog();
+            }
             UpdateGrandTotal();
         }
 
