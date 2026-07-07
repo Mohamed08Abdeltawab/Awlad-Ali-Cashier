@@ -24,6 +24,9 @@ namespace AwladAli
         private clsOrder _Order;//new order object to hold current order data until saving to DB
         private clsCustomer _Customer; //to hold customer data if order type is delivery
 
+        private TimeSpan _ElapsedSessionTime = TimeSpan.Zero;
+        private DateTime _LastResumeTime;
+
         clsGlobal.CustomerDetailsInfo _CustomerDetailsInfo;
 
         private enum enErrorFlag
@@ -77,7 +80,6 @@ namespace AwladAli
                         btnStartSession.Image = Resources.session_2_64;
                         btnStartSession.Text = "إنهاء الجلسة";
 
-                        _ResumeSessionTimer(); // This will work flawlessly now because AppExitTime resets to MinValue!
                     }
                     else
                     {
@@ -135,46 +137,19 @@ namespace AwladAli
         }
 
 
-        private void _ResumeSessionTimer()
-        {
-            // 1. If the timer is already running live, do absolutely nothing to protect the current running elapsed duration
-            if (sessionTimer.Enabled && _SessionStartTime != DateTime.MinValue)
-            {
-                return;
-            }
-
-            DateTime lastExitTime = Properties.Settings.Default.AppExitTime;
-
-            // 2. Safety check: if it's a valid old date and session is active (App just started cold)
-            if (lastExitTime != DateTime.MinValue && _CurrentSession.IsActive)
-            {
-                TimeSpan elapsedClosedTime = DateTime.Now - lastExitTime;
-                _SessionStartTime = _CurrentSession.StartTime.Add(elapsedClosedTime);
-
-                // Reset the setting immediately so subsequent live refreshes won't trigger this loop gap
-                Properties.Settings.Default.AppExitTime = DateTime.MinValue;
-                Properties.Settings.Default.Save();
-            }
-            else
-            {
-                // Default cold startup fallback: bind to the static DB launch checkpoint cleanly
-                _SessionStartTime = _CurrentSession.StartTime;
-            }
-
-            // 3. Turn on continuous UI ticks updates
-            sessionTimer.Start();
-        }
-
-
         private void _RefreshMainScreenData()
         {
             _CheckAdmin();
             lblUsername.Text = clsGlobal.CurrentUser.UserName;
             _LoadRestaurantMenu();
             _LoadExtraAddons();
+
+            _EnableMainScreen(false);
         }
         private void frmMain_Load(object sender, EventArgs e)
         {
+            _LastResumeTime = DateTime.Now;
+            sessionTimer.Start();
             _RefreshMainScreenData();
         }
 
@@ -272,7 +247,7 @@ namespace AwladAli
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            // Stop the timer immediately to prevent any background ticks
+            _ElapsedSessionTime += DateTime.Now - _LastResumeTime;
             sessionTimer.Stop();
 
             // 1. If the user triggered a LogOut, bypass the standard exit message boxes cleanly
@@ -298,7 +273,6 @@ namespace AwladAli
                     _EndSessionWhenFormClosing();
                 }
 
-                Properties.Settings.Default.AppExitTime = DateTime.Now;
                 Properties.Settings.Default.Save();
             }
 
@@ -567,10 +541,6 @@ namespace AwladAli
 
                     _SessionStartTime = _CurrentSession.StartTime;
 
-                    // 🎯 CRITICAL FIX: Clear the exit time setting on brand new sessions immediately
-                    Properties.Settings.Default.AppExitTime = DateTime.MinValue;
-                    Properties.Settings.Default.Save();
-
                     sessionTimer.Start();
                     _EnableMainScreen(); // Now it will execute safely without flags
 
@@ -633,7 +603,7 @@ namespace AwladAli
 
         private void sessionTimer_Tick(object sender, EventArgs e)
         {
-            TimeSpan duration = DateTime.Now - _SessionStartTime;
+            TimeSpan duration =_ElapsedSessionTime +(DateTime.Now - _LastResumeTime);
 
             // 🏆 Math.Floor ensures we get the absolute total hours without rounding up fractions
             int totalHours = (int)Math.Floor(duration.TotalHours);
@@ -719,11 +689,6 @@ namespace AwladAli
                 {
                     _EndSessionWhenFormClosing();
                 }
-                else if (result == DialogResult.No)
-                {
-                    Properties.Settings.Default.AppExitTime = DateTime.Now;
-                    Properties.Settings.Default.Save();
-                }
             }
 
             // 🎯 CRITICAL FIX: Raise the static logout state flag to inform Program.cs layout loop
@@ -731,11 +696,6 @@ namespace AwladAli
 
             // 🎯 CRITICAL FIX: Close this current frame instance cleanly to let Program.cs rebuild context natively
             this.Close();
-        }
-
-        private void frmMain_Shown(object sender, EventArgs e)
-        {
-            _EnableMainScreen(false);
         }
     }
 }

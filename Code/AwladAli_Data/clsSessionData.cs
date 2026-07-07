@@ -7,7 +7,7 @@ namespace AwladAli_Data
     public class clsSessionData
     {
         public static bool GetSessionInfoByID(int SessionID, ref int UserID, ref DateTime StartTime,
-                                      ref object EndTime, ref decimal TotalCash, ref bool IsActive)
+                                             ref object EndTime, ref decimal TotalCash, ref bool IsActive, ref int DurationInSeconds)
         {
             bool isFound = false;
 
@@ -26,17 +26,16 @@ namespace AwladAli_Data
                         {
                             if (reader.Read())
                             {
-                                // The record was found
                                 isFound = true;
 
                                 UserID = Convert.ToInt32(reader["UserID"]);
                                 StartTime = Convert.ToDateTime(reader["StartTime"]);
-
-                                // EndTime might be NULL if the session is still active
                                 EndTime = (reader["EndTime"] == DBNull.Value) ? null : reader["EndTime"];
-
                                 TotalCash = Convert.ToDecimal(reader["TotalCash"]);
                                 IsActive = Convert.ToBoolean(reader["IsActive"]);
+
+                                // 🎯 CRITICAL SYNC: Fetch the cumulative duration count cleanly from the database
+                                DurationInSeconds = Convert.ToInt32(reader["DurationInSeconds"]);
                             }
                         }
                     }
@@ -47,7 +46,6 @@ namespace AwladAli_Data
             return isFound;
         }
 
-        // 1. إضافة جلسة جديدة (فقط UserID و StartTime)
         public static int AddNewSession(int UserID, DateTime StartTime)
         {
             int SessionID = -1;
@@ -55,9 +53,9 @@ namespace AwladAli_Data
             {
                 using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
                 {
-                    // الحقول بناءً على جدولك الجديد: UserID, StartTime والـ Default بتاع IsActive هو 1
-                    string query = @"INSERT INTO Sessions (UserID, StartTime, IsActive, TotalCash) 
-                                     VALUES (@UserID, @StartTime, 1, 0);
+                    // 🎯 CRITICAL SYNC: Initialize DurationInSeconds explicitly to 0 on new row entries
+                    string query = @"INSERT INTO Sessions (UserID, StartTime, IsActive, TotalCash, DurationInSeconds) 
+                                     VALUES (@UserID, @StartTime, 1, 0, 0);
                                      SELECT last_insert_rowid();";
 
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
@@ -78,8 +76,8 @@ namespace AwladAli_Data
             return SessionID;
         }
 
-        // 2. إنهاء الجلسة (تحديث EndTime و TotalCash وإغلاق الحالة)
-        public static bool EndSession(int SessionID, DateTime EndTime, decimal TotalCash)
+        // 🎯 CRITICAL SYNC: Overloaded Update method to persist live counter ticks tracking smoothly
+        public static bool EndSession(int SessionID, DateTime EndTime, decimal TotalCash, int DurationInSeconds)
         {
             int rowsAffected = 0;
             try
@@ -89,7 +87,8 @@ namespace AwladAli_Data
                     string query = @"UPDATE Sessions 
                                      SET EndTime = @EndTime, 
                                          TotalCash = @TotalCash, 
-                                         IsActive = 0 
+                                         IsActive = 0,
+                                         DurationInSeconds = @DurationInSeconds
                                      WHERE SessionID = @SessionID";
 
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
@@ -97,6 +96,7 @@ namespace AwladAli_Data
                         command.Parameters.AddWithValue("@SessionID", SessionID);
                         command.Parameters.AddWithValue("@EndTime", EndTime);
                         command.Parameters.AddWithValue("@TotalCash", TotalCash);
+                        command.Parameters.AddWithValue("@DurationInSeconds", DurationInSeconds);
 
                         connection.Open();
                         rowsAffected = command.ExecuteNonQuery();
@@ -107,7 +107,6 @@ namespace AwladAli_Data
             return (rowsAffected > 0);
         }
 
-        // 3. حساب إجمالي مبيعات الجلسة من جدول الطلبات
         public static decimal GetTotalSalesBySessionID(int SessionID)
         {
             decimal TotalSales = 0;
@@ -134,15 +133,12 @@ namespace AwladAli_Data
             return TotalSales;
         }
 
-        // 4. دالة طوارئ: إغلاق أي جلسة مفتوحة للمستخدم (تستدعى عند فتح البرنامج)
-        // دي عشان لو النور قطع والبرنامج فتح تاني، يصفر الجلسة القديمة قبل ما يبدأ جديدة
         public static bool CloseAnyActiveSession()
         {
             try
             {
                 using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
                 {
-                    // أي جلسة IsActive فيها بـ 1 هنخليها 0 ونضع وقت النهاية "الآن"
                     string query = @"UPDATE Sessions 
                                      SET IsActive = 0, EndTime = @EndTime 
                                      WHERE IsActive = 1";
@@ -159,7 +155,6 @@ namespace AwladAli_Data
             catch { return false; }
         }
 
-
         public static DataTable GetAllSessions()
         {
             DataTable dt = new DataTable();
@@ -167,17 +162,16 @@ namespace AwladAli_Data
             {
                 using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
                 {
-                    // JOIN بجلب اسم المستخدم من جدول Users لظهوره في الجريد
                     string query = @"SELECT Sessions.SessionID, 
-                                     Users.UserName, 
-                                     (SELECT COUNT(*) FROM Orders WHERE Orders.SessionID = Sessions.SessionID) AS OrdersCount,
-                                     Sessions.StartTime, 
-                                     Sessions.EndTime, 
-                                     Sessions.TotalCash, 
-                                     CASE WHEN Sessions.IsActive = 1 THEN 'نشطة' ELSE 'مغلقة' END AS IsActive
-                              FROM Sessions 
-                              INNER JOIN Users ON Sessions.UserID = Users.UserID
-                              ORDER BY Sessions.SessionID DESC";
+                                            Users.UserName, 
+                                            (SELECT COUNT(*) FROM Orders WHERE Orders.SessionID = Sessions.SessionID) AS OrdersCount,
+                                            Sessions.StartTime, 
+                                            Sessions.EndTime, 
+                                            Sessions.TotalCash, 
+                                            CASE WHEN Sessions.IsActive = 1 THEN 'نشطة' ELSE 'مغلقة' END AS IsActive
+                                     FROM Sessions 
+                                     INNER JOIN Users ON Sessions.UserID = Users.UserID
+                                     ORDER BY Sessions.SessionID DESC";
 
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {
@@ -189,34 +183,30 @@ namespace AwladAli_Data
                     }
                 }
             }
-            catch (Exception) { /* Handle Exception */ }
+            catch (Exception) { }
             return dt;
         }
-
 
         public static DataTable GetSessionsWithPagination(int PageNumber, int PageSize)
         {
             DataTable dt = new DataTable();
-
-            // حساب عدد الصفوف التي سيتم تخطيها
             int offset = (PageNumber - 1) * PageSize;
 
             try
             {
                 using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
                 {
-                    // أضفنا LIMIT و OFFSET في نهاية الكويري
                     string query = @"SELECT Sessions.SessionID, 
-                                     Users.UserName, 
-                                     (SELECT COUNT(*) FROM Orders WHERE Orders.SessionID = Sessions.SessionID) AS OrdersCount,
-                                     Sessions.StartTime, 
-                                     Sessions.EndTime, 
-                                     Sessions.TotalCash, 
-                                     CASE WHEN Sessions.IsActive = 1 THEN 'نشطة' ELSE 'مغلقة' END AS IsActive
-                              FROM Sessions 
-                              INNER JOIN Users ON Sessions.UserID = Users.UserID
-                              ORDER BY Sessions.SessionID DESC
-                              LIMIT @PageSize OFFSET @Offset";
+                                            Users.UserName, 
+                                            (SELECT COUNT(*) FROM Orders WHERE Orders.SessionID = Sessions.SessionID) AS OrdersCount,
+                                            Sessions.StartTime, 
+                                            Sessions.EndTime, 
+                                            Sessions.TotalCash, 
+                                            CASE WHEN Sessions.IsActive = 1 THEN 'نشطة' ELSE 'مغلقة' END AS IsActive
+                                     FROM Sessions 
+                                     INNER JOIN Users ON Sessions.UserID = Users.UserID
+                                     ORDER BY Sessions.SessionID DESC
+                                     LIMIT @PageSize OFFSET @Offset";
 
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {
@@ -231,15 +221,12 @@ namespace AwladAli_Data
                     }
                 }
             }
-            catch (Exception) { /* Handle Exception */ }
+            catch (Exception) { }
 
             return dt;
         }
 
-
-
-        // Finds the latest active session in the whole system and retrieves its associated user info
-        public static bool GetAnyActiveSessionWithUserInfo(ref int sessionID, ref int userID, ref DateTime startTime, ref decimal totalCash, ref bool isActive)
+        public static bool GetAnyActiveSessionWithUserInfo(ref int sessionID, ref int userID, ref DateTime startTime, ref decimal totalCash, ref bool isActive, ref int durationInSeconds)
         {
             bool isFound = false;
             try
@@ -248,11 +235,11 @@ namespace AwladAli_Data
                 {
                     connection.Open();
 
-                    // 1. Query to find the latest open session in the entire system with its user details
-                    string selectQuery = @"SELECT S.SessionID, S.UserID, S.StartTime, S.TotalCash, S.IsActive
-                                       FROM Sessions S
-                                       WHERE S.EndTime IS NULL AND S.IsActive = 1 
-                                       ORDER BY S.SessionID DESC LIMIT 1;";
+                    // 🎯 CRITICAL SYNC: Added S.DurationInSeconds field mapping validation
+                    string selectQuery = @"SELECT S.SessionID, S.UserID, S.StartTime, S.TotalCash, S.IsActive, S.DurationInSeconds
+                                           FROM Sessions S
+                                           WHERE S.EndTime IS NULL AND S.IsActive = 1 
+                                           ORDER BY S.SessionID DESC LIMIT 1;";
 
                     using (SQLiteCommand selectCommand = new SQLiteCommand(selectQuery, connection))
                     {
@@ -266,16 +253,16 @@ namespace AwladAli_Data
                                 startTime = Convert.ToDateTime(reader["StartTime"]);
                                 totalCash = Convert.ToDecimal(reader["TotalCash"]);
                                 isActive = Convert.ToInt32(reader["IsActive"]) == 1;
+                                durationInSeconds = Convert.ToInt32(reader["DurationInSeconds"]);
                             }
                         }
                     }
 
-                    // 2. 🛡️ Cleanup: If an active session is found, force-close any older corrupted open sessions for safety
                     if (isFound)
                     {
                         string cleanUpQuery = @"UPDATE Sessions 
-                                            SET EndTime = @EndTime, IsActive = 0 
-                                            WHERE EndTime IS NULL AND IsActive = 1 AND SessionID != @CurrentSessionID;";
+                                                SET EndTime = @EndTime, IsActive = 0 
+                                                WHERE EndTime IS NULL AND IsActive = 1 AND SessionID != @CurrentSessionID;";
 
                         using (SQLiteCommand cleanUpCommand = new SQLiteCommand(cleanUpQuery, connection))
                         {
@@ -290,6 +277,5 @@ namespace AwladAli_Data
             catch (Exception) { isFound = false; }
             return isFound;
         }
-
     }
 }

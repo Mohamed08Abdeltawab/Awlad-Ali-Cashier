@@ -16,6 +16,9 @@ namespace AwladAli_Buisness
         public decimal TotalCash { get; set; }
         public bool IsActive { get; set; }
 
+        // 🎯 CRITICAL SYNC: Numeric counter property to track live active duration seamlessly
+        public int DurationInSeconds { get; set; }
+
         public clsSession()
         {
             this.SessionID = -1;
@@ -24,11 +27,11 @@ namespace AwladAli_Buisness
             this.EndTime = null;
             this.TotalCash = 0;
             this.IsActive = true;
+            this.DurationInSeconds = 0;
             Mode = enMode.AddNew;
         }
 
-        // Constructor خاص لبناء الكائن عند العثور عليه
-        private clsSession(int SessionID, int UserID, DateTime StartTime, DateTime? EndTime, decimal TotalCash, bool IsActive)
+        private clsSession(int SessionID, int UserID, DateTime StartTime, DateTime? EndTime, decimal TotalCash, bool IsActive, int DurationInSeconds)
         {
             this.SessionID = SessionID;
             this.UserID = UserID;
@@ -36,6 +39,7 @@ namespace AwladAli_Buisness
             this.EndTime = EndTime;
             this.TotalCash = TotalCash;
             this.IsActive = IsActive;
+            this.DurationInSeconds = DurationInSeconds;
             this.Mode = enMode.Update;
         }
 
@@ -46,18 +50,17 @@ namespace AwladAli_Buisness
             object EndTime = null;
             decimal TotalCash = 0;
             bool IsActive = false;
+            int DurationInSeconds = 0;
 
-            if (clsSessionData.GetSessionInfoByID(SessionID, ref UserID, ref StartTime, ref EndTime, ref TotalCash, ref IsActive))
+            if (clsSessionData.GetSessionInfoByID(SessionID, ref UserID, ref StartTime, ref EndTime, ref TotalCash, ref IsActive, ref DurationInSeconds))
             {
-                // Return an object of the class with the data found in the database
-                return new clsSession(SessionID, UserID, StartTime, (DateTime?)EndTime, TotalCash, IsActive);
+                return new clsSession(SessionID, UserID, StartTime, (DateTime?)EndTime, TotalCash, IsActive, DurationInSeconds);
             }
             else
             {
                 return null;
             }
         }
-
 
         public static clsSession FindAnyActiveSessionWithUserInfo()
         {
@@ -66,40 +69,35 @@ namespace AwladAli_Buisness
             DateTime startTime = DateTime.Now;
             decimal totalCash = 0.00m;
             bool isActive = false;
+            int durationInSeconds = 0;
 
-            if (clsSessionData.GetAnyActiveSessionWithUserInfo(ref sessionID, ref userID, ref startTime, ref totalCash, ref isActive))
+            if (clsSessionData.GetAnyActiveSessionWithUserInfo(ref sessionID, ref userID, ref startTime, ref totalCash, ref isActive, ref durationInSeconds))
             {
-                // Create the object and assign the fetched user full name to it
-                clsSession session = new clsSession(sessionID, userID, startTime, null, totalCash, isActive);
+                clsSession session = new clsSession(sessionID, userID, startTime, null, totalCash, isActive, durationInSeconds);
                 return session;
             }
             else
             {
-                return null; // System is clean, no active sessions exist
+                return null;
             }
         }
 
-
-        // 1. دالة بدء الجلسة
         private bool _AddNewSession()
         {
-            // قبل البدء، نغلق أي جلسة "تائهة" لهذا المستخدم لضمان سلامة البيانات
             clsSessionData.CloseAnyActiveSession();
 
             this.SessionID = clsSessionData.AddNewSession(this.UserID, this.StartTime);
             return (this.SessionID != -1);
         }
 
-        // 2. دالة إنهاء الجلسة
         private bool _EndSession()
         {
-            // تحديث إجمالي المبيعات من جدول الطلبات قبل الإغلاق
             this.TotalCash = clsSessionData.GetTotalSalesBySessionID(this.SessionID);
-            
-            return clsSessionData.EndSession(this.SessionID, DateTime.Now, this.TotalCash);
+
+            // 🎯 CRITICAL SYNC: Pass the tracked DurationInSeconds down to the database update stream
+            return clsSessionData.EndSession(this.SessionID, DateTime.Now, this.TotalCash, this.DurationInSeconds);
         }
 
-        // 3. دالة الحفظ الذكية
         public bool Save()
         {
             switch (Mode)
@@ -118,7 +116,6 @@ namespace AwladAli_Buisness
             return false;
         }
 
-        // دالة مساعدة لحساب المبيعات الحالية (بدون إغلاق الجلسة) لغرض العرض في الـ UI
         public decimal GetCurrentSales()
         {
             return clsSessionData.GetTotalSalesBySessionID(this.SessionID);
@@ -134,11 +131,9 @@ namespace AwladAli_Buisness
             return clsSessionData.GetAllSessions();
         }
 
-
         public static DataTable GetSessionsWithPagination(int PageNumber, int PageSize)
         {
             return clsSessionData.GetSessionsWithPagination(PageNumber, PageSize);
         }
-
     }
 }
