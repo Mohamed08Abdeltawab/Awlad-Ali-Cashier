@@ -286,18 +286,18 @@ namespace AwladAli_Data
         /// <summary>
         /// Checks if a customer is linked to any existing orders in the system.
         /// </summary>
-        public static bool IsCustomerHasOrders(string PhoneNumber)
+        public static bool IsCustomerHasOrders(int CustomerID)
         {
             bool hasOrders = false;
             try
             {
                 using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
                 {
-                    string query = "SELECT COUNT(*) FROM Orders WHERE PhoneNumber = @PhoneNumber";
+                    string query = "SELECT COUNT(*) FROM Orders WHERE CustomerID = @CustomerID";
 
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@PhoneNumber", PhoneNumber);
+                        command.Parameters.AddWithValue("@CustomerID", CustomerID);
                         connection.Open();
 
                         object result = command.ExecuteScalar();

@@ -131,8 +131,8 @@ namespace AwladAli_Buisness
         // Static method to delete a customer safely if they have no financial records
         public static bool Delete(string phoneNumber)
         {
-            // Data integrity check: prevent deleting customers associated with older invoices
-            if (clsCustomerData.IsCustomerHasOrders(phoneNumber))
+            int customerID = FindByPhoneNumber(phoneNumber).CustomerID;
+            if (clsCustomerData.IsCustomerHasOrders(customerID))
             {
                 return false;
             }
