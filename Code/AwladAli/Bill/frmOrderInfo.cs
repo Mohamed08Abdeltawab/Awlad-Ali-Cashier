@@ -62,6 +62,7 @@ namespace AwladAli.Bill
             }
 
             // 2. Fill Header Labels
+            lblBillNumber.Text = "#" + _OrderID.ToString();
             lblOrderID.Text = _Order.OrderID.ToString();
             lblOrderDate.Text = _Order.OrderDate.ToString("yyyy-MM-dd HH:mm:ss");
             lblMealPrice.Text = _Order.TotalAmount.ToString("0.00");

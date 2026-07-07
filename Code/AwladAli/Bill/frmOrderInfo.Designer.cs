@@ -20,6 +20,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOrderInfo));
             this.pnlBillHeader = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblBillTitle = new System.Windows.Forms.Label();
             this.pnlOrderItemsHeader = new System.Windows.Forms.Panel();
@@ -27,10 +28,10 @@
             this.lblH_Qty = new System.Windows.Forms.Label();
             this.lblH_Price = new System.Windows.Forms.Label();
             this.lblH_Name = new System.Windows.Forms.Label();
+            this.lblBillNumber = new System.Windows.Forms.Label();
             this.lblOrderDate = new System.Windows.Forms.Label();
             this.lblOrderID = new System.Windows.Forms.Label();
             this.flpOrderItems = new System.Windows.Forms.FlowLayoutPanel();
-            this.ctrlOrderLine1 = new AwladAli.Bill.ctrlOrderLine();
             this.pnlBillFooter = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -52,8 +53,7 @@
             this.btnSaveAndPrint = new System.Windows.Forms.Button();
             this.lblTotalAmount = new System.Windows.Forms.Label();
             this.labelTotalText = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.ctrlOrderLine1 = new AwladAli.Bill.ctrlOrderLine();
             this.pnlBillHeader.SuspendLayout();
             this.pnlOrderItemsHeader.SuspendLayout();
             this.flpOrderItems.SuspendLayout();
@@ -71,7 +71,7 @@
             this.pnlBillHeader.Controls.Add(this.label1);
             this.pnlBillHeader.Controls.Add(this.lblBillTitle);
             this.pnlBillHeader.Controls.Add(this.pnlOrderItemsHeader);
-            this.pnlBillHeader.Controls.Add(this.label11);
+            this.pnlBillHeader.Controls.Add(this.lblBillNumber);
             this.pnlBillHeader.Controls.Add(this.lblOrderDate);
             this.pnlBillHeader.Controls.Add(this.lblOrderID);
             this.pnlBillHeader.Dock = System.Windows.Forms.DockStyle.Top;
@@ -89,6 +89,16 @@
             this.label4.TabIndex = 5;
             this.label4.Text = ":التاريخ";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label12
+            // 
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.label12.Location = new System.Drawing.Point(362, 85);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(90, 23);
+            this.label12.TabIndex = 4;
+            this.label12.Text = ":رقم الفاتورة";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label1
             // 
@@ -163,6 +173,16 @@
             this.lblH_Name.Text = "اسم المنتج";
             this.lblH_Name.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // lblBillNumber
+            // 
+            this.lblBillNumber.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblBillNumber.Location = new System.Drawing.Point(266, 85);
+            this.lblBillNumber.Name = "lblBillNumber";
+            this.lblBillNumber.Size = new System.Drawing.Size(90, 23);
+            this.lblBillNumber.TabIndex = 1;
+            this.lblBillNumber.Text = "#000000";
+            this.lblBillNumber.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // lblOrderDate
             // 
             this.lblOrderDate.Font = new System.Drawing.Font("Segoe UI", 10F);
@@ -196,15 +216,6 @@
             this.flpOrderItems.Size = new System.Drawing.Size(464, 343);
             this.flpOrderItems.TabIndex = 1;
             this.flpOrderItems.WrapContents = false;
-            // 
-            // ctrlOrderLine1
-            // 
-            this.ctrlOrderLine1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ctrlOrderLine1.Location = new System.Drawing.Point(14, 15);
-            this.ctrlOrderLine1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ctrlOrderLine1.Name = "ctrlOrderLine1";
-            this.ctrlOrderLine1.Size = new System.Drawing.Size(436, 39);
-            this.ctrlOrderLine1.TabIndex = 0;
             // 
             // pnlBillFooter
             // 
@@ -465,25 +476,14 @@
             this.labelTotalText.Text = ":الإجمالي النهائي";
             this.labelTotalText.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label11
+            // ctrlOrderLine1
             // 
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.label11.Location = new System.Drawing.Point(266, 85);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(90, 23);
-            this.label11.TabIndex = 1;
-            this.label11.Text = "#000000";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label12
-            // 
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.label12.Location = new System.Drawing.Point(362, 85);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(90, 23);
-            this.label12.TabIndex = 4;
-            this.label12.Text = ":رقم الفاتورة";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ctrlOrderLine1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ctrlOrderLine1.Location = new System.Drawing.Point(14, 15);
+            this.ctrlOrderLine1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ctrlOrderLine1.Name = "ctrlOrderLine1";
+            this.ctrlOrderLine1.Size = new System.Drawing.Size(436, 39);
+            this.ctrlOrderLine1.TabIndex = 0;
             // 
             // frmOrderInfo
             // 
@@ -552,6 +552,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lblBillNumber;
     }
 }
