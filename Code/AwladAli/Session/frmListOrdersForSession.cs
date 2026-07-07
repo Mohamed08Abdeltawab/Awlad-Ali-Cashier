@@ -43,7 +43,7 @@ namespace AwladAli.Session
                 dgvOrders.Columns["OrderDate"].Width = 200;
 
                 dgvOrders.Columns["TotalAmount"].HeaderText = "إجمالي السعر";
-                dgvOrders.Columns["TotalAmount"].Width = 200;
+                dgvOrders.Columns["TotalAmount"].Width = 150;
             }
         }
 
@@ -63,7 +63,7 @@ namespace AwladAli.Session
                 dgvOrders.Columns["OrderDate"].Width = 200;
 
                 dgvOrders.Columns["TotalAmount"].HeaderText = "إجمالي السعر";
-                dgvOrders.Columns["TotalAmount"].Width = 200;
+                dgvOrders.Columns["TotalAmount"].Width = 150;
             }
         }
 

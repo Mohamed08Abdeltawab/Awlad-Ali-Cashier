@@ -1,6 +1,7 @@
-﻿using System;
+﻿using AwladAli_Data;
+using System;
 using System.Data;
-using AwladAli_Data;
+using System.Data.SQLite;
 
 namespace AwladAli_Buisness
 {
@@ -88,6 +89,16 @@ namespace AwladAli_Buisness
 
             this.SessionID = clsSessionData.AddNewSession(this.UserID, this.StartTime);
             return (this.SessionID != -1);
+        }
+
+        // 🎯 NEW BUSINESS METHOD: To update live cash and seconds without closing the shift
+        public bool UpdateSessionProgress()
+        {
+            // Reuse your existing EndSession data method, but pass NULL for EndTime, and keep IsActive as 1
+            // Wait, your EndSession data method forces IsActive = 0. Let's make a dedicated minor update query or adjust it!
+
+            // Instead of making a new data layer function, let's look at how we can update the row cleanly:
+            return clsSessionData.UpdateLiveSessionCounters(this.SessionID, this.TotalCash, this.DurationInSeconds);
         }
 
         private bool _EndSession()

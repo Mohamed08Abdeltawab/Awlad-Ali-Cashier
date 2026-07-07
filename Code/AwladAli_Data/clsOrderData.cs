@@ -213,7 +213,7 @@ namespace AwladAli_Data
                 using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
                 {
                     // Added OrderType, CustomerID, and DeliveryFee for accurate financial reporting per session
-                    string query = @"SELECT SessionID, OrderID, OrderDate, TotalAmount, OrderType, CustomerID, DeliveryFee 
+                    string query = @"SELECT SessionID, OrderID, OrderDate, TotalAmount 
                                      FROM Orders 
                                      WHERE SessionID = @SessionID 
                                      ORDER BY OrderDate DESC";
@@ -245,7 +245,7 @@ namespace AwladAli_Data
                 using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
                 {
                     // Added OrderType, CustomerID, and DeliveryFee to block query
-                    string query = @"SELECT SessionID, OrderID, OrderDate, TotalAmount, OrderType, CustomerID, DeliveryFee 
+                    string query = @"SELECT SessionID, OrderID, OrderDate, TotalAmount 
                                      FROM Orders 
                                      WHERE SessionID = @SessionID 
                                      ORDER BY OrderDate DESC

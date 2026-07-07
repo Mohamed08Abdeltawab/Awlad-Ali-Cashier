@@ -24,8 +24,7 @@ namespace AwladAli
         private clsOrder _Order;//new order object to hold current order data until saving to DB
         private clsCustomer _Customer; //to hold customer data if order type is delivery
 
-        private TimeSpan _ElapsedSessionTime = TimeSpan.Zero;
-        private DateTime _LastResumeTime;
+        private int _CurrentSessionDurationSeconds = 0;
 
         clsGlobal.CustomerDetailsInfo _CustomerDetailsInfo;
 
@@ -56,6 +55,16 @@ namespace AwladAli
                 btnSettings.Visible = false;
             }
         }
+
+        private void _ResumeSessionTimer()
+        {
+            if (sessionTimer.Enabled) return;
+
+            // Direct binding to the total saved elapsed seconds stored in database cleanly
+            _CurrentSessionDurationSeconds = _CurrentSession.DurationInSeconds;
+
+            sessionTimer.Start();
+        }
         // Added a boolean flag (isNewSession) to prevent overriding the start time on brand new sessions
         private void _EnableMainScreen(bool isNewSession = false)
         {
@@ -73,13 +82,14 @@ namespace AwladAli
                         flpProductCards.Enabled = true;
                         pnlTakeawayDelivery.Enabled = true;
 
-                        // Inside _EnableMainScreen (Back to normal structure)
                         _SessionID = _CurrentSession.SessionID;
                         clsGlobal.CurrentSessionID = _CurrentSession.SessionID;
 
                         btnStartSession.Image = Resources.session_2_64;
                         btnStartSession.Text = "إنهاء الجلسة";
 
+                        // 🎯 CRITICAL SYNC: Fire the counter resume natively
+                        _ResumeSessionTimer();
                     }
                     else
                     {
@@ -104,6 +114,7 @@ namespace AwladAli
                             }
                             else if (result == DialogResult.No)
                             {
+                                // 🎯 CRITICAL FIX: Safe redirection through Program.cs master lifecycle loop
                                 sessionTimer.Stop();
                                 clsGlobal.IsLoggingOut = true;
                                 this.Close();
@@ -144,12 +155,10 @@ namespace AwladAli
             _LoadRestaurantMenu();
             _LoadExtraAddons();
 
-            _EnableMainScreen(false);
+            // 🎯 CRITICAL REFACTOR: Removed _EnableMainScreen from load pipeline to avoid premature dialog rendering
         }
         private void frmMain_Load(object sender, EventArgs e)
         {
-            _LastResumeTime = DateTime.Now;
-            sessionTimer.Start();
             _RefreshMainScreenData();
         }
 
@@ -247,24 +256,21 @@ namespace AwladAli
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            _ElapsedSessionTime += DateTime.Now - _LastResumeTime;
             sessionTimer.Stop();
 
-            // 1. If the user triggered a LogOut, bypass the standard exit message boxes cleanly
             if (clsGlobal.IsLoggingOut)
             {
                 return;
             }
 
-            // 2. Normal Exit Flow (When user clicks the 'X' button on the main window directly)
             if (_CurrentSession != null)
             {
                 DialogResult result = MessageBox.Show("هل تريد إنهاء الجلسة الحالية قبل الخروج؟", "تأكيد", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Cancel)
                 {
-                    e.Cancel = true; // Prevent the form from closing
-                    sessionTimer.Start(); // Resume the UI ticks smoothly
+                    e.Cancel = true;
+                    sessionTimer.Start();
                     return;
                 }
 
@@ -272,16 +278,20 @@ namespace AwladAli
                 {
                     _EndSessionWhenFormClosing();
                 }
-
-                Properties.Settings.Default.Save();
+                else if (result == DialogResult.No)
+                {
+                    _CurrentSession.DurationInSeconds = _CurrentSessionDurationSeconds;
+                    // 🎯 FIX: Save seconds checkpoint safely keeping the shift alive and open
+                    _CurrentSession.UpdateSessionProgress();
+                }
             }
 
-            // 🛡️ Safe hard exit if the window closed directly by user clicking X top bar button
             if (e.CloseReason == CloseReason.UserClosing)
             {
                 Environment.Exit(0);
             }
         }
+
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
@@ -529,9 +539,13 @@ namespace AwladAli
         {
             if (_SessionID == -1 || _CurrentSession == null)
             {
+                // 🎯 CRITICAL SYNC: Reset counter states cleanly before allocating memory row
+                _CurrentSessionDurationSeconds = 0;
+
                 _CurrentSession = new clsSession();
                 _CurrentSession.UserID = clsGlobal.CurrentUser.UserID;
                 _CurrentSession.StartTime = DateTime.Now;
+                _CurrentSession.DurationInSeconds = 0;
 
                 if (_CurrentSession.Save())
                 {
@@ -542,7 +556,7 @@ namespace AwladAli
                     _SessionStartTime = _CurrentSession.StartTime;
 
                     sessionTimer.Start();
-                    _EnableMainScreen(); // Now it will execute safely without flags
+                    _EnableMainScreen();
 
                     btnStartSession.Text = "إنهاء الجلسة";
                     MessageBox.Show("تم بدء الجلسة بنجاح", "أولاد علي", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -561,8 +575,10 @@ namespace AwladAli
         private void _EndSessionWhenFormClosing()
         {
             sessionTimer.Stop();
-            // هنا ممكن تفتح شاشة تطلب منه يدخل المبلغ اللي في الدرج حالياً
             _CurrentSession.TotalCash = _CurrentSession.GetCurrentSales();
+
+            // 🎯 CRITICAL SYNC: Persist exact frozen elapsed ticks directly into data layer stream
+            _CurrentSession.DurationInSeconds = _CurrentSessionDurationSeconds;
 
             if (_CurrentSession.Save())
             {
@@ -578,8 +594,10 @@ namespace AwladAli
             {
                 sessionTimer.Stop();
 
-                // هنا ممكن تفتح شاشة تطلب منه يدخل المبلغ اللي في الدرج حالياً
                 _CurrentSession.TotalCash = _CurrentSession.GetCurrentSales();
+
+                // 🎯 CRITICAL SYNC: Bind runtime seconds to business state properties layout before commit
+                _CurrentSession.DurationInSeconds = _CurrentSessionDurationSeconds;
 
                 if (_CurrentSession.Save())
                 {
@@ -590,9 +608,8 @@ namespace AwladAli
 
                     btnStartSession.Text = "بدء جلسة";
                     lblSessionTimer.Text = "00:00:00";
-                    //my be change in ui and show in screen
                     MessageBox.Show("تم إنهاء الجلسة وحفظ المبيعات", "أولاد علي", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    _RefreshMainScreenData(); // إعادة تحميل البيانات بعد إنهاء الجلسة
+                    _RefreshMainScreenData();
                 }
                 else
                 {
@@ -603,18 +620,25 @@ namespace AwladAli
 
         private void sessionTimer_Tick(object sender, EventArgs e)
         {
-            TimeSpan duration =_ElapsedSessionTime +(DateTime.Now - _LastResumeTime);
+            // Increment total running lifetime seconds safely
+            _CurrentSessionDurationSeconds++;
 
-            // 🏆 Math.Floor ensures we get the absolute total hours without rounding up fractions
-            int totalHours = (int)Math.Floor(duration.TotalHours);
+            // Format the seconds directly into standard HH:MM:SS layout presentation
+            TimeSpan timeSpan = TimeSpan.FromSeconds(_CurrentSessionDurationSeconds);
 
-            // 🎯 Format each part perfectly: D2 ensures a leading zero if the number is less than 10 (e.g., "05")
+            int totalHours = (int)Math.Floor(timeSpan.TotalHours);
             string hoursStr = totalHours.ToString("D2");
-            string minutesStr = duration.Minutes.ToString("D2");
-            string secondsStr = duration.Seconds.ToString("D2");
+            string minutesStr = timeSpan.Minutes.ToString("D2");
+            string secondsStr = timeSpan.Seconds.ToString("D2");
 
-            // Display the final combined string to the label layout
             lblSessionTimer.Text = $"{hoursStr}:{minutesStr}:{secondsStr}";
+
+            // Smart Sync Option: Save progress to DB every 60 seconds so you never lose track if a crash occurs
+            if (_CurrentSessionDurationSeconds % 60 == 0)
+            {
+                _CurrentSession.DurationInSeconds = _CurrentSessionDurationSeconds;
+                _CurrentSession.UpdateSessionProgress();
+            }
         }
 
         private void rbTakeaway_CheckedChanged(object sender, EventArgs e)
@@ -689,13 +713,21 @@ namespace AwladAli
                 {
                     _EndSessionWhenFormClosing();
                 }
+                else if (result == DialogResult.No)
+                {
+                    _CurrentSession.DurationInSeconds = _CurrentSessionDurationSeconds;
+                    // 🎯 FIX: Save seconds checkpoint safely keeping the shift alive and open
+                    _CurrentSession.UpdateSessionProgress();
+                }
             }
 
-            // 🎯 CRITICAL FIX: Raise the static logout state flag to inform Program.cs layout loop
             clsGlobal.IsLoggingOut = true;
-
-            // 🎯 CRITICAL FIX: Close this current frame instance cleanly to let Program.cs rebuild context natively
             this.Close();
+        }
+
+        private void frmMain_Shown(object sender, EventArgs e)
+        {
+            _EnableMainScreen(false); // Pass false to indicate it's not a new session
         }
     }
 }

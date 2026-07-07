@@ -76,6 +76,34 @@ namespace AwladAli_Data
             return SessionID;
         }
 
+
+        public static bool UpdateLiveSessionCounters(int SessionID, decimal TotalCash, int DurationInSeconds)
+        {
+            int rowsAffected = 0;
+            try
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(clsDataAccessSettings.ConnectionString))
+                {
+                    string query = @"UPDATE Sessions 
+                             SET TotalCash = @TotalCash, 
+                                 DurationInSeconds = @DurationInSeconds
+                             WHERE SessionID = @SessionID AND IsActive = 1";
+
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@SessionID", SessionID);
+                        command.Parameters.AddWithValue("@TotalCash", TotalCash);
+                        command.Parameters.AddWithValue("@DurationInSeconds", DurationInSeconds);
+
+                        connection.Open();
+                        rowsAffected = command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception) { return false; }
+            return (rowsAffected > 0);
+        }
+
         // 🎯 CRITICAL SYNC: Overloaded Update method to persist live counter ticks tracking smoothly
         public static bool EndSession(int SessionID, DateTime EndTime, decimal TotalCash, int DurationInSeconds)
         {
