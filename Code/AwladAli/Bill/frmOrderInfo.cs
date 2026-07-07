@@ -227,7 +227,7 @@ namespace AwladAli.Bill
                 y += 15;
 
                 g.DrawString(":الإجمالي النهائي", fontHeader, Brushes.Black, pageWidth - margin, y, alignRight);
-                g.DrawString($"{_Order.TotalAmount.ToString("0.00")} EGP", fontTitle, Brushes.Blue, margin, y - 5, alignLeft);
+                g.DrawString($"{_Order.TotalAmount.ToString("0.00")} EGP", fontTitle, Brushes.Black, margin, y - 5, alignLeft);
                 y += rowHeight;
             }
             else if (_Order.OrderType == clsOrder.enOrderType.Delivery)

@@ -67,8 +67,7 @@ namespace AwladAli.Session
 
         private void PrintSessionPage(object sender, PrintPageEventArgs e)
         {
-            // التحقق من وجود طابعة
-            if (PrinterSettings.InstalledPrinters.Count == 0)
+            if (System.Drawing.Printing.PrinterSettings.InstalledPrinters.Count == 0)
             {
                 MessageBox.Show("لم يتم العثور على طابعات في هذا النظام!", "خطأ في الطباعة", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -76,78 +75,100 @@ namespace AwladAli.Session
 
             Graphics g = e.Graphics;
 
-            // نفس إعدادات الخطوط التي استخدمتها
-            Font fontTitle = new Font("Tahoma", 24, FontStyle.Bold);
-            Font fontHeader = new Font("Tahoma", 18, FontStyle.Bold);
-            Font fontBody = new Font("Tahoma", 16);
+            // 🏆 Exact micro-fonts configuration from the verified order receipt layout
+            Font fontTitle = new Font("Tahoma", 13, FontStyle.Bold);
+            Font fontHeader = new Font("Tahoma", 9, FontStyle.Bold);
+            Font fontBody = new Font("Tahoma", 8);
+            Font fontFooter = new Font("Tahoma", 8, FontStyle.Italic);
 
             float pageWidth = e.PageBounds.Width;
-            float margin = 20;
-            float y = 20;
-            float rowHeight = 40; // زدنا الارتفاع قليلاً لراحة العين في تقارير الجلسات
+            float margin = 10;
+            float y = 15;
+            float rowHeight = 28;
 
-            StringFormat right = new StringFormat() { Alignment = StringAlignment.Far };
-            StringFormat center = new StringFormat() { Alignment = StringAlignment.Center };
-            StringFormat left = new StringFormat() { Alignment = StringAlignment.Near };
+            float usableWidth = pageWidth - (margin * 2);
 
-            // ===== Header (العنوان كما هو) =====
-            g.DrawString("أولاد علي - Awlad Ali", fontTitle, Brushes.Black, pageWidth / 2, y, center);
+            StringFormat alignRight = new StringFormat() { Alignment = StringAlignment.Far };
+            StringFormat alignCenter = new StringFormat() { Alignment = StringAlignment.Center };
+            StringFormat alignLeft = new StringFormat() { Alignment = StringAlignment.Near };
+
+            // ===== 1. Header Section =====
+            g.DrawString("أولاد علي - Awlad Ali", fontTitle, Brushes.Black, pageWidth / 2, y, alignCenter);
+            y += rowHeight + 15;
+
+            g.DrawString($"رقم الجلسة: {_Session.SessionID}", fontBody, Brushes.Black, pageWidth - margin, y, alignRight);
+            y += rowHeight;
+
+            g.DrawString($"تاريخ الطباعة: {DateTime.Now:yyyy-MM-dd HH:mm}", fontBody, Brushes.Black, pageWidth - margin, y, alignRight);
+            y += rowHeight + 10;
+
+            g.DrawLine(Pens.Black, margin, y, pageWidth - margin, y);
+            y += 15;
+
+            // ===== 2. Detailed Metadata Symmetrical Layout =====
+            float labelWidth = 70; // Label allocation spacing outside the box boundary
+            float boxWidth = usableWidth - labelWidth;
+
+            float xLabel = pageWidth - margin;
+            float xBoxStart = margin;
+            float textPaddingY = 4;
+
+            // Row 1: Username
+            g.DrawString(":المستخدم", fontBody, Brushes.DimGray, xLabel, y + textPaddingY, alignRight);
+            g.DrawRectangle(Pens.Black, xBoxStart, y, boxWidth, rowHeight);
+            g.DrawString(lblUserName.Text, fontBody, Brushes.Black, xBoxStart + boxWidth - 5, y + textPaddingY, alignRight);
+            y += rowHeight + 5;
+
+            // Row 2: Start Time
+            g.DrawString(":وقت البداية", fontBody, Brushes.DimGray, xLabel, y + textPaddingY, alignRight);
+            g.DrawRectangle(Pens.Black, xBoxStart, y, boxWidth, rowHeight);
+            g.DrawString(_Session.StartTime.ToString("yyyy-MM-dd HH:mm"), fontBody, Brushes.Black, xBoxStart + boxWidth - 5, y + textPaddingY, alignRight);
+            y += rowHeight + 5;
+
+            // Row 3: End Time
+            string endTimeStr = (_Session.IsActive) ? "لا تزال نشطة" : _Session.EndTime?.ToString("yyyy-MM-dd HH:mm");
+            g.DrawString(":وقت النهاية", fontBody, Brushes.DimGray, xLabel, y + textPaddingY, alignRight);
+            g.DrawRectangle(Pens.Black, xBoxStart, y, boxWidth, rowHeight);
+            g.DrawString(endTimeStr, fontBody, Brushes.Black, xBoxStart + boxWidth - 5, y + textPaddingY, alignRight);
+            y += rowHeight + 5;
+
+            // Row 4: Orders Count
+            int ordersCount = clsOrder.GetOrdersCountBySessionID(_Session.SessionID);
+            g.DrawString(":عدد الطلبات", fontBody, Brushes.DimGray, xLabel, y + textPaddingY, alignRight);
+            g.DrawRectangle(Pens.Black, xBoxStart, y, boxWidth, rowHeight);
+            g.DrawString(ordersCount.ToString(), fontBody, Brushes.Black, xBoxStart + boxWidth - 5, y + textPaddingY, alignRight);
             y += rowHeight + 20;
 
-            // ===== رقم الجلسة وتاريخ الطباعة =====
-            // رقم الجلسة (يمين)
-            g.DrawString($"رقم الجلسة: {_Session.SessionID}", fontBody, Brushes.Black, pageWidth - margin, y, right);
-            // تاريخ الطباعة الآن (شمال)
-            g.DrawString($"تاريخ الطباعة: {DateTime.Now:yyyy-MM-dd HH:mm}", fontBody, Brushes.Black, margin, y, left);
+            e.HasMorePages = false;
 
-            y += rowHeight;
-            g.DrawLine(Pens.Black, margin, y, pageWidth - margin, y);
-            y += 20;
-
-            // ===== بيانات الجلسة التفصيلية =====
-
-            // اسم المستخدم
-            g.DrawString($":اسم المستخدم", fontHeader, Brushes.Black, pageWidth - margin, y, right);
-            g.DrawString(lblUserName.Text, fontBody, Brushes.Black, pageWidth - margin - 220, y, right);
+            // ===== 3. Session Total Cash Summary (Bold & Distinctive) =====
+            g.DrawString(":إجمالي المبيعات", fontHeader, Brushes.Black, pageWidth - margin, y, alignRight);
+            g.DrawString($"{_Session.TotalCash:0.00} EGP", fontTitle, Brushes.Black, margin, y - 3, alignLeft);
             y += rowHeight;
 
-            // وقت البداية
-            g.DrawString($":وقت البداية", fontHeader, Brushes.Black, pageWidth - margin, y, right);
-            g.DrawString(_Session.StartTime.ToString("yyyy-MM-dd HH:mm"), fontBody, Brushes.Black, pageWidth - margin - 180, y, right);
-            y += rowHeight;
+            g.DrawLine(new Pen(Color.Black, 1.5f), margin, y + 5, pageWidth - margin, y + 5);
+            y += 25;
 
-            // وقت النهاية
-            string endTimeStr = (_Session.IsActive) ? "لا تزال نشطة" : _Session.EndTime?.ToString("yyyy-MM-dd HH:mm");
-            g.DrawString($":وقت النهاية", fontHeader, Brushes.Black, pageWidth - margin, y, right);
-            g.DrawString(endTimeStr, fontBody, Brushes.Black, pageWidth - margin - 180, y, right);
-            y += rowHeight;
-
-            // عدد الأوردرات (بافتراض أنك قمت بحسابها في الـ UI أو البزنس)
-            // ملاحظة: يمكنك جلب عدد الصفوف من الـ DataTable الخاصة بالأوردرات المتعلقة بالجلسة
-            int ordersCount = clsOrder.GetOrdersCountBySessionID(_Session.SessionID);
-            g.DrawString($":عدد الطلبات", fontHeader, Brushes.Black, pageWidth - margin, y, right);
-            g.DrawString(ordersCount.ToString(), fontBody, Brushes.Black, pageWidth - margin - 180, y, right);
-
-            y += rowHeight + 10;
-            g.DrawLine(Pens.Black, margin, y, pageWidth - margin, y);
-            y += 20;
-
-            // ===== المبلغ الكلي (بخط عريض ومميز) =====
-            g.DrawString($"إجمالي مبيعات الجلسة: {_Session.TotalCash:0.00} ج.م", fontTitle, Brushes.Black, pageWidth - margin, y, right);
-
-            y += rowHeight + 40;
-
-            // ===== Footer =====
-            g.DrawString("تقرير ملخص الوردية", fontBody, Brushes.Black, pageWidth / 2, y, center);
+            // ===== 4. Footer =====
+            g.DrawString("تقرير ملخص الوردية", fontFooter, Brushes.Black, pageWidth / 2, y, alignCenter);
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
+            // Bind the print drawing canvas event method
             printDoc.PrintPage += new PrintPageEventHandler(PrintSessionPage);
 
+            // 🏆 Balanced precise height configuration: fits the 4 boxes and summary smoothly
+            int approximateHeight = 250 + 400;
+
+            // 🎯 Lock the paper scaling properties cleanly to 300px thermal roll standards
+            System.Drawing.Printing.PaperSize receiptSize = new System.Drawing.Printing.PaperSize("CustomReceipt", 300, approximateHeight);
+            printDoc.DefaultPageSettings.PaperSize = receiptSize;
+
+            // Fire the print viewing dialog component
             PrintPreviewDialog preview = new PrintPreviewDialog();
             preview.Document = printDoc;
-            preview.ShowDialog(); // للمعاينة قبل الطباعة (اختياري)
+            preview.ShowDialog();
 
             this.Close();
         }

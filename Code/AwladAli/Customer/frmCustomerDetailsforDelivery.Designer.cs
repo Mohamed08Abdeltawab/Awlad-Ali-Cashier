@@ -54,6 +54,7 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.ctrlCustomerInfo1 = new AwladAli.Customer.ctrlCustomerInfo();
             this.ttDeliveryFeeHelp = new System.Windows.Forms.ToolTip(this.components);
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
             this.cmsCustomers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
@@ -101,7 +102,6 @@
             this.dgvCustomers.Size = new System.Drawing.Size(744, 211);
             this.dgvCustomers.TabIndex = 193;
             this.dgvCustomers.TabStop = false;
-            this.ttDeliveryFeeHelp.SetToolTip(this.dgvCustomers, "يتم عرض اول 10 صفوف فقط عند البحث في قاعدة البيانات \r\n");
             this.dgvCustomers.DoubleClick += new System.EventHandler(this.dgvCustomers_DoubleClick);
             // 
             // cmsCustomers
@@ -334,12 +334,25 @@
             this.ttDeliveryFeeHelp.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.ttDeliveryFeeHelp.ToolTipTitle = "مساعد";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label3.Location = new System.Drawing.Point(361, 327);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(397, 20);
+            this.label3.TabIndex = 251;
+            this.label3.Text = "ملاحظة: يتم عرض اول 10 صفوف من قاعدة البيانات عند البحث ";
+            // 
             // frmCustomerDetailsforDelivery
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(779, 850);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.chkDeliveryFeeStatus);
             this.Controls.Add(this.txtDeliveryFees);
             this.Controls.Add(this.label1);
@@ -397,5 +410,6 @@
         private System.Windows.Forms.ToolStripMenuItem SelectCustomerToolStripMenuItem;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.ToolTip ttDeliveryFeeHelp;
+        private System.Windows.Forms.Label label3;
     }
 }
