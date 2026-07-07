@@ -100,5 +100,10 @@ namespace AwladAli.Login
                 btnLogin.PerformClick();
             }
         }
+
+        private void frmLogin_Shown(object sender, EventArgs e)
+        {
+            txtPassword.Focus();
+        }
     }
 }
