@@ -220,8 +220,8 @@ namespace AwladAli.Bill
             if (_Order.OrderType == clsOrder.enOrderType.Takeaway)
             {
                 g.DrawString(":نوع الطلب", fontBody, Brushes.Black, pageWidth - margin, y, alignRight);
-                g.DrawString("تيك أواي (Takeaway)", fontHeader, Brushes.Black, margin, y, alignLeft);
-                y += rowHeight + 10;
+                g.DrawString("(Takeaway) " + "إستلام من المحل", fontHeader, Brushes.Black, margin, y, alignLeft);
+                y += rowHeight + 8;
 
                 g.DrawLine(Pens.Black, margin, y, pageWidth - margin, y);
                 y += 15;
@@ -232,6 +232,10 @@ namespace AwladAli.Bill
             }
             else if (_Order.OrderType == clsOrder.enOrderType.Delivery)
             {
+                g.DrawString(":نوع الطلب", fontBody, Brushes.Black, pageWidth - margin, y, alignRight);
+                g.DrawString("(Delivery) " + "توصيل للعميل", fontHeader, Brushes.Black, margin, y, alignLeft);
+                y += rowHeight + 10;
+
                 g.DrawString("بيانات التوصيل والعميل", fontHeader, Brushes.Black, pageWidth - margin, y, alignRight);
                 y += rowHeight + 8;
 
