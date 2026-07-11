@@ -82,6 +82,10 @@ namespace AwladAli.Customer
             {
                 e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
             }
+            else
+            {
+                e.Handled = false; // Allow all characters for name search 
+            }
         }
 
         public void SetDataGridView()
