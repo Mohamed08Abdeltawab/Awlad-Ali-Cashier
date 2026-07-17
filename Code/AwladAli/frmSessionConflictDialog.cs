@@ -25,14 +25,14 @@ namespace AwladAli
             // 🛡️ المطب الذكي: لو قفل الشاشة من زرار الـ X (ولم يضغط على أي زرار)
             if (this.DialogResult == DialogResult.Cancel || this.DialogResult == DialogResult.None)
             {
-                // إجبار النتيجة لتكون 'Yes' ليفهم السيستم أنه اختار إغلاق الجلسة القديمة
-                this.DialogResult = DialogResult.Yes;
+                // إجبار النتيجة لتكون 'No' ليفهم السيستم أنه اختار تسجيل خروج
+                this.DialogResult = DialogResult.No;
             }
         }
 
         private void btnCloseOldSession_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Yes; // سنعتبر 'Yes' تعني إغلاق الجلسة القديمة
+            this.DialogResult = DialogResult.Yes; // سنعتبر 'Yes' تعني إغلاق الجلسات المتاحة
             this.Close();
         }
 
@@ -42,6 +42,5 @@ namespace AwladAli
             clsGlobal.IsLoggingOut = true;
             this.Close();
         }
-
     }
 }
