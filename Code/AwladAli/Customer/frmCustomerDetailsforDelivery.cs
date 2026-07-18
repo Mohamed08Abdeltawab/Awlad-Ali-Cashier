@@ -101,7 +101,7 @@ namespace AwladAli.Customer
                 dgvCustomers.Columns[1].Width = 250;
 
                 dgvCustomers.Columns[2].HeaderText = "حالة العميل";
-                dgvCustomers.Columns[2].Width = 150;
+                dgvCustomers.Columns[2].Width = 120;
             }
         }
 
