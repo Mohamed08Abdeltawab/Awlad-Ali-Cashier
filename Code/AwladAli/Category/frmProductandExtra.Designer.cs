@@ -46,10 +46,10 @@
             this.btnExtraLists.ForeColor = System.Drawing.Color.Transparent;
             this.btnExtraLists.Image = global::AwladAli.Properties.Resources.extra_64;
             this.btnExtraLists.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExtraLists.Location = new System.Drawing.Point(42, 359);
+            this.btnExtraLists.Location = new System.Drawing.Point(42, 309);
             this.btnExtraLists.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnExtraLists.Name = "btnExtraLists";
-            this.btnExtraLists.Size = new System.Drawing.Size(281, 128);
+            this.btnExtraLists.Size = new System.Drawing.Size(281, 96);
             this.btnExtraLists.TabIndex = 227;
             this.btnExtraLists.Text = "ادارة الأضافات";
             this.btnExtraLists.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -66,10 +66,10 @@
             this.btnCategoriesList.ForeColor = System.Drawing.Color.Transparent;
             this.btnCategoriesList.Image = global::AwladAli.Properties.Resources.Foods_64;
             this.btnCategoriesList.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCategoriesList.Location = new System.Drawing.Point(42, 221);
+            this.btnCategoriesList.Location = new System.Drawing.Point(42, 196);
             this.btnCategoriesList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCategoriesList.Name = "btnCategoriesList";
-            this.btnCategoriesList.Size = new System.Drawing.Size(281, 128);
+            this.btnCategoriesList.Size = new System.Drawing.Size(281, 103);
             this.btnCategoriesList.TabIndex = 228;
             this.btnCategoriesList.Text = "ادارة الأصناف";
             this.btnCategoriesList.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -83,7 +83,7 @@
             this.btnclose.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnclose.Image = global::AwladAli.Properties.Resources.Close_32;
             this.btnclose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnclose.Location = new System.Drawing.Point(108, 552);
+            this.btnclose.Location = new System.Drawing.Point(108, 452);
             this.btnclose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnclose.Name = "btnclose";
             this.btnclose.Size = new System.Drawing.Size(151, 46);
@@ -96,9 +96,9 @@
             // 
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblTitle.Location = new System.Drawing.Point(-1, 146);
+            this.lblTitle.Location = new System.Drawing.Point(52, 136);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(372, 39);
+            this.lblTitle.Size = new System.Drawing.Size(244, 39);
             this.lblTitle.TabIndex = 245;
             this.lblTitle.Text = "ادارة الأطعمة";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -120,7 +120,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(370, 627);
+            this.ClientSize = new System.Drawing.Size(370, 517);
             this.Controls.Add(this.pbPersonImage);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.btnclose);

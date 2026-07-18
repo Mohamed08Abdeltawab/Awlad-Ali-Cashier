@@ -54,7 +54,7 @@
             // lblRecordsCount
             // 
             this.lblRecordsCount.AutoSize = true;
-            this.lblRecordsCount.Location = new System.Drawing.Point(123, 699);
+            this.lblRecordsCount.Location = new System.Drawing.Point(136, 606);
             this.lblRecordsCount.Name = "lblRecordsCount";
             this.lblRecordsCount.Size = new System.Drawing.Size(27, 20);
             this.lblRecordsCount.TabIndex = 248;
@@ -64,7 +64,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(21, 699);
+            this.label2.Location = new System.Drawing.Point(34, 606);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(96, 20);
             this.label2.TabIndex = 247;
@@ -78,7 +78,7 @@
             "لا شيء",
             "معرف الأضافة",
             "اسم الأضافة"});
-            this.cbFilterBy.Location = new System.Drawing.Point(90, 284);
+            this.cbFilterBy.Location = new System.Drawing.Point(99, 212);
             this.cbFilterBy.Name = "cbFilterBy";
             this.cbFilterBy.Size = new System.Drawing.Size(210, 28);
             this.cbFilterBy.TabIndex = 246;
@@ -87,7 +87,7 @@
             // txtFilterValue
             // 
             this.txtFilterValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtFilterValue.Location = new System.Drawing.Point(307, 286);
+            this.txtFilterValue.Location = new System.Drawing.Point(316, 214);
             this.txtFilterValue.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtFilterValue.Name = "txtFilterValue";
             this.txtFilterValue.Size = new System.Drawing.Size(198, 26);
@@ -99,7 +99,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 287);
+            this.label1.Location = new System.Drawing.Point(21, 215);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(80, 20);
             this.label1.TabIndex = 244;
@@ -109,7 +109,7 @@
             // 
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblTitle.Location = new System.Drawing.Point(256, 218);
+            this.lblTitle.Location = new System.Drawing.Point(187, 139);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(307, 39);
             this.lblTitle.TabIndex = 250;
@@ -125,7 +125,7 @@
             this.dgvExtra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvExtra.ContextMenuStrip = this.cmsExtra;
             this.dgvExtra.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvExtra.Location = new System.Drawing.Point(16, 320);
+            this.dgvExtra.Location = new System.Drawing.Point(25, 248);
             this.dgvExtra.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvExtra.MultiSelect = false;
             this.dgvExtra.Name = "dgvExtra";
@@ -139,7 +139,7 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvExtra.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvExtra.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvExtra.Size = new System.Drawing.Size(746, 371);
+            this.dgvExtra.Size = new System.Drawing.Size(633, 348);
             this.dgvExtra.TabIndex = 243;
             this.dgvExtra.TabStop = false;
             // 
@@ -187,7 +187,7 @@
             "All",
             "Admin",
             "Cashier"});
-            this.cbRole.Location = new System.Drawing.Point(307, 284);
+            this.cbRole.Location = new System.Drawing.Point(316, 212);
             this.cbRole.Name = "cbRole";
             this.cbRole.Size = new System.Drawing.Size(138, 28);
             this.cbRole.TabIndex = 251;
@@ -197,7 +197,7 @@
             // 
             this.btnAddExtra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddExtra.Image = global::AwladAli.Properties.Resources.add_64;
-            this.btnAddExtra.Location = new System.Drawing.Point(674, 232);
+            this.btnAddExtra.Location = new System.Drawing.Point(570, 165);
             this.btnAddExtra.Name = "btnAddExtra";
             this.btnAddExtra.Size = new System.Drawing.Size(88, 75);
             this.btnAddExtra.TabIndex = 253;
@@ -212,7 +212,7 @@
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Image = global::AwladAli.Properties.Resources.Close_32;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(616, 701);
+            this.btnClose.Location = new System.Drawing.Point(512, 606);
             this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(146, 46);
@@ -226,10 +226,10 @@
             this.pbPersonImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pbPersonImage.Image = global::AwladAli.Properties.Resources.extra_512;
             this.pbPersonImage.InitialImage = null;
-            this.pbPersonImage.Location = new System.Drawing.Point(293, 24);
+            this.pbPersonImage.Location = new System.Drawing.Point(262, 14);
             this.pbPersonImage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pbPersonImage.Name = "pbPersonImage";
-            this.pbPersonImage.Size = new System.Drawing.Size(220, 189);
+            this.pbPersonImage.Size = new System.Drawing.Size(152, 120);
             this.pbPersonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbPersonImage.TabIndex = 249;
             this.pbPersonImage.TabStop = false;
@@ -238,7 +238,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(775, 759);
+            this.ClientSize = new System.Drawing.Size(670, 658);
             this.Controls.Add(this.lblRecordsCount);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cbFilterBy);

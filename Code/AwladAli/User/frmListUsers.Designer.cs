@@ -58,7 +58,7 @@
             // lblRecordsCount
             // 
             this.lblRecordsCount.AutoSize = true;
-            this.lblRecordsCount.Location = new System.Drawing.Point(130, 685);
+            this.lblRecordsCount.Location = new System.Drawing.Point(117, 562);
             this.lblRecordsCount.Name = "lblRecordsCount";
             this.lblRecordsCount.Size = new System.Drawing.Size(27, 20);
             this.lblRecordsCount.TabIndex = 131;
@@ -68,7 +68,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(28, 685);
+            this.label2.Location = new System.Drawing.Point(15, 562);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(96, 20);
             this.label2.TabIndex = 130;
@@ -84,7 +84,7 @@
             "اسم المستخدم",
             "دور المستخدم",
             "الحالة"});
-            this.cbFilterBy.Location = new System.Drawing.Point(97, 270);
+            this.cbFilterBy.Location = new System.Drawing.Point(93, 203);
             this.cbFilterBy.Name = "cbFilterBy";
             this.cbFilterBy.Size = new System.Drawing.Size(210, 28);
             this.cbFilterBy.TabIndex = 129;
@@ -93,7 +93,7 @@
             // txtFilterValue
             // 
             this.txtFilterValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtFilterValue.Location = new System.Drawing.Point(314, 272);
+            this.txtFilterValue.Location = new System.Drawing.Point(310, 205);
             this.txtFilterValue.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtFilterValue.Name = "txtFilterValue";
             this.txtFilterValue.Size = new System.Drawing.Size(198, 26);
@@ -105,7 +105,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(19, 273);
+            this.label1.Location = new System.Drawing.Point(15, 206);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(80, 20);
             this.label1.TabIndex = 127;
@@ -115,9 +115,9 @@
             // 
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblTitle.Location = new System.Drawing.Point(191, 212);
+            this.lblTitle.Location = new System.Drawing.Point(203, 144);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(460, 39);
+            this.lblTitle.Size = new System.Drawing.Size(278, 39);
             this.lblTitle.TabIndex = 133;
             this.lblTitle.Text = "ادارة المستخدمين";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -167,7 +167,7 @@
             this.OnToolStripMenuItem.Image = global::AwladAli.Properties.Resources.Active_32;
             this.OnToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.OnToolStripMenuItem.Name = "OnToolStripMenuItem";
-            this.OnToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.OnToolStripMenuItem.Size = new System.Drawing.Size(155, 38);
             this.OnToolStripMenuItem.Text = "(ON) تفعيل";
             this.OnToolStripMenuItem.Click += new System.EventHandler(this.OnToolStripMenuItem_Click);
             // 
@@ -176,7 +176,7 @@
             this.OffToolStripMenuItem.Image = global::AwladAli.Properties.Resources.Inactive_32;
             this.OffToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.OffToolStripMenuItem.Name = "OffToolStripMenuItem";
-            this.OffToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.OffToolStripMenuItem.Size = new System.Drawing.Size(155, 38);
             this.OffToolStripMenuItem.Text = "(OFF) تعطيل";
             this.OffToolStripMenuItem.Click += new System.EventHandler(this.OffToolStripMenuItem_Click);
             // 
@@ -199,7 +199,7 @@
             this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUsers.ContextMenuStrip = this.cmsUsers;
             this.dgvUsers.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvUsers.Location = new System.Drawing.Point(23, 306);
+            this.dgvUsers.Location = new System.Drawing.Point(19, 239);
             this.dgvUsers.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvUsers.MultiSelect = false;
             this.dgvUsers.Name = "dgvUsers";
@@ -213,7 +213,7 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvUsers.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvUsers.Size = new System.Drawing.Size(746, 371);
+            this.dgvUsers.Size = new System.Drawing.Size(592, 313);
             this.dgvUsers.TabIndex = 126;
             this.dgvUsers.TabStop = false;
             // 
@@ -225,7 +225,7 @@
             "الكل",
             "مسؤول",
             "كاشير"});
-            this.cbRole.Location = new System.Drawing.Point(314, 270);
+            this.cbRole.Location = new System.Drawing.Point(310, 203);
             this.cbRole.Name = "cbRole";
             this.cbRole.Size = new System.Drawing.Size(138, 28);
             this.cbRole.TabIndex = 135;
@@ -240,7 +240,7 @@
             "الكل",
             "مفعل",
             "معطل"});
-            this.cbActivation.Location = new System.Drawing.Point(314, 270);
+            this.cbActivation.Location = new System.Drawing.Point(310, 203);
             this.cbActivation.Name = "cbActivation";
             this.cbActivation.Size = new System.Drawing.Size(138, 28);
             this.cbActivation.TabIndex = 244;
@@ -254,10 +254,10 @@
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Image = global::AwladAli.Properties.Resources.Close_32;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(618, 687);
+            this.button1.Location = new System.Drawing.Point(490, 562);
             this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(151, 46);
+            this.button1.Size = new System.Drawing.Size(121, 44);
             this.button1.TabIndex = 243;
             this.button1.Text = "خروج";
             this.button1.UseVisualStyleBackColor = true;
@@ -267,9 +267,9 @@
             // 
             this.btnAddUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddUser.Image = global::AwladAli.Properties.Resources.add_64;
-            this.btnAddUser.Location = new System.Drawing.Point(681, 218);
+            this.btnAddUser.Location = new System.Drawing.Point(536, 155);
             this.btnAddUser.Name = "btnAddUser";
-            this.btnAddUser.Size = new System.Drawing.Size(88, 75);
+            this.btnAddUser.Size = new System.Drawing.Size(75, 76);
             this.btnAddUser.TabIndex = 242;
             this.btnAddUser.UseVisualStyleBackColor = true;
             this.btnAddUser.Click += new System.EventHandler(this.btnAddUser_Click);
@@ -279,10 +279,10 @@
             this.pbPersonImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pbPersonImage.Image = global::AwladAli.Properties.Resources.users_512;
             this.pbPersonImage.InitialImage = null;
-            this.pbPersonImage.Location = new System.Drawing.Point(314, 14);
+            this.pbPersonImage.Location = new System.Drawing.Point(260, 14);
             this.pbPersonImage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pbPersonImage.Name = "pbPersonImage";
-            this.pbPersonImage.Size = new System.Drawing.Size(220, 189);
+            this.pbPersonImage.Size = new System.Drawing.Size(155, 125);
             this.pbPersonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbPersonImage.TabIndex = 132;
             this.pbPersonImage.TabStop = false;
@@ -291,7 +291,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(792, 740);
+            this.ClientSize = new System.Drawing.Size(627, 622);
             this.Controls.Add(this.cbActivation);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnAddUser);

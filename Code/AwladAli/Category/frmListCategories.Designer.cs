@@ -53,7 +53,7 @@
             // lblRecordsCount
             // 
             this.lblRecordsCount.AutoSize = true;
-            this.lblRecordsCount.Location = new System.Drawing.Point(114, 779);
+            this.lblRecordsCount.Location = new System.Drawing.Point(114, 633);
             this.lblRecordsCount.Name = "lblRecordsCount";
             this.lblRecordsCount.Size = new System.Drawing.Size(27, 20);
             this.lblRecordsCount.TabIndex = 248;
@@ -63,7 +63,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 779);
+            this.label2.Location = new System.Drawing.Point(12, 633);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(96, 20);
             this.label2.TabIndex = 247;
@@ -77,7 +77,7 @@
             "لا شيء",
             "معرف الصنف",
             "اسم الصنف"});
-            this.cbFilterBy.Location = new System.Drawing.Point(100, 332);
+            this.cbFilterBy.Location = new System.Drawing.Point(100, 216);
             this.cbFilterBy.Name = "cbFilterBy";
             this.cbFilterBy.Size = new System.Drawing.Size(168, 28);
             this.cbFilterBy.TabIndex = 246;
@@ -86,7 +86,7 @@
             // txtFilterValue
             // 
             this.txtFilterValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtFilterValue.Location = new System.Drawing.Point(275, 335);
+            this.txtFilterValue.Location = new System.Drawing.Point(275, 219);
             this.txtFilterValue.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtFilterValue.Name = "txtFilterValue";
             this.txtFilterValue.Size = new System.Drawing.Size(198, 26);
@@ -98,7 +98,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(22, 335);
+            this.label1.Location = new System.Drawing.Point(22, 219);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(80, 20);
             this.label1.TabIndex = 244;
@@ -106,9 +106,9 @@
             // 
             // lblTitle
             // 
-            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblTitle.Location = new System.Drawing.Point(169, 236);
+            this.lblTitle.Location = new System.Drawing.Point(129, 147);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(343, 39);
             this.lblTitle.TabIndex = 250;
@@ -160,7 +160,7 @@
             this.dgvGategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvGategory.ContextMenuStrip = this.cmsCategory;
             this.dgvGategory.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvGategory.Location = new System.Drawing.Point(13, 368);
+            this.dgvGategory.Location = new System.Drawing.Point(13, 252);
             this.dgvGategory.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvGategory.MultiSelect = false;
             this.dgvGategory.Name = "dgvGategory";
@@ -174,7 +174,7 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvGategory.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvGategory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvGategory.Size = new System.Drawing.Size(631, 371);
+            this.dgvGategory.Size = new System.Drawing.Size(552, 371);
             this.dgvGategory.TabIndex = 243;
             this.dgvGategory.TabStop = false;
             // 
@@ -182,9 +182,9 @@
             // 
             this.btnAddCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddCategory.Image = global::AwladAli.Properties.Resources.add_64;
-            this.btnAddCategory.Location = new System.Drawing.Point(557, 285);
+            this.btnAddCategory.Location = new System.Drawing.Point(491, 170);
             this.btnAddCategory.Name = "btnAddCategory";
-            this.btnAddCategory.Size = new System.Drawing.Size(88, 75);
+            this.btnAddCategory.Size = new System.Drawing.Size(75, 75);
             this.btnAddCategory.TabIndex = 253;
             this.btnAddCategory.UseVisualStyleBackColor = true;
             this.btnAddCategory.Click += new System.EventHandler(this.btnAddCategory_Click);
@@ -197,7 +197,7 @@
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Image = global::AwladAli.Properties.Resources.Close_32;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(499, 763);
+            this.btnClose.Location = new System.Drawing.Point(420, 633);
             this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(146, 46);
@@ -211,10 +211,10 @@
             this.pbPersonImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pbPersonImage.Image = global::AwladAli.Properties.Resources.foods_512;
             this.pbPersonImage.InitialImage = null;
-            this.pbPersonImage.Location = new System.Drawing.Point(229, 25);
+            this.pbPersonImage.Location = new System.Drawing.Point(219, 14);
             this.pbPersonImage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pbPersonImage.Name = "pbPersonImage";
-            this.pbPersonImage.Size = new System.Drawing.Size(220, 189);
+            this.pbPersonImage.Size = new System.Drawing.Size(145, 118);
             this.pbPersonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbPersonImage.TabIndex = 249;
             this.pbPersonImage.TabStop = false;
@@ -223,7 +223,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(657, 830);
+            this.ClientSize = new System.Drawing.Size(578, 689);
             this.Controls.Add(this.lblRecordsCount);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cbFilterBy);

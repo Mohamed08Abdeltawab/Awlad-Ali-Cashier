@@ -28,7 +28,7 @@ namespace AwladAli.Category.Extra
                 dgvExtra.Columns[0].Width = 120;
 
                 dgvExtra.Columns[1].HeaderText = "اسم الإضافة";
-                dgvExtra.Columns[1].Width = 300;
+                dgvExtra.Columns[1].Width = 200;
 
                 dgvExtra.Columns[2].HeaderText = "السعر";
                 dgvExtra.Columns[2].Width = 150;

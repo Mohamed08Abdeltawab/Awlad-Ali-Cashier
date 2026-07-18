@@ -28,7 +28,7 @@ namespace AwladAli.Category
                 dgvGategory.Columns[0].Width = 120;
 
                 dgvGategory.Columns[1].HeaderText = "اسم الصنف";
-                dgvGategory.Columns[1].Width = 350; // عرض أكبر لاسم التصنيف
+                dgvGategory.Columns[1].Width = 270; // عرض أكبر لاسم التصنيف
             }
             else
             {

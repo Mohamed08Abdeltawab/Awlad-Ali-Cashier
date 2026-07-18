@@ -59,18 +59,19 @@
             // 
             this.lblCategoryID.AutoSize = true;
             this.lblCategoryID.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCategoryID.Location = new System.Drawing.Point(205, 120);
+            this.lblCategoryID.Location = new System.Drawing.Point(192, 72);
             this.lblCategoryID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCategoryID.Name = "lblCategoryID";
             this.lblCategoryID.Size = new System.Drawing.Size(65, 25);
             this.lblCategoryID.TabIndex = 248;
             this.lblCategoryID.Text = "[???]";
+            this.lblCategoryID.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(13, 120);
+            this.label8.Location = new System.Drawing.Point(12, 74);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(143, 25);
@@ -81,7 +82,7 @@
             // 
             this.txtCategoryName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCategoryName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCategoryName.Location = new System.Drawing.Point(458, 114);
+            this.txtCategoryName.Location = new System.Drawing.Point(309, 68);
             this.txtCategoryName.MaxLength = 50;
             this.txtCategoryName.Name = "txtCategoryName";
             this.txtCategoryName.Size = new System.Drawing.Size(215, 31);
@@ -92,7 +93,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(726, 116);
+            this.label10.Location = new System.Drawing.Point(577, 70);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(109, 25);
@@ -103,7 +104,7 @@
             // 
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblTitle.Location = new System.Drawing.Point(235, 20);
+            this.lblTitle.Location = new System.Drawing.Point(165, 9);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(397, 39);
             this.lblTitle.TabIndex = 252;
@@ -119,21 +120,21 @@
             this.dgvProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProduct.ContextMenuStrip = this.cmsProduct;
             this.dgvProduct.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvProduct.Location = new System.Drawing.Point(13, 222);
+            this.dgvProduct.Location = new System.Drawing.Point(12, 172);
             this.dgvProduct.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvProduct.MultiSelect = false;
             this.dgvProduct.Name = "dgvProduct";
             this.dgvProduct.ReadOnly = true;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvProduct.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvProduct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProduct.Size = new System.Drawing.Size(827, 258);
+            this.dgvProduct.Size = new System.Drawing.Size(680, 258);
             this.dgvProduct.TabIndex = 254;
             this.dgvProduct.TabStop = false;
             this.dgvProduct.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvProduct_CellFormatting);
@@ -170,7 +171,7 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSave.Image = global::AwladAli.Properties.Resources.Save_32;
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(76, 522);
+            this.btnSave.Location = new System.Drawing.Point(74, 440);
             this.btnSave.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(126, 37);
@@ -186,7 +187,7 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnClose.Image = global::AwladAli.Properties.Resources.Close_32;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(210, 522);
+            this.btnClose.Location = new System.Drawing.Point(208, 440);
             this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(126, 37);
@@ -201,7 +202,7 @@
             this.btnAddNewProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddNewProduct.Image = global::AwladAli.Properties.Resources.add_32;
             this.btnAddNewProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddNewProduct.Location = new System.Drawing.Point(13, 174);
+            this.btnAddNewProduct.Location = new System.Drawing.Point(12, 124);
             this.btnAddNewProduct.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnAddNewProduct.Name = "btnAddNewProduct";
             this.btnAddNewProduct.Size = new System.Drawing.Size(204, 38);
@@ -214,7 +215,7 @@
             // pictureBox9
             // 
             this.pictureBox9.Image = global::AwladAli.Properties.Resources.Category_32;
-            this.pictureBox9.Location = new System.Drawing.Point(688, 114);
+            this.pictureBox9.Location = new System.Drawing.Point(539, 68);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(31, 31);
             this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -224,7 +225,7 @@
             // pictureBox6
             // 
             this.pictureBox6.Image = global::AwladAli.Properties.Resources.Number_32;
-            this.pictureBox6.Location = new System.Drawing.Point(152, 120);
+            this.pictureBox6.Location = new System.Drawing.Point(151, 70);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(31, 31);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -239,7 +240,7 @@
             // 
             this.cbShowAllCategoryName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbShowAllCategoryName.FormattingEnabled = true;
-            this.cbShowAllCategoryName.Location = new System.Drawing.Point(618, 186);
+            this.cbShowAllCategoryName.Location = new System.Drawing.Point(469, 140);
             this.cbShowAllCategoryName.Name = "cbShowAllCategoryName";
             this.cbShowAllCategoryName.Size = new System.Drawing.Size(217, 28);
             this.cbShowAllCategoryName.TabIndex = 257;
@@ -250,7 +251,7 @@
             this.label1.BackColor = System.Drawing.SystemColors.Control;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label1.Location = new System.Drawing.Point(715, 163);
+            this.label1.Location = new System.Drawing.Point(561, 117);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(125, 20);
@@ -262,7 +263,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
-            this.ClientSize = new System.Drawing.Size(851, 573);
+            this.ClientSize = new System.Drawing.Size(705, 488);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbShowAllCategoryName);
             this.Controls.Add(this.btnSave);
