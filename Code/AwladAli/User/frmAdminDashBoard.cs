@@ -43,6 +43,7 @@ namespace AwladAli.User
                 _FillTopProducts(_dash);
                 _FillTopCategories(_dash);
                 _FillTopExtras(_dash);
+                btnMore.Enabled = true;
             }
             catch (Exception ex)
             {
@@ -78,13 +79,13 @@ namespace AwladAli.User
             if (dgvOrders.Rows.Count > 0)
             {
                 dgvOrders.Columns[0].HeaderText = "رقم الطلب";
-                dgvOrders.Columns[0].Width = 130;
+                dgvOrders.Columns[0].Width = 75;
                 dgvOrders.Columns[1].HeaderText = "اسم المستخدم";
-                dgvOrders.Columns[1].Width = 130;
+                dgvOrders.Columns[1].Width = 80;
                 dgvOrders.Columns[2].HeaderText = "التاريخ والوقت";
-                dgvOrders.Columns[2].Width = 220;
+                dgvOrders.Columns[2].Width = 200;
                 dgvOrders.Columns[3].HeaderText = "السعر الإجمالي";
-                dgvOrders.Columns[3].Width = 150;
+                dgvOrders.Columns[3].Width = 80;
             }
         }
 
