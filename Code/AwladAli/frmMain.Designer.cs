@@ -361,10 +361,10 @@ namespace AwladAli
             // llReset
             // 
             this.llReset.AutoSize = true;
-            this.llReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.llReset.Location = new System.Drawing.Point(226, 41);
+            this.llReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llReset.Location = new System.Drawing.Point(226, 47);
             this.llReset.Name = "llReset";
-            this.llReset.Size = new System.Drawing.Size(111, 31);
+            this.llReset.Size = new System.Drawing.Size(87, 25);
             this.llReset.TabIndex = 4;
             this.llReset.TabStop = true;
             this.llReset.Text = "اعادة تعيين";
@@ -462,7 +462,7 @@ namespace AwladAli
             this.btnLogout.Image = global::AwladAli.Properties.Resources.logout64;
             this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLogout.Location = new System.Drawing.Point(1153, 3);
-            this.btnLogout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(4);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(190, 64);
             this.btnLogout.TabIndex = 142;
@@ -494,7 +494,7 @@ namespace AwladAli
             this.btnStartSession.Image = global::AwladAli.Properties.Resources.start_session_64;
             this.btnStartSession.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnStartSession.Location = new System.Drawing.Point(345, 4);
-            this.btnStartSession.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnStartSession.Margin = new System.Windows.Forms.Padding(4);
             this.btnStartSession.Name = "btnStartSession";
             this.btnStartSession.Size = new System.Drawing.Size(160, 64);
             this.btnStartSession.TabIndex = 140;
@@ -530,7 +530,7 @@ namespace AwladAli
             // 
             this.pictureBox8.BackColor = System.Drawing.Color.White;
             this.pictureBox8.Image = global::AwladAli.Properties.Resources.Person_32;
-            this.pictureBox8.Location = new System.Drawing.Point(954, 25);
+            this.pictureBox8.Location = new System.Drawing.Point(954, 26);
             this.pictureBox8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(28, 21);
@@ -541,11 +541,11 @@ namespace AwladAli
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
-            this.lblUsername.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsername.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsername.ForeColor = System.Drawing.Color.White;
-            this.lblUsername.Location = new System.Drawing.Point(886, 16);
+            this.lblUsername.Location = new System.Drawing.Point(883, 25);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(62, 30);
+            this.lblUsername.Size = new System.Drawing.Size(46, 21);
             this.lblUsername.TabIndex = 123;
             this.lblUsername.Text = "[؟؟؟]";
             this.lblUsername.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -553,11 +553,11 @@ namespace AwladAli
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(988, 20);
+            this.label2.Location = new System.Drawing.Point(988, 27);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(144, 30);
+            this.label2.Size = new System.Drawing.Size(106, 21);
             this.label2.TabIndex = 122;
             this.label2.Text = ":اسم المستخدم";
             // 
@@ -573,7 +573,7 @@ namespace AwladAli
             this.btnSettings.Image = global::AwladAli.Properties.Resources.setting_64;
             this.btnSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSettings.Location = new System.Drawing.Point(4, 3);
-            this.btnSettings.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSettings.Margin = new System.Windows.Forms.Padding(4);
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(172, 68);
             this.btnSettings.TabIndex = 121;

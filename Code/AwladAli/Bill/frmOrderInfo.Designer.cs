@@ -22,7 +22,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.lblBillTitle = new System.Windows.Forms.Label();
             this.pnlOrderItemsHeader = new System.Windows.Forms.Panel();
             this.lblH_Total = new System.Windows.Forms.Label();
             this.lblH_Qty = new System.Windows.Forms.Label();
@@ -69,7 +68,6 @@
             this.pnlBillHeader.Controls.Add(this.label4);
             this.pnlBillHeader.Controls.Add(this.label12);
             this.pnlBillHeader.Controls.Add(this.label1);
-            this.pnlBillHeader.Controls.Add(this.lblBillTitle);
             this.pnlBillHeader.Controls.Add(this.pnlOrderItemsHeader);
             this.pnlBillHeader.Controls.Add(this.lblBillNumber);
             this.pnlBillHeader.Controls.Add(this.lblOrderDate);
@@ -77,13 +75,13 @@
             this.pnlBillHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlBillHeader.Location = new System.Drawing.Point(0, 0);
             this.pnlBillHeader.Name = "pnlBillHeader";
-            this.pnlBillHeader.Size = new System.Drawing.Size(464, 159);
+            this.pnlBillHeader.Size = new System.Drawing.Size(464, 73);
             this.pnlBillHeader.TabIndex = 0;
             // 
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label4.Location = new System.Drawing.Point(187, 85);
+            this.label4.Location = new System.Drawing.Point(188, 9);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(52, 23);
             this.label4.TabIndex = 5;
@@ -93,7 +91,7 @@
             // label12
             // 
             this.label12.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.label12.Location = new System.Drawing.Point(362, 85);
+            this.label12.Location = new System.Drawing.Point(363, 9);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(90, 23);
             this.label12.TabIndex = 4;
@@ -103,22 +101,12 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(355, 85);
+            this.label1.Location = new System.Drawing.Point(356, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(90, 23);
             this.label1.TabIndex = 4;
             this.label1.Text = ":رقم الفاتورة";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lblBillTitle
-            // 
-            this.lblBillTitle.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
-            this.lblBillTitle.Location = new System.Drawing.Point(0, 9);
-            this.lblBillTitle.Name = "lblBillTitle";
-            this.lblBillTitle.Size = new System.Drawing.Size(450, 40);
-            this.lblBillTitle.TabIndex = 0;
-            this.lblBillTitle.Text = "Awlad Ali - أولاد علي";
-            this.lblBillTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pnlOrderItemsHeader
             // 
@@ -128,9 +116,9 @@
             this.pnlOrderItemsHeader.Controls.Add(this.lblH_Qty);
             this.pnlOrderItemsHeader.Controls.Add(this.lblH_Price);
             this.pnlOrderItemsHeader.Controls.Add(this.lblH_Name);
-            this.pnlOrderItemsHeader.Location = new System.Drawing.Point(5, 124);
+            this.pnlOrderItemsHeader.Location = new System.Drawing.Point(8, 35);
             this.pnlOrderItemsHeader.Name = "pnlOrderItemsHeader";
-            this.pnlOrderItemsHeader.Size = new System.Drawing.Size(456, 35);
+            this.pnlOrderItemsHeader.Size = new System.Drawing.Size(456, 32);
             this.pnlOrderItemsHeader.TabIndex = 3;
             // 
             // lblH_Total
@@ -176,7 +164,7 @@
             // lblBillNumber
             // 
             this.lblBillNumber.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblBillNumber.Location = new System.Drawing.Point(266, 85);
+            this.lblBillNumber.Location = new System.Drawing.Point(267, 9);
             this.lblBillNumber.Name = "lblBillNumber";
             this.lblBillNumber.Size = new System.Drawing.Size(90, 23);
             this.lblBillNumber.TabIndex = 1;
@@ -186,7 +174,7 @@
             // lblOrderDate
             // 
             this.lblOrderDate.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblOrderDate.Location = new System.Drawing.Point(12, 85);
+            this.lblOrderDate.Location = new System.Drawing.Point(13, 9);
             this.lblOrderDate.Name = "lblOrderDate";
             this.lblOrderDate.Size = new System.Drawing.Size(169, 23);
             this.lblOrderDate.TabIndex = 2;
@@ -196,7 +184,7 @@
             // lblOrderID
             // 
             this.lblOrderID.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblOrderID.Location = new System.Drawing.Point(259, 85);
+            this.lblOrderID.Location = new System.Drawing.Point(260, 9);
             this.lblOrderID.Name = "lblOrderID";
             this.lblOrderID.Size = new System.Drawing.Size(90, 23);
             this.lblOrderID.TabIndex = 1;
@@ -210,10 +198,10 @@
             this.flpOrderItems.Controls.Add(this.ctrlOrderLine1);
             this.flpOrderItems.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpOrderItems.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flpOrderItems.Location = new System.Drawing.Point(0, 159);
+            this.flpOrderItems.Location = new System.Drawing.Point(0, 73);
             this.flpOrderItems.Name = "flpOrderItems";
             this.flpOrderItems.Padding = new System.Windows.Forms.Padding(10);
-            this.flpOrderItems.Size = new System.Drawing.Size(464, 343);
+            this.flpOrderItems.Size = new System.Drawing.Size(464, 271);
             this.flpOrderItems.TabIndex = 1;
             this.flpOrderItems.WrapContents = false;
             // 
@@ -242,18 +230,18 @@
             this.pnlBillFooter.Controls.Add(this.lblTotalAmount);
             this.pnlBillFooter.Controls.Add(this.labelTotalText);
             this.pnlBillFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlBillFooter.Location = new System.Drawing.Point(0, 502);
+            this.pnlBillFooter.Location = new System.Drawing.Point(0, 344);
             this.pnlBillFooter.Name = "pnlBillFooter";
-            this.pnlBillFooter.Size = new System.Drawing.Size(464, 323);
+            this.pnlBillFooter.Size = new System.Drawing.Size(464, 255);
             this.pnlBillFooter.TabIndex = 2;
             // 
             // label10
             // 
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold);
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Maroon;
-            this.label10.Location = new System.Drawing.Point(3, 212);
+            this.label10.Location = new System.Drawing.Point(138, 180);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(51, 37);
+            this.label10.Size = new System.Drawing.Size(50, 21);
             this.label10.TabIndex = 202;
             this.label10.Text = "ج.م";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -261,10 +249,10 @@
             // label9
             // 
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
             this.label9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label9.Location = new System.Drawing.Point(167, 174);
+            this.label9.Location = new System.Drawing.Point(164, 147);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(46, 27);
             this.label9.TabIndex = 201;
@@ -274,10 +262,10 @@
             // label6
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
             this.label6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label6.Location = new System.Drawing.Point(167, 136);
+            this.label6.Location = new System.Drawing.Point(164, 120);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(46, 27);
             this.label6.TabIndex = 200;
@@ -290,7 +278,7 @@
             this.label5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
             this.label5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label5.Location = new System.Drawing.Point(-50, 148);
+            this.label5.Location = new System.Drawing.Point(-50, 114);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(48, 25);
             this.label5.TabIndex = 199;
@@ -300,10 +288,10 @@
             // lblDeliveryFee
             // 
             this.lblDeliveryFee.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lblDeliveryFee.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDeliveryFee.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDeliveryFee.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
             this.lblDeliveryFee.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblDeliveryFee.Location = new System.Drawing.Point(219, 175);
+            this.lblDeliveryFee.Location = new System.Drawing.Point(216, 148);
             this.lblDeliveryFee.Name = "lblDeliveryFee";
             this.lblDeliveryFee.Size = new System.Drawing.Size(96, 25);
             this.lblDeliveryFee.TabIndex = 198;
@@ -313,11 +301,11 @@
             // label7
             // 
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label7.Location = new System.Drawing.Point(324, 175);
+            this.label7.Location = new System.Drawing.Point(321, 148);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(127, 26);
+            this.label7.Size = new System.Drawing.Size(127, 25);
             this.label7.TabIndex = 197;
             this.label7.Text = ":سعر التوصيل";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -325,12 +313,12 @@
             // lblMealPrice
             // 
             this.lblMealPrice.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lblMealPrice.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMealPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMealPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
             this.lblMealPrice.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblMealPrice.Location = new System.Drawing.Point(219, 136);
+            this.lblMealPrice.Location = new System.Drawing.Point(216, 121);
             this.lblMealPrice.Name = "lblMealPrice";
-            this.lblMealPrice.Size = new System.Drawing.Size(102, 27);
+            this.lblMealPrice.Size = new System.Drawing.Size(102, 26);
             this.lblMealPrice.TabIndex = 196;
             this.lblMealPrice.Text = "0.00";
             this.lblMealPrice.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -338,11 +326,11 @@
             // label8
             // 
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label8.Location = new System.Drawing.Point(341, 136);
+            this.label8.Location = new System.Drawing.Point(339, 121);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(106, 28);
+            this.label8.Size = new System.Drawing.Size(106, 26);
             this.label8.TabIndex = 195;
             this.label8.Text = ":سعر الوجبة";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -350,7 +338,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::AwladAli.Properties.Resources.person32_2;
-            this.pictureBox1.Location = new System.Drawing.Point(328, 53);
+            this.pictureBox1.Location = new System.Drawing.Point(328, 52);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(31, 23);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -360,7 +348,7 @@
             // pbIcon1
             // 
             this.pbIcon1.Image = global::AwladAli.Properties.Resources.phone_number32;
-            this.pbIcon1.Location = new System.Drawing.Point(328, 92);
+            this.pbIcon1.Location = new System.Drawing.Point(328, 91);
             this.pbIcon1.Name = "pbIcon1";
             this.pbIcon1.Size = new System.Drawing.Size(31, 23);
             this.pbIcon1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -370,7 +358,7 @@
             // lblPhoneNumber
             // 
             this.lblPhoneNumber.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblPhoneNumber.Location = new System.Drawing.Point(71, 92);
+            this.lblPhoneNumber.Location = new System.Drawing.Point(71, 91);
             this.lblPhoneNumber.Name = "lblPhoneNumber";
             this.lblPhoneNumber.Size = new System.Drawing.Size(249, 23);
             this.lblPhoneNumber.TabIndex = 186;
@@ -380,7 +368,7 @@
             // lblCustomerName
             // 
             this.lblCustomerName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblCustomerName.Location = new System.Drawing.Point(67, 53);
+            this.lblCustomerName.Location = new System.Drawing.Point(67, 52);
             this.lblCustomerName.Name = "lblCustomerName";
             this.lblCustomerName.Size = new System.Drawing.Size(253, 23);
             this.lblCustomerName.TabIndex = 185;
@@ -390,7 +378,7 @@
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(359, 92);
+            this.label3.Location = new System.Drawing.Point(359, 91);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(82, 23);
             this.label3.TabIndex = 184;
@@ -400,7 +388,7 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(359, 53);
+            this.label2.Location = new System.Drawing.Point(359, 52);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(82, 23);
             this.label2.TabIndex = 183;
@@ -419,10 +407,10 @@
             // 
             // lblTitleStatus
             // 
-            this.lblTitleStatus.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.lblTitleStatus.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitleStatus.Location = new System.Drawing.Point(133, 3);
             this.lblTitleStatus.Name = "lblTitleStatus";
-            this.lblTitleStatus.Size = new System.Drawing.Size(245, 37);
+            this.lblTitleStatus.Size = new System.Drawing.Size(215, 37);
             this.lblTitleStatus.TabIndex = 4;
             this.lblTitleStatus.Text = "(Takeaway) إستلام من المحل";
             this.lblTitleStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -433,9 +421,9 @@
             this.btnIgnore.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnIgnore.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.btnIgnore.ForeColor = System.Drawing.Color.White;
-            this.btnIgnore.Location = new System.Drawing.Point(287, 265);
+            this.btnIgnore.Location = new System.Drawing.Point(263, 208);
             this.btnIgnore.Name = "btnIgnore";
-            this.btnIgnore.Size = new System.Drawing.Size(115, 51);
+            this.btnIgnore.Size = new System.Drawing.Size(115, 40);
             this.btnIgnore.TabIndex = 3;
             this.btnIgnore.Text = "حذف والغاء";
             this.btnIgnore.UseVisualStyleBackColor = false;
@@ -445,11 +433,11 @@
             // 
             this.btnSaveAndPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
             this.btnSaveAndPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSaveAndPrint.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveAndPrint.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSaveAndPrint.ForeColor = System.Drawing.Color.White;
-            this.btnSaveAndPrint.Location = new System.Drawing.Point(45, 265);
+            this.btnSaveAndPrint.Location = new System.Drawing.Point(71, 208);
             this.btnSaveAndPrint.Name = "btnSaveAndPrint";
-            this.btnSaveAndPrint.Size = new System.Drawing.Size(225, 51);
+            this.btnSaveAndPrint.Size = new System.Drawing.Size(174, 40);
             this.btnSaveAndPrint.TabIndex = 2;
             this.btnSaveAndPrint.Text = "حفظ وطباعة";
             this.btnSaveAndPrint.UseVisualStyleBackColor = false;
@@ -457,21 +445,21 @@
             // 
             // lblTotalAmount
             // 
-            this.lblTotalAmount.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold);
+            this.lblTotalAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalAmount.ForeColor = System.Drawing.Color.Maroon;
-            this.lblTotalAmount.Location = new System.Drawing.Point(60, 213);
+            this.lblTotalAmount.Location = new System.Drawing.Point(188, 178);
             this.lblTotalAmount.Name = "lblTotalAmount";
-            this.lblTotalAmount.Size = new System.Drawing.Size(150, 37);
+            this.lblTotalAmount.Size = new System.Drawing.Size(150, 25);
             this.lblTotalAmount.TabIndex = 1;
             this.lblTotalAmount.Text = "0.00";
             this.lblTotalAmount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelTotalText
             // 
-            this.labelTotalText.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.labelTotalText.Location = new System.Drawing.Point(291, 213);
+            this.labelTotalText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTotalText.Location = new System.Drawing.Point(301, 173);
             this.labelTotalText.Name = "labelTotalText";
-            this.labelTotalText.Size = new System.Drawing.Size(150, 37);
+            this.labelTotalText.Size = new System.Drawing.Size(150, 29);
             this.labelTotalText.TabIndex = 0;
             this.labelTotalText.Text = ":الإجمالي النهائي";
             this.labelTotalText.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -490,7 +478,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
-            this.ClientSize = new System.Drawing.Size(464, 825);
+            this.ClientSize = new System.Drawing.Size(464, 599);
             this.Controls.Add(this.flpOrderItems);
             this.Controls.Add(this.pnlBillHeader);
             this.Controls.Add(this.pnlBillFooter);
@@ -517,7 +505,6 @@
         #endregion
 
         private System.Windows.Forms.Panel pnlBillHeader;
-        private System.Windows.Forms.Label lblBillTitle;
         private System.Windows.Forms.Label lblOrderDate;
         private System.Windows.Forms.Label lblOrderID;
         private System.Windows.Forms.FlowLayoutPanel flpOrderItems;
