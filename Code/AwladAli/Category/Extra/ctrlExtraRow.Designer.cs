@@ -39,30 +39,33 @@
             // numQuantity
             // 
             this.numQuantity.BackColor = System.Drawing.SystemColors.Window;
-            this.numQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numQuantity.Location = new System.Drawing.Point(3, 3);
+            this.numQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numQuantity.Location = new System.Drawing.Point(29, 26);
+            this.numQuantity.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.numQuantity.Name = "numQuantity";
             this.numQuantity.ReadOnly = true;
-            this.numQuantity.Size = new System.Drawing.Size(50, 26);
+            this.numQuantity.Size = new System.Drawing.Size(28, 20);
             this.numQuantity.TabIndex = 7;
             this.numQuantity.ValueChanged += new System.EventHandler(this.numQuantity_ValueChanged);
             // 
             // chkSelectPrice
             // 
-            this.chkSelectPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkSelectPrice.Location = new System.Drawing.Point(59, 8);
+            this.chkSelectPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkSelectPrice.Location = new System.Drawing.Point(62, 29);
+            this.chkSelectPrice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chkSelectPrice.Name = "chkSelectPrice";
-            this.chkSelectPrice.Size = new System.Drawing.Size(63, 20);
+            this.chkSelectPrice.Size = new System.Drawing.Size(81, 17);
             this.chkSelectPrice.TabIndex = 8;
             this.chkSelectPrice.Text = "--";
             this.chkSelectPrice.CheckedChanged += new System.EventHandler(this.chkSelectPrice_CheckedChanged);
             // 
             // lblProductName
             // 
-            this.lblProductName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProductName.Location = new System.Drawing.Point(114, 4);
+            this.lblProductName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProductName.Location = new System.Drawing.Point(2, 0);
+            this.lblProductName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblProductName.Name = "lblProductName";
-            this.lblProductName.Size = new System.Drawing.Size(115, 25);
+            this.lblProductName.Size = new System.Drawing.Size(162, 20);
             this.lblProductName.TabIndex = 9;
             this.lblProductName.Text = "منتج تجريبي";
             this.lblProductName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -72,21 +75,22 @@
             this.panel1.Controls.Add(this.lblProductName);
             this.panel1.Controls.Add(this.numQuantity);
             this.panel1.Controls.Add(this.chkSelectPrice);
-            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Font = new System.Drawing.Font("Symbol", 8.25F);
+            this.panel1.Location = new System.Drawing.Point(2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(244, 32);
+            this.panel1.Size = new System.Drawing.Size(166, 51);
             this.panel1.TabIndex = 10;
             // 
             // ctrlExtraRow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.panel1);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "ctrlExtraRow";
-            this.Size = new System.Drawing.Size(250, 38);
+            this.Size = new System.Drawing.Size(170, 55);
             ((System.ComponentModel.ISupportInitialize)(this.numQuantity)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);

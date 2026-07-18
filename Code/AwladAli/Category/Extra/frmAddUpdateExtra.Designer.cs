@@ -64,7 +64,7 @@
             // 
             this.txtFoodName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtFoodName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFoodName.Location = new System.Drawing.Point(268, 87);
+            this.txtFoodName.Location = new System.Drawing.Point(268, 88);
             this.txtFoodName.MaxLength = 25;
             this.txtFoodName.Name = "txtFoodName";
             this.txtFoodName.Size = new System.Drawing.Size(220, 31);
@@ -75,7 +75,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(580, 161);
+            this.label10.Location = new System.Drawing.Point(580, 162);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(65, 25);
@@ -97,9 +97,9 @@
             // 
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblTitle.Location = new System.Drawing.Point(128, 21);
+            this.lblTitle.Location = new System.Drawing.Point(128, 22);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(397, 39);
+            this.lblTitle.Size = new System.Drawing.Size(398, 38);
             this.lblTitle.TabIndex = 229;
             this.lblTitle.Text = "اضافة اضافة جديده";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -108,7 +108,7 @@
             // 
             this.lblExtraID.AutoSize = true;
             this.lblExtraID.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblExtraID.Location = new System.Drawing.Point(176, 87);
+            this.lblExtraID.Location = new System.Drawing.Point(176, 88);
             this.lblExtraID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblExtraID.Name = "lblExtraID";
             this.lblExtraID.Size = new System.Drawing.Size(65, 25);
@@ -119,7 +119,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(13, 87);
+            this.label5.Location = new System.Drawing.Point(14, 88);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(103, 25);
@@ -129,9 +129,9 @@
             // pictureBox5
             // 
             this.pictureBox5.Image = global::AwladAli.Properties.Resources.Number_32;
-            this.pictureBox5.Location = new System.Drawing.Point(123, 87);
+            this.pictureBox5.Location = new System.Drawing.Point(123, 88);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(31, 31);
+            this.pictureBox5.Size = new System.Drawing.Size(32, 31);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox5.TabIndex = 244;
             this.pictureBox5.TabStop = false;
@@ -139,9 +139,9 @@
             // pictureBox9
             // 
             this.pictureBox9.Image = global::AwladAli.Properties.Resources.money2_32;
-            this.pictureBox9.Location = new System.Drawing.Point(493, 155);
+            this.pictureBox9.Location = new System.Drawing.Point(494, 155);
             this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(31, 31);
+            this.pictureBox9.Size = new System.Drawing.Size(32, 31);
             this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox9.TabIndex = 233;
             this.pictureBox9.TabStop = false;
@@ -149,9 +149,9 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::AwladAli.Properties.Resources.food_32;
-            this.pictureBox3.Location = new System.Drawing.Point(494, 87);
+            this.pictureBox3.Location = new System.Drawing.Point(494, 88);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(31, 31);
+            this.pictureBox3.Size = new System.Drawing.Size(32, 31);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 231;
             this.pictureBox3.TabStop = false;
@@ -177,7 +177,7 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnClose.Image = global::AwladAli.Properties.Resources.Close_32;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(245, 243);
+            this.btnClose.Location = new System.Drawing.Point(244, 243);
             this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(126, 37);

@@ -39,10 +39,10 @@
             // lblMessage
             // 
             this.lblMessage.AutoSize = true;
-            this.lblMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMessage.Location = new System.Drawing.Point(454, 0);
+            this.lblMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMessage.Location = new System.Drawing.Point(342, 0);
             this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(86, 31);
+            this.lblMessage.Size = new System.Drawing.Size(70, 25);
             this.lblMessage.TabIndex = 0;
             this.lblMessage.Text = "label1";
             this.lblMessage.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -54,19 +54,20 @@
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(13, 12);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(545, 119);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(417, 88);
             this.flowLayoutPanel1.TabIndex = 177;
             // 
             // btnLogout
             // 
             this.btnLogout.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogout.Image = global::AwladAli.Properties.Resources.signout_32_2;
             this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnLogout.Location = new System.Drawing.Point(220, 139);
+            this.btnLogout.Location = new System.Drawing.Point(205, 108);
             this.btnLogout.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(199, 37);
+            this.btnLogout.Size = new System.Drawing.Size(143, 37);
             this.btnLogout.TabIndex = 176;
             this.btnLogout.Text = "تسجيل خروج";
             this.btnLogout.UseVisualStyleBackColor = true;
@@ -76,12 +77,13 @@
             // 
             this.btnCloseOldSession.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCloseOldSession.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCloseOldSession.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCloseOldSession.Image = global::AwladAli.Properties.Resources.close32_2;
             this.btnCloseOldSession.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCloseOldSession.Location = new System.Drawing.Point(13, 139);
+            this.btnCloseOldSession.Location = new System.Drawing.Point(13, 108);
             this.btnCloseOldSession.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCloseOldSession.Name = "btnCloseOldSession";
-            this.btnCloseOldSession.Size = new System.Drawing.Size(199, 37);
+            this.btnCloseOldSession.Size = new System.Drawing.Size(184, 37);
             this.btnCloseOldSession.TabIndex = 175;
             this.btnCloseOldSession.Text = "اغلاق جميع الجلسات النشطة";
             this.btnCloseOldSession.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -92,7 +94,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(567, 185);
+            this.ClientSize = new System.Drawing.Size(440, 158);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnCloseOldSession);

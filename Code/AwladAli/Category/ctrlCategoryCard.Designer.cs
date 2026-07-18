@@ -35,7 +35,7 @@
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHeader.Location = new System.Drawing.Point(0, 0);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(790, 50);
+            this.pnlHeader.Size = new System.Drawing.Size(532, 50);
             this.pnlHeader.TabIndex = 2;
             // 
             // lblCategoryName
@@ -46,7 +46,7 @@
             this.lblCategoryName.Image = global::AwladAli.Properties.Resources.CategoryBackground1;
             this.lblCategoryName.Location = new System.Drawing.Point(0, 0);
             this.lblCategoryName.Name = "lblCategoryName";
-            this.lblCategoryName.Size = new System.Drawing.Size(790, 50);
+            this.lblCategoryName.Size = new System.Drawing.Size(532, 50);
             this.lblCategoryName.TabIndex = 0;
             this.lblCategoryName.Text = "اسم القسم";
             this.lblCategoryName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -60,14 +60,14 @@
             this.pnlColumnsHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlColumnsHeader.Location = new System.Drawing.Point(0, 50);
             this.pnlColumnsHeader.Name = "pnlColumnsHeader";
-            this.pnlColumnsHeader.Size = new System.Drawing.Size(790, 40);
+            this.pnlColumnsHeader.Size = new System.Drawing.Size(532, 40);
             this.pnlColumnsHeader.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.Chartreuse;
             this.label1.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(516, 10);
+            this.label1.Location = new System.Drawing.Point(342, 8);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(43, 20);
             this.label1.TabIndex = 2;
@@ -76,18 +76,18 @@
             // lblHeaderSizes
             // 
             this.lblHeaderSizes.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHeaderSizes.Location = new System.Drawing.Point(26, 10);
+            this.lblHeaderSizes.Location = new System.Drawing.Point(3, 10);
             this.lblHeaderSizes.Name = "lblHeaderSizes";
-            this.lblHeaderSizes.Size = new System.Drawing.Size(500, 21);
+            this.lblHeaderSizes.Size = new System.Drawing.Size(333, 21);
             this.lblHeaderSizes.TabIndex = 1;
-            this.lblHeaderSizes.Text = "XL                L                  M              S/";
+            this.lblHeaderSizes.Text = "XL          L          M          S/";
             // 
             // lblHeaderProduct
             // 
             this.lblHeaderProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHeaderProduct.Location = new System.Drawing.Point(690, 10);
+            this.lblHeaderProduct.Location = new System.Drawing.Point(453, 9);
             this.lblHeaderProduct.Name = "lblHeaderProduct";
-            this.lblHeaderProduct.Size = new System.Drawing.Size(85, 25);
+            this.lblHeaderProduct.Size = new System.Drawing.Size(76, 25);
             this.lblHeaderProduct.TabIndex = 0;
             this.lblHeaderProduct.Text = "اسم الأكلة";
             // 
@@ -99,7 +99,7 @@
             this.flpItemsContainer.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpItemsContainer.Location = new System.Drawing.Point(0, 90);
             this.flpItemsContainer.Name = "flpItemsContainer";
-            this.flpItemsContainer.Size = new System.Drawing.Size(790, 492);
+            this.flpItemsContainer.Size = new System.Drawing.Size(532, 323);
             this.flpItemsContainer.TabIndex = 0;
             this.flpItemsContainer.WrapContents = false;
             // 
@@ -110,7 +110,7 @@
             this.Controls.Add(this.pnlColumnsHeader);
             this.Controls.Add(this.pnlHeader);
             this.Name = "ctrlCategoryCard";
-            this.Size = new System.Drawing.Size(790, 582);
+            this.Size = new System.Drawing.Size(532, 413);
             this.pnlHeader.ResumeLayout(false);
             this.pnlColumnsHeader.ResumeLayout(false);
             this.ResumeLayout(false);
