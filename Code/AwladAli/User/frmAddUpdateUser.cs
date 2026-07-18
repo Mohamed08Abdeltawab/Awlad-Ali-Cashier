@@ -62,7 +62,7 @@ namespace AwladAli.User
                 this.Close();
                 return;
             }
-            if(clsUser.IsUserAdmin(_UserID))
+            if(_UserID == 1 || clsGlobal.CurrentUser.UserID != 1)//is super admin user or not current user is super admin
             {
                 cbRole.Enabled = false; // Disable role change for admin users
                 cbActivation.Enabled = false; // Disable activation change for admin users

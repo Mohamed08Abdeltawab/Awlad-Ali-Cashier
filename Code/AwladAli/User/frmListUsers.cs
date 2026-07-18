@@ -51,7 +51,16 @@ namespace AwladAli.User
         private void cbFilterBy_SelectedIndexChanged(object sender, EventArgs e)
         {
             _dtAllUsers.DefaultView.RowFilter = "";//Reset the filter to show all data before apply new filter.
-            if (cbFilterBy.SelectedIndex == 3)//role filter
+            cbRole.Visible = cbFilterBy.SelectedIndex == 3;
+            cbActivation.Visible = cbFilterBy.SelectedIndex == 4;
+            if(cbFilterBy.SelectedIndex == 0)//no filter
+            {
+                txtFilterValue.Visible = false;
+                cbActivation.Visible = false;
+                cbRole.Visible = false;
+            }
+            else
+                if (cbFilterBy.SelectedIndex == 3)//role filter
             {
                 txtFilterValue.Visible = false;
                 cbActivation.Visible = false;
@@ -290,12 +299,20 @@ namespace AwladAli.User
             }
 
             // Rule B: Super Admin (ID 1) cannot be disabled or deleted by anyone
-            if (selectedUserID == 1)
+            if (selectedUserID == 1 && clsGlobal.CurrentUser.UserID != 1)
             {
                 deleteToolStripMenuItem.Enabled = false;
                 OnToolStripMenuItem.Enabled = false;
                 OffToolStripMenuItem.Enabled = false;
                 editToolStripMenuItem.Enabled = false;
+            }
+
+            if (selectedUserID == 1 && clsGlobal.CurrentUser.UserID == 1)
+            {
+                deleteToolStripMenuItem.Enabled = false;
+                OnToolStripMenuItem.Enabled = false;
+                OffToolStripMenuItem.Enabled = false;
+                editToolStripMenuItem.Enabled = true;
             }
         }
     }
