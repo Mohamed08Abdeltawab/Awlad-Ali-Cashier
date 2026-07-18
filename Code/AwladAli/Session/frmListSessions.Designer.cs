@@ -57,7 +57,7 @@
             // lblRecordsCount
             // 
             this.lblRecordsCount.AutoSize = true;
-            this.lblRecordsCount.Location = new System.Drawing.Point(114, 715);
+            this.lblRecordsCount.Location = new System.Drawing.Point(115, 647);
             this.lblRecordsCount.Name = "lblRecordsCount";
             this.lblRecordsCount.Size = new System.Drawing.Size(27, 20);
             this.lblRecordsCount.TabIndex = 249;
@@ -67,7 +67,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 713);
+            this.label2.Location = new System.Drawing.Point(13, 645);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(96, 20);
             this.label2.TabIndex = 248;
@@ -84,7 +84,7 @@
             "الوقت",
             "المبلغ",
             "حالة الجلسة"});
-            this.cbFilterBy.Location = new System.Drawing.Point(91, 281);
+            this.cbFilterBy.Location = new System.Drawing.Point(92, 227);
             this.cbFilterBy.Name = "cbFilterBy";
             this.cbFilterBy.Size = new System.Drawing.Size(209, 28);
             this.cbFilterBy.TabIndex = 247;
@@ -93,7 +93,7 @@
             // txtFilterValue
             // 
             this.txtFilterValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtFilterValue.Location = new System.Drawing.Point(307, 281);
+            this.txtFilterValue.Location = new System.Drawing.Point(308, 227);
             this.txtFilterValue.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtFilterValue.Name = "txtFilterValue";
             this.txtFilterValue.Size = new System.Drawing.Size(222, 26);
@@ -105,7 +105,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 284);
+            this.label1.Location = new System.Drawing.Point(13, 230);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(80, 20);
             this.label1.TabIndex = 245;
@@ -115,7 +115,7 @@
             // 
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblTitle.Location = new System.Drawing.Point(430, 217);
+            this.lblTitle.Location = new System.Drawing.Point(357, 176);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(223, 39);
             this.lblTitle.TabIndex = 251;
@@ -147,7 +147,7 @@
             this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUsers.ContextMenuStrip = this.cmsSessions;
             this.dgvUsers.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvUsers.Location = new System.Drawing.Point(13, 318);
+            this.dgvUsers.Location = new System.Drawing.Point(14, 264);
             this.dgvUsers.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvUsers.MultiSelect = false;
             this.dgvUsers.Name = "dgvUsers";
@@ -161,7 +161,7 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvUsers.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvUsers.Size = new System.Drawing.Size(1004, 371);
+            this.dgvUsers.Size = new System.Drawing.Size(891, 371);
             this.dgvUsers.TabIndex = 244;
             this.dgvUsers.TabStop = false;
             // 
@@ -172,7 +172,7 @@
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Image = global::AwladAli.Properties.Resources.Close_32;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(866, 699);
+            this.btnClose.Location = new System.Drawing.Point(754, 645);
             this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(151, 46);
@@ -186,10 +186,10 @@
             this.pbPersonImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pbPersonImage.Image = global::AwladAli.Properties.Resources.Sessions_512;
             this.pbPersonImage.InitialImage = null;
-            this.pbPersonImage.Location = new System.Drawing.Point(433, 14);
+            this.pbPersonImage.Location = new System.Drawing.Point(376, 20);
             this.pbPersonImage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pbPersonImage.Name = "pbPersonImage";
-            this.pbPersonImage.Size = new System.Drawing.Size(220, 189);
+            this.pbPersonImage.Size = new System.Drawing.Size(172, 146);
             this.pbPersonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbPersonImage.TabIndex = 250;
             this.pbPersonImage.TabStop = false;
@@ -197,7 +197,7 @@
             // dtpFrom
             // 
             this.dtpFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFrom.Location = new System.Drawing.Point(306, 281);
+            this.dtpFrom.Location = new System.Drawing.Point(307, 227);
             this.dtpFrom.Name = "dtpFrom";
             this.dtpFrom.Size = new System.Drawing.Size(332, 29);
             this.dtpFrom.TabIndex = 255;
@@ -207,10 +207,10 @@
             // lblFrom
             // 
             this.lblFrom.AutoSize = true;
-            this.lblFrom.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFrom.Location = new System.Drawing.Point(651, 277);
+            this.lblFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFrom.Location = new System.Drawing.Point(645, 232);
             this.lblFrom.Name = "lblFrom";
-            this.lblFrom.Size = new System.Drawing.Size(93, 30);
+            this.lblFrom.Size = new System.Drawing.Size(56, 16);
             this.lblFrom.TabIndex = 256;
             this.lblFrom.Text = ":من بداية";
             this.lblFrom.Visible = false;
@@ -223,7 +223,7 @@
             "الكل",
             "اكبر من",
             "اقل من"});
-            this.cbCash.Location = new System.Drawing.Point(307, 281);
+            this.cbCash.Location = new System.Drawing.Point(308, 227);
             this.cbCash.Name = "cbCash";
             this.cbCash.Size = new System.Drawing.Size(137, 28);
             this.cbCash.TabIndex = 257;
@@ -233,7 +233,7 @@
             // txtCashValue
             // 
             this.txtCashValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCashValue.Location = new System.Drawing.Point(450, 284);
+            this.txtCashValue.Location = new System.Drawing.Point(451, 230);
             this.txtCashValue.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtCashValue.Name = "txtCashValue";
             this.txtCashValue.Size = new System.Drawing.Size(155, 26);
@@ -250,7 +250,7 @@
             "الكل",
             "نشطة",
             "مغلقة"});
-            this.cbIsActive.Location = new System.Drawing.Point(307, 282);
+            this.cbIsActive.Location = new System.Drawing.Point(308, 228);
             this.cbIsActive.Name = "cbIsActive";
             this.cbIsActive.Size = new System.Drawing.Size(137, 28);
             this.cbIsActive.TabIndex = 259;
@@ -263,10 +263,10 @@
             this.llShowAll.AutoSize = true;
             this.llShowAll.BackColor = System.Drawing.Color.Transparent;
             this.llShowAll.DisabledLinkColor = System.Drawing.Color.White;
-            this.llShowAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.llShowAll.Location = new System.Drawing.Point(861, 176);
+            this.llShowAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llShowAll.Location = new System.Drawing.Point(814, 109);
             this.llShowAll.Name = "llShowAll";
-            this.llShowAll.Size = new System.Drawing.Size(101, 29);
+            this.llShowAll.Size = new System.Drawing.Size(67, 16);
             this.llShowAll.TabIndex = 268;
             this.llShowAll.TabStop = true;
             this.llShowAll.Text = "عرض الكل";
@@ -278,10 +278,10 @@
             this.llReturnDefault.AutoSize = true;
             this.llReturnDefault.BackColor = System.Drawing.Color.Transparent;
             this.llReturnDefault.DisabledLinkColor = System.Drawing.Color.White;
-            this.llReturnDefault.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.llReturnDefault.Location = new System.Drawing.Point(861, 217);
+            this.llReturnDefault.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llReturnDefault.Location = new System.Drawing.Point(814, 150);
             this.llReturnDefault.Name = "llReturnDefault";
-            this.llReturnDefault.Size = new System.Drawing.Size(98, 29);
+            this.llReturnDefault.Size = new System.Drawing.Size(72, 16);
             this.llReturnDefault.TabIndex = 267;
             this.llReturnDefault.TabStop = true;
             this.llReturnDefault.Text = "اعادة تعيين";
@@ -291,13 +291,13 @@
             // 
             this.btnMore.BackColor = System.Drawing.Color.White;
             this.btnMore.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnMore.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMore.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMore.Image = global::AwladAli.Properties.Resources.next_32;
             this.btnMore.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMore.Location = new System.Drawing.Point(837, 260);
+            this.btnMore.Location = new System.Drawing.Point(785, 178);
             this.btnMore.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnMore.Name = "btnMore";
-            this.btnMore.Size = new System.Drawing.Size(151, 46);
+            this.btnMore.Size = new System.Drawing.Size(119, 46);
             this.btnMore.TabIndex = 266;
             this.btnMore.Text = "اكثر";
             this.btnMore.UseVisualStyleBackColor = false;
@@ -307,7 +307,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1030, 760);
+            this.ClientSize = new System.Drawing.Size(915, 699);
             this.Controls.Add(this.llShowAll);
             this.Controls.Add(this.llReturnDefault);
             this.Controls.Add(this.btnMore);

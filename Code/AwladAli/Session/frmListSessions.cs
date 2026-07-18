@@ -68,14 +68,16 @@ namespace AwladAli.Session
 
 
 
-                dgvUsers.Columns["StartTime"].Width = 200;
+                dgvUsers.Columns["StartTime"].Width = 180;
                 dgvUsers.Columns["StartTime"].HeaderText = "وقت البداية";
 
-                dgvUsers.Columns["EndTime"].Width = 200;
+                dgvUsers.Columns["EndTime"].Width = 180;
                 dgvUsers.Columns["EndTime"].HeaderText = "وقت النهاية";
 
                 dgvUsers.Columns["TotalCash"].HeaderText = "إجمالي المبيعات";
+
                 dgvUsers.Columns["IsActive"].HeaderText = "نشطة؟";
+                dgvUsers.Columns["IsActive"].Width = 70;
             }
             else
             {
