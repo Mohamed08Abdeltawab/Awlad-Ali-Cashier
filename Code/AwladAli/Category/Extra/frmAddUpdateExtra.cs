@@ -136,5 +136,21 @@ namespace AwladAli.Category.Extra
         {
             btnSave.Enabled = true;
         }
+
+        private void txtFoodName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnSave.PerformClick();
+            }
+        }
+
+        private void txtPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnSave.PerformClick();
+            }
+        }
     }
 }

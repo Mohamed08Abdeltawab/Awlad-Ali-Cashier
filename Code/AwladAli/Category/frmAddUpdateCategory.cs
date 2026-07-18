@@ -237,5 +237,13 @@ namespace AwladAli.Category
                 }
             }
         }
+
+        private void txtCategoryName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnSave.PerformClick();
+            }
+        }
     }
 }

@@ -47,8 +47,7 @@ namespace AwladAli.User
             }
             catch (Exception ex)
             {
-                MessageBox.Show("خطأ في تحميل البيانات:\n" + ex.Message,
-                                "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+               
             }
         }
 

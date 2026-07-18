@@ -58,6 +58,7 @@
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(220, 31);
             this.txtPrice.TabIndex = 235;
+            this.txtPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrice_KeyPress);
             this.txtPrice.Validating += new System.ComponentModel.CancelEventHandler(this.txtSmallSize_Validating);
             // 
             // txtFoodName
@@ -69,6 +70,7 @@
             this.txtFoodName.Name = "txtFoodName";
             this.txtFoodName.Size = new System.Drawing.Size(220, 31);
             this.txtFoodName.TabIndex = 234;
+            this.txtFoodName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFoodName_KeyPress);
             this.txtFoodName.Validating += new System.ComponentModel.CancelEventHandler(this.txtFoodName_Validating);
             // 
             // label10

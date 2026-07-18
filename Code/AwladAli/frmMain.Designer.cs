@@ -92,7 +92,7 @@ namespace AwladAli
             this.pnlMainContainer.Location = new System.Drawing.Point(0, 71);
             this.pnlMainContainer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlMainContainer.Name = "pnlMainContainer";
-            this.pnlMainContainer.Size = new System.Drawing.Size(1343, 658);
+            this.pnlMainContainer.Size = new System.Drawing.Size(1350, 658);
             this.pnlMainContainer.TabIndex = 2;
             // 
             // panel1
@@ -102,7 +102,7 @@ namespace AwladAli
             this.panel1.BackgroundImage = global::AwladAli.Properties.Resources.CategoryBackground;
             this.panel1.Controls.Add(this.label3);
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(1137, 4);
+            this.panel1.Location = new System.Drawing.Point(1141, 4);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(209, 78);
@@ -125,7 +125,7 @@ namespace AwladAli
             this.flpAddonsContainer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flpAddonsContainer.AutoScroll = true;
-            this.flpAddonsContainer.Location = new System.Drawing.Point(1137, 86);
+            this.flpAddonsContainer.Location = new System.Drawing.Point(1144, 86);
             this.flpAddonsContainer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flpAddonsContainer.Name = "flpAddonsContainer";
             this.flpAddonsContainer.Size = new System.Drawing.Size(203, 481);
@@ -167,7 +167,7 @@ namespace AwladAli
             this.pnlFooter.Location = new System.Drawing.Point(0, 568);
             this.pnlFooter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlFooter.Name = "pnlFooter";
-            this.pnlFooter.Size = new System.Drawing.Size(1343, 90);
+            this.pnlFooter.Size = new System.Drawing.Size(1350, 90);
             this.pnlFooter.TabIndex = 1;
             // 
             // label6
@@ -176,7 +176,7 @@ namespace AwladAli
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
             this.label6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label6.Location = new System.Drawing.Point(1101, 11);
+            this.label6.Location = new System.Drawing.Point(1108, 11);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(43, 20);
             this.label6.TabIndex = 192;
@@ -189,7 +189,7 @@ namespace AwladAli
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
             this.label5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label5.Location = new System.Drawing.Point(857, 11);
+            this.label5.Location = new System.Drawing.Point(864, 11);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(45, 20);
             this.label5.TabIndex = 191;
@@ -202,7 +202,7 @@ namespace AwladAli
             this.lblDeliveryFee.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDeliveryFee.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
             this.lblDeliveryFee.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblDeliveryFee.Location = new System.Drawing.Point(905, 11);
+            this.lblDeliveryFee.Location = new System.Drawing.Point(912, 11);
             this.lblDeliveryFee.Name = "lblDeliveryFee";
             this.lblDeliveryFee.Size = new System.Drawing.Size(85, 20);
             this.lblDeliveryFee.TabIndex = 190;
@@ -214,7 +214,7 @@ namespace AwladAli
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label7.Location = new System.Drawing.Point(982, 11);
+            this.label7.Location = new System.Drawing.Point(989, 11);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(113, 21);
             this.label7.TabIndex = 189;
@@ -227,7 +227,7 @@ namespace AwladAli
             this.lblMealPrice.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMealPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
             this.lblMealPrice.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblMealPrice.Location = new System.Drawing.Point(1148, 11);
+            this.lblMealPrice.Location = new System.Drawing.Point(1155, 11);
             this.lblMealPrice.Name = "lblMealPrice";
             this.lblMealPrice.Size = new System.Drawing.Size(91, 22);
             this.lblMealPrice.TabIndex = 188;
@@ -239,7 +239,7 @@ namespace AwladAli
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label4.Location = new System.Drawing.Point(1236, 10);
+            this.label4.Location = new System.Drawing.Point(1243, 10);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(93, 22);
             this.label4.TabIndex = 187;
@@ -375,7 +375,7 @@ namespace AwladAli
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
-            this.label1.Location = new System.Drawing.Point(944, 40);
+            this.label1.Location = new System.Drawing.Point(951, 40);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(85, 34);
             this.label1.TabIndex = 3;
@@ -389,7 +389,7 @@ namespace AwladAli
             this.pnlLine.Location = new System.Drawing.Point(0, 86);
             this.pnlLine.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlLine.Name = "pnlLine";
-            this.pnlLine.Size = new System.Drawing.Size(1341, 2);
+            this.pnlLine.Size = new System.Drawing.Size(1348, 2);
             this.pnlLine.TabIndex = 0;
             // 
             // btnSaveandShowOrderInfo
@@ -412,7 +412,7 @@ namespace AwladAli
             this.lblTotalPrice.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
             this.lblTotalPrice.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblTotalPrice.Location = new System.Drawing.Point(1035, 40);
+            this.lblTotalPrice.Location = new System.Drawing.Point(1042, 40);
             this.lblTotalPrice.Name = "lblTotalPrice";
             this.lblTotalPrice.Size = new System.Drawing.Size(147, 34);
             this.lblTotalPrice.TabIndex = 1;
@@ -423,7 +423,7 @@ namespace AwladAli
             // 
             this.lblTotalText.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblTotalText.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalText.Location = new System.Drawing.Point(1197, 38);
+            this.lblTotalText.Location = new System.Drawing.Point(1204, 38);
             this.lblTotalText.Name = "lblTotalText";
             this.lblTotalText.Size = new System.Drawing.Size(91, 39);
             this.lblTotalText.TabIndex = 2;
@@ -447,7 +447,7 @@ namespace AwladAli
             this.pnlHeader.Location = new System.Drawing.Point(0, 0);
             this.pnlHeader.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(1343, 71);
+            this.pnlHeader.Size = new System.Drawing.Size(1350, 71);
             this.pnlHeader.TabIndex = 1;
             // 
             // btnLogout
@@ -591,13 +591,13 @@ namespace AwladAli
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1343, 729);
+            this.ClientSize = new System.Drawing.Size(1350, 729);
             this.Controls.Add(this.pnlMainContainer);
             this.Controls.Add(this.pnlHeader);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.MinimumSize = new System.Drawing.Size(1213, 582);
+            this.MinimumSize = new System.Drawing.Size(1359, 760);
             this.Name = "frmMain";
             this.Text = "Awlad Ali - POS System";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

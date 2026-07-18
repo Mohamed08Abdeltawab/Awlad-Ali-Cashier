@@ -230,5 +230,13 @@ namespace AwladAli.Category
                 txtPriceNormalSize.Focus();
             }
         }
+
+        private void txtFoodName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == (char)Keys.Enter)
+            {
+                btnSave.PerformClick();
+            }
+        }
     }
 }

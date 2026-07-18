@@ -173,7 +173,7 @@ namespace AwladAli
 
             if (dtCategories == null || dtCategories.Rows.Count == 0)
             {
-                MessageBox.Show("No Categories found in Database!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("No Categories found in Database!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             

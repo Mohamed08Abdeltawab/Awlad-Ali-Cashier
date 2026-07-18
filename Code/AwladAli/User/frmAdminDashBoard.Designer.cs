@@ -30,36 +30,64 @@ namespace AwladAli.User
             this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
+            this.lblExtra3 = new System.Windows.Forms.Label();
+            this.lblExtra2 = new System.Windows.Forms.Label();
+            this.lblExtra1 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.lblProduct3 = new System.Windows.Forms.Label();
+            this.lblProduct2 = new System.Windows.Forms.Label();
+            this.lblProduct1 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.lblProduct5 = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
+            this.label41 = new System.Windows.Forms.Label();
+            this.lblProduct4 = new System.Windows.Forms.Label();
+            this.lblProduct6 = new System.Windows.Forms.Label();
             this.pnlTopFilter = new System.Windows.Forms.Panel();
             this.label45 = new System.Windows.Forms.Label();
+            this.pbPersonImage = new System.Windows.Forms.PictureBox();
             this.label44 = new System.Windows.Forms.Label();
             this.cbFilterBy = new System.Windows.Forms.ComboBox();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.btnRefreshAll = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.dtpFrom = new System.Windows.Forms.DateTimePicker();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dtpTo = new System.Windows.Forms.DateTimePicker();
             this.pnlStats = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlTotalRevenue = new System.Windows.Forms.Panel();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label10 = new System.Windows.Forms.Label();
             this.lblTotalRevenue = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pnlTodayCash = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
             this.lblDayRevenue = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.pnlOrdersCount = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label14 = new System.Windows.Forms.Label();
             this.lblOrderCount = new System.Windows.Forms.Label();
+            this.btnSessionList = new System.Windows.Forms.Button();
+            this.btnCategoriesList = new System.Windows.Forms.Button();
+            this.btnUsersList = new System.Windows.Forms.Button();
             this.lblTodayCash = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.dgvOrders = new System.Windows.Forms.DataGridView();
             this.cmsOrders = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblGridTitle = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label23 = new System.Windows.Forms.Label();
@@ -69,59 +97,31 @@ namespace AwladAli.User
             this.llReturnDefault = new System.Windows.Forms.LinkLabel();
             this.llShowAll = new System.Windows.Forms.LinkLabel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.lblExtra3 = new System.Windows.Forms.Label();
-            this.lblExtra2 = new System.Windows.Forms.Label();
-            this.lblExtra1 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.lblProduct3 = new System.Windows.Forms.Label();
-            this.lblProduct2 = new System.Windows.Forms.Label();
-            this.lblProduct1 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
-            this.lblProduct6 = new System.Windows.Forms.Label();
-            this.lblProduct5 = new System.Windows.Forms.Label();
-            this.lblProduct4 = new System.Windows.Forms.Label();
-            this.label40 = new System.Windows.Forms.Label();
-            this.label41 = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
             this.btnMore = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnSessionList = new System.Windows.Forms.Button();
-            this.btnCategoriesList = new System.Windows.Forms.Button();
-            this.btnUsersList = new System.Windows.Forms.Button();
-            this.pbPersonImage = new System.Windows.Forms.PictureBox();
-            this.btnRefreshAll = new System.Windows.Forms.Button();
-            this.btnRefresh = new System.Windows.Forms.Button();
             tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             tableLayoutPanel2.SuspendLayout();
+            tableLayoutPanel3.SuspendLayout();
+            tableLayoutPanel4.SuspendLayout();
             this.pnlTopFilter.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).BeginInit();
             this.pnlStats.SuspendLayout();
             this.pnlTotalRevenue.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.pnlTodayCash.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.pnlOrdersCount.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
             this.cmsOrders.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            tableLayoutPanel3.SuspendLayout();
             this.panel4.SuspendLayout();
-            tableLayoutPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel2
@@ -214,6 +214,255 @@ namespace AwladAli.User
             this.label29.TabIndex = 5;
             this.label29.Text = "#1";
             // 
+            // tableLayoutPanel3
+            // 
+            tableLayoutPanel3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            tableLayoutPanel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            tableLayoutPanel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            tableLayoutPanel3.CausesValidation = false;
+            tableLayoutPanel3.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
+            tableLayoutPanel3.ColumnCount = 2;
+            tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80.90186F));
+            tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.09814F));
+            tableLayoutPanel3.Controls.Add(this.lblExtra3, 0, 2);
+            tableLayoutPanel3.Controls.Add(this.lblExtra2, 0, 1);
+            tableLayoutPanel3.Controls.Add(this.lblExtra1, 0, 0);
+            tableLayoutPanel3.Controls.Add(this.label22, 1, 2);
+            tableLayoutPanel3.Controls.Add(this.label24, 1, 1);
+            tableLayoutPanel3.Controls.Add(this.label25, 1, 0);
+            tableLayoutPanel3.Location = new System.Drawing.Point(11, 31);
+            tableLayoutPanel3.Name = "tableLayoutPanel3";
+            tableLayoutPanel3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            tableLayoutPanel3.RowCount = 3;
+            tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.87978F));
+            tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 34.42623F));
+            tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 31.14754F));
+            tableLayoutPanel3.Size = new System.Drawing.Size(258, 120);
+            tableLayoutPanel3.TabIndex = 6;
+            // 
+            // lblExtra3
+            // 
+            this.lblExtra3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblExtra3.ForeColor = System.Drawing.Color.Black;
+            this.lblExtra3.Location = new System.Drawing.Point(56, 82);
+            this.lblExtra3.Name = "lblExtra3";
+            this.lblExtra3.Size = new System.Drawing.Size(197, 32);
+            this.lblExtra3.TabIndex = 10;
+            this.lblExtra3.Text = "الصنف الثالث";
+            // 
+            // lblExtra2
+            // 
+            this.lblExtra2.BackColor = System.Drawing.Color.Silver;
+            this.lblExtra2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblExtra2.ForeColor = System.Drawing.Color.Black;
+            this.lblExtra2.Location = new System.Drawing.Point(56, 42);
+            this.lblExtra2.Name = "lblExtra2";
+            this.lblExtra2.Size = new System.Drawing.Size(197, 38);
+            this.lblExtra2.TabIndex = 9;
+            this.lblExtra2.Text = "الصنف الثاني";
+            // 
+            // lblExtra1
+            // 
+            this.lblExtra1.BackColor = System.Drawing.Color.Gold;
+            this.lblExtra1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblExtra1.ForeColor = System.Drawing.Color.Black;
+            this.lblExtra1.Location = new System.Drawing.Point(56, 2);
+            this.lblExtra1.Name = "lblExtra1";
+            this.lblExtra1.Size = new System.Drawing.Size(197, 37);
+            this.lblExtra1.TabIndex = 8;
+            this.lblExtra1.Text = "الصنف الأول";
+            // 
+            // label22
+            // 
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.Black;
+            this.label22.Location = new System.Drawing.Point(5, 82);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(43, 32);
+            this.label22.TabIndex = 7;
+            this.label22.Text = "#3";
+            // 
+            // label24
+            // 
+            this.label24.BackColor = System.Drawing.Color.Silver;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.ForeColor = System.Drawing.Color.Black;
+            this.label24.Location = new System.Drawing.Point(5, 42);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(43, 38);
+            this.label24.TabIndex = 6;
+            this.label24.Text = "#2";
+            // 
+            // label25
+            // 
+            this.label25.BackColor = System.Drawing.Color.Gold;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.ForeColor = System.Drawing.Color.Black;
+            this.label25.Location = new System.Drawing.Point(5, 2);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(43, 37);
+            this.label25.TabIndex = 5;
+            this.label25.Text = "#1";
+            // 
+            // tableLayoutPanel4
+            // 
+            tableLayoutPanel4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            tableLayoutPanel4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            tableLayoutPanel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            tableLayoutPanel4.CausesValidation = false;
+            tableLayoutPanel4.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
+            tableLayoutPanel4.ColumnCount = 2;
+            tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80.90186F));
+            tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.09814F));
+            tableLayoutPanel4.Controls.Add(this.lblProduct3, 0, 2);
+            tableLayoutPanel4.Controls.Add(this.lblProduct2, 0, 1);
+            tableLayoutPanel4.Controls.Add(this.lblProduct1, 0, 0);
+            tableLayoutPanel4.Controls.Add(this.label33, 1, 2);
+            tableLayoutPanel4.Controls.Add(this.label34, 1, 1);
+            tableLayoutPanel4.Controls.Add(this.label35, 1, 0);
+            tableLayoutPanel4.Controls.Add(this.lblProduct5, 0, 4);
+            tableLayoutPanel4.Controls.Add(this.label40, 1, 3);
+            tableLayoutPanel4.Controls.Add(this.label42, 1, 4);
+            tableLayoutPanel4.Controls.Add(this.label41, 1, 5);
+            tableLayoutPanel4.Controls.Add(this.lblProduct4, 0, 3);
+            tableLayoutPanel4.Controls.Add(this.lblProduct6, 0, 5);
+            tableLayoutPanel4.Location = new System.Drawing.Point(19, 28);
+            tableLayoutPanel4.Name = "tableLayoutPanel4";
+            tableLayoutPanel4.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            tableLayoutPanel4.RowCount = 6;
+            tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30.59702F));
+            tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 36.84211F));
+            tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.33083F));
+            tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
+            tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
+            tableLayoutPanel4.Size = new System.Drawing.Size(258, 253);
+            tableLayoutPanel4.TabIndex = 6;
+            // 
+            // lblProduct3
+            // 
+            this.lblProduct3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProduct3.ForeColor = System.Drawing.Color.Black;
+            this.lblProduct3.Location = new System.Drawing.Point(56, 88);
+            this.lblProduct3.Name = "lblProduct3";
+            this.lblProduct3.Size = new System.Drawing.Size(197, 39);
+            this.lblProduct3.TabIndex = 10;
+            this.lblProduct3.Text = "الأكلة الثالة";
+            // 
+            // lblProduct2
+            // 
+            this.lblProduct2.BackColor = System.Drawing.Color.Silver;
+            this.lblProduct2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProduct2.ForeColor = System.Drawing.Color.Black;
+            this.lblProduct2.Location = new System.Drawing.Point(56, 41);
+            this.lblProduct2.Name = "lblProduct2";
+            this.lblProduct2.Size = new System.Drawing.Size(197, 45);
+            this.lblProduct2.TabIndex = 9;
+            this.lblProduct2.Text = "الأكلة الثانية";
+            // 
+            // lblProduct1
+            // 
+            this.lblProduct1.BackColor = System.Drawing.Color.Gold;
+            this.lblProduct1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProduct1.ForeColor = System.Drawing.Color.Black;
+            this.lblProduct1.Location = new System.Drawing.Point(56, 2);
+            this.lblProduct1.Name = "lblProduct1";
+            this.lblProduct1.Size = new System.Drawing.Size(197, 37);
+            this.lblProduct1.TabIndex = 8;
+            this.lblProduct1.Text = "الأكلة الأولي";
+            // 
+            // label33
+            // 
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.ForeColor = System.Drawing.Color.Black;
+            this.label33.Location = new System.Drawing.Point(5, 88);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(43, 32);
+            this.label33.TabIndex = 7;
+            this.label33.Text = "#3";
+            // 
+            // label34
+            // 
+            this.label34.BackColor = System.Drawing.Color.Silver;
+            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.ForeColor = System.Drawing.Color.Black;
+            this.label34.Location = new System.Drawing.Point(5, 41);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(43, 45);
+            this.label34.TabIndex = 6;
+            this.label34.Text = "#2";
+            // 
+            // label35
+            // 
+            this.label35.BackColor = System.Drawing.Color.Gold;
+            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label35.ForeColor = System.Drawing.Color.Black;
+            this.label35.Location = new System.Drawing.Point(5, 2);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(43, 37);
+            this.label35.TabIndex = 5;
+            this.label35.Text = "#1";
+            // 
+            // lblProduct5
+            // 
+            this.lblProduct5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProduct5.ForeColor = System.Drawing.Color.Black;
+            this.lblProduct5.Location = new System.Drawing.Point(56, 174);
+            this.lblProduct5.Name = "lblProduct5";
+            this.lblProduct5.Size = new System.Drawing.Size(197, 37);
+            this.lblProduct5.TabIndex = 21;
+            this.lblProduct5.Text = "الأكلة الخامسة";
+            // 
+            // label40
+            // 
+            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label40.ForeColor = System.Drawing.Color.Black;
+            this.label40.Location = new System.Drawing.Point(5, 129);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(43, 43);
+            this.label40.TabIndex = 18;
+            this.label40.Text = "#4";
+            // 
+            // label42
+            // 
+            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label42.ForeColor = System.Drawing.Color.Black;
+            this.label42.Location = new System.Drawing.Point(5, 174);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(43, 37);
+            this.label42.TabIndex = 17;
+            this.label42.Text = "#5";
+            // 
+            // label41
+            // 
+            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label41.ForeColor = System.Drawing.Color.Black;
+            this.label41.Location = new System.Drawing.Point(5, 216);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(43, 33);
+            this.label41.TabIndex = 19;
+            this.label41.Text = "#6";
+            // 
+            // lblProduct4
+            // 
+            this.lblProduct4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProduct4.ForeColor = System.Drawing.Color.Black;
+            this.lblProduct4.Location = new System.Drawing.Point(56, 129);
+            this.lblProduct4.Name = "lblProduct4";
+            this.lblProduct4.Size = new System.Drawing.Size(197, 37);
+            this.lblProduct4.TabIndex = 20;
+            this.lblProduct4.Text = "الأكلة الرابعة";
+            // 
+            // lblProduct6
+            // 
+            this.lblProduct6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProduct6.ForeColor = System.Drawing.Color.Black;
+            this.lblProduct6.Location = new System.Drawing.Point(56, 216);
+            this.lblProduct6.Name = "lblProduct6";
+            this.lblProduct6.Size = new System.Drawing.Size(197, 33);
+            this.lblProduct6.TabIndex = 22;
+            this.lblProduct6.Text = "الأكلة السادسة";
+            // 
             // pnlTopFilter
             // 
             this.pnlTopFilter.BackColor = System.Drawing.Color.White;
@@ -236,7 +485,7 @@ namespace AwladAli.User
             this.pnlTopFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlTopFilter.Location = new System.Drawing.Point(0, 0);
             this.pnlTopFilter.Name = "pnlTopFilter";
-            this.pnlTopFilter.Size = new System.Drawing.Size(1347, 145);
+            this.pnlTopFilter.Size = new System.Drawing.Size(1350, 145);
             this.pnlTopFilter.TabIndex = 0;
             // 
             // label45
@@ -248,6 +497,19 @@ namespace AwladAli.User
             this.label45.Size = new System.Drawing.Size(87, 24);
             this.label45.TabIndex = 227;
             this.label45.Text = "اعادة تعيين";
+            // 
+            // pbPersonImage
+            // 
+            this.pbPersonImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbPersonImage.Image = global::AwladAli.Properties.Resources.settings_512;
+            this.pbPersonImage.InitialImage = null;
+            this.pbPersonImage.Location = new System.Drawing.Point(554, 14);
+            this.pbPersonImage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pbPersonImage.Name = "pbPersonImage";
+            this.pbPersonImage.Size = new System.Drawing.Size(58, 45);
+            this.pbPersonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbPersonImage.TabIndex = 226;
+            this.pbPersonImage.TabStop = false;
             // 
             // label44
             // 
@@ -288,6 +550,20 @@ namespace AwladAli.User
             this.lblTitle.TabIndex = 222;
             this.lblTitle.Text = "ادارة وعرض معلومات النظام";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnRefreshAll
+            // 
+            this.btnRefreshAll.BackColor = System.Drawing.Color.Transparent;
+            this.btnRefreshAll.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRefreshAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefreshAll.ForeColor = System.Drawing.Color.White;
+            this.btnRefreshAll.Image = global::AwladAli.Properties.Resources.resresh_all32;
+            this.btnRefreshAll.Location = new System.Drawing.Point(16, 90);
+            this.btnRefreshAll.Name = "btnRefreshAll";
+            this.btnRefreshAll.Size = new System.Drawing.Size(55, 42);
+            this.btnRefreshAll.TabIndex = 9;
+            this.btnRefreshAll.UseVisualStyleBackColor = false;
+            this.btnRefreshAll.Click += new System.EventHandler(this.btnRefreshAll_Click);
             // 
             // label9
             // 
@@ -337,6 +613,20 @@ namespace AwladAli.User
             this.dtpFrom.Size = new System.Drawing.Size(246, 22);
             this.dtpFrom.TabIndex = 4;
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.BackColor = System.Drawing.Color.Transparent;
+            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefresh.ForeColor = System.Drawing.Color.White;
+            this.btnRefresh.Image = global::AwladAli.Properties.Resources.refresh32;
+            this.btnRefresh.Location = new System.Drawing.Point(602, 99);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(53, 37);
+            this.btnRefresh.TabIndex = 0;
+            this.btnRefresh.UseVisualStyleBackColor = false;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // label2
             // 
             this.label2.Location = new System.Drawing.Point(0, 0);
@@ -372,7 +662,7 @@ namespace AwladAli.User
             this.pnlStats.Location = new System.Drawing.Point(0, 145);
             this.pnlStats.Name = "pnlStats";
             this.pnlStats.Padding = new System.Windows.Forms.Padding(20);
-            this.pnlStats.Size = new System.Drawing.Size(1347, 128);
+            this.pnlStats.Size = new System.Drawing.Size(1350, 128);
             this.pnlStats.TabIndex = 2;
             // 
             // pnlTotalRevenue
@@ -387,6 +677,15 @@ namespace AwladAli.User
             this.pnlTotalRevenue.Name = "pnlTotalRevenue";
             this.pnlTotalRevenue.Size = new System.Drawing.Size(231, 96);
             this.pnlTotalRevenue.TabIndex = 0;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::AwladAli.Properties.Resources.total_money_32;
+            this.pictureBox3.Location = new System.Drawing.Point(14, 4);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(39, 34);
+            this.pictureBox3.TabIndex = 7;
+            this.pictureBox3.TabStop = false;
             // 
             // label10
             // 
@@ -431,6 +730,15 @@ namespace AwladAli.User
             this.pnlTodayCash.Size = new System.Drawing.Size(222, 96);
             this.pnlTodayCash.TabIndex = 1;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::AwladAli.Properties.Resources.day_money_32;
+            this.pictureBox2.Location = new System.Drawing.Point(11, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(33, 35);
+            this.pictureBox2.TabIndex = 7;
+            this.pictureBox2.TabStop = false;
+            // 
             // label11
             // 
             this.label11.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -473,6 +781,15 @@ namespace AwladAli.User
             this.pnlOrdersCount.Size = new System.Drawing.Size(194, 96);
             this.pnlOrdersCount.TabIndex = 2;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::AwladAli.Properties.Resources.order_32;
+            this.pictureBox1.Location = new System.Drawing.Point(13, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(39, 35);
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
             // label14
             // 
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -492,6 +809,66 @@ namespace AwladAli.User
             this.lblOrderCount.Size = new System.Drawing.Size(115, 29);
             this.lblOrderCount.TabIndex = 3;
             this.lblOrderCount.Text = "0";
+            // 
+            // btnSessionList
+            // 
+            this.btnSessionList.BackColor = System.Drawing.Color.Transparent;
+            this.btnSessionList.BackgroundImage = global::AwladAli.Properties.Resources.settingbtn_background;
+            this.btnSessionList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnSessionList.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSessionList.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSessionList.ForeColor = System.Drawing.Color.Transparent;
+            this.btnSessionList.Image = global::AwladAli.Properties.Resources.session_2_64;
+            this.btnSessionList.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSessionList.Location = new System.Drawing.Point(689, 25);
+            this.btnSessionList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSessionList.Name = "btnSessionList";
+            this.btnSessionList.Size = new System.Drawing.Size(189, 94);
+            this.btnSessionList.TabIndex = 225;
+            this.btnSessionList.Text = "ادارة الجلسات";
+            this.btnSessionList.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSessionList.UseVisualStyleBackColor = false;
+            this.btnSessionList.Click += new System.EventHandler(this.btnSessionList_Click);
+            // 
+            // btnCategoriesList
+            // 
+            this.btnCategoriesList.BackColor = System.Drawing.Color.Transparent;
+            this.btnCategoriesList.BackgroundImage = global::AwladAli.Properties.Resources.settingbtn_background;
+            this.btnCategoriesList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnCategoriesList.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCategoriesList.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCategoriesList.ForeColor = System.Drawing.Color.Transparent;
+            this.btnCategoriesList.Image = global::AwladAli.Properties.Resources.Foods_64;
+            this.btnCategoriesList.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCategoriesList.Location = new System.Drawing.Point(886, 25);
+            this.btnCategoriesList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnCategoriesList.Name = "btnCategoriesList";
+            this.btnCategoriesList.Size = new System.Drawing.Size(199, 94);
+            this.btnCategoriesList.TabIndex = 226;
+            this.btnCategoriesList.Text = "ادارة الأطعمة";
+            this.btnCategoriesList.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCategoriesList.UseVisualStyleBackColor = false;
+            this.btnCategoriesList.Click += new System.EventHandler(this.btnCategoriesList_Click);
+            // 
+            // btnUsersList
+            // 
+            this.btnUsersList.BackColor = System.Drawing.Color.Transparent;
+            this.btnUsersList.BackgroundImage = global::AwladAli.Properties.Resources.settingbtn_background;
+            this.btnUsersList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnUsersList.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnUsersList.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUsersList.ForeColor = System.Drawing.Color.Transparent;
+            this.btnUsersList.Image = global::AwladAli.Properties.Resources.users_64;
+            this.btnUsersList.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUsersList.Location = new System.Drawing.Point(1093, 25);
+            this.btnUsersList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnUsersList.Name = "btnUsersList";
+            this.btnUsersList.Size = new System.Drawing.Size(214, 94);
+            this.btnUsersList.TabIndex = 227;
+            this.btnUsersList.Text = "ادارة المستخدمين";
+            this.btnUsersList.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnUsersList.UseVisualStyleBackColor = false;
+            this.btnUsersList.Click += new System.EventHandler(this.btnUsersList_Click);
             // 
             // lblTodayCash
             // 
@@ -517,7 +894,6 @@ namespace AwladAli.User
             // dgvOrders
             // 
             this.dgvOrders.AllowUserToAddRows = false;
-            this.dgvOrders.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dgvOrders.BackgroundColor = System.Drawing.Color.White;
             this.dgvOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOrders.ContextMenuStrip = this.cmsOrders;
@@ -532,6 +908,15 @@ namespace AwladAli.User
             this.showToolStripMenuItem});
             this.cmsOrders.Name = "contextMenuStrip1";
             this.cmsOrders.Size = new System.Drawing.Size(153, 42);
+            // 
+            // showToolStripMenuItem
+            // 
+            this.showToolStripMenuItem.Image = global::AwladAli.Properties.Resources.show_32;
+            this.showToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.showToolStripMenuItem.Name = "showToolStripMenuItem";
+            this.showToolStripMenuItem.Size = new System.Drawing.Size(152, 38);
+            this.showToolStripMenuItem.Text = "عرض الطلب";
+            this.showToolStripMenuItem.Click += new System.EventHandler(this.showToolStripMenuItem_Click);
             // 
             // lblGridTitle
             // 
@@ -638,96 +1023,6 @@ namespace AwladAli.User
             this.panel3.Size = new System.Drawing.Size(282, 156);
             this.panel3.TabIndex = 249;
             // 
-            // tableLayoutPanel3
-            // 
-            tableLayoutPanel3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            tableLayoutPanel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            tableLayoutPanel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            tableLayoutPanel3.CausesValidation = false;
-            tableLayoutPanel3.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
-            tableLayoutPanel3.ColumnCount = 2;
-            tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80.90186F));
-            tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.09814F));
-            tableLayoutPanel3.Controls.Add(this.lblExtra3, 0, 2);
-            tableLayoutPanel3.Controls.Add(this.lblExtra2, 0, 1);
-            tableLayoutPanel3.Controls.Add(this.lblExtra1, 0, 0);
-            tableLayoutPanel3.Controls.Add(this.label22, 1, 2);
-            tableLayoutPanel3.Controls.Add(this.label24, 1, 1);
-            tableLayoutPanel3.Controls.Add(this.label25, 1, 0);
-            tableLayoutPanel3.Location = new System.Drawing.Point(11, 31);
-            tableLayoutPanel3.Name = "tableLayoutPanel3";
-            tableLayoutPanel3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            tableLayoutPanel3.RowCount = 3;
-            tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.87978F));
-            tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 34.42623F));
-            tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 31.14754F));
-            tableLayoutPanel3.Size = new System.Drawing.Size(258, 120);
-            tableLayoutPanel3.TabIndex = 6;
-            // 
-            // lblExtra3
-            // 
-            this.lblExtra3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblExtra3.ForeColor = System.Drawing.Color.Black;
-            this.lblExtra3.Location = new System.Drawing.Point(56, 82);
-            this.lblExtra3.Name = "lblExtra3";
-            this.lblExtra3.Size = new System.Drawing.Size(197, 32);
-            this.lblExtra3.TabIndex = 10;
-            this.lblExtra3.Text = "الصنف الثالث";
-            // 
-            // lblExtra2
-            // 
-            this.lblExtra2.BackColor = System.Drawing.Color.Silver;
-            this.lblExtra2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblExtra2.ForeColor = System.Drawing.Color.Black;
-            this.lblExtra2.Location = new System.Drawing.Point(56, 42);
-            this.lblExtra2.Name = "lblExtra2";
-            this.lblExtra2.Size = new System.Drawing.Size(197, 38);
-            this.lblExtra2.TabIndex = 9;
-            this.lblExtra2.Text = "الصنف الثاني";
-            // 
-            // lblExtra1
-            // 
-            this.lblExtra1.BackColor = System.Drawing.Color.Gold;
-            this.lblExtra1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblExtra1.ForeColor = System.Drawing.Color.Black;
-            this.lblExtra1.Location = new System.Drawing.Point(56, 2);
-            this.lblExtra1.Name = "lblExtra1";
-            this.lblExtra1.Size = new System.Drawing.Size(197, 37);
-            this.lblExtra1.TabIndex = 8;
-            this.lblExtra1.Text = "الصنف الأول";
-            // 
-            // label22
-            // 
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.ForeColor = System.Drawing.Color.Black;
-            this.label22.Location = new System.Drawing.Point(5, 82);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(43, 32);
-            this.label22.TabIndex = 7;
-            this.label22.Text = "#3";
-            // 
-            // label24
-            // 
-            this.label24.BackColor = System.Drawing.Color.Silver;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.ForeColor = System.Drawing.Color.Black;
-            this.label24.Location = new System.Drawing.Point(5, 42);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(43, 38);
-            this.label24.TabIndex = 6;
-            this.label24.Text = "#2";
-            // 
-            // label25
-            // 
-            this.label25.BackColor = System.Drawing.Color.Gold;
-            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.ForeColor = System.Drawing.Color.Black;
-            this.label25.Location = new System.Drawing.Point(5, 2);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(43, 37);
-            this.label25.TabIndex = 5;
-            this.label25.Text = "#1";
-            // 
             // label26
             // 
             this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -750,105 +1045,6 @@ namespace AwladAli.User
             this.panel4.Size = new System.Drawing.Size(282, 288);
             this.panel4.TabIndex = 250;
             // 
-            // tableLayoutPanel4
-            // 
-            tableLayoutPanel4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            tableLayoutPanel4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            tableLayoutPanel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            tableLayoutPanel4.CausesValidation = false;
-            tableLayoutPanel4.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Outset;
-            tableLayoutPanel4.ColumnCount = 2;
-            tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80.90186F));
-            tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.09814F));
-            tableLayoutPanel4.Controls.Add(this.lblProduct3, 0, 2);
-            tableLayoutPanel4.Controls.Add(this.lblProduct2, 0, 1);
-            tableLayoutPanel4.Controls.Add(this.lblProduct1, 0, 0);
-            tableLayoutPanel4.Controls.Add(this.label33, 1, 2);
-            tableLayoutPanel4.Controls.Add(this.label34, 1, 1);
-            tableLayoutPanel4.Controls.Add(this.label35, 1, 0);
-            tableLayoutPanel4.Controls.Add(this.lblProduct5, 0, 4);
-            tableLayoutPanel4.Controls.Add(this.label40, 1, 3);
-            tableLayoutPanel4.Controls.Add(this.label42, 1, 4);
-            tableLayoutPanel4.Controls.Add(this.label41, 1, 5);
-            tableLayoutPanel4.Controls.Add(this.lblProduct4, 0, 3);
-            tableLayoutPanel4.Controls.Add(this.lblProduct6, 0, 5);
-            tableLayoutPanel4.Location = new System.Drawing.Point(19, 28);
-            tableLayoutPanel4.Name = "tableLayoutPanel4";
-            tableLayoutPanel4.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            tableLayoutPanel4.RowCount = 6;
-            tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30.59702F));
-            tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 36.84211F));
-            tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.33083F));
-            tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
-            tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
-            tableLayoutPanel4.Size = new System.Drawing.Size(258, 253);
-            tableLayoutPanel4.TabIndex = 6;
-            // 
-            // lblProduct3
-            // 
-            this.lblProduct3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProduct3.ForeColor = System.Drawing.Color.Black;
-            this.lblProduct3.Location = new System.Drawing.Point(56, 88);
-            this.lblProduct3.Name = "lblProduct3";
-            this.lblProduct3.Size = new System.Drawing.Size(197, 39);
-            this.lblProduct3.TabIndex = 10;
-            this.lblProduct3.Text = "الأكلة الثالة";
-            // 
-            // lblProduct2
-            // 
-            this.lblProduct2.BackColor = System.Drawing.Color.Silver;
-            this.lblProduct2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProduct2.ForeColor = System.Drawing.Color.Black;
-            this.lblProduct2.Location = new System.Drawing.Point(56, 41);
-            this.lblProduct2.Name = "lblProduct2";
-            this.lblProduct2.Size = new System.Drawing.Size(197, 45);
-            this.lblProduct2.TabIndex = 9;
-            this.lblProduct2.Text = "الأكلة الثانية";
-            // 
-            // lblProduct1
-            // 
-            this.lblProduct1.BackColor = System.Drawing.Color.Gold;
-            this.lblProduct1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProduct1.ForeColor = System.Drawing.Color.Black;
-            this.lblProduct1.Location = new System.Drawing.Point(56, 2);
-            this.lblProduct1.Name = "lblProduct1";
-            this.lblProduct1.Size = new System.Drawing.Size(197, 37);
-            this.lblProduct1.TabIndex = 8;
-            this.lblProduct1.Text = "الأكلة الأولي";
-            // 
-            // label33
-            // 
-            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label33.ForeColor = System.Drawing.Color.Black;
-            this.label33.Location = new System.Drawing.Point(5, 88);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(43, 32);
-            this.label33.TabIndex = 7;
-            this.label33.Text = "#3";
-            // 
-            // label34
-            // 
-            this.label34.BackColor = System.Drawing.Color.Silver;
-            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34.ForeColor = System.Drawing.Color.Black;
-            this.label34.Location = new System.Drawing.Point(5, 41);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(43, 45);
-            this.label34.TabIndex = 6;
-            this.label34.Text = "#2";
-            // 
-            // label35
-            // 
-            this.label35.BackColor = System.Drawing.Color.Gold;
-            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label35.ForeColor = System.Drawing.Color.Black;
-            this.label35.Location = new System.Drawing.Point(5, 2);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(43, 37);
-            this.label35.TabIndex = 5;
-            this.label35.Text = "#1";
-            // 
             // label36
             // 
             this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -858,66 +1054,6 @@ namespace AwladAli.User
             this.label36.Size = new System.Drawing.Size(115, 22);
             this.label36.TabIndex = 4;
             this.label36.Text = "اكثر الأكلات طلباً";
-            // 
-            // lblProduct6
-            // 
-            this.lblProduct6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProduct6.ForeColor = System.Drawing.Color.Black;
-            this.lblProduct6.Location = new System.Drawing.Point(56, 216);
-            this.lblProduct6.Name = "lblProduct6";
-            this.lblProduct6.Size = new System.Drawing.Size(197, 33);
-            this.lblProduct6.TabIndex = 22;
-            this.lblProduct6.Text = "الأكلة السادسة";
-            // 
-            // lblProduct5
-            // 
-            this.lblProduct5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProduct5.ForeColor = System.Drawing.Color.Black;
-            this.lblProduct5.Location = new System.Drawing.Point(56, 174);
-            this.lblProduct5.Name = "lblProduct5";
-            this.lblProduct5.Size = new System.Drawing.Size(197, 37);
-            this.lblProduct5.TabIndex = 21;
-            this.lblProduct5.Text = "الأكلة الخامسة";
-            // 
-            // lblProduct4
-            // 
-            this.lblProduct4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProduct4.ForeColor = System.Drawing.Color.Black;
-            this.lblProduct4.Location = new System.Drawing.Point(56, 129);
-            this.lblProduct4.Name = "lblProduct4";
-            this.lblProduct4.Size = new System.Drawing.Size(197, 37);
-            this.lblProduct4.TabIndex = 20;
-            this.lblProduct4.Text = "الأكلة الرابعة";
-            // 
-            // label40
-            // 
-            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label40.ForeColor = System.Drawing.Color.Black;
-            this.label40.Location = new System.Drawing.Point(5, 129);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(43, 43);
-            this.label40.TabIndex = 18;
-            this.label40.Text = "#4";
-            // 
-            // label41
-            // 
-            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label41.ForeColor = System.Drawing.Color.Black;
-            this.label41.Location = new System.Drawing.Point(5, 216);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(43, 33);
-            this.label41.TabIndex = 19;
-            this.label41.Text = "#6";
-            // 
-            // label42
-            // 
-            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label42.ForeColor = System.Drawing.Color.Black;
-            this.label42.Location = new System.Drawing.Point(5, 174);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(43, 37);
-            this.label42.TabIndex = 17;
-            this.label42.Text = "#5";
             // 
             // btnMore
             // 
@@ -953,147 +1089,10 @@ namespace AwladAli.User
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // showToolStripMenuItem
-            // 
-            this.showToolStripMenuItem.Image = global::AwladAli.Properties.Resources.show_32;
-            this.showToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.showToolStripMenuItem.Name = "showToolStripMenuItem";
-            this.showToolStripMenuItem.Size = new System.Drawing.Size(152, 38);
-            this.showToolStripMenuItem.Text = "عرض الطلب";
-            this.showToolStripMenuItem.Click += new System.EventHandler(this.showToolStripMenuItem_Click);
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::AwladAli.Properties.Resources.total_money_32;
-            this.pictureBox3.Location = new System.Drawing.Point(14, 4);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(39, 34);
-            this.pictureBox3.TabIndex = 7;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::AwladAli.Properties.Resources.day_money_32;
-            this.pictureBox2.Location = new System.Drawing.Point(11, 3);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(33, 35);
-            this.pictureBox2.TabIndex = 7;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::AwladAli.Properties.Resources.order_32;
-            this.pictureBox1.Location = new System.Drawing.Point(13, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(39, 35);
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            // 
-            // btnSessionList
-            // 
-            this.btnSessionList.BackColor = System.Drawing.Color.Transparent;
-            this.btnSessionList.BackgroundImage = global::AwladAli.Properties.Resources.settingbtn_background;
-            this.btnSessionList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnSessionList.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSessionList.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSessionList.ForeColor = System.Drawing.Color.Transparent;
-            this.btnSessionList.Image = global::AwladAli.Properties.Resources.session_2_64;
-            this.btnSessionList.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSessionList.Location = new System.Drawing.Point(689, 25);
-            this.btnSessionList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnSessionList.Name = "btnSessionList";
-            this.btnSessionList.Size = new System.Drawing.Size(189, 94);
-            this.btnSessionList.TabIndex = 225;
-            this.btnSessionList.Text = "ادارة الجلسات";
-            this.btnSessionList.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSessionList.UseVisualStyleBackColor = false;
-            this.btnSessionList.Click += new System.EventHandler(this.btnSessionList_Click);
-            // 
-            // btnCategoriesList
-            // 
-            this.btnCategoriesList.BackColor = System.Drawing.Color.Transparent;
-            this.btnCategoriesList.BackgroundImage = global::AwladAli.Properties.Resources.settingbtn_background;
-            this.btnCategoriesList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnCategoriesList.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnCategoriesList.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCategoriesList.ForeColor = System.Drawing.Color.Transparent;
-            this.btnCategoriesList.Image = global::AwladAli.Properties.Resources.Foods_64;
-            this.btnCategoriesList.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCategoriesList.Location = new System.Drawing.Point(886, 25);
-            this.btnCategoriesList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnCategoriesList.Name = "btnCategoriesList";
-            this.btnCategoriesList.Size = new System.Drawing.Size(199, 94);
-            this.btnCategoriesList.TabIndex = 226;
-            this.btnCategoriesList.Text = "ادارة الأطعمة";
-            this.btnCategoriesList.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCategoriesList.UseVisualStyleBackColor = false;
-            this.btnCategoriesList.Click += new System.EventHandler(this.btnCategoriesList_Click);
-            // 
-            // btnUsersList
-            // 
-            this.btnUsersList.BackColor = System.Drawing.Color.Transparent;
-            this.btnUsersList.BackgroundImage = global::AwladAli.Properties.Resources.settingbtn_background;
-            this.btnUsersList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnUsersList.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnUsersList.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUsersList.ForeColor = System.Drawing.Color.Transparent;
-            this.btnUsersList.Image = global::AwladAli.Properties.Resources.users_64;
-            this.btnUsersList.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUsersList.Location = new System.Drawing.Point(1093, 25);
-            this.btnUsersList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnUsersList.Name = "btnUsersList";
-            this.btnUsersList.Size = new System.Drawing.Size(214, 94);
-            this.btnUsersList.TabIndex = 227;
-            this.btnUsersList.Text = "ادارة المستخدمين";
-            this.btnUsersList.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnUsersList.UseVisualStyleBackColor = false;
-            this.btnUsersList.Click += new System.EventHandler(this.btnUsersList_Click);
-            // 
-            // pbPersonImage
-            // 
-            this.pbPersonImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbPersonImage.Image = global::AwladAli.Properties.Resources.settings_512;
-            this.pbPersonImage.InitialImage = null;
-            this.pbPersonImage.Location = new System.Drawing.Point(554, 14);
-            this.pbPersonImage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pbPersonImage.Name = "pbPersonImage";
-            this.pbPersonImage.Size = new System.Drawing.Size(58, 45);
-            this.pbPersonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbPersonImage.TabIndex = 226;
-            this.pbPersonImage.TabStop = false;
-            // 
-            // btnRefreshAll
-            // 
-            this.btnRefreshAll.BackColor = System.Drawing.Color.Transparent;
-            this.btnRefreshAll.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnRefreshAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefreshAll.ForeColor = System.Drawing.Color.White;
-            this.btnRefreshAll.Image = global::AwladAli.Properties.Resources.resresh_all32;
-            this.btnRefreshAll.Location = new System.Drawing.Point(16, 90);
-            this.btnRefreshAll.Name = "btnRefreshAll";
-            this.btnRefreshAll.Size = new System.Drawing.Size(55, 42);
-            this.btnRefreshAll.TabIndex = 9;
-            this.btnRefreshAll.UseVisualStyleBackColor = false;
-            this.btnRefreshAll.Click += new System.EventHandler(this.btnRefreshAll_Click);
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.BackColor = System.Drawing.Color.Transparent;
-            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefresh.ForeColor = System.Drawing.Color.White;
-            this.btnRefresh.Image = global::AwladAli.Properties.Resources.refresh32;
-            this.btnRefresh.Location = new System.Drawing.Point(602, 99);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(53, 37);
-            this.btnRefresh.TabIndex = 0;
-            this.btnRefresh.UseVisualStyleBackColor = false;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-            // 
             // frmAdminDashBoard
             // 
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(1347, 714);
+            this.ClientSize = new System.Drawing.Size(1350, 729);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.llShowAll);
@@ -1111,29 +1110,29 @@ namespace AwladAli.User
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(1363, 753);
+            this.MinimumSize = new System.Drawing.Size(1359, 760);
             this.Name = "frmAdminDashBoard";
             this.Text = "لوحة التحكم - أدمن";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmAdminDashBoard_Load);
             tableLayoutPanel2.ResumeLayout(false);
+            tableLayoutPanel3.ResumeLayout(false);
+            tableLayoutPanel4.ResumeLayout(false);
             this.pnlTopFilter.ResumeLayout(false);
             this.pnlTopFilter.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).EndInit();
             this.pnlStats.ResumeLayout(false);
             this.pnlTotalRevenue.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.pnlTodayCash.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.pnlOrdersCount.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).EndInit();
             this.cmsOrders.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            tableLayoutPanel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
-            tableLayoutPanel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

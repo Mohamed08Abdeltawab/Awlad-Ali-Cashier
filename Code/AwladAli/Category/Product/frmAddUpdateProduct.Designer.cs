@@ -112,6 +112,7 @@
             this.txtFoodName.Name = "txtFoodName";
             this.txtFoodName.Size = new System.Drawing.Size(220, 31);
             this.txtFoodName.TabIndex = 227;
+            this.txtFoodName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFoodName_KeyPress);
             this.txtFoodName.Validating += new System.ComponentModel.CancelEventHandler(this.txtFoodName_Validating);
             // 
             // txtSmallSize
