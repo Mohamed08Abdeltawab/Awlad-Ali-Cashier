@@ -49,7 +49,7 @@
             // 
             this.lblRecordsCount.AutoSize = true;
             this.lblRecordsCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecordsCount.Location = new System.Drawing.Point(139, 739);
+            this.lblRecordsCount.Location = new System.Drawing.Point(135, 597);
             this.lblRecordsCount.Name = "lblRecordsCount";
             this.lblRecordsCount.Size = new System.Drawing.Size(30, 24);
             this.lblRecordsCount.TabIndex = 135;
@@ -59,7 +59,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(12, 739);
+            this.label12.Location = new System.Drawing.Point(8, 597);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(111, 24);
             this.label12.TabIndex = 134;
@@ -76,7 +76,7 @@
             this.dgvOrders.ContextMenuStrip = this.cmsOrders;
             this.dgvOrders.Location = new System.Drawing.Point(12, 264);
             this.dgvOrders.Name = "dgvOrders";
-            this.dgvOrders.Size = new System.Drawing.Size(615, 447);
+            this.dgvOrders.Size = new System.Drawing.Size(556, 315);
             this.dgvOrders.TabIndex = 2;
             // 
             // cmsOrders
@@ -126,10 +126,10 @@
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Image = global::AwladAli.Properties.Resources.Close_32;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(460, 719);
+            this.btnClose.Location = new System.Drawing.Point(443, 587);
             this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(166, 57);
+            this.btnClose.Size = new System.Drawing.Size(130, 41);
             this.btnClose.TabIndex = 256;
             this.btnClose.Text = "خروج";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -140,10 +140,10 @@
             this.llShowAll.AutoSize = true;
             this.llShowAll.BackColor = System.Drawing.Color.Transparent;
             this.llShowAll.DisabledLinkColor = System.Drawing.Color.White;
-            this.llShowAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llShowAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.llShowAll.Location = new System.Drawing.Point(475, 126);
             this.llShowAll.Name = "llShowAll";
-            this.llShowAll.Size = new System.Drawing.Size(101, 29);
+            this.llShowAll.Size = new System.Drawing.Size(80, 24);
             this.llShowAll.TabIndex = 265;
             this.llShowAll.TabStop = true;
             this.llShowAll.Text = "عرض الكل";
@@ -155,10 +155,10 @@
             this.llReturnDefault.AutoSize = true;
             this.llReturnDefault.BackColor = System.Drawing.Color.Transparent;
             this.llReturnDefault.DisabledLinkColor = System.Drawing.Color.White;
-            this.llReturnDefault.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llReturnDefault.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.llReturnDefault.Location = new System.Drawing.Point(475, 167);
             this.llReturnDefault.Name = "llReturnDefault";
-            this.llReturnDefault.Size = new System.Drawing.Size(98, 29);
+            this.llReturnDefault.Size = new System.Drawing.Size(76, 24);
             this.llReturnDefault.TabIndex = 264;
             this.llReturnDefault.TabStop = true;
             this.llReturnDefault.Text = "اعادة تعيين";
@@ -174,7 +174,7 @@
             this.btnMore.Location = new System.Drawing.Point(451, 210);
             this.btnMore.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnMore.Name = "btnMore";
-            this.btnMore.Size = new System.Drawing.Size(151, 46);
+            this.btnMore.Size = new System.Drawing.Size(122, 46);
             this.btnMore.TabIndex = 263;
             this.btnMore.Text = "اكثر";
             this.btnMore.UseVisualStyleBackColor = false;
@@ -184,7 +184,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(639, 785);
+            this.ClientSize = new System.Drawing.Size(580, 631);
             this.Controls.Add(this.llShowAll);
             this.Controls.Add(this.llReturnDefault);
             this.Controls.Add(this.btnMore);

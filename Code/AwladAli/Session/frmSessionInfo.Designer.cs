@@ -59,9 +59,9 @@
             // 
             // lblTitle
             // 
-            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblTitle.Location = new System.Drawing.Point(209, 183);
+            this.lblTitle.Location = new System.Drawing.Point(83, 104);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(232, 39);
             this.lblTitle.TabIndex = 253;
@@ -74,9 +74,9 @@
             this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPrint.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrint.ForeColor = System.Drawing.Color.White;
-            this.btnPrint.Location = new System.Drawing.Point(12, 725);
+            this.btnPrint.Location = new System.Drawing.Point(9, 552);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(317, 74);
+            this.btnPrint.Size = new System.Drawing.Size(243, 51);
             this.btnPrint.TabIndex = 257;
             this.btnPrint.Text = "طباعة";
             this.btnPrint.UseVisualStyleBackColor = false;
@@ -85,117 +85,122 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(486, 268);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(277, 161);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 25);
+            this.label1.Size = new System.Drawing.Size(72, 16);
             this.label1.TabIndex = 258;
             this.label1.Text = ":رقم الجلسة";
             // 
             // lblSessionID
             // 
             this.lblSessionID.AutoSize = true;
-            this.lblSessionID.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSessionID.Location = new System.Drawing.Point(211, 262);
+            this.lblSessionID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSessionID.Location = new System.Drawing.Point(163, 155);
             this.lblSessionID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSessionID.Name = "lblSessionID";
-            this.lblSessionID.Size = new System.Drawing.Size(52, 29);
+            this.lblSessionID.Size = new System.Drawing.Size(31, 16);
             this.lblSessionID.TabIndex = 260;
             this.lblSessionID.Text = "؟؟؟";
+            this.lblSessionID.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblUserName
             // 
             this.lblUserName.AutoSize = true;
-            this.lblUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserName.Location = new System.Drawing.Point(211, 331);
+            this.lblUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserName.Location = new System.Drawing.Point(163, 224);
             this.lblUserName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new System.Drawing.Size(52, 29);
+            this.lblUserName.Size = new System.Drawing.Size(31, 16);
             this.lblUserName.TabIndex = 263;
             this.lblUserName.Text = "؟؟؟";
+            this.lblUserName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(468, 335);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(259, 228);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(123, 25);
+            this.label3.Size = new System.Drawing.Size(86, 16);
             this.label3.TabIndex = 261;
             this.label3.Text = ":اسم المستخدم";
             // 
             // lblStartTime
             // 
             this.lblStartTime.AutoSize = true;
-            this.lblStartTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStartTime.Location = new System.Drawing.Point(211, 402);
+            this.lblStartTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStartTime.Location = new System.Drawing.Point(163, 295);
             this.lblStartTime.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStartTime.Name = "lblStartTime";
-            this.lblStartTime.Size = new System.Drawing.Size(52, 29);
+            this.lblStartTime.Size = new System.Drawing.Size(31, 16);
             this.lblStartTime.TabIndex = 266;
             this.lblStartTime.Text = "؟؟؟";
+            this.lblStartTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(492, 408);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(283, 301);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(99, 25);
+            this.label5.Size = new System.Drawing.Size(73, 16);
             this.label5.TabIndex = 264;
             this.label5.Text = ":تاريخ البدأ";
             // 
             // lblEndTime
             // 
             this.lblEndTime.AutoSize = true;
-            this.lblEndTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEndTime.Location = new System.Drawing.Point(211, 466);
+            this.lblEndTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEndTime.Location = new System.Drawing.Point(163, 359);
             this.lblEndTime.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEndTime.Name = "lblEndTime";
-            this.lblEndTime.Size = new System.Drawing.Size(52, 29);
+            this.lblEndTime.Size = new System.Drawing.Size(31, 16);
             this.lblEndTime.TabIndex = 269;
             this.lblEndTime.Text = "؟؟؟";
+            this.lblEndTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(469, 469);
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(260, 362);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(122, 25);
+            this.label7.Size = new System.Drawing.Size(89, 16);
             this.label7.TabIndex = 267;
             this.label7.Text = ":تاريخ الأنتهاء";
             // 
             // lblFinalCash
             // 
             this.lblFinalCash.AutoSize = true;
-            this.lblFinalCash.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFinalCash.Location = new System.Drawing.Point(201, 549);
+            this.lblFinalCash.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFinalCash.Location = new System.Drawing.Point(163, 434);
             this.lblFinalCash.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFinalCash.Name = "lblFinalCash";
-            this.lblFinalCash.Size = new System.Drawing.Size(62, 31);
+            this.lblFinalCash.Size = new System.Drawing.Size(31, 16);
             this.lblFinalCash.TabIndex = 272;
             this.lblFinalCash.Text = "؟؟؟";
+            this.lblFinalCash.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(514, 549);
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(305, 427);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(77, 31);
+            this.label9.Size = new System.Drawing.Size(44, 16);
             this.label9.TabIndex = 270;
             this.label9.Text = ":المبلغ";
             // 
             // pictureBox5
             // 
             this.pictureBox5.Image = global::AwladAli.Properties.Resources.money2_32;
-            this.pictureBox5.Location = new System.Drawing.Point(428, 549);
+            this.pictureBox5.Location = new System.Drawing.Point(219, 427);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(31, 31);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -205,7 +210,7 @@
             // pictureBox4
             // 
             this.pictureBox4.Image = global::AwladAli.Properties.Resources.Date_32;
-            this.pictureBox4.Location = new System.Drawing.Point(428, 463);
+            this.pictureBox4.Location = new System.Drawing.Point(219, 356);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(31, 31);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -215,7 +220,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::AwladAli.Properties.Resources.Date_32;
-            this.pictureBox2.Location = new System.Drawing.Point(428, 402);
+            this.pictureBox2.Location = new System.Drawing.Point(219, 295);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(31, 31);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -225,7 +230,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::AwladAli.Properties.Resources.Person_32;
-            this.pictureBox1.Location = new System.Drawing.Point(428, 329);
+            this.pictureBox1.Location = new System.Drawing.Point(219, 222);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(31, 31);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -235,7 +240,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::AwladAli.Properties.Resources.Number_32;
-            this.pictureBox3.Location = new System.Drawing.Point(428, 262);
+            this.pictureBox3.Location = new System.Drawing.Point(219, 155);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(31, 31);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -247,10 +252,10 @@
             this.pbPersonImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pbPersonImage.Image = global::AwladAli.Properties.Resources.Session_Info_512;
             this.pbPersonImage.InitialImage = null;
-            this.pbPersonImage.Location = new System.Drawing.Point(234, 26);
+            this.pbPersonImage.Location = new System.Drawing.Point(145, 32);
             this.pbPersonImage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pbPersonImage.Name = "pbPersonImage";
-            this.pbPersonImage.Size = new System.Drawing.Size(177, 152);
+            this.pbPersonImage.Size = new System.Drawing.Size(110, 67);
             this.pbPersonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbPersonImage.TabIndex = 256;
             this.pbPersonImage.TabStop = false;
@@ -262,10 +267,10 @@
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Image = global::AwladAli.Properties.Resources.Close_32;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(375, 723);
+            this.btnClose.Location = new System.Drawing.Point(259, 552);
             this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(216, 72);
+            this.btnClose.Size = new System.Drawing.Size(131, 51);
             this.btnClose.TabIndex = 255;
             this.btnClose.Text = "خروج";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -275,11 +280,11 @@
             // 
             this.btnShowRelatedOrders.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnShowRelatedOrders.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnShowRelatedOrders.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnShowRelatedOrders.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnShowRelatedOrders.ForeColor = System.Drawing.Color.White;
-            this.btnShowRelatedOrders.Location = new System.Drawing.Point(375, 629);
+            this.btnShowRelatedOrders.Location = new System.Drawing.Point(229, 479);
             this.btnShowRelatedOrders.Name = "btnShowRelatedOrders";
-            this.btnShowRelatedOrders.Size = new System.Drawing.Size(216, 77);
+            this.btnShowRelatedOrders.Size = new System.Drawing.Size(162, 65);
             this.btnShowRelatedOrders.TabIndex = 273;
             this.btnShowRelatedOrders.Text = "عرض الطلبات المتعلقة بالجلسة";
             this.btnShowRelatedOrders.UseVisualStyleBackColor = false;
@@ -288,12 +293,12 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(126, 549);
+            this.label2.Location = new System.Drawing.Point(13, 434);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 31);
+            this.label2.Size = new System.Drawing.Size(32, 16);
             this.label2.TabIndex = 274;
             this.label2.Text = "جُنية";
             // 
@@ -301,7 +306,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(624, 811);
+            this.ClientSize = new System.Drawing.Size(403, 612);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnShowRelatedOrders);
             this.Controls.Add(this.lblFinalCash);

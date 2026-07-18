@@ -34,16 +34,16 @@ namespace AwladAli.Session
             if (dgvOrders.Rows.Count > 0)
             {
                 dgvOrders.Columns["SessionID"].HeaderText = "رقم الجلسة";
-                dgvOrders.Columns["SessionID"].Width = 110;
+                dgvOrders.Columns["SessionID"].Width = 80;
 
                 dgvOrders.Columns["OrderID"].HeaderText = "رقم الطلب";
-                dgvOrders.Columns["OrderID"].Width = 110;
+                dgvOrders.Columns["OrderID"].Width = 80;
 
                 dgvOrders.Columns["OrderDate"].HeaderText = "تاريخ الطلب";
-                dgvOrders.Columns["OrderDate"].Width = 200;
+                dgvOrders.Columns["OrderDate"].Width = 180;
 
                 dgvOrders.Columns["TotalAmount"].HeaderText = "إجمالي السعر";
-                dgvOrders.Columns["TotalAmount"].Width = 150;
+                dgvOrders.Columns["TotalAmount"].Width = 130;
             }
         }
 
@@ -54,16 +54,16 @@ namespace AwladAli.Session
             if (dgvOrders.Rows.Count > 0)
             {
                 dgvOrders.Columns["SessionID"].HeaderText = "رقم الجلسة";
-                dgvOrders.Columns["SessionID"].Width = 110;
+                dgvOrders.Columns["SessionID"].Width = 80;
 
                 dgvOrders.Columns["OrderID"].HeaderText = "رقم الطلب";
-                dgvOrders.Columns["OrderID"].Width = 110;
+                dgvOrders.Columns["OrderID"].Width = 80;
 
                 dgvOrders.Columns["OrderDate"].HeaderText = "تاريخ الطلب";
-                dgvOrders.Columns["OrderDate"].Width = 200;
+                dgvOrders.Columns["OrderDate"].Width = 180;
 
                 dgvOrders.Columns["TotalAmount"].HeaderText = "إجمالي السعر";
-                dgvOrders.Columns["TotalAmount"].Width = 150;
+                dgvOrders.Columns["TotalAmount"].Width = 130;
             }
         }
 
