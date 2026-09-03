@@ -20,6 +20,7 @@ namespace AwladAli.Category
         {
             InitializeComponent();
             _Mode = enMode.AddNew;
+            txtCategoryName.KeyPress += txtCategoryName_KeyPress;
         }
 
         // Constructor for Update Mode
@@ -28,6 +29,7 @@ namespace AwladAli.Category
             InitializeComponent();
             _CategoryID = CategoryID;
             _Mode = enMode.Update;
+            txtCategoryName.KeyPress += txtCategoryName_KeyPress;
         }
 
         private void _ResetDefaultValues()
@@ -235,6 +237,14 @@ namespace AwladAli.Category
                     e.Value = "-";
                     e.FormattingApplied = true;
                 }
+            }
+        }
+
+        private void txtCategoryName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnSave.PerformClick();
             }
         }
     }

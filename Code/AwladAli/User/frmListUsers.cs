@@ -256,6 +256,7 @@ namespace AwladAli.User
             deleteToolStripMenuItem.Enabled = false;
             OnToolStripMenuItem.Enabled = false;
             OffToolStripMenuItem.Enabled = false;
+            editToolStripMenuItem.Enabled = true;
 
             if (dgvUsers.CurrentRow == null) return;
 
@@ -289,12 +290,20 @@ namespace AwladAli.User
             }
 
             // Rule B: Super Admin (ID 1) cannot be disabled or deleted by anyone
-            if (selectedUserID == 1)
+            if (selectedUserID == 1 && clsGlobal.CurrentUser.UserID != 1)
             {
                 deleteToolStripMenuItem.Enabled = false;
                 OnToolStripMenuItem.Enabled = false;
                 OffToolStripMenuItem.Enabled = false;
                 editToolStripMenuItem.Enabled = false;
+            }
+
+            if (selectedUserID == 1 && clsGlobal.CurrentUser.UserID == 1)
+            {
+                deleteToolStripMenuItem.Enabled = false;
+                OnToolStripMenuItem.Enabled = false;
+                OffToolStripMenuItem.Enabled = false;
+                editToolStripMenuItem.Enabled = true;
             }
         }
     }

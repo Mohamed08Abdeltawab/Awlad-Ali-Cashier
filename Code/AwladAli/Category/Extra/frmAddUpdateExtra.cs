@@ -19,6 +19,7 @@ namespace AwladAli.Category.Extra
         {
             InitializeComponent();
             _Mode = enMode.AddNew;
+            _WireEnterToSave();
         }
 
         public frmAddUpdateExtra(int ExtraID)
@@ -26,6 +27,13 @@ namespace AwladAli.Category.Extra
             InitializeComponent();
             _Mode = enMode.Update;
             _ExtraID = ExtraID;
+            _WireEnterToSave();
+        }
+
+        private void _WireEnterToSave()
+        {
+            txtFoodName.KeyPress += txtFoodName_KeyPress;
+            txtPrice.KeyPress += txtPrice_KeyPress;
         }
 
         private void _ResetDefaultValues()
@@ -135,6 +143,22 @@ namespace AwladAli.Category.Extra
         private void txt_TextChanged(object sender, EventArgs e)
         {
             btnSave.Enabled = true;
+        }
+
+        private void txtFoodName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnSave.PerformClick();
+            }
+        }
+
+        private void txtPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnSave.PerformClick();
+            }
         }
     }
 }

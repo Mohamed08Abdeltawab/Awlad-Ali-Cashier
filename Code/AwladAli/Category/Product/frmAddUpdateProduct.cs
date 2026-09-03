@@ -24,6 +24,7 @@ namespace AwladAli.Category
             InitializeComponent();
             _CategoryID = CategoryID;
             _Mode = enMode.AddNew;
+            txtFoodName.KeyPress += txtFoodName_KeyPress;
         }
 
         public frmAddUpdateProduct(int CategoryID,int ProductID)
@@ -32,6 +33,7 @@ namespace AwladAli.Category
             _Mode = enMode.Update;
             _CategoryID = CategoryID;
             _ProductID = ProductID;
+            txtFoodName.KeyPress += txtFoodName_KeyPress;
 
             _Product = clsProduct.Find(_ProductID);
         }
@@ -228,6 +230,14 @@ namespace AwladAli.Category
             if (isNormal)
             {
                 txtPriceNormalSize.Focus();
+            }
+        }
+
+        private void txtFoodName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnSave.PerformClick();
             }
         }
     }

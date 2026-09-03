@@ -1,133 +1,204 @@
-🧾 Awlad Ali Cashier System
-Integrated Point of Sale (POS) & Restaurant Management Solution
-Awlad Ali Cashier is a professional Windows-based desktop application designed to streamline restaurant operations. It manages everything from rapid order entry for cashiers to deep financial analytics and inventory control for administrators.
+﻿# AwladAli Cashier Desktop Project
 
-🚀 Key Features
-🛒 Intelligent POS Interface: A dynamic menu that allows cashiers to select items, specify sizes (S, M, L, XL), and add extras with real-time price calculation.
+AwladAli Cashier is a Windows desktop point-of-sale (POS) application for managing restaurant sales, products, customers, cashier shifts, and administrative reports. It is built with C# Windows Forms and stores application data locally in a SQLite database.
 
-📊 Admin Dashboard: Visualizes business performance with metrics like Total Revenue, Order Count, and "Top 6 Best-Selling Products" using clear charts and data grids.
+> The source code uses the existing `AwladAli_Buisness` spelling for the business-layer project name. The project name is preserved to keep the solution references working.
 
-👥 Role-Based Access Control: Secure authentication system with separate permissions for "Admins" and "Cashiers," ensuring sensitive settings stay protected.
+## Features
 
-📦 Menu & Inventory Management: Full CRUD (Create, Read, Update, Delete) functionality for categories, products, and add-ons.
+### Cashier and sales operations
 
-🔐 Data Security: Uses AES-256 encryption for user passwords and handles failed login attempts via the Windows Event Log.
+- Secure login for active users.
+- Optional **Remember username** functionality.
+- Cashier session/shift management with:
+  - Start and end session controls.
+  - Live session duration timer.
+  - Session sales total.
+  - Session recovery after restarting the application.
+  - Detection of an active session belonging to another user.
+- Product selection grouped by category.
+- Product size selection where configured, including S, M, L, XL, or normal sizes.
+- Add-on/extra selection with quantities.
+- Takeaway orders.
+- Delivery orders with customer details and delivery fees.
+- Current-order reset before saving.
+- Transactional order saving so the order header and its line items are committed together.
+- Order summary and receipt printing.
 
-🧾 Professional Invoicing: Automatically generates detailed receipts for every transaction, including itemized breakdowns and grand totals.
+### Customers
 
-🏛️ Architecture & Design
-The system is built using a Three-Tier Architecture, ensuring the code is organized, maintainable, and scalable:
+- Search customers by name or phone number.
+- Add and update customer records.
+- Store delivery information for an order.
+- Activate, deactivate, and delete customer records where permitted.
 
-Presentation Layer (UI): Built with WinForms and Material Design for a modern, responsive user experience.
+### Products and menu administration
 
-Business Logic Layer (BLL): The "brain" of the app. It handles validation, pricing rules, and coordinates between the UI and the data.
+- Create and update product categories.
+- Create and update products.
+- Configure product sizes and prices.
+- Create, update, and list extras/add-ons.
+- Enable the menu to be refreshed after administrative changes.
 
-Data Access Layer (DAL): Manages all communication with the database using optimized SQL queries.
+### Users and administration
 
-Why this matters: This separation ensures that business rules are independent of the user interface, making the system robust and easy to update.
+- Add and update application users.
+- Assign **Admin** and **Cashier** roles.
+- Activate or deactivate users.
+- Restrict administrative settings to administrator accounts.
+- View dashboard statistics for a selected date range, including revenue and order counts.
+- Review top products, categories, and extras.
+- Browse orders and session reports.
+- View and print session details.
 
-🛠️ Technology Stack
-Language: C# (.NET Framework)
+## Technology stack
 
-Database: SQLite (Lightweight, serverless, and high-performance)
+- **Language:** C#
+- **UI framework:** Windows Forms
+- **Target framework:** .NET Framework 4.8
+- **Database:** SQLite 3
+- **Data access:** `System.Data.SQLite` and SQLitePCLRaw
+- **IDE:** Visual Studio 2022 or another Visual Studio version that supports .NET Framework 4.8
+- **Supported build configurations:** Debug/Release and Any CPU/x86
 
-UI Framework: MaterialSkin 2.0 (Google Material Design for WinForms)
+## Solution structure
 
-Security: System.Security.Cryptography (AES-256)
+```text
+Code/
+├── AwladAli/                 # Windows Forms user interface and application startup
+├── AwladAli_Buisness/        # Business entities and application rules
+└── AwladAli_Data/            # SQLite queries and data-access classes
+Other Related Data/
+├── AwladAli_Cashier_App V1.0/
+├── AwladAli_Cashier_App V2.0/
+├── AwladAli_Cashier_App V3.0/
+└── DataBase/                 # Database files for the different project versions
+```
 
-Architecture: Three-Tier Pattern (UI → BLL → DAL)
+Important UI areas include:
 
-🗃️ Database Overview
-The system utilizes a relational database structure to maintain data integrity:
+- `Code/AwladAli/Login` — login screen.
+- `Code/AwladAli/Bill` — order information and receipt printing.
+- `Code/AwladAli/Category` — categories, products, and extras.
+- `Code/AwladAli/Customer` — customer and delivery details.
+- `Code/AwladAli/Session` — cashier session and session-order reports.
+- `Code/AwladAli/User` — user management and the administrator dashboard.
 
-Users: Stores encrypted credentials and roles.
+The three projects are connected as follows:
 
-Products & Categories: Organized hierarchy for the restaurant menu.
+```text
+AwladAli (UI)
+	↓
+AwladAli_Buisness (business layer)
+	↓
+AwladAli_Data (data-access layer)
+	↓
+AwladAli.db (SQLite database)
+```
 
-Product Sizes: Supports flexible pricing based on item size.
+## Database
 
-Orders & Order Details: Atomic logging of every transaction and its specific line items.
+The application expects a file named `AwladAli.db` in the same directory as the running executable. The connection string is generated in `Code/AwladAli_Data/clsDataAccessSettings.cs`:
 
-⚙️ How It Works
-Authentication: Users log in; the system detects their role and adjusts the interface accordingly.
+```text
+Data Source=<application directory>\AwladAli.db;Version=3;
+```
 
-Order Entry: The cashier picks items; the system handles complex logic (like size-specific pricing) automatically.
+Database files included in this repository are available under:
 
-Persistence: On saving, the system performs an atomic transaction to ensure the order and its details are saved correctly to the SQLite database.
+- `Other Related Data/DataBase/Database V1.0/AwladAli.db`
+- `Other Related Data/DataBase/Empty Database V2.0/AwladAli.db`
+- `Other Related Data/DataBase/Empty Database V3.0/AwladAli.db`
 
-Reporting: Admins use date filters to fetch real-time analytics from the database to monitor restaurant growth.
+The database contains the data used by the application, including users, categories, products, product sizes, extras, customers, orders, order details, and sessions.
 
-👨‍💻 Developed By
-Mohamed Abdel-Tawab
-Computer Science Student - Level 3
-Focused on building clean, architecturally sound software using industry-standard design patterns.
+### Choosing a database
 
+- Use the versioned database that matches the application version you want to run.
+- Use an empty database when starting a new installation or test environment.
+- Copy the selected file beside `AwladAli.exe` after building or publishing the application.
+- Back up `AwladAli.db` before upgrading the application or changing its schema.
 
+The source project does not automatically copy the database to the build output directory, so this step must be handled manually or by the deployment process.
 
+## Requirements
 
+1. Windows.
+2. .NET Framework 4.8.
+3. Visual Studio with the .NET desktop development workload.
+4. NuGet package restore enabled.
+5. A compatible `AwladAli.db` file beside the executable.
 
-=========================================================================================
+## Build and run from source
 
+1. Clone or download this repository.
+2. Open `Code/AwladAli/AwladAli.sln` in Visual Studio.
+3. Allow NuGet packages to restore. The projects use `packages.config` files and include the required package references.
+4. Select `AwladAli` as the startup project.
+5. Select `Debug` or `Release` and either `Any CPU` or `x86`.
+6. Build the solution.
+7. Copy a compatible `AwladAli.db` file into the output folder, for example:
+   - `Code/AwladAli/bin/Debug/`
+   - `Code/AwladAli/bin/Release/`
+   - `Code/AwladAli/bin/x86/Debug/`
+   - `Code/AwladAli/bin/x86/Release/`
+8. Run `AwladAli.exe`.
 
+If the application reports that categories or users cannot be found, verify that the database file is present in the executable directory and that it is the intended database version.
 
-🧾 Awlad Ali Cashier System 
+## Running a packaged version
 
-نظام متكامل لإدارة المطاعم والمبيعات والمخازن
-مشروع Awlad Ali Cashier هو تطبيق سطح مكتب (Windows) مصمم خصيصاً لإدارة عمليات البيع في المطاعم بشكل سريع ودقيق. البرنامج بيغطي كل حاجة، بداية من تسجيل دخول الموظفين، مروراً بطلب الأوردرات، وصولاً لتقارير الأرباح والمبيعات المفصلة.
+Packaged application files for previous releases are stored under:
 
-🚀 المميزات الرئيسية (ماذا يقدم البرنامج؟)
-🛒 واجهة كاشير ذكية: شاشة تفاعلية تتيح اختيار الأصناف، تحديد الأحجام (S, M, L, XL)، وإضافة الإضافات (Extras) مع تحديث فوري لإجمالي السعر.
+- `Other Related Data/AwladAli_Cashier_App V1.0`
+- `Other Related Data/AwladAli_Cashier_App V2.0`
+- `Other Related Data/AwladAli_Cashier_App V3.0`
 
-📊 لوحة تحكم الأدمن (Dashboard): عرض سريع لإجمالي الأرباح، عدد الأوردرات، وأكثر 6 منتجات مبيعاً من خلال رسوم بيانية وتقارير واضحة.
+For a packaged installation, keep the executable, its configuration files, required DLLs, and `AwladAli.db` together in the same application directory. The V3.0 folder also contains ClickOnce publishing artifacts.
 
-👥 إدارة الموظفين والصلاحيات: نظام أمان قوي يسمح بإضافة "كاشير" أو "مدير"، مع تشفير كلمات المرور لضمان الخصوصية.
+## First-use workflow
 
-📦 إدارة المخزن والمنيو: التحكم الكامل في إضافة أو تعديل أو حذف الأقسام والمنتجات والأسعار بكل سهولة.
+1. Start the application and sign in with an active user already stored in the database.
+2. If no user exists, prepare the database with an administrator account before launching the application.
+3. Start a cashier session before attempting to save an order.
+4. Select products and extras.
+5. Choose **Takeaway** or **Delivery**.
+6. For delivery, select or enter the customer details and delivery fee.
+7. Review the total, save the order, and print or view its receipt.
+8. End the session when the shift is complete.
 
-🧾 طباعة الفواتير: إصدار فاتورة مفصلة لكل أوردر تحتوي على كافة التفاصيل (الكمية، الحجم، السعر الإجمالي).
+No default username or password is documented in the source repository. Do not assume credentials; use the credentials seeded in the selected database or create an administrator account through an appropriate database setup process.
 
-💾 نظام حفظ البيانات: تخزين تلقائي لكل العمليات في قاعدة بيانات محلية (SQLite) سريعة ومستقرة.
+## Security and data notes
 
-🏗️ كيف تم بناء البرنامج؟ (Architecture)
-تم تصميم البرنامج باستخدام هندسة الطبقات الثلاث (Three-Tier Architecture)، وده معناه إن البرنامج مقسم لـ 3 أجزاء منفصلة تماماً:
+- Only active users can log in.
+- Password values are encrypted before they are compared with stored credentials.
+- Usernames may be remembered through Windows user settings/registry functionality when the option is enabled.
+- The database is local and file-based. Protect access to the application directory and back up the database regularly.
+- This application is designed for local Windows deployment; it does not provide a central server or multi-site synchronization service.
 
-واجهة المستخدم (UI): الأشكال والأزرار اللي بيشوفها المستخدم.
+## Troubleshooting
 
-منطق العمل (Business Logic): "عقل" البرنامج اللي بيحسب الحسابات ويطبق القواعد.
+### The application cannot find the database
 
-الوصول للبيانات (Data Access): المسؤول عن التحدث مع قاعدة البيانات وحفظ المعلومات.
+Confirm that the file is named exactly `AwladAli.db` and is beside `AwladAli.exe`. Do not place it only in the repository root or in the source project folder unless that is also the executable directory.
 
-الفائدة: هذا التصميم يضمن أن البرنامج سهل التطوير مستقبلاً، وسهل الصيانة، ومنظم جداً برمجياً.
+### NuGet or SQLite build errors occur
 
-🛠️ الأدوات المستخدمة (Tech Stack)
-لغة البرمجة: #C (سي شارب).
+Restore NuGet packages and rebuild the solution. The main package dependencies are listed in `Code/AwladAli/packages.config`, `Code/AwladAli_Buisness/packages.config`, and `Code/AwladAli_Data/packages.config`.
 
-بيئة العمل: .NET Framework.
+### The application starts but the menu is empty
 
-قاعدة البيانات: SQLite (تتميز بالسرعة ولا تحتاج لسيرفر خارجي).
+Verify that the selected database contains categories and products, and that the database schema matches the application version.
 
-التصميم: MaterialSkin (لإعطاء واجهة عصرية تشبه تطبيقات جوجل).
+### A cashier cannot save an order
 
-الأمان: تشفير AES-256 لحماية بيانات المستخدمين.
+The cashier must have an active session, the order total must be greater than zero, and delivery orders must include a valid customer phone number and customer record.
 
-📂 هيكل قاعدة البيانات (Database)
-البرنامج بيتعامل مع عدة جداول مترابطة بذكاء لضمان دقة البيانات:
+## License
 
-المستخدمين (Users): لحفظ بيانات الدخول والصلاحيات.
+See [`LICENSE.txt`](LICENSE.txt) for the project license.
 
-المنتجات والأقسام (Products & Categories): لتنظيم المنيو.
+## Project status
 
-الأحجام والأسعار (Product Sizes): لدعم فكرة اختلاف سعر الصنف حسب الحجم.
-
-الأوردرات (Orders & Details): لحفظ كل عملية بيع تمت بالتفصيل.
-
-⚙️ كيف يعمل البرنامج؟ (Process Flow)
-تسجيل الدخول: يقوم الموظف بإدخال بياناته، وإذا كان "أدمن" تفتح له كامل الصلاحيات.
-
-طلب أوردر: يختار الكاشير الأصناف، ويقوم النظام بحساب الإجمالي آلياً.
-
-الحفظ والطباعة: بمجرد الضغط على "حفظ"، يتم تسجيل الأوردر في قاعدة البيانات وعرض الفاتورة فوراً.
-
-المتابعة: يمكن للمدير في أي وقت اختيار "فترة زمنية" (مثلاً آخر 7 أيام) لمتابعة سير العمل والأرباح.
-
-👨‍💻 مطور المشروع : Mohamed Abdeltawab
+This repository contains the source solution, local SQLite database files, and packaged artifacts for multiple application versions. The application is a traditional .NET Framework desktop project and is not an ASP.NET, web, or cloud application.

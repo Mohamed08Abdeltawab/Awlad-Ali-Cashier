@@ -259,9 +259,7 @@ namespace AwladAli.Session
                 // 3. دمج البيانات الجديدة مع الجدول الحالي
                 _dtAllSessions.Merge(dtNextSessions);
 
-                // تحديث مصدر البيانات والعدد
-                dgvUsers.DataSource = _dtAllSessions;
-                lblRecordsCount.Text = dgvUsers.Rows.Count.ToString();
+                _RefreshSessionsList();
             }
             else
             {

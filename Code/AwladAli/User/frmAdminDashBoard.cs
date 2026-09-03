@@ -43,6 +43,7 @@ namespace AwladAli.User
                 _FillTopProducts(_dash);
                 _FillTopCategories(_dash);
                 _FillTopExtras(_dash);
+                btnMore.Enabled = true;
             }
             catch (Exception ex)
             {
